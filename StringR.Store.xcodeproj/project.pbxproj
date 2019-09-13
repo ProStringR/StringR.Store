@@ -12,6 +12,8 @@
 		B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */; };
 		B34DF29F232B8F2300D9CCA8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF29E232B8F2300D9CCA8 /* RootViewController.swift */; };
 		B34DF2A3232B91B600D9CCA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */; };
+		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
+		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
 		F21A83B64C99ECB253DEFAEC /* Pods_StringR_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		B34DF298232B780000D9CCA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34DF29E232B8F2300D9CCA8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		B34DF28B232B77FF00D9CCA8 /* StringR.Store */ = {
 			isa = PBXGroup;
 			children = (
+				B36B428A232BABB100954357 /* Model */,
 				B34DF2A0232B8F6C00D9CCA8 /* View */,
 				B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */,
 				B34DF293232B780000D9CCA8 /* Assets.xcassets */,
@@ -94,6 +99,15 @@
 				B34DF29E232B8F2300D9CCA8 /* RootViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B36B428A232BABB100954357 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B36B428B232BABFA00954357 /* Shop.swift */,
+				B36B428D232BACA000954357 /* Address.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B36B428C232BABFA00954357 /* Shop.swift in Sources */,
 				B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */,
+				B36B428E232BACA000954357 /* Address.swift in Sources */,
 				B34DF29F232B8F2300D9CCA8 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
