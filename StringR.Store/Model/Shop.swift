@@ -15,5 +15,5 @@ struct Shop {
     var phoneNumber: String
     var storageId: String
     var teamId: String
-    var conomyId: String
+    var companyId: String
 }
