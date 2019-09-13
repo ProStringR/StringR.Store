@@ -37,5 +37,4 @@ struct Order {
         self.price = price
         self.paid = paid
     }
-
 }
