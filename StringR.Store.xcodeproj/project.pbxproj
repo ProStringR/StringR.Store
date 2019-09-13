@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,15 +11,21 @@
 		B34DF294232B780000D9CCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34DF293232B780000D9CCA8 /* Assets.xcassets */; };
 		B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */; };
 		B34DF29F232B8F2300D9CCA8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF29E232B8F2300D9CCA8 /* RootViewController.swift */; };
+		B34DF2A3232B91B600D9CCA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */; };
+		F21A83B64C99ECB253DEFAEC /* Pods_StringR_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.release.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.release.xcconfig"; sourceTree = "<group>"; };
+		8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.debug.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.debug.xcconfig"; sourceTree = "<group>"; };
 		B34DF289232B77FF00D9CCA8 /* StringR.Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StringR.Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B34DF293232B780000D9CCA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B34DF296232B780000D9CCA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B34DF298232B780000D9CCA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34DF29E232B8F2300D9CCA8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21A83B64C99ECB253DEFAEC /* Pods_StringR_Store.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DEFAA9F022B6C91A9B58C46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */,
+				60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4BBDA51BD0769BBE3FC52377 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B34DF280232B77FF00D9CCA8 = {
 			isa = PBXGroup;
 			children = (
 				B34DF28B232B77FF00D9CCA8 /* StringR.Store */,
 				B34DF28A232B77FF00D9CCA8 /* Products */,
+				0DEFAA9F022B6C91A9B58C46 /* Pods */,
+				4BBDA51BD0769BBE3FC52377 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +83,7 @@
 				B34DF293232B780000D9CCA8 /* Assets.xcassets */,
 				B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */,
 				B34DF298232B780000D9CCA8 /* Info.plist */,
+				B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */,
 			);
 			path = StringR.Store;
 			sourceTree = "<group>";
@@ -76,9 +103,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B34DF29B232B780000D9CCA8 /* Build configuration list for PBXNativeTarget "StringR.Store" */;
 			buildPhases = (
+				4F01EB2014FA97791BC333E3 /* [CP] Check Pods Manifest.lock */,
 				B34DF285232B77FF00D9CCA8 /* Sources */,
 				B34DF286232B77FF00D9CCA8 /* Frameworks */,
 				B34DF287232B77FF00D9CCA8 /* Resources */,
+				70370FBDAC73D24BE4582DE8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,10 +158,53 @@
 			files = (
 				B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */,
 				B34DF294232B780000D9CCA8 /* Assets.xcassets in Resources */,
+				B34DF2A3232B91B600D9CCA8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F01EB2014FA97791BC333E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StringR.Store-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70370FBDAC73D24BE4582DE8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StringR.Store/Pods-StringR.Store-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StringR.Store/Pods-StringR.Store-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StringR.Store/Pods-StringR.Store-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B34DF285232B77FF00D9CCA8 /* Sources */ = {
@@ -276,6 +348,7 @@
 		};
 		B34DF29C232B780000D9CCA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,12 +360,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		B34DF29D232B780000D9CCA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,7 +378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
