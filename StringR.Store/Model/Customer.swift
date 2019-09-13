@@ -10,11 +10,11 @@ import Foundation
 
 class Customer: User {
 
-    var preferedStringType: RacketString.StringType
+    var preferedStringType: StringType
     var preferedTensionVertical: Double
     var prederedTensionHorizontal: Double
 
-    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String], preferedStringType: RacketString.StringType, preferedTensionVertical: Double, prederedTensionHorizontal: Double) {
+    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String], preferedStringType: StringType, preferedTensionVertical: Double, prederedTensionHorizontal: Double) {
         self.preferedStringType = preferedStringType
         self.preferedTensionVertical = preferedTensionVertical
         self.prederedTensionHorizontal = prederedTensionHorizontal

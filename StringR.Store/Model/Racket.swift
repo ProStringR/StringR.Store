@@ -11,15 +11,9 @@ import Foundation
 struct Racket {
 
     var racketId: String
-    var brand: String
+    var brand: RacketBrand
     var modelName: String
     var weight: Int
     var main: Int
     var cross: Int
-
-    enum RacketType: String {
-        case TENNIS = "Tennis"
-        case BADMINTON = "Badminton"
-        case SQUASH = "Squash"
-    }
 }

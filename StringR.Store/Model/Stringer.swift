@@ -11,9 +11,9 @@ import Foundation
 class Stringer: User {
 
     var address: Address
-    var preferedRacketType: Racket.RacketType
+    var preferedRacketType: RacketType
 
-    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String], address: Address, preferedRacketType: Racket.RacketType) {
+    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String], address: Address, preferedRacketType: RacketType) {
         self.address = address
         self.preferedRacketType = preferedRacketType
 

@@ -12,7 +12,7 @@ class User {
 
     var userId: String
     var name: String
-    var birthday: Double
+    var birthday: Int64
     var email: String
     var phoneNumber: String
     var orderIds: [String]

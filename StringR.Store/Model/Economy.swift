@@ -17,4 +17,5 @@ struct Economy {
     var purchase: Double
     var profit: Double
     var unpaid: Double
+    var expenses: Double
 }

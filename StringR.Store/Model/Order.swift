@@ -13,19 +13,19 @@ struct Order {
     var orderId: String
     var customerId: String
     var stringerId: String
-    var racketType: Racket.RacketType
+    var racketType: RacketType
     var tensionVertical: Double
     var tensionHorizontal: Double
     var stringId: String
-    var deliveryDate: Double
+    var deliveryDate: Int64
     var price: Double
     var paid: Bool
-    var timePlaced: Double?
-    var timeDone: Double?
-    var timeDelivery: Double?
+    var timePlaced: Int64?
+    var timeDone: Int64?
+    var timeDelivery: Int64?
     var comment: String?
 
-    init(orderId: String, customerId: String, stringerId: String, racketType: Racket.RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Double, price: Double, paid: Bool) {
+    init(orderId: String, customerId: String, stringerId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Double, price: Double, paid: Bool) {
         self.orderId = orderId
         self.customerId = customerId
         self.stringerId = stringerId
