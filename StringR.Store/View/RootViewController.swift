@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class RootViewController: UIViewController {
+class RootViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
 
         // Hello World!
     }
