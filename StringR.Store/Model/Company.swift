@@ -1,5 +1,5 @@
 //
-//  Shop.swift
+//  Company.swift
 //  StringR.Store
 //
 //  Created by Marcus Christiansen on 13/09/2019.
@@ -8,12 +8,11 @@
 
 import Foundation
 
-struct Shop {
+struct Company {
 
-    var shopId: String
-    var address: Address
+    var companyId: String
+    var shopId: [String]
+    var name: String
+    var email: String
     var phoneNumber: String
-    var storageId: String
-    var teamId: String
-    var conomyId: String
 }

@@ -10,10 +10,10 @@ import Foundation
 
 struct Address {
 
-    private var street: String
-    private var zipCode: String
-    private var city: String
-    private var country: String
-    private var longitude: Double
-    private var latitude: Double
+    var street: String
+    var zipCode: String
+    var city: String
+    var country: String
+    var longitude: Double
+    var latitude: Double
 }
