@@ -1,0 +1,1 @@
+# StringR.Store
