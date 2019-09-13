@@ -17,7 +17,7 @@ class User {
     var phoneNumber: String
     var orderIds: [String]
 
-    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String]) {
+    init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, orderIds: [String]) {
         self.userId = userId
         self.name = name
         self.birthday = birthday

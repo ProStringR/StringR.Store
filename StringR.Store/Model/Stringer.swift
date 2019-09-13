@@ -13,7 +13,7 @@ class Stringer: User {
     var address: Address
     var preferedRacketType: RacketType
 
-    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String], address: Address, preferedRacketType: RacketType) {
+    init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, orderIds: [String], address: Address, preferedRacketType: RacketType) {
         self.address = address
         self.preferedRacketType = preferedRacketType
 

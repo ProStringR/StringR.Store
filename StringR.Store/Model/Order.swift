@@ -25,7 +25,7 @@ struct Order {
     var timeDelivery: Int64?
     var comment: String?
 
-    init(orderId: String, customerId: String, stringerId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Double, price: Double, paid: Bool) {
+    init(orderId: String, customerId: String, stringerId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Int64, price: Double, paid: Bool) {
         self.orderId = orderId
         self.customerId = customerId
         self.stringerId = stringerId

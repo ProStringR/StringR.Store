@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StringBrand : String {
+enum StringBrand: String {
     case ASHAWAY = "Ashaway"
     case BABOLAT = "Babolat"
     case DUNLOP = "Dunlop"

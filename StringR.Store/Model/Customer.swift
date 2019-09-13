@@ -14,7 +14,7 @@ class Customer: User {
     var preferedTensionVertical: Double
     var prederedTensionHorizontal: Double
 
-    init(userId: String, name: String, birthday: Double, email: String, phoneNumber: String, orderIds: [String], preferedStringType: StringType, preferedTensionVertical: Double, prederedTensionHorizontal: Double) {
+    init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, orderIds: [String], preferedStringType: StringType, preferedTensionVertical: Double, prederedTensionHorizontal: Double) {
         self.preferedStringType = preferedStringType
         self.preferedTensionVertical = preferedTensionVertical
         self.prederedTensionHorizontal = prederedTensionHorizontal
