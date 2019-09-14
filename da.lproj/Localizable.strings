@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  StringR.Store
+
+  Created by Marcus Christiansen on 14/09/2019.
+  Copyright © 2019 StringR. All rights reserved.
+*/
+
+"generel_Economy" = "Økonomi";
+"generel_Order" = "Ordre";
+"generel_Racket" = "Ketcher";
+"generel_Storage" = "Lager";
+"generel_Team" = "Team";
