@@ -15,6 +15,7 @@ class RootTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .black
 
+        // viewController creation
         let orderViewController = OrderViewController()
         let testRacketViewController = TestRacketViewController()
         let economyViewController = EconomyViewController()
@@ -32,7 +33,21 @@ class RootTabBarController: UITabBarController {
         storageViewController.tabBarItem.title = "Storage"
         teamViewController.tabBarItem.title = "Team"
 
+        // adding images to the tabBar items
+        orderNavigationController.tabBarItem.image = UIImage(named: "order_icon")
+        testRacketNavigationController.tabBarItem.image = UIImage(named: "racket_icon")
+        economyViewController.tabBarItem.image = UIImage(named: "economy_icon")
+        storageViewController.tabBarItem.image = UIImage(named: "storage_icon")
+        teamViewController.tabBarItem.image = UIImage(named: "team_icon")
+
+        // setting layout for the tab bar
+        self.tabBar.barTintColor = .white
+        self.tabBar.tintColor = .black
+
         // adding viewControllers to the tabBar
         viewControllers = [testRacketNavigationController, storageViewController, orderNavigationController, economyViewController, teamViewController]
+
+        // set order tab to be the selected tab.
+        self.selectedIndex = 2
     }
 }
