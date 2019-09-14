@@ -27,11 +27,11 @@ class RootTabBarController: UITabBarController {
         let testRacketNavigationController = UINavigationController(rootViewController: testRacketViewController)
 
         // adding titles to the tabBar items
-        orderNavigationController.tabBarItem.title = "Orders"
-        testRacketNavigationController.tabBarItem.title = "Rackets"
-        economyViewController.tabBarItem.title = "Economy"
-        storageViewController.tabBarItem.title = "Storage"
-        teamViewController.tabBarItem.title = "Team"
+        orderNavigationController.tabBarItem.title = Utility.getString(forKey: "generel_Order")
+        testRacketNavigationController.tabBarItem.title = Utility.getString(forKey: "generel_Racket")
+        economyViewController.tabBarItem.title = Utility.getString(forKey: "generel_Economy")
+        storageViewController.tabBarItem.title = Utility.getString(forKey: "generel_Storage")
+        teamViewController.tabBarItem.title = Utility.getString(forKey: "generel_Team")
 
         // adding images to the tabBar items
         orderNavigationController.tabBarItem.image = UIImage(named: "order_icon")
