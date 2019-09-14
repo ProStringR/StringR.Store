@@ -1,5 +1,5 @@
 //
-//  RootViewController.swift
+//  TeamViewController.swift
 //  StringR.Store
 //
 //  Created by Marcus Christiansen on 13/09/2019.
@@ -9,12 +9,9 @@
 import Foundation
 import UIKit
 
-class RootViewController: UIViewController {
+class TeamViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-
-        // Hello World!
     }
 }
