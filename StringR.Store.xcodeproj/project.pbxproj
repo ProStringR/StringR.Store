@@ -37,6 +37,7 @@
 		B3FB2C78232D0335003728C4 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C77232D0335003728C4 /* Extention.swift */; };
 		B3FB2C88232D2AA2003728C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3FB2C8A232D2AA2003728C4 /* Localizable.strings */; };
 		B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C8C232D2BF4003728C4 /* Utility.swift */; };
+		B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2CAC232D4119003728C4 /* Layout.swift */; };
 		F21A83B64C99ECB253DEFAEC /* Pods_StringR_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		B3FB2C89232D2AA2003728C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3FB2C8B232D2AA9003728C4 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3FB2C8C232D2BF4003728C4 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		B3FB2CAC232D4119003728C4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			children = (
 				B3FB2C77232D0335003728C4 /* Extention.swift */,
 				B3FB2C8C232D2BF4003728C4 /* Utility.swift */,
+				B3FB2CAC232D4119003728C4 /* Layout.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				B38C5BA5232BE45A00116BC1 /* RacketType.swift in Sources */,
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
+				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
 				B38C5B84232BC94000116BC1 /* Team.swift in Sources */,
 				B38C5B90232BD08000116BC1 /* User.swift in Sources */,
 				B38C5BAD232BE70D00116BC1 /* StringBrand.swift in Sources */,
