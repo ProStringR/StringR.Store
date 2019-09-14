@@ -14,5 +14,6 @@ class TestRacketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        navigationController?.hideNavigationBar()
     }
 }

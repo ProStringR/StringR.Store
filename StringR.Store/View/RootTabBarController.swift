@@ -17,10 +17,22 @@ class RootTabBarController: UITabBarController {
 
         let orderViewController = OrderViewController()
         let testRacketViewController = TestRacketViewController()
-        let orderNavigationController = UINavigationController(rootViewController: orderViewController)
+        let economyViewController = EconomyViewController()
+        let storageViewController = StorageViewController()
+        let teamViewController = TeamViewController()
 
-        orderViewController.tabBarItem.title = "Orders"
-        testRacketViewController.tabBarItem.title = "Rackets"
-        viewControllers = [orderViewController, testRacketViewController]
+        // create navigationControllers for the viewControllers that have more than one layer.
+        let orderNavigationController = UINavigationController(rootViewController: orderViewController)
+        let testRacketNavigationController = UINavigationController(rootViewController: testRacketViewController)
+
+        // adding titles to the tabBar items
+        orderNavigationController.tabBarItem.title = "Orders"
+        testRacketNavigationController.tabBarItem.title = "Rackets"
+        economyViewController.tabBarItem.title = "Economy"
+        storageViewController.tabBarItem.title = "Storage"
+        teamViewController.tabBarItem.title = "Team"
+
+        // adding viewControllers to the tabBar
+        viewControllers = [testRacketNavigationController, storageViewController, orderNavigationController, economyViewController, teamViewController]
     }
 }
