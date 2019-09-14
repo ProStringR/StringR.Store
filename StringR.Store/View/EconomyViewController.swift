@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Economy: UIViewController {
+class EconomyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
