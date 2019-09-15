@@ -41,10 +41,9 @@ class Layout {
         view.trailingAnchor.constraint(equalTo: anchor, constant: points).isActive = true
     }
 
-    static func addHeadingLayout(on view: UILabel, withParent parentView: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.boldSystemFont(ofSize: 32)
-        centerHorizontally(on: view, withParent: parentView)
-        addTopConstraint(on: view, to: parentView.topAnchor, by: 75)
+    static func setupViewNavigationController(forView view: UIViewController, withTitle title: String) {
+        view.navigationController?.hideNavigationBar()
+        view.navigationController?.navigationBar.prefersLargeTitles = true
+        view.title = title
     }
 }
