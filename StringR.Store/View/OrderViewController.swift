@@ -13,17 +13,12 @@ class OrderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.hideNavigationBar()
 
         setLayout()
     }
 
     private func setLayout() {
         self.view.backgroundColor = .white
-        let header = UILabel()
-        view.addSubview(header)
-
-        header.text = Utility.getString(forKey: "generel_Order")
-        Layout.addHeadingLayout(on: header, withParent: view)
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "generel_Order")))
     }
 }

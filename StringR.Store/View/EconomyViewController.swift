@@ -19,11 +19,6 @@ class EconomyViewController: UIViewController {
 
     private func setupLayout() {
         self.view.backgroundColor = .white
-        let header = UILabel()
-        view.addSubview(header)
-
-        header.text = Utility.getString(forKey: "generel_Economy")
-        Layout.addHeadingLayout(on: header, withParent: self.view)
-
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Economy"))
     }
 }
