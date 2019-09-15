@@ -11,43 +11,55 @@ import UIKit
 
 class RootTabBarController: UITabBarController {
 
+    private var orderView: UINavigationController?
+    private var testRacketView: UINavigationController?
+    private var economyView: UINavigationController?
+    private var storageView: UINavigationController?
+    private var teamView: UINavigationController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
 
-        // viewController creation
-        let orderViewController = OrderViewController()
-        let testRacketViewController = TestRacketViewController()
-        let economyViewController = EconomyViewController()
-        let storageViewController = StorageViewController()
-        let teamViewController = TeamViewController()
+        setupNavigationControllers()
+        setupTabBarItems()
+        addNavigationControllersToTabBarController()
 
-        // create navigationControllers for the viewControllers that have more than one layer.
-        let orderNavigationController = UINavigationController(rootViewController: orderViewController)
-        let testRacketNavigationController = UINavigationController(rootViewController: testRacketViewController)
+        // set order tab to be the selected tab.
+        self.selectedIndex = 2
+    }
 
-        // adding titles to the tabBar items
-        orderNavigationController.tabBarItem.title = Utility.getString(forKey: "generel_Order")
-        testRacketNavigationController.tabBarItem.title = Utility.getString(forKey: "generel_Racket")
-        economyViewController.tabBarItem.title = Utility.getString(forKey: "generel_Economy")
-        storageViewController.tabBarItem.title = Utility.getString(forKey: "generel_Storage")
-        teamViewController.tabBarItem.title = Utility.getString(forKey: "generel_Team")
+    private func setupNavigationControllers() {
+        self.orderView = UINavigationController(rootViewController: OrderViewController())
+        self.testRacketView = UINavigationController(rootViewController: TestRacketViewController())
+        self.economyView = UINavigationController(rootViewController: EconomyViewController())
+        self.storageView = UINavigationController(rootViewController: StorageViewController())
+        self.teamView = UINavigationController(rootViewController: TestRacketViewController())
+    }
 
-        // adding images to the tabBar items
-        orderNavigationController.tabBarItem.image = UIImage(named: "order_icon")
-        testRacketNavigationController.tabBarItem.image = UIImage(named: "racket_icon")
-        economyViewController.tabBarItem.image = UIImage(named: "economy_icon")
-        storageViewController.tabBarItem.image = UIImage(named: "storage_icon")
-        teamViewController.tabBarItem.image = UIImage(named: "team_icon")
+    private func setupTabBarItems() {
+        self.orderView?.tabBarItem.title = Utility.getString(forKey: "generel_Order")
+        self.testRacketView?.tabBarItem.title = Utility.getString(forKey: "generel_Racket")
+        self.economyView?.tabBarItem.title = Utility.getString(forKey: "generel_Economy")
+        self.storageView?.tabBarItem.title = Utility.getString(forKey: "generel_Storage")
+        self.teamView?.tabBarItem.title = Utility.getString(forKey: "generel_Team")
+
+        self.orderView?.tabBarItem.image = UIImage(named: "order_icon")
+        self.testRacketView?.tabBarItem.image = UIImage(named: "racket_icon")
+        self.economyView?.tabBarItem.image = UIImage(named: "economy_icon")
+        self.storageView?.tabBarItem.image = UIImage(named: "storage_icon")
+        self.teamView?.tabBarItem.image = UIImage(named: "team_icon")
 
         // setting layout for the tab bar
         self.tabBar.barTintColor = .white
         self.tabBar.tintColor = .black
+    }
 
-        // adding viewControllers to the tabBar
-        viewControllers = [testRacketNavigationController, storageViewController, orderNavigationController, economyViewController, teamViewController]
+    private func addNavigationControllersToTabBarController() {
+        guard let orderView = self.orderView, let testRacketView = self.testRacketView, let economyView = self.economyView, let storageView = self.storageView, let teamView = self.teamView else {
+            return
+        }
 
-        // set order tab to be the selected tab.
-        self.selectedIndex = 2
+        self.viewControllers = [testRacketView, storageView, orderView, economyView, teamView]
     }
 }
