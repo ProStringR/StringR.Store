@@ -11,3 +11,7 @@
 "generel_Racket" = "Ketcher";
 "generel_Storage" = "Lager";
 "generel_Team" = "Team";
+"orderViewController_OrderCreationHead" = "Opret ordre"
+"orderViewController_ReceivedOrders" = "Modtaget ordre"
+"orderViewController_DoneOrders" = "Færdiggjort ordre"
+"orderViewController_DeliveredOrders" = "Afleveret ordre"
