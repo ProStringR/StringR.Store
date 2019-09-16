@@ -21,7 +21,6 @@ class CardCell: UICollectionViewCell {
         initializeLabels()
         setConstraints()
         setShadow()
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +36,8 @@ class CardCell: UICollectionViewCell {
         let descriptionLabel = UILabel()
 
         self.headerLabel = headerLabel
+        self.headerLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+
         self.descriptionLabel = descriptionLabel
 
         self.contentView.addSubview(self.headerLabel)
@@ -66,5 +67,4 @@ class CardCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
     }
-
 }
