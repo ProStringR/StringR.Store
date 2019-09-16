@@ -21,22 +21,22 @@ class Layout {
         view.centerXAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.centerXAnchor).isActive = true
     }
 
-    static func addTopConstraint(on view: UIView, to anchor: NSLayoutYAxisAnchor, by points: CGFloat) {
+    static func addTopConstraint(on view: UIView, to anchor: NSLayoutYAxisAnchor, by points: CGFloat = Constant.standardOffset) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.topAnchor.constraint(equalTo: anchor, constant: points).isActive = true
     }
 
-    static func addBottomConstraint(on view: UIView, to anchor: NSLayoutYAxisAnchor, by points: CGFloat) {
+    static func addBottomConstraint(on view: UIView, to anchor: NSLayoutYAxisAnchor, by points: CGFloat = Constant.standardOffset) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.bottomAnchor.constraint(equalTo: anchor, constant: points).isActive = true
     }
 
-    static func addLeadingConstraint(on view: UIView, to anchor: NSLayoutXAxisAnchor, by points: CGFloat) {
+    static func addLeadingConstraint(on view: UIView, to anchor: NSLayoutXAxisAnchor, by points: CGFloat = Constant.standardOffset) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leadingAnchor.constraint(equalTo: anchor, constant: points).isActive = true
     }
 
-    static func addTrailingConstraint(on view: UIView, to anchor: NSLayoutXAxisAnchor, by points: CGFloat) {
+    static func addTrailingConstraint(on view: UIView, to anchor: NSLayoutXAxisAnchor, by points: CGFloat = Constant.standardOffset) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.trailingAnchor.constraint(equalTo: anchor, constant: points).isActive = true
     }
