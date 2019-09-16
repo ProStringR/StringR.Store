@@ -13,7 +13,12 @@ class TestRacketViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        navigationController?.hideNavigationBar()
+
+        setLayout()
+    }
+
+    private func setLayout() {
+        self.view.backgroundColor = .white
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Racket"))
     }
 }

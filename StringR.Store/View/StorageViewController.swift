@@ -13,5 +13,12 @@ class StorageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setLayout()
+    }
+
+    private func setLayout() {
+        self.view.backgroundColor = .white
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Storage"))
     }
 }

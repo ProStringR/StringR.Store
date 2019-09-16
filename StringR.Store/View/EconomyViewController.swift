@@ -13,5 +13,12 @@ class EconomyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupLayout()
+    }
+
+    private func setupLayout() {
+        self.view.backgroundColor = .white
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Economy"))
     }
 }
