@@ -99,6 +99,6 @@ extension OrderViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constant.bigOffset
+        return 2 * Constant.bigOffset
     }
 }
