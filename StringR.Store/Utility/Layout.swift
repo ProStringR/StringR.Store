@@ -28,7 +28,7 @@ class Layout {
 
     static func addBottomConstraint(on view: UIView, to anchor: NSLayoutYAxisAnchor, by points: CGFloat = Constant.standardOffset) {
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.bottomAnchor.constraint(equalTo: anchor, constant: points).isActive = true
+        view.bottomAnchor.constraint(equalTo: anchor, constant: -points).isActive = true
     }
 
     static func addLeadingConstraint(on view: UIView, to anchor: NSLayoutXAxisAnchor, by points: CGFloat = Constant.standardOffset) {
@@ -38,7 +38,7 @@ class Layout {
 
     static func addTrailingConstraint(on view: UIView, to anchor: NSLayoutXAxisAnchor, by points: CGFloat = Constant.standardOffset) {
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.trailingAnchor.constraint(equalTo: anchor, constant: points).isActive = true
+        view.trailingAnchor.constraint(equalTo: anchor, constant: -points).isActive = true
     }
 
     static func setupViewNavigationController(forView view: UIViewController, withTitle title: String) {
