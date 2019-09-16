@@ -34,7 +34,7 @@ class RootTabBarController: UITabBarController {
         self.testRacketView = UINavigationController(rootViewController: TestRacketViewController())
         self.economyView = UINavigationController(rootViewController: EconomyViewController())
         self.storageView = UINavigationController(rootViewController: StorageViewController())
-        self.teamView = UINavigationController(rootViewController: TestRacketViewController())
+        self.teamView = UINavigationController(rootViewController: TeamViewController())
     }
 
     private func setupTabBarItems() {
