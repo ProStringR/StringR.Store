@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
+		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
 		B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */; };
 		B34DF294232B780000D9CCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34DF293232B780000D9CCA8 /* Assets.xcassets */; };
 		B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		1DF66C2E232F73AC0007E2C3 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.release.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.release.xcconfig"; sourceTree = "<group>"; };
 		8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.debug.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +107,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1DF66C30232F73B30007E2C3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1DF66C2E232F73AC0007E2C3 /* CardCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4BBDA51BD0769BBE3FC52377 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +145,7 @@
 		B34DF28B232B77FF00D9CCA8 /* StringR.Store */ = {
 			isa = PBXGroup;
 			children = (
+				1DF66C30232F73B30007E2C3 /* Cell */,
 				B3FB2C76232D030C003728C4 /* Utility */,
 				B38C5BA3232BE40C00116BC1 /* Enum */,
 				B36B428A232BABB100954357 /* Model */,
@@ -193,6 +206,7 @@
 		B3FB2C76232D030C003728C4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				1DF66C2B232F733F0007E2C3 /* Constant.swift */,
 				B3FB2C77232D0335003728C4 /* Extention.swift */,
 				B3FB2C8C232D2BF4003728C4 /* Utility.swift */,
 				B3FB2CAC232D4119003728C4 /* Layout.swift */,
@@ -342,6 +356,7 @@
 				B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
+				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
 				B38C5B8C232BCBDE00116BC1 /* RacketString.swift in Sources */,
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
@@ -362,6 +377,7 @@
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
+				1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
