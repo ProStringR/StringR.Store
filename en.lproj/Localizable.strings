@@ -11,7 +11,7 @@
 "generel_Racket" = "Racket";
 "generel_Storage" = "Storage";
 "generel_Team" = "Team";
-"orderViewController_OrderCreationHead" = "Order creation"
-"orderViewController_ReceivedOrders" = "Received orders"
-"orderViewController_DoneOrders" = "Done orders"
-"orderViewController_DeliveredOrders" = "Delivered orders"
+"orderViewController_OrderCreationHead" = "Order creation";
+"orderViewController_ReceivedOrders" = "Received orders";
+"orderViewController_DoneOrders" = "Done orders";
+"orderViewController_DeliveredOrders" = "Delivered orders";
