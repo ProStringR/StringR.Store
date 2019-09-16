@@ -13,7 +13,7 @@ class OrderViewController: UIViewController {
 
     weak var collectionView: UICollectionView!
 
-    var data: [Int] = Array(0..<10)
+    var data: [Int] = Array(0..<4)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,10 @@ class OrderViewController: UIViewController {
 
         self.view.addSubview(collectionView)
         // addding constraints to the collectionView
-        Layout.addTopConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.topAnchor, by: 8)
-        Layout.addBottomConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.bottomAnchor, by: 8)
-        Layout.addLeadingConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: 8)
-        Layout.addTrailingConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: -8)
+        Layout.addTopConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.topAnchor)
+        Layout.addBottomConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.bottomAnchor)
+        Layout.addLeadingConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
+        Layout.addTrailingConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
 
         self.collectionView = collectionView
 
@@ -51,7 +51,9 @@ extension OrderViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // swiftlint:disable force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier, for: indexPath) as! CardCell
+        // swiftlint:enable force_cast
         cell.headerLabel.text = "Hello \(indexPath.item)"
         cell.descriptionLabel.text = "Description \(indexPath.item)"
 
@@ -63,11 +65,29 @@ extension OrderViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Clicked \(indexPath.row)")
     }
+
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.4) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? CardCell {
+                cell.transform = .init(scaleX: 0.95, y: 0.95)
+                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+            }
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.4) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? CardCell {
+                cell.transform = .identity
+                cell.contentView.backgroundColor = .white
+            }
+        }
+    }
 }
 
 extension OrderViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width-Constant.bigOffset, height: 70)
+        return CGSize(width: collectionView.bounds.width-Constant.bigOffset, height: 100)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
