@@ -13,5 +13,6 @@ class Constant {
 
     static let standardOffset = CGFloat(8)
     static let bigOffset = CGFloat(16)
+    static let cardHeaderSize = CGFloat(24)
 
 }
