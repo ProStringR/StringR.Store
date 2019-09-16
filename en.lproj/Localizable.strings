@@ -12,6 +12,6 @@
 "generel_Storage" = "Storage";
 "generel_Team" = "Team";
 "orderViewController_OrderCreationHead" = "Order creation";
-"orderViewController_ReceivedOrders" = "Received orders";
-"orderViewController_DoneOrders" = "Done orders";
-"orderViewController_DeliveredOrders" = "Delivered orders";
+"orderViewController_ReceivedOrdersHead" = "Received orders";
+"orderViewController_DoneOrdersHead" = "Done orders";
+"orderViewController_DeliveredOrdersHead" = "Delivered orders";
