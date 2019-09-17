@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
+		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
 		B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
+		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
 		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1DF66C2E232F73AC0007E2C3 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1D61CECA232FE345006FED94 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D61CED22330AE7F006FED94 /* ViewController */,
+				1D61CECB232FE36A006FED94 /* LayoutController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D61CED22330AE7F006FED94 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D61CED32330AEC2006FED94 /* CardCellViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		1DF66C30232F73B30007E2C3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +166,7 @@
 		B34DF28B232B77FF00D9CCA8 /* StringR.Store */ = {
 			isa = PBXGroup;
 			children = (
+				1D61CECA232FE345006FED94 /* Controller */,
 				1DF66C30232F73B30007E2C3 /* Cell */,
 				B3FB2C76232D030C003728C4 /* Utility */,
 				B38C5BA3232BE40C00116BC1 /* Enum */,
@@ -354,6 +376,7 @@
 				B36B428C232BABFA00954357 /* Shop.swift in Sources */,
 				B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */,
 				B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */,
+				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
@@ -364,6 +387,7 @@
 				B38C5BA5232BE45A00116BC1 /* RacketType.swift in Sources */,
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
+				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
 				B38C5B84232BC94000116BC1 /* Team.swift in Sources */,
 				B38C5B90232BD08000116BC1 /* User.swift in Sources */,
