@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class OrderViewController: UIViewController {
+class OrderViewController: CardCellViewController {
 
     weak var collectionView: UICollectionView!
 
@@ -18,30 +18,27 @@ class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-
-        self.view.addSubview(collectionView)
-        // addding constraints to the collectionView
-        Layout.addTopConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.topAnchor)
-        Layout.addBottomConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.bottomAnchor)
-        Layout.addLeadingConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: collectionView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
-
-        self.collectionView = collectionView
-
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        self.collectionView.register(CardCell.self, forCellWithReuseIdentifier: CardCell.identifier)
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = .white
-        self.collectionView.showsVerticalScrollIndicator = false
-
         setLayout()
+        setupCollectionView()
+        setupConstraints()
     }
 
     private func setLayout() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "generel_Order")))
+    }
+
+    private func setupCollectionView() {
+        let collectionView = LayoutController.generateCardCellCollectionView()
+        self.view.addSubview(collectionView)
+        self.collectionView = collectionView
+
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+    }
+
+    private func setupConstraints() {
+        Layout.setupVerticalCollectionViewConstraints(forCollectionView: self.collectionView, onParentView: self)
     }
 }
 
@@ -61,44 +58,8 @@ extension OrderViewController: UICollectionViewDataSource {
     }
 }
 
-extension OrderViewController: UICollectionViewDelegate {
+extension OrderViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Clicked \(indexPath.row)")
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.4) {
-            if let cell = collectionView.cellForItem(at: indexPath) as? CardCell {
-                cell.transform = .init(scaleX: 0.95, y: 0.95)
-                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-            }
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.4) {
-            if let cell = collectionView.cellForItem(at: indexPath) as? CardCell {
-                cell.transform = .identity
-                cell.contentView.backgroundColor = .white
-            }
-        }
-    }
-}
-
-extension OrderViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width-Constant.bigOffset, height: 100)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: Constant.bigOffset, left: 0, bottom: Constant.bigOffset, right: 0)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2 * Constant.bigOffset
     }
 }
