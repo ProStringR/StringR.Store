@@ -13,11 +13,12 @@ class OrderViewController: CardCellViewController {
 
     weak var collectionView: UICollectionView!
 
-    var data: [Int] = Array(0..<4)
+    var list = [(header: String, description: String)]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        intializeStringsForCollectionView()
         setLayout()
         setupCollectionView()
         setupConstraints()
@@ -40,19 +41,27 @@ class OrderViewController: CardCellViewController {
     private func setupConstraints() {
         Layout.setupVerticalCollectionViewConstraints(forCollectionView: self.collectionView, onParentView: self)
     }
+
+    private func intializeStringsForCollectionView() {
+        self.list.append((Utility.getString(forKey: "orderViewController_OrderCreationHead"), Utility.getString(forKey: "orderViewController_OrderCreationDescription")))
+        self.list.append((Utility.getString(forKey: "orderViewController_ReceivedOrdersHead"), Utility.getString(forKey: "orderViewController_ReceivedOrdersDescription")))
+        self.list.append((Utility.getString(forKey: "orderViewController_DoneOrdersHead"), Utility.getString(forKey: "orderViewController_DoneOrdersDescription")))
+        self.list.append((Utility.getString(forKey: "orderViewController_DeliveredOrdersHead"), Utility.getString(forKey: "orderViewController_DeliveredDescription")))
+    }
 }
 
 extension OrderViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.data.count
+        return self.list.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // swiftlint:disable force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier, for: indexPath) as! CardCell
         // swiftlint:enable force_cast
-        cell.headerLabel.text = "Hello \(indexPath.item)"
-        cell.descriptionLabel.text = "Description \(indexPath.item)"
+
+        cell.headerLabel.text = self.list[indexPath.item].header
+        cell.descriptionLabel.text = self.list[indexPath.item].description
 
         return cell
     }
