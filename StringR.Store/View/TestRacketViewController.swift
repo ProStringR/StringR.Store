@@ -12,11 +12,12 @@ import UIKit
 class TestRacketViewController: CardCellViewController {
 
     weak var collectionView: UICollectionView!
-    var data: [Int] = Array(0..<4)
+    var list = [(header: String, description: String)]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        intializeStringsForCollectionView()
         setLayout()
         setupCollectionView()
         setupConstraints()
@@ -39,6 +40,13 @@ class TestRacketViewController: CardCellViewController {
     private func setupConstraints() {
         Layout.setupVerticalCollectionViewConstraints(forCollectionView: self.collectionView, onParentView: self)
     }
+
+    private func intializeStringsForCollectionView() {
+        self.list.append((Utility.getString(forKey: "racketViewController_RacketRentHead"), Utility.getString(forKey: "racketViewController_RacketRentDescription")))
+        self.list.append((Utility.getString(forKey: "racketViewController_RacketRegisterHead"), Utility.getString(forKey: "racketViewController_RacketRegisterDescription")))
+        self.list.append((Utility.getString(forKey: "racketViewController_racketReturnHead"), Utility.getString(forKey: "racketViewController_racketReturnDescription")))
+        self.list.append((Utility.getString(forKey: "racketViewController_racketOverviewHead"), Utility.getString(forKey: "racketViewController_racketOverviewDescription")))
+    }
 }
 
 extension TestRacketViewController {
@@ -49,15 +57,15 @@ extension TestRacketViewController {
 
 extension TestRacketViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.data.count
+        return self.list.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // swiftlint:disable force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier, for: indexPath) as! CardCell
         // swiftlint:enable force_cast
-        cell.headerLabel.text = "Hello \(indexPath.item)"
-        cell.descriptionLabel.text = "Description \(indexPath.item)"
+        cell.headerLabel.text = self.list[indexPath.item].header
+        cell.descriptionLabel.text = self.list[indexPath.item].description
 
         return cell
     }
