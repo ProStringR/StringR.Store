@@ -12,6 +12,10 @@
 "generel_Storage" = "Storage";
 "generel_Team" = "Team";
 "orderViewController_OrderCreationHead" = "Order creation";
+"orderViewController_OrderCreationDescription" = "Create order for the customer, if wasn't done beforehand.";
 "orderViewController_ReceivedOrdersHead" = "Received orders";
+"orderViewController_ReceivedOrdersDescription" = "Get an overview of rackets ready for stringing.";
 "orderViewController_DoneOrdersHead" = "Done orders";
+"orderViewController_DoneOrdersDescription" = "Get an overview of rackets ready for delivery.";
 "orderViewController_DeliveredOrdersHead" = "Delivered orders";
+"orderViewController_DeliveredDescription" = "Get an overview of closed orders.";

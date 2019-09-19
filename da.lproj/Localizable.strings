@@ -12,6 +12,11 @@
 "generel_Storage" = "Lager";
 "generel_Team" = "Team";
 "orderViewController_OrderCreationHead" = "Opret ordre";
+"orderViewController_OrderCreationDescription" = "Her oprettes kundens ordre, hvis den ikke er oprettet på forhånd.";
 "orderViewController_ReceivedOrdersHead" = "Modtaget ordre";
+"orderViewController_ReceivedOrdersDescription" = "Se en oversigt over ordre, som skal strenges.";
 "orderViewController_DoneOrdersHead" = "Færdiggjort ordre";
+"orderViewController_DoneOrdersDescription" = "Her ses ketcher som er klar til levering.";
 "orderViewController_DeliveredOrdersHead" = "Afleveret ordre";
+"orderViewController_DeliveredDescription" = "Se en oversigt over afsluttede ordre.";
+
