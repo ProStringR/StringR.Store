@@ -23,7 +23,6 @@ class OrderController {
             }
 
             return activeOrders
-
         } catch {
             throw error
         }
