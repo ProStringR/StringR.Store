@@ -11,5 +11,6 @@ import Foundation
 protocol OrderDAOProtocol {
 
     func getActiveOrders() throws -> [OrderDTO]
+    func postOrder(order: OrderDTO) throws
 
 }
