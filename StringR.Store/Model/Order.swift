@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Order {
+class Order {
 
     var orderId: String
     var customerId: String
