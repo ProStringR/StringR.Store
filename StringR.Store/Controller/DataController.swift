@@ -10,7 +10,7 @@ import Foundation
 
 class DataController {
 
-    static func fetchData<T: Codable>(returnType: T.Type, url: String) throws -> T {
+    static func getData<T: Codable>(returnType: T.Type, url: String) throws -> T {
         guard let url = URL(string: "\(url).json") else { throw NetworkError.url }
 
         var dataFromUrl: Data?
@@ -47,5 +47,49 @@ class DataController {
         } catch {
             throw NetworkError.error
         }
+    }
+
+    static func postData<T: Codable>(object: T, url: String) throws {
+        guard let url = URL(string: "\(url).json") else { throw NetworkError.url }
+
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+
+        do {
+            let data = try JSONEncoder().encode(object)
+            request.httpBody = data
+        } catch {
+            throw NetworkError.error
+        }
+
+        URLSession.shared.dataTask(with: request as URLRequest).resume()
+    }
+
+    static func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String) throws {
+        guard let url = URL(string: "\(url)/\(objectId).json") else { throw NetworkError.url }
+
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "PUT"
+
+        do {
+            let data = try JSONEncoder().encode(object)
+            request.httpBody = data
+        } catch {
+            throw NetworkError.error
+        }
+
+        URLSession.shared.dataTask(with: request as URLRequest).resume()
+    }
+
+    static func deleteData(objectIdToDelete objectId: String, url: String) throws {
+        guard let url = URL(string: "\(url)/\(objectId).json") else { throw NetworkError.url }
+
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+
+        URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 }
