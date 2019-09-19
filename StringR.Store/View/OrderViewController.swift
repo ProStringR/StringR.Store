@@ -12,7 +12,6 @@ import UIKit
 class OrderViewController: CardCellViewController {
 
     weak var collectionView: UICollectionView!
-
     var list = [(header: String, description: String)]()
 
     override func viewDidLoad() {
