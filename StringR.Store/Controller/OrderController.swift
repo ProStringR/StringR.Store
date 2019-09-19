@@ -18,7 +18,8 @@ class OrderController {
             var activeOrders = [Order]()
 
             for order in orders {
-                activeOrders.append(Order.init(orderDTO: order))
+                // TODO: Map the OrderDTO to Order
+                //activeOrders.append(Order.init(orderDTO: order))
             }
 
             return activeOrders
