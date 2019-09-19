@@ -46,4 +46,11 @@ class Layout {
         view.navigationController?.navigationBar.prefersLargeTitles = true
         view.title = title
     }
+
+    static func setupVerticalCollectionViewConstraints(forCollectionView collectionView: UICollectionView, onParentView parentView: UIViewController) {
+        addTopConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.topAnchor)
+        addBottomConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.bottomAnchor)
+        addLeadingConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.leadingAnchor)
+        addTrailingConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.trailingAnchor)
+    }
 }

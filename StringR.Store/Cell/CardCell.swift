@@ -14,10 +14,12 @@ class CardCell: UICollectionViewCell {
 
     weak var headerLabel: UILabel!
     weak var descriptionLabel: UILabel!
+    weak var stackView: UIStackView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        initalizeStackView()
         initializeLabels()
         setConstraints()
         setShadow()
@@ -31,6 +33,16 @@ class CardCell: UICollectionViewCell {
         super.prepareForReuse()
     }
 
+    private func initalizeStackView() {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Constant.standardOffset
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
+        self.stackView = stackView
+        self.contentView.addSubview(self.stackView)
+    }
+
     private func initializeLabels() {
         let headerLabel = UILabel()
         let descriptionLabel = UILabel()
@@ -40,17 +52,15 @@ class CardCell: UICollectionViewCell {
 
         self.descriptionLabel = descriptionLabel
 
-        self.contentView.addSubview(self.headerLabel)
-        self.contentView.addSubview(self.descriptionLabel)
+        self.stackView.addArrangedSubview(self.headerLabel)
+        self.stackView.addArrangedSubview(self.descriptionLabel)
     }
 
     private func setConstraints() {
-
-        Layout.addTopConstraint(on: self.headerLabel, to: self.contentView.topAnchor, by: Constant.bigOffset)
-        Layout.addLeadingConstraint(on: self.headerLabel, to: self.contentView.leadingAnchor, by: Constant.bigOffset)
-
-        Layout.addTopConstraint(on: self.descriptionLabel, to: self.headerLabel.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.descriptionLabel, to: self.contentView.leadingAnchor, by: Constant.bigOffset)
+        Layout.addTopConstraint(on: self.stackView, to: self.contentView.topAnchor, by: Constant.bigOffset)
+        Layout.addLeadingConstraint(on: self.stackView, to: self.contentView.leadingAnchor)
+        Layout.addBottomConstraint(on: self.stackView, to: self.contentView.bottomAnchor, by: Constant.bigOffset)
+        Layout.addTrailingConstraint(on: self.stackView, to: self.contentView.trailingAnchor)
     }
 
     private func setShadow() {
