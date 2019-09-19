@@ -11,12 +11,20 @@
 "generel_Racket" = "Ketcher";
 "generel_Storage" = "Lager";
 "generel_Team" = "Team";
-"orderViewController_OrderCreationHead" = "Opret ordre";
+"orderViewController_OrderCreationHead" = "Opret";
 "orderViewController_OrderCreationDescription" = "Her oprettes kundens ordre, hvis den ikke er oprettet på forhånd.";
-"orderViewController_ReceivedOrdersHead" = "Modtaget ordre";
+"orderViewController_ReceivedOrdersHead" = "Modtaget";
 "orderViewController_ReceivedOrdersDescription" = "Se en oversigt over ordre, som skal strenges.";
-"orderViewController_DoneOrdersHead" = "Færdiggjort ordre";
+"orderViewController_DoneOrdersHead" = "Færdiggjort";
 "orderViewController_DoneOrdersDescription" = "Her ses ketcher som er klar til levering.";
-"orderViewController_DeliveredOrdersHead" = "Afleveret ordre";
+"orderViewController_DeliveredOrdersHead" = "Afleveret";
 "orderViewController_DeliveredDescription" = "Se en oversigt over afsluttede ordre.";
+"racketViewController_RacketRentHead" = "Udlån";
+"racketViewController_RacketRentDescription" = "Her udlånes test ketcher.";
+"racketViewController_RacketRegisterHead" = "Registrer";
+"racketViewController_RacketRegisterDescription" = "Registrer ny test kecther.";
+"racketViewController_racketReturnHead" = "Returnér";
+"racketViewController_racketReturnDescription" = "Registrer ketcher er blevet returneret.";
+"racketViewController_racketOverviewHead" = "Overblik";
+"racketViewController_racketOverviewDescription" = "Få et overblik over alle dine test ketcher.";
 
