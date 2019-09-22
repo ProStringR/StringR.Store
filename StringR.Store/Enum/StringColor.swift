@@ -23,3 +23,25 @@ enum StringColor: String {
     case WHITE = "White"
     case YELLOW = "Yellow"
 }
+
+extension StringColor {
+    static var allValues: [StringColor] {
+        var allValues: [StringColor] = []
+        switch StringColor.BLACK {
+        case .BLACK: allValues.append(.BLACK); fallthrough
+        case .BLUE: allValues.append(.BLUE); fallthrough
+        case .GOLD: allValues.append(.GOLD); fallthrough
+        case .GREEN: allValues.append(.GREEN); fallthrough
+        case .NATURAL: allValues.append(.NATURAL); fallthrough
+        case .ORANGE: allValues.append(.ORANGE); fallthrough
+        case .PINK: allValues.append(.PINK); fallthrough
+        case .PURPLE: allValues.append(.PURPLE); fallthrough
+        case .RED: allValues.append(.RED); fallthrough
+        case .SILVER: allValues.append(.SILVER); fallthrough
+        case .TEAL: allValues.append(.TEAL); fallthrough
+        case .WHITE: allValues.append(.WHITE); fallthrough
+        case .YELLOW: allValues.append(.YELLOW)
+        }
+        return allValues
+    }
+}
