@@ -11,6 +11,29 @@
 "generel_Racket" = "Racket";
 "generel_Storage" = "Storage";
 "generel_Team" = "Team";
+
+"addString_Head" = "New String";
+"addString_BrandLabel" = "Brand";
+"addString_BuyDateLabel" = "Buy Date";
+"addString_BuyPriceLabel" = "Buy Price";
+"addString_ColorLabel" = "Color";
+"addString_ModelLabel" = "Model";
+"addString_StringTypeLabel" = "Type";
+"addString_StringPurposeLabel" = "Purpose";
+"addString_ThicknessLabel" = "Thickness";
+"addString_LengthLabel" = "Length";
+"addString_PricePerRacketLabel" = "Price Per Racket";
+"addString_BrandPlaceholder" = "Select brand";
+"addString_BuyDatePlaceholder" = "Select buy date";
+"addString_BuyPricePlaceholder" = "Buy Price";
+"addString_ColorPlaceholder" = "Select color";
+"addString_ModelPlaceholder" = "Model name";
+"addString_StringTypePlaceholder" = "Select type";
+"addString_StringPurposePlaceholder" = "Select purpose";
+"addString_ThicknessPlaceholder" = "Thickness";
+"addString_LengthPlaceholder" = "Length";
+"addString_PricePerRacketPlaceholder" = "Price Per Racket";
+
 "orderViewController_OrderCreationHead" = "Create";
 "orderViewController_OrderCreationDescription" = "Create order for the customer, if it wasn't done beforehand.";
 "orderViewController_ReceivedOrdersHead" = "Received";
@@ -19,6 +42,7 @@
 "orderViewController_DoneOrdersDescription" = "Get an overview of rackets ready for delivery.";
 "orderViewController_DeliveredOrdersHead" = "Delivered";
 "orderViewController_DeliveredDescription" = "Get an overview of closed orders.";
+
 "racketViewController_RacketRentHead" = "Rent";
 "racketViewController_RacketRentDescription" = "Rent test rackets.";
 "racketViewController_RacketRegisterHead" = "Register";
