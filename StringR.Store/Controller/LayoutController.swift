@@ -10,13 +10,21 @@ import Foundation
 import UIKit
 
 class LayoutController {
-    static func generateCardCellCollectionView() -> UICollectionView {
+    static func getCollectionView<T: UICollectionViewCell>(cellType type: T.Type, cellIdentifier: String) -> UICollectionView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.register(CardCell.self, forCellWithReuseIdentifier: CardCell.identifier)
+        collectionView.register(T.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
 
         return collectionView
+    }
+
+    static func getTableView<T: UITableViewCell>(cellType type: T.Type, cellIdentifier: String) -> UITableView {
+        let tableView = UITableView()
+        tableView.rowHeight = Constant.tableViewRowHeight
+        tableView.register(T.self, forCellReuseIdentifier: cellIdentifier)
+
+        return tableView
     }
 }
