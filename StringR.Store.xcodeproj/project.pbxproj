@@ -50,6 +50,7 @@
 		B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5D2333A9A500C39052 /* OrderController.swift */; };
 		B3B92B602333AE9600C39052 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5F2333AE9600C39052 /* Observer.swift */; };
 		B3B92B622333AEF700C39052 /* Observerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B612333AEF700C39052 /* Observerable.swift */; };
+		B3EC11DD2338EF20005E4D49 /* AddStringPopUpContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC11DC2338EF20005E4D49 /* AddStringPopUpContainerViewController.swift */; };
 		B3FB2C78232D0335003728C4 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C77232D0335003728C4 /* Extention.swift */; };
 		B3FB2C88232D2AA2003728C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3FB2C8A232D2AA2003728C4 /* Localizable.strings */; };
 		B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C8C232D2BF4003728C4 /* Utility.swift */; };
@@ -106,6 +107,7 @@
 		B3B92B5D2333A9A500C39052 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
 		B3B92B5F2333AE9600C39052 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		B3B92B612333AEF700C39052 /* Observerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observerable.swift; sourceTree = "<group>"; };
+		B3EC11DC2338EF20005E4D49 /* AddStringPopUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringPopUpContainerViewController.swift; sourceTree = "<group>"; };
 		B3FB2C77232D0335003728C4 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		B3FB2C85232D2A01003728C4 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B3FB2C89232D2AA2003728C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				B38C5B9F232BDF1700116BC1 /* StorageViewController.swift */,
 				B38C5BA1232BDF4000116BC1 /* TeamViewController.swift */,
 				B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */,
+				B3EC11DC2338EF20005E4D49 /* AddStringPopUpContainerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EC11DD2338EF20005E4D49 /* AddStringPopUpContainerViewController.swift in Sources */,
 				B3AE715F2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift in Sources */,
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
