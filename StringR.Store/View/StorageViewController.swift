@@ -59,12 +59,10 @@ class StorageViewController: UIViewController {
     }
 
     @objc func addAction() {
-        // TODO: make it posible to add string to storage.
-        print("Hello from the add function :P")
-        let popUp = AddStringStoragePopUpViewController()
-        let navigationController = UINavigationController(rootViewController: popUp)
+        let popUp = AddStringPopUpViewController()
         popUp.modalPresentationStyle = .overCurrentContext
-        self.navigationController?.present(navigationController, animated: true, completion: nil)
+        popUp.modalTransitionStyle = .crossDissolve
+        self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 
 }
