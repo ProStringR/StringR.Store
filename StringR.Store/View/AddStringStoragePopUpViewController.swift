@@ -33,6 +33,7 @@ class AddStringStoragePopUpViewController: UIViewController {
     weak var pricePerRacketInput: UITextField!
 
     weak var generelStackView: UIStackView!
+    weak var addButton: UIButton!
 
     let brands = StringBrand.allValues
     let colors = StringColor.allValues
@@ -45,19 +46,31 @@ class AddStringStoragePopUpViewController: UIViewController {
     var purposePicker = UIPickerView()
     var datePicker = UIDatePicker()
 
+    var buyDate: Date?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupLayout()
         initializeLabels()
         initializeTextFields()
+        initializeStackView()
+        setupPickers()
+        setupStackView()
+        setConstraints()
+
+        // set tapGesture to close keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
     }
 
     private func setupLayout() {
         self.view.backgroundColor = .white
+        self.view.layer.cornerRadius = 10
         self.title = Utility.getString(forKey: "addString_Head")
         self.navigationController?.hideNavigationBar()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addAction))
     }
 
     private func initializeLabels() {
@@ -68,9 +81,9 @@ class AddStringStoragePopUpViewController: UIViewController {
         self.stringPurposeLabel = initLabel(text: Utility.getString(forKey: "addString_StringPurposeLabel"))
         self.thicknessLabel = initLabel(text: Utility.getString(forKey: "addString_ThicknessLabel"))
         self.lengthLabel = initLabel(text: Utility.getString(forKey: "addString_LengthLabel"))
-        self.buyPriceLabel = initLabel(text: Utility.getString(forKey: "addString_BuyPrice"))
-        self.buyDateLabel = initLabel(text: Utility.getString(forKey: "addString_BuyDate"))
-        self.pricePerRacketLabel = initLabel(text: Utility.getString(forKey: "addString_PricePerRacket"))
+        self.buyPriceLabel = initLabel(text: Utility.getString(forKey: "addString_BuyPriceLabel"))
+        self.buyDateLabel = initLabel(text: Utility.getString(forKey: "addString_BuyDateLabel"))
+        self.pricePerRacketLabel = initLabel(text: Utility.getString(forKey: "addString_PricePerRacketLabel"))
     }
 
     private func initializeTextFields() {
@@ -86,10 +99,68 @@ class AddStringStoragePopUpViewController: UIViewController {
         self.pricePerRacketInput = initTextField(placeholder: Utility.getString(forKey: "addString_PricePerRacketPlaceholder"))
     }
 
+    private func initializeStackView() {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        self.view.addSubview(stackView)
+        self.generelStackView = stackView
+    }
+
+    private func setupPickers() {
+        initPicker(picker: self.brandPicker, inputField: self.brandInput)
+        initPicker(picker: self.colorPicker, inputField: self.colorInput)
+        initPicker(picker: self.typePicker, inputField: self.stringTypeInput)
+        initPicker(picker: self.purposePicker, inputField: self.stringPurposeInput)
+
+        // setup date picker
+        self.datePicker.datePickerMode = .date
+        self.datePicker.addTarget(self, action: #selector(dataChanged(datePicker:)), for: .valueChanged)
+        self.buyDateInput.inputView = self.datePicker
+    }
+
+    private func setupStackView() {
+        self.generelStackView.addArrangedSubview(initStackView(label: self.brandLabel, textfield: self.brandInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.modelLabel, textfield: self.modelInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.stringTypeLabel, textfield: self.stringTypeInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.colorLabel, textfield: self.colorInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.stringPurposeLabel, textfield: self.stringPurposeInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.thicknessLabel, textfield: self.thicknessInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.lengthLabel, textfield: self.lengthInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.buyPriceLabel, textfield: self.buyPriceInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.buyDateLabel, textfield: self.buyDateInput))
+        self.generelStackView.addArrangedSubview(initStackView(label: self.pricePerRacketLabel, textfield: self.pricePerRacketInput))
+    }
+
+    private func setConstraints() {
+        Layout.addTopConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.topAnchor, by: Constant.bigOffset)
+        Layout.addLeadingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: 32)
+        Layout.addTrailingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: 32)
+        Layout.addBottomConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.bottomAnchor, by: 32)
+    }
+
+    private func initPicker(picker: UIPickerView, inputField: UITextField!) {
+        picker.delegate = self
+        picker.dataSource = self
+        inputField.inputView = picker
+    }
+
+    private func initStackView(label: UILabel!, textfield: UITextField!) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = Constant.standardOffset
+        stackView.addArrangedSubview(label)
+        stackView.addArrangedSubview(textfield)
+        stackView.distribution = .fillEqually
+
+        return stackView
+    }
+
     private func initTextField(placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
         textField.textAlignment = .center
+        textField.borderStyle = .roundedRect
         self.view.addSubview(textField)
 
         return textField
@@ -107,4 +178,71 @@ class AddStringStoragePopUpViewController: UIViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
+    @objc func addAction() {
+        // do something
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func dataChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+
+        self.buyDateInput.text = dateFormatter.string(from: datePicker.date)
+        self.buyDate = datePicker.date
+    }
+
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+}
+
+extension AddStringStoragePopUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView {
+        case self.brandPicker:
+            return self.brands.count
+        case self.colorPicker:
+            return self.colors.count
+        case self.typePicker:
+            return self.types.count
+        case self.purposePicker:
+            return self.purpose.count
+        default:
+            return 0
+        }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView {
+        case self.brandPicker:
+            return self.brands[row].rawValue
+        case self.colorPicker:
+            return self.colors[row].rawValue
+        case self.typePicker:
+            return self.types[row].rawValue
+        case self.purposePicker:
+            return self.purpose[row].rawValue
+        default:
+            return ""
+        }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView {
+        case self.brandPicker:
+            self.brandInput.text = self.brands[row].rawValue
+        case self.colorPicker:
+            self.colorInput.text = self.colors[row].rawValue
+        case self.typePicker:
+            self.stringTypeInput.text = self.types[row].rawValue
+        case self.purposePicker:
+            self.stringPurposeInput.text = self.purpose[row].rawValue
+        default:
+            print("Default")
+        }
+    }
 }
