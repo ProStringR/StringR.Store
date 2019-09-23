@@ -64,7 +64,6 @@ class StorageViewController: UIViewController {
         popUp.modalTransitionStyle = .crossDissolve
         self.navigationController?.present(popUp, animated: true, completion: nil)
     }
-
 }
 
 extension StorageViewController: UITableViewDataSource {
