@@ -23,6 +23,7 @@ class LayoutController {
     static func getTableView<T: UITableViewCell>(cellType type: T.Type, cellIdentifier: String) -> UITableView {
         let tableView = UITableView()
         tableView.rowHeight = Constant.tableViewRowHeight
+        tableView.tableFooterView = UIView()
         tableView.register(T.self, forCellReuseIdentifier: cellIdentifier)
 
         return tableView
