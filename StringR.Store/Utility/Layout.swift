@@ -47,10 +47,10 @@ class Layout {
         view.title = title
     }
 
-    static func setupVerticalCollectionViewConstraints(forCollectionView collectionView: UICollectionView, onParentView parentView: UIViewController) {
-        addTopConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.topAnchor)
-        addBottomConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.bottomAnchor)
-        addLeadingConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.leadingAnchor)
-        addTrailingConstraint(on: collectionView, to: parentView.view.safeAreaLayoutGuide.trailingAnchor)
+    static func setupFullPageConstraints(forView view: UIView, onParentView parentView: UIViewController) {
+        addTopConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.topAnchor)
+        addBottomConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.bottomAnchor)
+        addLeadingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.leadingAnchor)
+        addTrailingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.trailingAnchor)
     }
 }

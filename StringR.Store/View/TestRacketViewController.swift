@@ -38,7 +38,7 @@ class TestRacketViewController: CardCellViewController {
     }
 
     private func setupConstraints() {
-        Layout.setupVerticalCollectionViewConstraints(forCollectionView: self.collectionView, onParentView: self)
+        Layout.setupFullPageConstraints(forView: self.collectionView, onParentView: self)
     }
 
     private func intializeStringsForCollectionView() {

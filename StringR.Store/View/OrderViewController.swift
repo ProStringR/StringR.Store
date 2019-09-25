@@ -38,7 +38,7 @@ class OrderViewController: CardCellViewController {
     }
 
     private func setupConstraints() {
-        Layout.setupVerticalCollectionViewConstraints(forCollectionView: self.collectionView, onParentView: self)
+        Layout.setupFullPageConstraints(forView: self.collectionView, onParentView: self)
     }
 
     private func intializeStringsForCollectionView() {
@@ -68,6 +68,20 @@ extension OrderViewController: UICollectionViewDataSource {
 
 extension OrderViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Clicked \(indexPath.row)")
+        var nextViewController: UIViewController?
+
+        switch indexPath.row {
+        case 0:
+            print("Clicked \(indexPath.row)")
+        case 1:
+            print("Clicked \(indexPath.row)")
+            nextViewController = ReceivedViewController()
+        default:
+            print("what the hell")
+        }
+
+        if let nextViewController = nextViewController {
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
     }
 }
