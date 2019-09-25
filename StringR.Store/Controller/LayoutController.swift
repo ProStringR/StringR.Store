@@ -28,4 +28,12 @@ class LayoutController {
 
         return tableView
     }
+
+    static func getPopupView(viewControllerToPresent viewController: UIViewController) -> UIViewController {
+        let popUp = PopupViewController(viewControllerToPresent: viewController)
+        popUp.modalPresentationStyle = .overCurrentContext
+        popUp.modalTransitionStyle = .crossDissolve
+
+        return popUp
+    }
 }
