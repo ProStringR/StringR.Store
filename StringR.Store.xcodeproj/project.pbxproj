@@ -45,6 +45,7 @@
 		B3903C0E2333672900367E5F /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C0D2333672900367E5F /* Firebase.swift */; };
 		B3AE715F2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */; };
 		B3AE71612337F8ED001E2EF6 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AE71602337F8ED001E2EF6 /* StorageController.swift */; };
+		B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBD9233BA233001498D4 /* UserCell.swift */; };
 		B3B92B5923339D1500C39052 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5823339D1500C39052 /* NetworkError.swift */; };
 		B3B92B5B2333A44600C39052 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5A2333A44600C39052 /* DataController.swift */; };
 		B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5D2333A9A500C39052 /* OrderController.swift */; };
@@ -102,6 +103,7 @@
 		B3903C0D2333672900367E5F /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringStoragePopUpViewController.swift; sourceTree = "<group>"; };
 		B3AE71602337F8ED001E2EF6 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
+		B3B3DBD9233BA233001498D4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3B92B5823339D1500C39052 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B3B92B5A2333A44600C39052 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B3B92B5D2333A9A500C39052 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				1DF66C2E232F73AC0007E2C3 /* CardCell.swift */,
 				B32B6BB923360B1700ABD6A8 /* StorageCell.swift */,
+				B3B3DBD9233BA233001498D4 /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
 				B38C5B88232BCAA800116BC1 /* Company.swift in Sources */,
 				B38C5BA5232BE45A00116BC1 /* RacketType.swift in Sources */,
+				B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */,
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
 				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
