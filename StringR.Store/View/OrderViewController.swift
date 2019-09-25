@@ -74,10 +74,13 @@ extension OrderViewController {
         case 0:
             print("Clicked \(indexPath.row)")
         case 1:
-            print("Clicked \(indexPath.row)")
             nextViewController = ReceivedViewController()
+        case 2:
+            nextViewController = DoneViewController()
+        case 3:
+            nextViewController = DeliveredViewController()
         default:
-            print("what the hell")
+            print("Something went wrong during navigation from OrdersViewController")
         }
 
         if let nextViewController = nextViewController {
