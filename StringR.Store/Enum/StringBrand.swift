@@ -24,3 +24,26 @@ enum StringBrand: String {
     case WILSON = "Wilson"
     case YONEX = "Yonex"
 }
+
+extension StringBrand {
+    static var allValues: [StringBrand] {
+        var allValues: [StringBrand] = []
+        switch StringBrand.ASHAWAY {
+        case .ASHAWAY: allValues.append(.ASHAWAY); fallthrough
+        case .BABOLAT: allValues.append(.BABOLAT); fallthrough
+        case .DUNLOP: allValues.append(.DUNLOP); fallthrough
+        case .HEAD: allValues.append(.HEAD); fallthrough
+        case .GAMMA: allValues.append(.GAMMA); fallthrough
+        case .KIRSCHBAUM: allValues.append(.KIRSCHBAUM); fallthrough
+        case .LUXILON: allValues.append(.LUXILON); fallthrough
+        case .PRINCE: allValues.append(.PRINCE); fallthrough
+        case .SIGNUMPRO: allValues.append(.SIGNUMPRO); fallthrough
+        case .SOLINCO: allValues.append(.SOLINCO); fallthrough
+        case .TECNIFIBRE: allValues.append(.TECNIFIBRE); fallthrough
+        case .VOLKL: allValues.append(.VOLKL); fallthrough
+        case .WILSON: allValues.append(.WILSON); fallthrough
+        case .YONEX: allValues.append(.YONEX)
+        }
+        return allValues
+    }
+}

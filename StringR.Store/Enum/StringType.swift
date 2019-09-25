@@ -15,3 +15,17 @@ enum StringType: String {
     case MULTIFILAMENT = "Multifilament"
     case HYBRID = "Hybrid"
 }
+
+extension StringType {
+    static var allValues: [StringType] {
+        var allValues: [StringType] = []
+        switch StringType.POLYESTER {
+        case .POLYESTER: allValues.append(.POLYESTER); fallthrough
+        case .NATURALGUT: allValues.append(.NATURALGUT); fallthrough
+        case .SYNTHETICGUT: allValues.append(.SYNTHETICGUT); fallthrough
+        case .MULTIFILAMENT: allValues.append(.MULTIFILAMENT); fallthrough
+        case .HYBRID: allValues.append(.HYBRID)
+        }
+        return allValues
+    }
+}

@@ -13,3 +13,15 @@ enum RacketType: String {
     case BADMINTON = "Badminton"
     case SQUASH = "Squash"
 }
+
+extension RacketType {
+    static var allValues: [RacketType] {
+        var allValues: [RacketType] = []
+        switch RacketType.TENNIS {
+        case .TENNIS: allValues.append(.TENNIS); fallthrough
+        case .BADMINTON: allValues.append(.BADMINTON); fallthrough
+        case .SQUASH: allValues.append(.SQUASH)
+        }
+        return allValues
+    }
+}

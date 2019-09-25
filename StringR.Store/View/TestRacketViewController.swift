@@ -29,7 +29,7 @@ class TestRacketViewController: CardCellViewController {
     }
 
     private func setupCollectionView() {
-        let collectionView = LayoutController.generateCardCellCollectionView()
+        let collectionView = LayoutController.getCollectionView(cellType: CardCell.self, cellIdentifier: CardCell.identifier)
         self.view.addSubview(collectionView)
         self.collectionView = collectionView
 
