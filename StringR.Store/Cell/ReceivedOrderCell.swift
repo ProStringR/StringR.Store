@@ -51,7 +51,6 @@ class ReceivedOrderCell: UITableViewCell {
     private func initializeStatusIndicatorImageView() {
         let color = UIImageView()
         color.contentMode = .scaleAspectFit
-        color.clipsToBounds = true
         self.statusIndicatorImageView = color
 
         self.contentView.addSubview(self.statusIndicatorImageView)
@@ -62,8 +61,8 @@ class ReceivedOrderCell: UITableViewCell {
         Layout.addBottomConstraint(on: self.customerNameLabel, to: self.contentView.bottomAnchor)
         Layout.addLeadingConstraint(on: self.customerNameLabel, to: self.contentView.leadingAnchor)
 
-        Layout.addTopConstraint(on: self.statusIndicatorImageView, to: self.contentView.topAnchor)
-        Layout.addBottomConstraint(on: self.statusIndicatorImageView, to: self.contentView.bottomAnchor)
+        Layout.addTopConstraint(on: self.statusIndicatorImageView, to: self.contentView.topAnchor, by: Constant.bigOffset)
+        Layout.addBottomConstraint(on: self.statusIndicatorImageView, to: self.contentView.bottomAnchor, by: Constant.bigOffset)
         Layout.addTrailingConstraint(on: self.statusIndicatorImageView, to: self.contentView.trailingAnchor)
 
         Layout.addTopConstraint(on: self.deliveryDateLabel, to: self.contentView.topAnchor)
