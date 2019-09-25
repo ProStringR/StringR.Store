@@ -41,7 +41,6 @@ class StorageCell: UITableViewCell {
 
         let color = UIImageView()
         color.contentMode = .scaleAspectFit
-        type.clipsToBounds = true
         self.colorIndicator = color
 
         self.contentView.addSubview(self.typeIndicator)
