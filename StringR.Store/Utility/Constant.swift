@@ -16,4 +16,6 @@ class Constant {
     static let cardHeaderSize = CGFloat(24)
     static let stringLengthPerRacket = 12
     static let tableViewRowHeight = CGFloat(60)
+    static let popupTopBottom = CGFloat(160)
+    static let popupLeadingTrailing = CGFloat(75)
 }
