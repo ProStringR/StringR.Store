@@ -96,6 +96,7 @@ extension StorageViewController: UITableViewDataSource {
             cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
         }
 
+        // Do this dynamic
         cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
 
         cell.accessoryType = .disclosureIndicator
