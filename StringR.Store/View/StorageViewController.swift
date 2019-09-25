@@ -59,9 +59,7 @@ class StorageViewController: UIViewController {
     }
 
     @objc func addAction() {
-        let popUp = AddStringPopUpViewController()
-        popUp.modalPresentationStyle = .overCurrentContext
-        popUp.modalTransitionStyle = .crossDissolve
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: AddStringStoragePopUpViewController())
         self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
