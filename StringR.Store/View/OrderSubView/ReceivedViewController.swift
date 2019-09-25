@@ -46,7 +46,7 @@ class ReceivedViewController: UIViewController {
                            tensionHorizontal: 25, stringId: "lol",
                            deliveryDate: 22222,
                            price: 22,
-                           paid: false)
+                           paid: true)
 
         let order2 = Order(orderId: "lol",
                            customerId: "Marcus Christiansen",
@@ -81,6 +81,9 @@ extension ReceivedViewController: UITableViewDataSource {
 
         cell.customerNameLabel.text = orders[indexPath.row].customerId
         cell.deliveryDateLabel.text = orders[indexPath.row].stringerId
+
+        let image = orders[indexPath.row].paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "red_circle")
+        cell.statusIndicatorImageView.image = image
 
         cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
