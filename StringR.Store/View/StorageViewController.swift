@@ -98,7 +98,7 @@ extension StorageViewController: UITableViewDataSource {
 
         cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
 
-        cell.accessoryType = .detailDisclosureButton
+        cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
 
         // do the calculation of rackets remaining, and set the color indicator.
