@@ -10,15 +10,27 @@ import Foundation
 
 struct RacketString {
 
-    var stringId: String
+    //var stringId: String
     var brand: StringBrand
-    var stringType: StringType
-    var length: Double
-    var buyDate: Int64
-    var buyPrice: Double
-    var pricePerRacket: Double
+    var modelName: String
+    //var stringType: StringType
+    //var length: Double
+    //var buyDate: Int64
+    //var buyPrice: Double
+    //var pricePerRacket: Double
     var thickness: Double
-    var color: StringColor
+    //var color: StringColor
     var stringPurpose: RacketType
+    var setUsed: Double
 
+    func getDescription() -> String {
+        return "\(self.brand.rawValue) | \(self.modelName) | \(self.thickness)"
+    }
+
+//    func racketRemaining() -> Int {
+//        let stringPerRacket = Constant.stringLengthPerRacket
+//        let lengthRemaining = Double(self.length) - (Double(stringPerRacket) * self.setUsed)
+//
+//        return Int(lengthRemaining / Double(stringPerRacket))
+//    }
 }

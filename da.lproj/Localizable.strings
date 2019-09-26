@@ -11,6 +11,29 @@
 "generel_Racket" = "Ketcher";
 "generel_Storage" = "Lager";
 "generel_Team" = "Team";
+
+"addString_Head" = "Ny Streng";
+"addString_BrandLabel" = "Mærke";
+"addString_BuyDate" = "Købsdato";
+"addString_BuyPriceLabel" = "Købspris";
+"addString_ColorLabel" = "Farve";
+"addString_ModelLabel" = "Model";
+"addString_StringTypeLabel" = "Type";
+"addString_StringPurposeLabel" = "Formål";
+"addString_ThicknessLabel" = "Tykkelse";
+"addString_LengthLabel" = "Længde";
+"addString_PricePerRacketLabel" = "Pris Per Ketcher";
+"addString_BrandPlaceholder" = "Vælg mærke";
+"addString_BuyDatePlaceholder" = "Vælg købsdato";
+"addString_BuyPricePlaceholder" = "Købspris";
+"addString_ColorPlaceholder" = "Vælg farve";
+"addString_ModelPlaceholder" = "Model navn";
+"addString_StringTypePlaceholder" = "Vælg type";
+"addString_StringPurposePlaceholder" = "Vælg formål";
+"addString_ThicknessPlaceholder" = "Tykkelse";
+"addString_LengthPlaceholder" = "Længde";
+"addString_PricePerRacketPlaceholder" = "Pris per ketcher";
+
 "orderViewController_OrderCreationHead" = "Opret";
 "orderViewController_OrderCreationDescription" = "Her oprettes kundens ordre, hvis den ikke er oprettet på forhånd.";
 "orderViewController_ReceivedOrdersHead" = "Modtaget";
@@ -19,6 +42,7 @@
 "orderViewController_DoneOrdersDescription" = "Her ses ketcher som er klar til levering.";
 "orderViewController_DeliveredOrdersHead" = "Afleveret";
 "orderViewController_DeliveredDescription" = "Se en oversigt over afsluttede ordre.";
+
 "racketViewController_RacketRentHead" = "Udlån";
 "racketViewController_RacketRentDescription" = "Her udlånes test ketcher.";
 "racketViewController_RacketRegisterHead" = "Registrer";
