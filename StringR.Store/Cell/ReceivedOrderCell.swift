@@ -31,21 +31,11 @@ class ReceivedOrderCell: UITableViewCell {
     }
 
     private func initializeCustomerNameLabel() {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = .black
-        self.customerNameLabel = label
-
-        self.contentView.addSubview(self.customerNameLabel)
+        self.customerNameLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
     }
 
     private func initializeDeliveryDateLabel() {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = .black
-        self.deliveryDateLabel = label
-
-        self.contentView.addSubview(self.deliveryDateLabel)
+        self.deliveryDateLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
     }
 
     private func initializeStatusIndicatorImageView() {
