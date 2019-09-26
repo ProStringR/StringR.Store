@@ -27,10 +27,7 @@ class ReceivedViewController: UIViewController {
     }
 
     private func setupTableView() {
-        let tableView = LayoutController.getTableView(cellType: ReceivedOrderCell.self, cellIdentifier: ReceivedOrderCell.identifier)
-        self.view.addSubview(tableView)
-        self.receivedOrdersTableView = tableView
-
+        self.receivedOrdersTableView = LayoutController.getTableView(cellType: ReceivedOrderCell.self, cellIdentifier: ReceivedOrderCell.identifier, parentView: self.view)
         Layout.setupFullPageConstraints(forView: self.receivedOrdersTableView, onParentView: self)
 
         self.receivedOrdersTableView.dataSource = self
