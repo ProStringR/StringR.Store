@@ -6,6 +6,8 @@
   Copyright © 2019 StringR. All rights reserved.
 */
 
+"common_close" = "Close";
+
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
 "generel_Racket" = "Racket";
@@ -51,3 +53,5 @@
 "racketViewController_racketReturnDescription" = "Register returned test rackets.";
 "racketViewController_racketOverviewHead" = "Overview";
 "racketViewController_racketOverviewDescription" = "Get overview of your test rackets.";
+
+"stringerDetailViewController_removeStringerButtonText" = "Remove Stringer";
