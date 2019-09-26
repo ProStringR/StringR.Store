@@ -34,13 +34,7 @@ class CardCell: UICollectionViewCell {
     }
 
     private func initalizeStackView() {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = Constant.standardOffset
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
-        self.stackView = stackView
-        self.contentView.addSubview(self.stackView)
+        self.stackView = LayoutController.getStackView(content: [nil], orientation: .vertical, parentView: self.contentView)
     }
 
     private func initializeLabels() {
@@ -71,7 +65,7 @@ class CardCell: UICollectionViewCell {
 
         self.layer.backgroundColor = UIColor.white.cgColor
         self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
+        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.layer.shadowRadius = 2.0
         self.layer.shadowOpacity = 1.0
         self.layer.masksToBounds = false
