@@ -28,7 +28,7 @@ class DeliveredViewController: UIViewController {
 
     private func setupTableView() {
         self.doneOrdersTableView = LayoutController.getTableView(cellType: TwoSidedTextCell.self, cellIdentifier: TwoSidedTextCell.identifier, parentView: self.view)
-        Layout.setupFullPageConstraints(forView: self.doneOrdersTableView, onParentView: self)
+        Layout.setupFullPageConstraints(forView: self.doneOrdersTableView, onParentView: self.view)
 
         self.doneOrdersTableView.dataSource = self
         // self.doneOrdersTableView.delegate = self

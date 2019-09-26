@@ -133,10 +133,7 @@ class AddStringStoragePopUpViewController: UIViewController {
     }
 
     private func setConstraints() {
-        Layout.addTopConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.topAnchor, by: Constant.bigOffset)
-        Layout.addLeadingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: 32)
-        Layout.addTrailingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: 32)
-        Layout.addBottomConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.bottomAnchor, by: 32)
+        Layout.setupFullPageConstraints(forView: self.generelStackView, onParentView: self.view, by: Constant.bigOffset)
     }
 
     private func initPicker(picker: UIPickerView, inputField: UITextField!) {

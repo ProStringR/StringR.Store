@@ -37,10 +37,7 @@ class PopupViewController: UIViewController {
         self.container = container
 
         // Constraints
-        Layout.addTopConstraint(on: self.container, to: self.view.safeAreaLayoutGuide.topAnchor, by: Constant.popupTopBottom)
-        Layout.addBottomConstraint(on: self.container, to: self.view.safeAreaLayoutGuide.bottomAnchor, by: Constant.popupTopBottom)
-        Layout.addTrailingConstraint(on: self.container, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.popupLeadingTrailing)
-        Layout.addLeadingConstraint(on: self.container, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.popupLeadingTrailing)
+        Layout.setupPopupViewContraints(forView: self.container, onParentView: self)
     }
 
     private func addViewControllerToContainer() {
@@ -51,10 +48,6 @@ class PopupViewController: UIViewController {
 
         container.addSubview(navigationController.view)
 
-        // Constraints in the container
-        Layout.addTopConstraint(on: navigationController.view, to: container.topAnchor)
-        Layout.addBottomConstraint(on: navigationController.view, to: container.bottomAnchor)
-        Layout.addLeadingConstraint(on: navigationController.view, to: container.leadingAnchor)
-        Layout.addTrailingConstraint(on: navigationController.view, to: container.trailingAnchor)
+        Layout.setupFullPageConstraints(forView: navigationController.view, onParentView: container)
     }
 }

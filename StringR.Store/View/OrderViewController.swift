@@ -38,7 +38,7 @@ class OrderViewController: CardCellViewController {
     }
 
     private func setupConstraints() {
-        Layout.setupFullPageConstraints(forView: self.collectionView, onParentView: self)
+        Layout.setupFullPageConstraints(forView: self.collectionView, onParentView: self.view)
     }
 
     private func intializeStringsForCollectionView() {

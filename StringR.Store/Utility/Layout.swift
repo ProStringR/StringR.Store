@@ -47,10 +47,17 @@ class Layout {
         view.title = title
     }
 
-    static func setupFullPageConstraints(forView view: UIView, onParentView parentView: UIViewController) {
-        addTopConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.topAnchor)
-        addBottomConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.bottomAnchor)
-        addLeadingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.leadingAnchor)
-        addTrailingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.trailingAnchor)
+    static func setupFullPageConstraints(forView view: UIView, onParentView parentView: UIView, by points: CGFloat = Constant.standardOffset) {
+        addTopConstraint(on: view, to: parentView.safeAreaLayoutGuide.topAnchor, by: points)
+        addBottomConstraint(on: view, to: parentView.safeAreaLayoutGuide.bottomAnchor, by: points)
+        addLeadingConstraint(on: view, to: parentView.safeAreaLayoutGuide.leadingAnchor, by: points)
+        addTrailingConstraint(on: view, to: parentView.safeAreaLayoutGuide.trailingAnchor, by: points)
+    }
+
+    static func setupPopupViewContraints(forView view: UIView, onParentView parentView: UIViewController, forTopAndBottom topBottom: CGFloat = Constant.popupTopBottom, forSides sidePoints: CGFloat = Constant.popupLeadingTrailing) {
+        addTopConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.topAnchor, by: topBottom)
+        addBottomConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.bottomAnchor, by: topBottom)
+        addLeadingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.leadingAnchor, by: sidePoints)
+        addTrailingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.trailingAnchor, by: sidePoints)
     }
 }
