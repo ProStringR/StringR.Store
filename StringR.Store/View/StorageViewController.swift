@@ -43,9 +43,7 @@ class StorageViewController: UIViewController {
     }
 
     private func setupTableView() {
-        let tableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier)
-        self.view.addSubview(tableView)
-        self.storageTableView = tableView
+        self.storageTableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier, parentView: self.view)
 
         self.storageTableView.delegate = self
         self.storageTableView.dataSource = self

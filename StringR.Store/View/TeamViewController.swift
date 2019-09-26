@@ -38,9 +38,7 @@ class TeamViewController: UIViewController {
     }
 
     private func setupTableView() {
-        let tableView = LayoutController.getTableView(cellType: UserCell.self, cellIdentifier: UserCell.identifier)
-        self.view.addSubview(tableView)
-        self.teamTableView = tableView
+        self.teamTableView = LayoutController.getTableView(cellType: UserCell.self, cellIdentifier: UserCell.identifier, parentView: self.view)
 
         self.teamTableView.delegate = self
         self.teamTableView.dataSource = self

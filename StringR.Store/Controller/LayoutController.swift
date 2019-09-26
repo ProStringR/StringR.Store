@@ -20,11 +20,12 @@ class LayoutController {
         return collectionView
     }
 
-    static func getTableView<T: UITableViewCell>(cellType type: T.Type, cellIdentifier: String) -> UITableView {
+    static func getTableView<T: UITableViewCell>(cellType type: T.Type, cellIdentifier: String, parentView: UIView) -> UITableView {
         let tableView = UITableView()
         tableView.rowHeight = Constant.tableViewRowHeight
         tableView.tableFooterView = UIView()
         tableView.register(T.self, forCellReuseIdentifier: cellIdentifier)
+        parentView.addSubview(tableView)
 
         return tableView
     }
@@ -59,12 +60,13 @@ class LayoutController {
         return tempLabel
     }
 
-    static func getButton(title: String, parentView: UIView) -> UIButton {
+    static func getButton(title: String, parentView: UIView, buttonHeight: CGFloat = Constant.standardButtonHeight) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = Constant.standardCornerRadius
+        button.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         parentView.addSubview(button)
 
         return button
