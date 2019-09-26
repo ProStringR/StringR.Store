@@ -43,9 +43,7 @@ class StorageViewController: UIViewController {
     }
 
     private func setupTableView() {
-        let tableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier)
-        self.view.addSubview(tableView)
-        self.storageTableView = tableView
+        self.storageTableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier, parentView: self.view)
 
         self.storageTableView.delegate = self
         self.storageTableView.dataSource = self
@@ -59,9 +57,7 @@ class StorageViewController: UIViewController {
     }
 
     @objc func addAction() {
-        let popUp = AddStringPopUpViewController()
-        popUp.modalPresentationStyle = .overCurrentContext
-        popUp.modalTransitionStyle = .crossDissolve
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: AddStringStoragePopUpViewController())
         self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
@@ -109,6 +105,7 @@ extension StorageViewController: UITableViewDataSource {
 
 extension StorageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         // Do something
     }
 }
