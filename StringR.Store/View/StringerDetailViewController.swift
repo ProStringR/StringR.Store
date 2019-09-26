@@ -59,6 +59,12 @@ class StringerDetailViewController: UIViewController {
         setConstaints()
     }
 
+    private func setGenerelLayout() {
+        self.view.backgroundColor = .white
+        self.view.layer.cornerRadius = Constant.standardCornerRadius
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Utility.getString(forKey: "common_close"), style: .plain, target: self, action: #selector(closeAction))
+    }
+
     private func getActiveOrders() {
         // call function to get active orders on the stringer - for now storage data
         let string1 = RacketString.init(brand: .TECNIFIBRE, modelName: "Black Code", thickness: 1.25, stringPurpose: .TENNIS, setUsed: 8)
@@ -73,12 +79,6 @@ class StringerDetailViewController: UIViewController {
 
         // reload data in the tableView
         self.orderTableView.reloadData()
-    }
-
-    private func setGenerelLayout() {
-        self.view.backgroundColor = .white
-        self.view.layer.cornerRadius = 10
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
     }
 
     private func setupGenerelStackView() {
@@ -110,9 +110,7 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func setupTableView() {
-        let tableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier)
-        self.view.addSubview(tableView)
-        self.orderTableView = tableView
+        self.orderTableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier, parentView: self.view)
 
         self.orderTableView.delegate = self
         self.orderTableView.dataSource = self
@@ -141,17 +139,16 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func initRemoveButton() {
-        self.removeButton = LayoutController.getButton(title: "Remove Stringer", parentView: self.view)
-        self.removeButton.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
+        self.removeButton = LayoutController.getButton(title: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), parentView: self.view)
+        self.removeButton.addTarget(self, action: #selector(onRemoveStringerClicked(_:)), for: .touchUpInside)
 
         self.view.addSubview(self.removeButton)
     }
 
     private func setConstaints() {
-        Layout.addBottomConstraint(on: self.removeButton, to: self.view.bottomAnchor, by: 0)
-        Layout.addLeadingConstraint(on: self.removeButton, to: self.view.leadingAnchor, by: 0)
-        Layout.addTrailingConstraint(on: self.removeButton, to: self.view.trailingAnchor, by: 0)
-        self.removeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        Layout.addBottomConstraint(on: self.removeButton, to: self.view.bottomAnchor, by: Constant.noOffset)
+        Layout.addLeadingConstraint(on: self.removeButton, to: self.view.leadingAnchor, by: Constant.noOffset)
+        Layout.addTrailingConstraint(on: self.removeButton, to: self.view.trailingAnchor, by: Constant.noOffset)
 
         Layout.addTopConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.topAnchor)
         Layout.addLeadingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.hugeOffset)
@@ -166,7 +163,7 @@ class StringerDetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @objc func buttonClicked(_ sender: UIButton) {
+    @objc func onRemoveStringerClicked(_ sender: UIButton) {
         if sender === self.removeButton {
             print("Remove Stringer")
         }
@@ -175,7 +172,6 @@ class StringerDetailViewController: UIViewController {
 
 extension StringerDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Do something
         if let storage = self.strings {
             return storage.count
         }
@@ -183,7 +179,6 @@ extension StringerDetailViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Do something
         guard let storage = self.strings else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
@@ -217,6 +212,5 @@ extension StringerDetailViewController: UITableViewDataSource {
 extension StringerDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // Do something
     }
 }
