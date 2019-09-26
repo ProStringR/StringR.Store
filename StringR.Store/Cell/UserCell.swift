@@ -30,18 +30,10 @@ class UserCell: UITableViewCell {
     }
 
     private func initializeElements() {
-        let name = UILabel()
-        name.textAlignment = .left
-        name.textColor = .black
-        self.nameLabel = name
+        self.nameLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
 
-        let phone = UILabel()
-        phone.textAlignment = .right
-        phone.textColor = .black
-        self.phoneNumberLabel = phone
-
-        self.contentView.addSubview(self.nameLabel)
-        self.contentView.addSubview(self.phoneNumberLabel)
+        self.phoneNumberLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
+        self.phoneNumberLabel.textAlignment = .right
     }
 
     private func setStackView() {
