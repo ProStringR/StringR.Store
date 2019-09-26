@@ -19,4 +19,5 @@ class Constant {
     static let tableViewRowHeight = CGFloat(60)
     static let popupTopBottom = CGFloat(160)
     static let popupLeadingTrailing = CGFloat(75)
+    static let standardCornerRadius = CGFloat(10)
 }
