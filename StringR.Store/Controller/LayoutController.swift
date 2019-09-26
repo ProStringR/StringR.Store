@@ -46,9 +46,14 @@ class LayoutController {
         return tempLabel
     }
 
-    static func getLabel(text: String, parentView: UIView) -> UILabel {
+    static func getLabel(text: String?, parentView: UIView) -> UILabel {
         let tempLabel = UILabel()
-        tempLabel.text = text
+
+        if let text = text {
+            tempLabel.text = text
+        }
+
+        tempLabel.textColor = .black
         parentView.addSubview(tempLabel)
 
         return tempLabel
