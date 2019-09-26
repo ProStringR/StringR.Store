@@ -21,7 +21,7 @@ class UserCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         initializeElements()
-        setStackView()
+        initializeStackView()
         setConstraints()
     }
 
@@ -36,17 +36,9 @@ class UserCell: UITableViewCell {
         self.phoneNumberLabel.textAlignment = .right
     }
 
-    private func setStackView() {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = Constant.standardOffset
-        stackView.distribution = .fillEqually
-        self.stackView = stackView
-
-        self.stackView.addArrangedSubview(self.nameLabel)
-        self.stackView.addArrangedSubview(self.phoneNumberLabel)
-
-        self.contentView.addSubview(self.stackView)
+    private func initializeStackView() {
+        let content = [self.nameLabel, self.phoneNumberLabel]
+        self.stackView = LayoutController.getStackView(content: content, orientation: .horizontal, parentView: self.contentView)
     }
 
     private func setConstraints() {
