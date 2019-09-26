@@ -6,6 +6,8 @@
   Copyright © 2019 StringR. All rights reserved.
 */
 
+"common_close" = "Luk";
+
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
 "generel_Racket" = "Ketcher";
@@ -52,3 +54,4 @@
 "racketViewController_racketOverviewHead" = "Overblik";
 "racketViewController_racketOverviewDescription" = "Få et overblik over alle dine test ketcher.";
 
+"stringerDetailViewController_removeStringerButtonText" = "Fjern strenger";

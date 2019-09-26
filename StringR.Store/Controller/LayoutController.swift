@@ -20,12 +20,73 @@ class LayoutController {
         return collectionView
     }
 
-    static func getTableView<T: UITableViewCell>(cellType type: T.Type, cellIdentifier: String) -> UITableView {
+    static func getTableView<T: UITableViewCell>(cellType type: T.Type, cellIdentifier: String, parentView: UIView) -> UITableView {
         let tableView = UITableView()
         tableView.rowHeight = Constant.tableViewRowHeight
         tableView.tableFooterView = UIView()
         tableView.register(T.self, forCellReuseIdentifier: cellIdentifier)
+        parentView.addSubview(tableView)
 
         return tableView
     }
-}
+
+    static func getPopupView(viewControllerToPresent viewController: UIViewController) -> UIViewController {
+        let popUp = PopupViewController(viewControllerToPresent: viewController)
+        popUp.modalPresentationStyle = .overCurrentContext
+        popUp.modalTransitionStyle = .crossDissolve
+
+        return popUp
+    }
+
+    static func getSmallHeader(text: String, parentView: UIView) -> UILabel {
+        let tempLabel = UILabel()
+        tempLabel.text = text
+        tempLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        parentView.addSubview(tempLabel)
+
+        return tempLabel
+    }
+
+    static func getLabel(text: String?, parentView: UIView) -> UILabel {
+        let tempLabel = UILabel()
+
+        if let text = text {
+            tempLabel.text = text
+        }
+
+        tempLabel.textColor = .black
+        parentView.addSubview(tempLabel)
+
+        return tempLabel
+    }
+
+    static func getButton(title: String, parentView: UIView, buttonHeight: CGFloat = Constant.standardButtonHeight) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
+        button.layer.cornerRadius = Constant.standardCornerRadius
+        button.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        parentView.addSubview(button)
+
+        return button
+    }
+
+    static func getStackView(content: [UIView?], orientation: NSLayoutConstraint.Axis, parentView: UIView) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = orientation
+        stackView.alignment = .leading
+        stackView.spacing = Constant.standardOffset
+        stackView.distribution = .fillEqually
+
+        for view in content {
+            if let view = view {
+                stackView.addArrangedSubview(view)
+            }
+        }
+
+        parentView.addSubview(stackView)
+
+        return stackView
+    }
+ }
