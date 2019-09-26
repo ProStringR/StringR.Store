@@ -29,21 +29,11 @@ class TwoSidedTextCell: UITableViewCell {
     }
 
     private func initializeLeftLabel() {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = .black
-        self.leftLabel = label
-
-        self.contentView.addSubview(self.leftLabel)
+        self.leftLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
     }
 
     private func initializeRightLabel() {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = .black
-        self.rightLabel = label
-
-        self.contentView.addSubview(self.rightLabel)
+        self.rightLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
     }
 
     private func setupConstraints() {
