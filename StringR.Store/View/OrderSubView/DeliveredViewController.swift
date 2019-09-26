@@ -27,10 +27,7 @@ class DeliveredViewController: UIViewController {
     }
 
     private func setupTableView() {
-        let tableView = LayoutController.getTableView(cellType: TwoSidedTextCell.self, cellIdentifier: TwoSidedTextCell.identifier)
-        self.view.addSubview(tableView)
-        self.doneOrdersTableView = tableView
-
+        self.doneOrdersTableView = LayoutController.getTableView(cellType: TwoSidedTextCell.self, cellIdentifier: TwoSidedTextCell.identifier, parentView: self.view)
         Layout.setupFullPageConstraints(forView: self.doneOrdersTableView, onParentView: self)
 
         self.doneOrdersTableView.dataSource = self
