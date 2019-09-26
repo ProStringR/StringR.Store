@@ -87,6 +87,12 @@ extension TeamViewController: UITableViewDataSource {
 
 extension TeamViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Do something
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let viewControllerToPresent = StringerDetailViewController()
+        viewControllerToPresent.stringerName = "Marcus August Christiansen"
+
+        let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
+        self.navigationController?.present(popup, animated: true, completion: nil)
     }
 }
