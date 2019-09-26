@@ -36,4 +36,50 @@ class LayoutController {
 
         return popUp
     }
-}
+
+    static func getSmallHeader(text: String, parentView: UIView) -> UILabel {
+        let tempLabel = UILabel()
+        tempLabel.text = text
+        tempLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        parentView.addSubview(tempLabel)
+
+        return tempLabel
+    }
+
+    static func getLabel(text: String, parentView: UIView) -> UILabel {
+        let tempLabel = UILabel()
+        tempLabel.text = text
+        parentView.addSubview(tempLabel)
+
+        return tempLabel
+    }
+
+    static func getButton(title: String, parentView: UIView) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
+        parentView.addSubview(button)
+
+        return button
+    }
+
+    static func getStackView(content: [UIView?], orientation: NSLayoutConstraint.Axis, parentView: UIView) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = orientation
+        stackView.alignment = .leading
+        stackView.spacing = Constant.standardOffset
+        stackView.distribution = .fillEqually
+
+        for view in content {
+            if let view = view {
+                stackView.addArrangedSubview(view)
+            }
+        }
+
+        parentView.addSubview(stackView)
+
+        return stackView
+    }
+ }
