@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RacketType: String {
+enum RacketType: String, Codable {
     case TENNIS = "Tennis"
     case BADMINTON = "Badminton"
     case SQUASH = "Squash"
