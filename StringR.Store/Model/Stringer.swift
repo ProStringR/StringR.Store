@@ -8,16 +8,24 @@
 
 import Foundation
 
-class Stringer: User {
+class Stringer: Codable {
 
+    var userId: String
+    var name: String
+    var birthday: Int64
+    var email: String
+    var phoneNumber: String
     var address: Address
     var preferedRacketType: RacketType
+    var orderIds: [String]?
 
-    init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, orderIds: [String], address: Address, preferedRacketType: RacketType) {
+    init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, address: Address, preferedRacketType: RacketType) {
+        self.userId = userId
+        self.name = name
+        self.birthday = birthday
+        self.email = email
+        self.phoneNumber = phoneNumber
         self.address = address
         self.preferedRacketType = preferedRacketType
-
-        super.init(userId: userId, name: name, birthday: birthday, email: email, phoneNumber: phoneNumber, orderIds: orderIds)
     }
-
 }
