@@ -45,10 +45,7 @@ class TeamViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        Layout.addTopConstraint(on: self.teamTableView, to: view.safeAreaLayoutGuide.topAnchor)
-        Layout.addBottomConstraint(on: self.teamTableView, to: view.safeAreaLayoutGuide.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.teamTableView, to: view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: self.teamTableView, to: view.safeAreaLayoutGuide.trailingAnchor)
+        Layout.setupFullPageConstraints(forView: self.teamTableView, onParentView: self.view)
     }
 }
 

@@ -50,10 +50,7 @@ class StorageViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        Layout.addTopConstraint(on: self.storageTableView, to: view.safeAreaLayoutGuide.topAnchor)
-        Layout.addBottomConstraint(on: self.storageTableView, to: view.safeAreaLayoutGuide.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.storageTableView, to: view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: self.storageTableView, to: view.safeAreaLayoutGuide.trailingAnchor)
+        Layout.setupFullPageConstraints(forView: self.storageTableView, onParentView: self.view)
     }
 
     @objc func addAction() {

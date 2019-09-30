@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
+		1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */; };
+		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
+		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
+		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
 		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
 		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
@@ -61,6 +66,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
+		1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCell.swift; sourceTree = "<group>"; };
+		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
+		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
+		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
 		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
 		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -141,6 +151,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1D3987E0233B8D4500CDA0DD /* OrderSubView */ = {
+			isa = PBXGroup;
+			children = (
+				1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */,
+				1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */,
+				1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */,
+			);
+			path = OrderSubView;
+			sourceTree = "<group>";
+		};
 		1D61CECA232FE345006FED94 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				1DF66C2E232F73AC0007E2C3 /* CardCell.swift */,
+				1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */,
 				B32B6BB923360B1700ABD6A8 /* StorageCell.swift */,
+				1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */,
 				B3B3DBD9233BA233001498D4 /* UserCell.swift */,
 			);
 			path = Cell;
@@ -222,6 +244,7 @@
 		B34DF2A0232B8F6C00D9CCA8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D3987E0233B8D4500CDA0DD /* OrderSubView */,
 				B38C5B97232BDD3200116BC1 /* RootTabBarController.swift */,
 				B38C5B99232BDDFF00116BC1 /* OrderViewController.swift */,
 				B38C5B9B232BDE8700116BC1 /* TestRacketViewController.swift */,
@@ -467,6 +490,7 @@
 				B3B92B602333AE9600C39052 /* Observer.swift in Sources */,
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
+				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
 				B38C5B88232BCAA800116BC1 /* Company.swift in Sources */,
 				B38C5BA5232BE45A00116BC1 /* RacketType.swift in Sources */,
@@ -489,10 +513,14 @@
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
+				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
+				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
 				B3B92B5923339D1500C39052 /* NetworkError.swift in Sources */,
 				B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */,
+				1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */,
+				1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */,
 				1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

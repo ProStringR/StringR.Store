@@ -34,10 +34,7 @@ class StorageCell: UITableViewCell {
         type.clipsToBounds = true
         self.typeIndicator = type
 
-        let description = UILabel()
-        description.textAlignment = .left
-        description.textColor = .black
-        self.descriptionLabel = description
+        self.descriptionLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
 
         let color = UIImageView()
         color.contentMode = .scaleAspectFit
