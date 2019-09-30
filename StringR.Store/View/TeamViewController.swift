@@ -14,8 +14,24 @@ class TeamViewController: UIViewController {
     weak var teamTableView: UITableView!
     var stringers: [Stringer]?
 
+    let teamController = ControlReg.getTeamController
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let stringer = Stringer.init(userId: "mc97",
+                                     name: "Marcus",
+                                     birthday: 12345,
+                                     email: "mac@gmail.com",
+                                     phoneNumber: "12345678",
+                                     address: Address(street: "Vimmelskaftet", zipCode: "4300", city: "Holbaek", country: "Denmark", longitude: 1234, latitude: 1234),
+                                     preferedRacketType: RacketType.TENNIS)
+
+        do {
+            try teamController.postStringer(stringer: stringer)
+        } catch {
+            print("Something went wrong.")
+        }
 
         setLayout()
         setupTableView()
