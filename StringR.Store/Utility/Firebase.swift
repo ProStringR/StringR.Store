@@ -13,4 +13,5 @@ class Firebase {
     static let ref = "https://prostringr.firebaseio.com/"
     static let order = "\(ref)/order"
     static let racket = "\(ref)/racket"
+    static let stringer = "\(ref)/stringer"
 }
