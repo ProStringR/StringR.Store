@@ -9,5 +9,7 @@
 import Foundation
 
 protocol TeamDAOProtocol {
+    func getStringer(basedOn stringerId: String) -> StringerDTO?
     func postStringer(stringer: Stringer) throws
+    func putStringer(stringerDTO: StringerDTO?) throws
 }
