@@ -15,6 +15,7 @@ class ControlReg {
     static let getTeamDAO = TeamDAOFirebase()
 
     // Control
+    static let getDataController = DataController()
     static let getOrderController = OrderController()
     static let getTeamController = TeamController()
 }
