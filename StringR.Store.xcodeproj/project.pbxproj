@@ -53,7 +53,7 @@
 		B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBD9233BA233001498D4 /* UserCell.swift */; };
 		B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */; };
 		B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */; };
-		B3B92B5923339D1500C39052 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5823339D1500C39052 /* NetworkError.swift */; };
+		B3B92B5923339D1500C39052 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5823339D1500C39052 /* Exception.swift */; };
 		B3B92B5B2333A44600C39052 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5A2333A44600C39052 /* DataController.swift */; };
 		B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5D2333A9A500C39052 /* OrderController.swift */; };
 		B3B92B602333AE9600C39052 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5F2333AE9600C39052 /* Observer.swift */; };
@@ -122,7 +122,7 @@
 		B3B3DBD9233BA233001498D4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerDetailViewController.swift; sourceTree = "<group>"; };
-		B3B92B5823339D1500C39052 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B3B92B5823339D1500C39052 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		B3B92B5A2333A44600C39052 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B3B92B5D2333A9A500C39052 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
 		B3B92B5F2333AE9600C39052 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 		B3B92B5723339D0800C39052 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				B3B92B5823339D1500C39052 /* NetworkError.swift */,
+				B3B92B5823339D1500C39052 /* Exception.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -537,7 +537,7 @@
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
 				B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
-				B3B92B5923339D1500C39052 /* NetworkError.swift in Sources */,
+				B3B92B5923339D1500C39052 /* Exception.swift in Sources */,
 				B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */,
 				1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */,
 				1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */,
