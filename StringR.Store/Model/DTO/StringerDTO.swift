@@ -17,21 +17,4 @@ class StringerDTO: Codable {
     var address: Address?
     var preferedRacketType: RacketType?
     var orderIds: [String]?
-
-    init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, address: Address, preferedRacketType: RacketType, orderIds: [String]) {
-        self.userId = userId
-        self.name = name
-        self.birthday = birthday
-        self.email = email
-        self.phoneNumber = phoneNumber
-        self.address = address
-        self.preferedRacketType = preferedRacketType
-        self.orderIds = orderIds
-    }
-
-    init?(stringer: Stringer) throws {
-        let json = try JSONEncoder().encode(stringer)
-        let newStringer = try JSONDecoder().decode(StringerDTO.self, from: json)
-
-    }
 }
