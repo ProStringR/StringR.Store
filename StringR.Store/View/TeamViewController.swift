@@ -14,6 +14,8 @@ class TeamViewController: UIViewController {
     weak var teamTableView: UITableView!
     var stringers: [Stringer]?
 
+    let teamController = ControlReg.getTeamController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

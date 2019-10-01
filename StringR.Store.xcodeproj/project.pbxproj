@@ -53,11 +53,16 @@
 		B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBD9233BA233001498D4 /* UserCell.swift */; };
 		B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */; };
 		B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */; };
-		B3B92B5923339D1500C39052 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5823339D1500C39052 /* NetworkError.swift */; };
+		B3B92B5923339D1500C39052 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5823339D1500C39052 /* Exception.swift */; };
 		B3B92B5B2333A44600C39052 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5A2333A44600C39052 /* DataController.swift */; };
 		B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5D2333A9A500C39052 /* OrderController.swift */; };
 		B3B92B602333AE9600C39052 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5F2333AE9600C39052 /* Observer.swift */; };
 		B3B92B622333AEF700C39052 /* Observerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B612333AEF700C39052 /* Observerable.swift */; };
+		B3CAF9872341F229005F5B38 /* TeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF9862341F229005F5B38 /* TeamController.swift */; };
+		B3CAF9892341FB67005F5B38 /* TeamDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */; };
+		B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */; };
+		B3CAF98D2341FD7E005F5B38 /* ControlReg.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF98C2341FD7E005F5B38 /* ControlReg.swift */; };
+		B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF98E2342017E005F5B38 /* StringerDTO.swift */; };
 		B3FB2C78232D0335003728C4 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C77232D0335003728C4 /* Extention.swift */; };
 		B3FB2C88232D2AA2003728C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3FB2C8A232D2AA2003728C4 /* Localizable.strings */; };
 		B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C8C232D2BF4003728C4 /* Utility.swift */; };
@@ -117,11 +122,16 @@
 		B3B3DBD9233BA233001498D4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerDetailViewController.swift; sourceTree = "<group>"; };
-		B3B92B5823339D1500C39052 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B3B92B5823339D1500C39052 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		B3B92B5A2333A44600C39052 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B3B92B5D2333A9A500C39052 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
 		B3B92B5F2333AE9600C39052 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		B3B92B612333AEF700C39052 /* Observerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observerable.swift; sourceTree = "<group>"; };
+		B3CAF9862341F229005F5B38 /* TeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamController.swift; sourceTree = "<group>"; };
+		B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDAOFirebase.swift; sourceTree = "<group>"; };
+		B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDAOProtocol.swift; sourceTree = "<group>"; };
+		B3CAF98C2341FD7E005F5B38 /* ControlReg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlReg.swift; sourceTree = "<group>"; };
+		B3CAF98E2342017E005F5B38 /* StringerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerDTO.swift; sourceTree = "<group>"; };
 		B3FB2C77232D0335003728C4 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		B3FB2C85232D2A01003728C4 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B3FB2C89232D2AA2003728C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -166,10 +176,12 @@
 			children = (
 				B3903C042333650600367E5F /* DAO */,
 				1D61CED22330AE7F006FED94 /* ViewController */,
+				B3CAF98C2341FD7E005F5B38 /* ControlReg.swift */,
 				1D61CECB232FE36A006FED94 /* LayoutController.swift */,
 				B3B92B5A2333A44600C39052 /* DataController.swift */,
 				B3B92B5D2333A9A500C39052 /* OrderController.swift */,
 				B3AE71602337F8ED001E2EF6 /* StorageController.swift */,
+				B3CAF9862341F229005F5B38 /* TeamController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -294,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				B3903C052333652700367E5F /* OrderDAOFirebase.swift */,
+				B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -304,6 +317,7 @@
 				B3903C082333654500367E5F /* OrderDAOProtocol.swift */,
 				B3B92B5F2333AE9600C39052 /* Observer.swift */,
 				B3B92B612333AEF700C39052 /* Observerable.swift */,
+				B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -312,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				B3903C0B233365B800367E5F /* OrderDTO.swift */,
+				B3CAF98E2342017E005F5B38 /* StringerDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -319,7 +334,7 @@
 		B3B92B5723339D0800C39052 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				B3B92B5823339D1500C39052 /* NetworkError.swift */,
+				B3B92B5823339D1500C39052 /* Exception.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -488,11 +503,14 @@
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
 				B38C5B8C232BCBDE00116BC1 /* RacketString.swift in Sources */,
 				B3B92B602333AE9600C39052 /* Observer.swift in Sources */,
+				B3CAF9892341FB67005F5B38 /* TeamDAOFirebase.swift in Sources */,
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
+				B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */,
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
 				B38C5B88232BCAA800116BC1 /* Company.swift in Sources */,
+				B3CAF9872341F229005F5B38 /* TeamController.swift in Sources */,
 				B38C5BA5232BE45A00116BC1 /* RacketType.swift in Sources */,
 				B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */,
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
@@ -505,6 +523,7 @@
 				B38C5BAD232BE70D00116BC1 /* StringBrand.swift in Sources */,
 				B38C5B94232BD36900116BC1 /* Stringer.swift in Sources */,
 				B38C5B98232BDD3200116BC1 /* RootTabBarController.swift in Sources */,
+				B3CAF98D2341FD7E005F5B38 /* ControlReg.swift in Sources */,
 				B3FB2C78232D0335003728C4 /* Extention.swift in Sources */,
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
 				B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */,
@@ -516,8 +535,9 @@
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
+				B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
-				B3B92B5923339D1500C39052 /* NetworkError.swift in Sources */,
+				B3B92B5923339D1500C39052 /* Exception.swift in Sources */,
 				B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */,
 				1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */,
 				1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */,

@@ -10,10 +10,12 @@ import Foundation
 
 class OrderDAOFirebase: OrderDAOProtocol {
 
+    let dataControl = ControlReg.getDataController
+
     func getActiveOrders() throws -> [OrderDTO] {
         do {
             var orders = [OrderDTO]()
-            let data = try DataController.getData(returnType: [String: OrderDTO].self, url: Firebase.order)
+            let data = try dataControl.getData(returnType: [String: OrderDTO].self, url: Firebase.order)
 
             for order in data {
                 orders.append(order.value)
@@ -27,7 +29,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
 
     func postOrder(order: OrderDTO) throws {
         do {
-            try DataController.postData(object: order, url: Firebase.order)
+            try dataControl.postData(object: order, url: Firebase.order)
         } catch {
             throw error
         }

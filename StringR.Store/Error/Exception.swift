@@ -8,8 +8,9 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum Exception: Error {
     case url
     case statusCode
     case error
+    case nilPoint
 }
