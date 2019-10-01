@@ -10,22 +10,7 @@ import Foundation
 
 class OrderController {
 
-    let orderDAO: OrderDAOProtocol = OrderDAOFirebase()
-
-    func getActiveOrders() throws -> [Order] {
-        do {
-            let orders: [OrderDTO] = try orderDAO.getActiveOrders()
-            var activeOrders = [Order]()
-
-            for order in orders {
-                // TODO: Map the OrderDTO to Order
-                //activeOrders.append(Order.init(orderDTO: order))
-            }
-
-            return activeOrders
-        } catch {
-            throw error
-        }
-    }
+    let dataControl = ControlReg.getDataController
+    let orderDAO: OrderDAOProtocol = ControlReg.getOrderDAO
 
 }
