@@ -10,8 +10,9 @@ import Foundation
 
 class DataController {
 
-    static func getData<T: Codable>(returnType: T.Type, url: String) throws -> T {
-        guard let url = URL(string: "\(url).json") else { throw NetworkError.url }
+    func getData<T: Codable>(returnType: T.Type, url: String) throws -> T {
+
+        guard let url = URL(string: "\(url).json") else { throw Exception.url }
 
         var dataFromUrl: Data?
         var responseFromUrl: URLResponse?
@@ -30,27 +31,27 @@ class DataController {
         _ = semaphore.wait(timeout: .distantFuture)
 
         if let statusCode = responseFromUrl as? HTTPURLResponse, statusCode.statusCode > 300 {
-            throw NetworkError.statusCode
+            throw Exception.statusCode
         }
 
         if errorFromUrl != nil {
-            throw NetworkError.error
+            throw Exception.error
         }
 
         guard let dataResponse = dataFromUrl else {
-            throw NetworkError.error
+            throw Exception.error
         }
 
         do {
             let data = try JSONDecoder().decode(returnType, from: dataResponse)
             return data
         } catch {
-            throw NetworkError.error
+            throw Exception.error
         }
     }
 
-    static func postData<T: Codable>(object: T, url: String) throws {
-        guard let url = URL(string: "\(url).json") else { throw NetworkError.url }
+    func postData<T: Codable>(object: T, url: String) throws {
+        guard let url = URL(string: "\(url).json") else { throw Exception.url }
 
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -60,14 +61,14 @@ class DataController {
             let data = try JSONEncoder().encode(object)
             request.httpBody = data
         } catch {
-            throw NetworkError.error
+            throw Exception.error
         }
 
         URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 
-    static func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String) throws {
-        guard let url = URL(string: "\(url)/\(objectId).json") else { throw NetworkError.url }
+    func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String) throws {
+        guard let url = URL(string: "\(url)/\(objectId).json") else { throw Exception.url }
 
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -77,19 +78,30 @@ class DataController {
             let data = try JSONEncoder().encode(object)
             request.httpBody = data
         } catch {
-            throw NetworkError.error
+            throw Exception.error
         }
 
         URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 
-    static func deleteData(objectIdToDelete objectId: String, url: String) throws {
-        guard let url = URL(string: "\(url)/\(objectId).json") else { throw NetworkError.url }
+    func deleteData(objectIdToDelete objectId: String, url: String) throws {
+        guard let url = URL(string: "\(url)/\(objectId).json") else { throw Exception.url }
 
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "DELETE"
 
         URLSession.shared.dataTask(with: request as URLRequest).resume()
+    }
+
+    func createObject<T: Codable, P: Codable>(fromObject: T, toObject: P.Type) -> P? {
+        do {
+            let json = try JSONEncoder().encode(fromObject)
+            let newObject = try JSONDecoder().decode(toObject, from: json)
+
+            return newObject
+        } catch {
+            return nil
+        }
     }
 }
