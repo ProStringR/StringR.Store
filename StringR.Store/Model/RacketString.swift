@@ -23,12 +23,10 @@ class RacketString: Codable {
     var stringPurpose: RacketType
     var setUsed: Double
     var racketRemaining: Int {
-        get {
             let stringPerRacket = Constant.stringLengthPerRacket
             let lengthRemaining = Double(self.length) - (Double(stringPerRacket) * self.setUsed)
 
             return Int(lengthRemaining / Double(stringPerRacket))
-        }
     }
 
     init(stringId: String, brand: StringBrand, modelName: String, stringType: StringType, length: Double, buyDate: Int64, buyPrice: Double, pricePerRacket: Double, thickness: Double, color: StringColor, stringPurpose: RacketType, setUsed: Double) {

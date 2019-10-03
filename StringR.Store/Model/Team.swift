@@ -11,7 +11,7 @@ import Foundation
 class Team: Codable {
 
     var stringerIds: [String]
-    
+
     init(stringerIds: [String]) {
         self.stringerIds = stringerIds
     }

@@ -16,7 +16,7 @@ class Address: Codable {
     var country: String
     var longitude: Double
     var latitude: Double
-    
+
     init(street: String, zipCode: String, city: String, country: String, longitude: Double, latitude: Double) {
         self.street = street
         self.zipCode = zipCode
