@@ -8,11 +8,19 @@
 
 import Foundation
 
-struct Company {
+class Company: Codable {
 
     var companyId: String
     var shopId: [String]
     var name: String
     var email: String
     var phoneNumber: String
+
+    init(companyId: String, shopId: [String], name: String, email: String, phoneNumber: String) {
+        self.companyId = companyId
+        self.shopId = shopId
+        self.name = name
+        self.email = email
+        self.phoneNumber = phoneNumber
+    }
 }

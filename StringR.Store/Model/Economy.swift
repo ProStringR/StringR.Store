@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Economy {
+class Economy: Codable {
 
     var tennisStrung: Int
     var badmintonStrung: Int
@@ -18,4 +18,15 @@ struct Economy {
     var profit: Double
     var unpaid: Double
     var expenses: Double
+
+    init(tennisStrung: Int, badmintonStrung: Int, squashStrung: Int, revenue: Double, purchase: Double, profit: Double, unpaid: Double, expenses: Double) {
+        self.tennisStrung = tennisStrung
+        self.badmintonStrung = badmintonStrung
+        self.squashStrung = squashStrung
+        self.revenue = revenue
+        self.purchase = purchase
+        self.profit = profit
+        self.unpaid = unpaid
+        self.expenses = expenses
+    }
 }

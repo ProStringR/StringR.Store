@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StringType: String {
+enum StringType: String, Codable {
     case POLYESTER = "Polyester"
     case NATURALGUT = "Natural Gut"
     case SYNTHETICGUT = "Synthetic Gut"

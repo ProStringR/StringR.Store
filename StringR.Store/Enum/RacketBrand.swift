@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RacketBrand: String {
+enum RacketBrand: String, Codable {
     case BABOLAT = "Babolat"
     case DUNLOP = "Dunlop"
     case GAMMA = "Gamma"

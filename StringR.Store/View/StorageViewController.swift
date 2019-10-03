@@ -24,14 +24,6 @@ class StorageViewController: UIViewController {
     }
 
     private func getStorageData() {
-        // call function to get Storage data for the shop
-        let string1 = RacketString.init(brand: .TECNIFIBRE, modelName: "Black Code", thickness: 1.25, stringPurpose: .TENNIS, setUsed: 8)
-        let string2 = RacketString.init(brand: .BABOLAT, modelName: "Blast", thickness: 1.25, stringPurpose: .BADMINTON, setUsed: 12)
-        let string3 = RacketString.init(brand: .DUNLOP, modelName: "Egon", thickness: 1.11, stringPurpose: .SQUASH, setUsed: 12)
-
-        // stored the data in the strings variable
-        self.strings = [string1, string2, string3]
-
         // reload data in the tableView
         self.storageTableView.reloadData()
     }

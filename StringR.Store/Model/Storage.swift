@@ -8,8 +8,13 @@
 
 import Foundation
 
-struct Storage {
+class Storage: Codable {
 
     var racketIds: [String]
     var stringIds: [String]
+
+    init(racketIds: [String], stringIds: [String]) {
+        self.racketIds = racketIds
+        self.stringIds = stringIds
+    }
 }
