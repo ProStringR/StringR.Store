@@ -21,4 +21,8 @@ class Customer: User {
 
         super.init(userId: userId, name: name, birthday: birthday, email: email, phoneNumber: phoneNumber, orderIds: orderIds)
     }
+
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }

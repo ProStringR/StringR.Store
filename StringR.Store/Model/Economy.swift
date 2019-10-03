@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Economy {
+class Economy: Codable {
 
     var tennisStrung: Int
     var badmintonStrung: Int

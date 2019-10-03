@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Racket {
+class Racket: Codable {
 
     var racketId: String
     var brand: RacketBrand

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Company {
+class Company: Codable {
 
     var companyId: String
     var shopId: [String]
