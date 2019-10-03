@@ -66,17 +66,6 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func getActiveOrders() {
-        // call function to get active orders on the stringer - for now storage data
-        let string1 = RacketString.init(brand: .TECNIFIBRE, modelName: "Black Code", thickness: 1.25, stringPurpose: .TENNIS, setUsed: 8)
-        let string2 = RacketString.init(brand: .BABOLAT, modelName: "Blast", thickness: 1.25, stringPurpose: .BADMINTON, setUsed: 12)
-        let string3 = RacketString.init(brand: .DUNLOP, modelName: "Egon", thickness: 1.11, stringPurpose: .SQUASH, setUsed: 12)
-        let string4 = RacketString.init(brand: .TECNIFIBRE, modelName: "Black Code", thickness: 1.25, stringPurpose: .TENNIS, setUsed: 8)
-        let string5 = RacketString.init(brand: .BABOLAT, modelName: "Blast", thickness: 1.25, stringPurpose: .BADMINTON, setUsed: 12)
-        let string7 = RacketString.init(brand: .DUNLOP, modelName: "Egon", thickness: 1.11, stringPurpose: .SQUASH, setUsed: 12)
-
-        // stored the data in the activeOrders variable - for now into strings
-        self.strings = [string1, string2, string3, string4, string5, string7]
-
         // reload data in the tableView
         self.orderTableView.reloadData()
     }
