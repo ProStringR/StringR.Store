@@ -21,7 +21,6 @@
 		1D7455CE23435F2300C33B0C /* StorageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455CD23435F2300C33B0C /* StorageDTO.swift */; };
 		1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455CF234372B300C33B0C /* RacketStringDTO.swift */; };
 		1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D12345C73400C33B0C /* EconomyDTO.swift */; };
-		1D7455D42345C7C400C33B0C /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D32345C7C400C33B0C /* UserDTO.swift */; };
 		1D7455D62345CD9900C33B0C /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D52345CD9900C33B0C /* CustomerDTO.swift */; };
 		1D7455D82345CE5400C33B0C /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D72345CE5400C33B0C /* ShopDTO.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
@@ -39,7 +38,6 @@
 		B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B89232BCB2C00116BC1 /* Storage.swift */; };
 		B38C5B8C232BCBDE00116BC1 /* RacketString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B8B232BCBDE00116BC1 /* RacketString.swift */; };
 		B38C5B8E232BCF1900116BC1 /* Economy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B8D232BCF1900116BC1 /* Economy.swift */; };
-		B38C5B90232BD08000116BC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B8F232BD08000116BC1 /* User.swift */; };
 		B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B91232BD1D000116BC1 /* Customer.swift */; };
 		B38C5B94232BD36900116BC1 /* Stringer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B93232BD36900116BC1 /* Stringer.swift */; };
 		B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B95232BD3FC00116BC1 /* Order.swift */; };
@@ -95,7 +93,6 @@
 		1D7455CD23435F2300C33B0C /* StorageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDTO.swift; sourceTree = "<group>"; };
 		1D7455CF234372B300C33B0C /* RacketStringDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDTO.swift; sourceTree = "<group>"; };
 		1D7455D12345C73400C33B0C /* EconomyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyDTO.swift; sourceTree = "<group>"; };
-		1D7455D32345C7C400C33B0C /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		1D7455D52345CD9900C33B0C /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
 		1D7455D72345CE5400C33B0C /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -118,7 +115,6 @@
 		B38C5B89232BCB2C00116BC1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B38C5B8B232BCBDE00116BC1 /* RacketString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketString.swift; sourceTree = "<group>"; };
 		B38C5B8D232BCF1900116BC1 /* Economy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Economy.swift; sourceTree = "<group>"; };
-		B38C5B8F232BD08000116BC1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B38C5B91232BD1D000116BC1 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B38C5B93232BD36900116BC1 /* Stringer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stringer.swift; sourceTree = "<group>"; };
 		B38C5B95232BD3FC00116BC1 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -302,7 +298,6 @@
 				B38C5B89232BCB2C00116BC1 /* Storage.swift */,
 				B38C5B8B232BCBDE00116BC1 /* RacketString.swift */,
 				B38C5B8D232BCF1900116BC1 /* Economy.swift */,
-				B38C5B8F232BD08000116BC1 /* User.swift */,
 				B38C5B91232BD1D000116BC1 /* Customer.swift */,
 				B38C5B93232BD36900116BC1 /* Stringer.swift */,
 				B38C5B95232BD3FC00116BC1 /* Order.swift */,
@@ -354,7 +349,6 @@
 				1D7455CD23435F2300C33B0C /* StorageDTO.swift */,
 				1D7455CF234372B300C33B0C /* RacketStringDTO.swift */,
 				1D7455D12345C73400C33B0C /* EconomyDTO.swift */,
-				1D7455D32345C7C400C33B0C /* UserDTO.swift */,
 				1D7455D52345CD9900C33B0C /* CustomerDTO.swift */,
 				1D7455D72345CE5400C33B0C /* ShopDTO.swift */,
 			);
@@ -556,7 +550,6 @@
 				1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
 				B38C5B84232BC94000116BC1 /* Team.swift in Sources */,
-				B38C5B90232BD08000116BC1 /* User.swift in Sources */,
 				1D7455CC23435E9700C33B0C /* CompanyDTO.swift in Sources */,
 				B38C5BAD232BE70D00116BC1 /* StringBrand.swift in Sources */,
 				B38C5B94232BD36900116BC1 /* Stringer.swift in Sources */,
@@ -564,7 +557,6 @@
 				B3CAF98D2341FD7E005F5B38 /* ControlReg.swift in Sources */,
 				B3FB2C78232D0335003728C4 /* Extention.swift in Sources */,
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
-				1D7455D42345C7C400C33B0C /* UserDTO.swift in Sources */,
 				B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */,
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
