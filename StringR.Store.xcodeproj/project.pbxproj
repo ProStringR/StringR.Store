@@ -210,6 +210,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		1D7455D92346449500C33B0C /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */,
+				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
 		1DF66C30232F73B30007E2C3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +281,7 @@
 		B34DF2A0232B8F6C00D9CCA8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D7455D92346449500C33B0C /* PopUp */,
 				1D3987E0233B8D4500CDA0DD /* OrderSubView */,
 				B38C5B97232BDD3200116BC1 /* RootTabBarController.swift */,
 				B38C5B99232BDDFF00116BC1 /* OrderViewController.swift */,
@@ -279,9 +289,7 @@
 				B38C5B9D232BDEF200116BC1 /* EconomyViewController.swift */,
 				B38C5B9F232BDF1700116BC1 /* StorageViewController.swift */,
 				B38C5BA1232BDF4000116BC1 /* TeamViewController.swift */,
-				B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */,
 				B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */,
-				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
