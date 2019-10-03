@@ -8,21 +8,27 @@
 
 import Foundation
 
-class Customer: User {
+class Customer: Codable {
 
+    var userId: String
+    var name: String
+    var birthday: Int64
+    var email: String
+    var phoneNumber: String
+    var orderIds: [String]
     var preferedStringType: StringType
     var preferedTensionVertical: Double
     var prederedTensionHorizontal: Double
 
     init(userId: String, name: String, birthday: Int64, email: String, phoneNumber: String, orderIds: [String], preferedStringType: StringType, preferedTensionVertical: Double, prederedTensionHorizontal: Double) {
+        self.userId = userId
+        self.name = name
+        self.birthday = birthday
+        self.email = email
+        self.phoneNumber = phoneNumber
+        self.orderIds = orderIds
         self.preferedStringType = preferedStringType
         self.preferedTensionVertical = preferedTensionVertical
         self.prederedTensionHorizontal = prederedTensionHorizontal
-
-        super.init(userId: userId, name: name, birthday: birthday, email: email, phoneNumber: phoneNumber, orderIds: orderIds)
-    }
-
-    required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
     }
 }

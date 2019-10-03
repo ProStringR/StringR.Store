@@ -16,4 +16,13 @@ class Racket: Codable {
     var weight: Int
     var main: Int
     var cross: Int
+
+    init(racketId: String, brand: RacketBrand, modelName: String, weight: Int, main: Int, cross: Int) {
+        self.racketId = racketId
+        self.brand = brand
+        self.modelName = modelName
+        self.weight = weight
+        self.main = main
+        self.cross = cross
+    }
 }

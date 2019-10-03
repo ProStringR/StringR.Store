@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Order {
+class Order: Codable {
 
     var orderId: String
     var customerId: String

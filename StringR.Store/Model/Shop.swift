@@ -16,4 +16,13 @@ class Shop: Codable {
     var storageId: String
     var teamId: String
     var companyId: String
+    
+    init(shopId: String, address: Address, phoneNumber: String, storageId: String, teamId: String, companyId: String) {
+        self.shopId = shopId
+        self.address = address
+        self.phoneNumber = phoneNumber
+        self.storageId = storageId
+        self.teamId = teamId
+        self.companyId = companyId
+    }
 }
