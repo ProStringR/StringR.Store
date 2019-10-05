@@ -50,6 +50,27 @@ class DataController {
         }
     }
 
+    func getDataTest<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) throws {
+
+        guard let url = URL(string: "\(url).json") else { throw Exception.url }
+
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            _ = response
+            _ = error
+
+            if let data = data {
+                do {
+                    let object = try JSONDecoder().decode(returnType, from: data)
+                    completion(object)
+                } catch {
+                    completion(nil)
+                }
+            }
+
+        }.resume()
+
+    }
+
     func postData<T: Codable>(object: T, url: String) throws {
         guard let url = URL(string: "\(url).json") else { throw Exception.url }
 
