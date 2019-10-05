@@ -10,5 +10,6 @@ import Foundation
 
 struct TeamDTO: Codable {
 
+    var teamId: String?
     var stringerIds: [String]?
 }
