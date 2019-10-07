@@ -13,19 +13,9 @@ class TeamController {
     let teamDAO: TeamDAOProtocol = ControlReg.getTeamDAO
     let dataControl = ControlReg.getDataController
 
-    func getStringer(basedOn stringerId: String) -> Stringer? {
-        let dto = teamDAO.getStringer(basedOn: stringerId)
+    func getStringer(basedOn stringerId: String, completion: @escaping (Stringer?) -> Void) {
 
-        if let stringerDTO = dto {
-            return dataControl.createObject(fromObject: stringerDTO, toObject: Stringer.self)
-        } else {
-            return nil
-        }
-    }
-
-    func getStringerTest(basedOn stringerId: String, completion: @escaping (Stringer?) -> Void) {
-
-        teamDAO.getStringerTest(basedOn: stringerId) { (dto) in
+        teamDAO.getStringer(basedOn: stringerId) { (dto) in
             if let stringerDTO = dto {
                 let stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: Stringer.self)
                 completion(stringer)
@@ -37,7 +27,7 @@ class TeamController {
 
     func getTeam(basedOn teamId: String, completion: @escaping (Team?) -> Void) {
 
-        teamDAO.getTeamTest(basedOn: teamId) { (dto) in
+        teamDAO.getTeam(basedOn: teamId) { (dto) in
             if let teamDTO = dto {
                 let team = self.dataControl.createObject(fromObject: teamDTO, toObject: Team.self)
                 completion(team)
@@ -54,7 +44,7 @@ class TeamController {
             if let team = team, let ids = team.stringerIds {
                 var attempts = 0
                 for id in ids {
-                    self.getStringerTest(basedOn: id) { (stringer) in
+                    self.getStringer(basedOn: id) { (stringer) in
                         attempts += 1
                         if let currentStringer = stringer {
                             stringers.append(currentStringer)

@@ -11,6 +11,6 @@ import Foundation
 class OrderController {
 
     let dataControl = ControlReg.getDataController
+    let teamControl = ControlReg.getTeamController
     let orderDAO: OrderDAOProtocol = ControlReg.getOrderDAO
-
 }

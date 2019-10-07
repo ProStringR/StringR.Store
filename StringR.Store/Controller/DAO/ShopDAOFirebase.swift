@@ -12,12 +12,13 @@ class ShopDAOFirebase: ShopDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getShop(by id: String) -> ShopDTO? {
+    func getShop(by id: String, completion: @escaping (ShopDTO?) -> Void) {
         do {
-            let shop = try dataControl.getData(returnType: ShopDTO.self, url: "\(Firebase.shop)/\(id)")
-            return shop
+            try dataControl.getData(returnType: ShopDTO.self, url: "\(Firebase.shop)/\(id)", completion: { (result) in
+                completion(result)
+            })
         } catch {
-            return nil
+            completion(nil)
         }
     }
 
