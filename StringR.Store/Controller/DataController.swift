@@ -68,7 +68,6 @@ class DataController {
             }
 
         }.resume()
-
     }
 
     func postData<T: Codable>(object: T, url: String) throws {

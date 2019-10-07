@@ -37,7 +37,6 @@ class TeamViewController: UIViewController {
             DispatchQueue.main.sync {
                 self.updateUI()
             }
-
         }
     }
 
