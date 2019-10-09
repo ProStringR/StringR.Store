@@ -14,4 +14,8 @@ class Utility {
         return NSLocalizedString(key, comment: "")
     }
 
+    static func getString(forKey key: String, withArgs args: [String]) -> String {
+        let string = NSLocalizedString(key, comment: "")
+        return String(format: string, arguments: args)
+    }
 }
