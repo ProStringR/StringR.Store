@@ -22,14 +22,17 @@
 		1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455CF234372B300C33B0C /* RacketStringDTO.swift */; };
 		1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D12345C73400C33B0C /* EconomyDTO.swift */; };
 		1D7455D62345CD9900C33B0C /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D52345CD9900C33B0C /* CustomerDTO.swift */; };
-		1D7455D82345CE5400C33B0C /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D72345CE5400C33B0C /* ShopDTO.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
+		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
+		B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */; };
+		B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */; };
 		B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32B6BB923360B1700ABD6A8 /* StorageCell.swift */; };
 		B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */; };
 		B34DF294232B780000D9CCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34DF293232B780000D9CCA8 /* Assets.xcassets */; };
 		B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */; };
 		B34DF2A3232B91B600D9CCA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */; };
+		B3660A762346421C005A780D /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3660A752346421C005A780D /* ShopDTO.swift */; };
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
 		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
 		B38C5B84232BC94000116BC1 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B83232BC94000116BC1 /* Team.swift */; };
@@ -94,12 +97,14 @@
 		1D7455CF234372B300C33B0C /* RacketStringDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDTO.swift; sourceTree = "<group>"; };
 		1D7455D12345C73400C33B0C /* EconomyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyDTO.swift; sourceTree = "<group>"; };
 		1D7455D52345CD9900C33B0C /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
-		1D7455D72345CE5400C33B0C /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1DF66C2E232F73AC0007E2C3 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.release.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.release.xcconfig"; sourceTree = "<group>"; };
 		8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.debug.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.debug.xcconfig"; sourceTree = "<group>"; };
+		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
+		B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDAOFirebase.swift; sourceTree = "<group>"; };
+		B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDAOProtocol.swift; sourceTree = "<group>"; };
 		B32B6BB923360B1700ABD6A8 /* StorageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCell.swift; sourceTree = "<group>"; };
 		B34DF289232B77FF00D9CCA8 /* StringR.Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StringR.Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 		B34DF296232B780000D9CCA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B34DF298232B780000D9CCA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3660A752346421C005A780D /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B38C5B83232BC94000116BC1 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 				B3B92B5D2333A9A500C39052 /* OrderController.swift */,
 				B3AE71602337F8ED001E2EF6 /* StorageController.swift */,
 				B3CAF9862341F229005F5B38 /* TeamController.swift */,
+				B326E87123435C4F0040E9F3 /* ShopController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +329,7 @@
 			children = (
 				B3903C052333652700367E5F /* OrderDAOFirebase.swift */,
 				B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */,
+				B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -333,6 +341,7 @@
 				B3B92B5F2333AE9600C39052 /* Observer.swift */,
 				B3B92B612333AEF700C39052 /* Observerable.swift */,
 				B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */,
+				B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -350,7 +359,7 @@
 				1D7455CF234372B300C33B0C /* RacketStringDTO.swift */,
 				1D7455D12345C73400C33B0C /* EconomyDTO.swift */,
 				1D7455D52345CD9900C33B0C /* CustomerDTO.swift */,
-				1D7455D72345CE5400C33B0C /* ShopDTO.swift */,
+				B3660A752346421C005A780D /* ShopDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -513,7 +522,6 @@
 				B3AE715F2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift in Sources */,
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
-				1D7455D82345CE5400C33B0C /* ShopDTO.swift in Sources */,
 				1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */,
 				B3AE71612337F8ED001E2EF6 /* StorageController.swift in Sources */,
 				B3903C092333654500367E5F /* OrderDAOProtocol.swift in Sources */,
@@ -533,6 +541,7 @@
 				B3CAF9892341FB67005F5B38 /* TeamDAOFirebase.swift in Sources */,
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
+				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
 				B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */,
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
@@ -546,6 +555,7 @@
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
 				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
+				B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */,
 				B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */,
 				1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
@@ -565,12 +575,14 @@
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
+				B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
 				B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
 				B3B92B5923339D1500C39052 /* Exception.swift in Sources */,
 				B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */,
+				B3660A762346421C005A780D /* ShopDTO.swift in Sources */,
 				1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */,
 				1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */,
 				1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */,

@@ -15,6 +15,7 @@ class TeamViewController: UIViewController {
     var stringers: [Stringer]?
 
     let teamController = ControlReg.getTeamController
+    let shopController = ControlReg.getShopController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,19 @@ class TeamViewController: UIViewController {
 
     private func getStringers() {
         // Call controller to get team data
+        teamController.getStringers(fromTeamId: "teamMJ") { (stringers) in
+            if let stringers = stringers {
+                // Store the team in the stringers array
+                self.stringers = stringers
+            }
 
-        // Store the team in the stringers array
+            DispatchQueue.main.sync {
+                self.updateUI()
+            }
+        }
+    }
 
+    private func updateUI() {
         // Reload the tableView
         self.teamTableView.reloadData()
     }
@@ -56,25 +67,21 @@ extension TeamViewController: UITableViewDataSource {
         if let team = self.stringers {
             return team.count
         }
-        return 3
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-//        guard let team = self.stringers else { return UITableViewCell() }
+        guard let team = self.stringers else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
         let cell = self.teamTableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as! UserCell
         // swiftlint:enable force_cast
 
-//        let currentStringer = team[indexPath.row]
-//
-//        cell.nameLabel.text = currentStringer.name
-//        cell.phoneNumberLabel.text = currentStringer.phoneNumber
+        let currentStringer = team[indexPath.row]
 
-        // This needs to replaced with the code above...
-        cell.nameLabel.text = "Marcus August Christiansen"
-        cell.phoneNumberLabel.text = "25722345"
+        cell.nameLabel.text = currentStringer.name
+        cell.phoneNumberLabel.text = currentStringer.phoneNumber
 
         cell.accessoryType = .detailButton
         cell.tintColor = .black
@@ -86,8 +93,10 @@ extension TeamViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
+        guard let stringers = self.stringers else { return }
+
         let viewControllerToPresent = StringerDetailViewController()
-        viewControllerToPresent.stringerName = "Marcus August Christiansen"
+        viewControllerToPresent.currentStringer = stringers[indexPath.row]
 
         let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popup, animated: true, completion: nil)

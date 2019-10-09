@@ -10,44 +10,24 @@ import Foundation
 
 class DataController {
 
-    func getData<T: Codable>(returnType: T.Type, url: String) throws -> T {
+    func getData<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) throws {
 
         guard let url = URL(string: "\(url).json") else { throw Exception.url }
 
-        var dataFromUrl: Data?
-        var responseFromUrl: URLResponse?
-        var errorFromUrl: Error?
-
-        let semaphore = DispatchSemaphore(value: 0)
-
         URLSession.shared.dataTask(with: url) {(data, response, error) in
-            dataFromUrl = data
-            responseFromUrl = response
-            errorFromUrl = error
+            // TODO: if we want to handle the error or respons
+            _ = response
+            _ = error
 
-            semaphore.signal()
-            }.resume()
-
-        _ = semaphore.wait(timeout: .distantFuture)
-
-        if let statusCode = responseFromUrl as? HTTPURLResponse, statusCode.statusCode > 300 {
-            throw Exception.statusCode
-        }
-
-        if errorFromUrl != nil {
-            throw Exception.error
-        }
-
-        guard let dataResponse = dataFromUrl else {
-            throw Exception.error
-        }
-
-        do {
-            let data = try JSONDecoder().decode(returnType, from: dataResponse)
-            return data
-        } catch {
-            throw Exception.error
-        }
+            if let data = data {
+                do {
+                    let object = try JSONDecoder().decode(returnType, from: data)
+                    completion(object)
+                } catch {
+                    completion(nil)
+                }
+            }
+        }.resume()
     }
 
     func postData<T: Codable>(object: T, url: String) throws {
