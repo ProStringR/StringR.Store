@@ -7,6 +7,9 @@
 */
 
 "common_close" = "Close";
+"common_remove" = "Remove";
+"common_cancel" = "Cancel";
+"common_tryAgain" = "Try again";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
@@ -55,3 +58,8 @@
 "racketViewController_racketOverviewDescription" = "Get overview of your test rackets.";
 
 "stringerDetailViewController_removeStringerButtonText" = "Remove Stringer";
+"stringerDetailViewController_alertBodyText" = "Are you sure you want to remove \n %@ \n from your team?";
+"stringerDetailViewController_noStringerFound" = "No stringer found";
+"stringerDetailViewController_contactLabel" = "Contact";
+"stringerDetailViewController_informationLabel" = "Information";
+"stringerDetailViewController_activeOrdersLabel" = "Active Orders";
