@@ -32,6 +32,7 @@
 		B34DF294232B780000D9CCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34DF293232B780000D9CCA8 /* Assets.xcassets */; };
 		B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */; };
 		B34DF2A3232B91B600D9CCA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */; };
+		B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */; };
 		B3660A762346421C005A780D /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3660A752346421C005A780D /* ShopDTO.swift */; };
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
 		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
@@ -112,6 +113,7 @@
 		B34DF296232B780000D9CCA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B34DF298232B780000D9CCA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveStringerDelegate.swift; sourceTree = "<group>"; };
 		B3660A752346421C005A780D /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				B3B92B612333AEF700C39052 /* Observerable.swift */,
 				B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */,
 				B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */,
+				B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */,
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
+				B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */,
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
