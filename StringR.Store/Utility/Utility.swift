@@ -19,7 +19,7 @@ class Utility {
         return String(format: string, arguments: args)
     }
 
-    static func getUUID() -> String{
+    static func getUUID() -> String {
         return NSUUID().uuidString
     }
 }
