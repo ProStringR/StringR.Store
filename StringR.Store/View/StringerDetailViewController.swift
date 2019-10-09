@@ -11,6 +11,8 @@ import UIKit
 
 class StringerDetailViewController: UIViewController {
 
+    weak var delegate: RemoveStringerDelegate?
+
     weak var generelStackView: UIStackView!
     weak var infoStackView: UIStackView!
     weak var contactStackView: UIStackView!
@@ -43,7 +45,7 @@ class StringerDetailViewController: UIViewController {
         if let currentStringer = currentStringer {
             Layout.setupViewNavigationController(forView: self, withTitle: currentStringer.name)
         } else {
-            Layout.setupViewNavigationController(forView: self, withTitle: "Name")
+            Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "stringerDetailViewController_noStringerFound"))
         }
 
         initRemoveButton()
@@ -115,9 +117,9 @@ class StringerDetailViewController: UIViewController {
         self.birthdayLabel = LayoutController.getLabel(text: String(stringer.birthday), parentView: self.view)
         self.preferredRacketTypeLabel = LayoutController.getLabel(text: stringer.preferedRacketType.rawValue, parentView: self.view)
 
-        self.contactLabel = LayoutController.getSmallHeader(text: "Contact", parentView: self.view)
-        self.infoLabel = LayoutController.getSmallHeader(text: "Information", parentView: self.view)
-        self.orderLabel = LayoutController.getSmallHeader(text: "Active orders", parentView: self.view)
+        self.contactLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_contactLabel"), parentView: self.view)
+        self.infoLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_informationLabel"), parentView: self.view)
+        self.orderLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_activeOrdersLabel"), parentView: self.view)
     }
 
     private func initRemoveButton() {
@@ -146,8 +148,19 @@ class StringerDetailViewController: UIViewController {
     }
 
     @objc func onRemoveStringerClicked(_ sender: UIButton) {
+        guard let stringer = currentStringer else { return }
         if sender === self.removeButton {
-            print("Remove Stringer")
+            // make an alert
+            let alert = Layout.createAlert(withTitle: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), withMessage: Utility.getString(forKey: "stringerDetailViewController_alertBodyText", withArgs: [stringer.name]))
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
+                _ = alert
+                // remove stringer from team
+                self.delegate?.removeStringer(stringer: stringer)
+            }))
+
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .default, handler: nil))
+            // present the alert
+            self.present(alert, animated: true)
         }
     }
 }
