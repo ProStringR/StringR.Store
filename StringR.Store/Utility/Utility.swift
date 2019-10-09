@@ -18,4 +18,8 @@ class Utility {
         let string = NSLocalizedString(key, comment: "")
         return String(format: string, arguments: args)
     }
+
+    static func getUUID() -> String{
+        return NSUUID().uuidString
+    }
 }
