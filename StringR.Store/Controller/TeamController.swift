@@ -70,13 +70,37 @@ class TeamController {
 
      - Parameter stringer: The stringer you want to put to the database.
      */
-    func putStringer(stringer: Stringer) throws {
+    func putStringer(stringer: Stringer, completion: @escaping (Bool) -> Void) {
         let stringerDTO = dataControl.createObject(fromObject: stringer, toObject: StringerDTO.self)
-        try teamDAO.putStringer(stringerDTO: stringerDTO)
+        teamDAO.putStringer(stringer: stringerDTO) { (succes) in
+            completion(succes)
+        }
     }
 
-    func putTeam(team: Team) throws {
+    func putTeam(team: Team, completion: @escaping (Bool) -> Void) {
         let teamDTO = dataControl.createObject(fromObject: team, toObject: TeamDTO.self)
-        try teamDAO.putTeam(team: teamDTO)
+        teamDAO.putTeam(team: teamDTO) { (succes) in
+            completion(succes)
+        }
+    }
+
+    /**
+        Generate a Team based on a list of Stringers. The Team consist of a teamId and a list of stringerIds
+
+     - Parameter of: The list of stringers you want to make to a Team.
+     - Parameter withId: The id of the Team.
+     */
+    func createTeam(of stringers: [Stringer]?, withId id: String) -> Team? {
+        guard let stringers = stringers else { return nil }
+        var ids: [String] = []
+
+        for stringer in stringers {
+            ids.append(stringer.userId)
+        }
+
+        let team = Team(teamId: id)
+        team.stringerIds = ids
+
+        return team
     }
 }
