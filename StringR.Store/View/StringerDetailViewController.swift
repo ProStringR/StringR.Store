@@ -151,7 +151,7 @@ class StringerDetailViewController: UIViewController {
         guard let stringer = currentStringer else { return }
         if sender === self.removeButton {
             // make an alert
-            let alert = Layout.createAlert(withTitle: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), withMessage: Utility.getString(forKey: "stringerDetailViewController_alertBodyText", withArgs: [stringer.name]))
+            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), withMessage: Utility.getString(forKey: "stringerDetailViewController_alertBodyText", withArgs: [stringer.name]))
             alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
                 _ = alert
                 // remove stringer from team

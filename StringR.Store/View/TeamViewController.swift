@@ -119,7 +119,7 @@ extension TeamViewController: RemoveStringerDelegate {
 
                         // Jump to UI thread and present the alert
                         DispatchQueue.main.async {
-                            let alert = Layout.createAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
+                            let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
                             alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
                             alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
                                 _ = alert

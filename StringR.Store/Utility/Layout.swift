@@ -60,9 +60,4 @@ class Layout {
         addLeadingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.leadingAnchor, by: sidePoints)
         addTrailingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.trailingAnchor, by: sidePoints)
     }
-
-    static func createAlert(withTitle title: String, withMessage message: String) -> UIAlertController {
-           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-           return alert
-    }
 }
