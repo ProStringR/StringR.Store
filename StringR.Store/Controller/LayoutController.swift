@@ -89,4 +89,9 @@ class LayoutController {
 
         return stackView
     }
+
+    static func getAlert(withTitle title: String, withMessage message: String) -> UIAlertController {
+           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           return alert
+    }
  }

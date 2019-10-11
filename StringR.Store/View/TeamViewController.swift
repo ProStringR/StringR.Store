@@ -34,15 +34,15 @@ class TeamViewController: UIViewController {
                 self.stringers = stringers
             }
 
-            DispatchQueue.main.sync {
-                self.updateUI()
-            }
+            self.updateUI()
         }
     }
 
     private func updateUI() {
-        // Reload the tableView
-        self.teamTableView.reloadData()
+        // Reload the tableView in UI thread
+        DispatchQueue.main.async {
+            self.teamTableView.reloadData()
+        }
     }
 
     private func setLayout() {
@@ -96,9 +96,43 @@ extension TeamViewController: UITableViewDelegate {
         guard let stringers = self.stringers else { return }
 
         let viewControllerToPresent = StringerDetailViewController()
+        viewControllerToPresent.delegate = self
         viewControllerToPresent.currentStringer = stringers[indexPath.row]
 
         let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popup, animated: true, completion: nil)
+    }
+}
+
+extension TeamViewController: RemoveStringerDelegate {
+    func removeStringer(stringer: Stringer) {
+        self.dismiss(animated: true) {
+            self.stringers?.removeAll(where: {$0.userId == stringer.userId})
+            let team = self.teamController.createTeam(of: self.stringers, withId: "teamMJ")
+
+            if let team = team {
+                self.teamController.putTeam(team: team) { (succes) in
+                    if succes {
+                        self.updateUI()
+                    } else {
+                        self.stringers?.append(stringer)
+
+                        // Jump to UI thread and present the alert
+                        DispatchQueue.main.async {
+                            let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
+                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
+                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
+                                _ = alert
+                                // try again
+                                self.removeStringer(stringer: stringer)
+                            }))
+
+                            // present the alert
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -36,13 +36,17 @@ class TeamDAOFirebase: TeamDAOProtocol {
         try dataControl.postData(object: stringer, url: Firebase.stringer)
     }
 
-    func putStringer(stringerDTO: StringerDTO?) throws {
-        guard let stringerDTO = stringerDTO, let id = stringerDTO.userId else { throw Exception.nilPoint }
-        try dataControl.putData(objectToUpdate: stringerDTO, objectId: id, url: Firebase.stringer)
+    func putStringer(stringer: StringerDTO?, completion: @escaping (Bool) -> Void) {
+        guard let stringerDTO = stringer, let id = stringerDTO.userId else { completion(false); return }
+        dataControl.putData(objectToUpdate: stringerDTO, objectId: id, url: Firebase.stringer) { (succes) in
+            completion(succes)
+        }
     }
 
-    func putTeam(team: TeamDTO?) throws {
-        guard let team = team, let id = team.teamId else { throw Exception.nilPoint }
-        try dataControl.putData(objectToUpdate: team, objectId: id, url: Firebase.team)
+    func putTeam(team: TeamDTO?, completion: @escaping (Bool) -> Void) {
+        guard let team = team, let id = team.teamId else { completion(false); return }
+        dataControl.putData(objectToUpdate: team, objectId: id, url: Firebase.team) { (succes) in
+            completion(succes)
+        }
     }
 }
