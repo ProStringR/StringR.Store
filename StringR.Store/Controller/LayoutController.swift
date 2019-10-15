@@ -94,4 +94,14 @@ class LayoutController {
            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
            return alert
     }
+
+    static func getTextField(placeholder: String, parentView view: UIView) -> UITextField {
+        let textField = UITextField()
+        textField.placeholder = placeholder
+        textField.textAlignment = .center
+        textField.borderStyle = .roundedRect
+        view.addSubview(textField)
+
+        return textField
+    }
  }

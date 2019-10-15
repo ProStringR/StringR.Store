@@ -16,4 +16,5 @@ class Firebase {
     static let stringer = "\(ref)/stringer"
     static let shop = "\(ref)/shop"
     static let team = "\(ref)/team"
+    static let customer = "\(ref)/customer"
 }

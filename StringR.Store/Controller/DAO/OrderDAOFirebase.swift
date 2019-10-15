@@ -19,4 +19,11 @@ class OrderDAOFirebase: OrderDAOProtocol {
             throw error
         }
     }
+
+    func putOrder(order: OrderDTO?, completion: @escaping (Bool) -> Void) {
+        guard let order = order, let id = order.orderId else { completion(false); return }
+        dataControl.putData(objectToUpdate: order, objectId: id, url: Firebase.order) { (succes) in
+            completion(succes)
+        }
+    }
 }
