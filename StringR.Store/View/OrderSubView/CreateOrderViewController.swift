@@ -49,10 +49,16 @@ class CreateOrderViewController: UIViewController {
     var stringer: Stringer?
     var deliveryDate: Date?
 
+    var racketStrings: [RacketString]?
+    var avalibleRacketString: [RacketString]?
+    var stringers: [Stringer]?
+    var racketStringsPickerView = UIPickerView()
+    var stringersPickerView = UIPickerView()
+    var datePicker = UIDatePicker()
+
     let orderController = ControlReg.getOrderController
     let teamController = ControlReg.getTeamController
     let storageController = ControlReg.getStorageController
-    let customerController = ControlReg.getCustomerController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,21 +70,47 @@ class CreateOrderViewController: UIViewController {
         setupCommentStackView()
         setupGeneralStackView()
         setupPlaceOrderButton()
+        setupPickerViews()
+        // Get data
+        getStringers()
+        getRacketStrings()
 
-//        let customer = Customer(userId: Utility.getUUID(), name: "Marcus Christiansen", birthday: 123456, email: "net@mail.com", phoneNumber: "23557612", orderIds: [], preferedStringType: .POLYESTER, preferedTensionVertical: 25, prederedTensionHorizontal: 25)
-//
-//        self.customerController.putCustomer(customer: customer) { (succes) in
-//            if succes {
-//                print("Alt gik godt")
-//            } else {
-//                print("Alt gik dårligt!!!")
-//            }
-//        }
+        // set tapGesture to close keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    private func getStringers() {
+        teamController.getStringers(fromTeamId: "teamMJ") { (result) in
+            if let stringers = result {
+                self.stringers = stringers
+            } else {
+                print("Noget gik galt")
+            }
+        }
+    }
+
+    private func getRacketStrings() {
+        storageController.getRacketStrings(by: "ShopMJ") { (result) in
+            if let racketStrings = result {
+                self.racketStrings = racketStrings
+                self.reloadPickers()
+            }
+        }
     }
 
     private func setupView() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "orderViewController_OrderCreationHead")))
+    }
+
+    private func reloadPickers() {
+        DispatchQueue.main.async {
+            if let racketStrings = self.racketStrings, let racketType = self.racketType {
+                self.avalibleRacketString = self.storageController.filterStrings(racketStrings: racketStrings, by: racketType)
+            }
+            self.stringersPickerView.reloadAllComponents()
+        }
     }
 
     private func setupGeneralStackView() {
@@ -151,11 +183,11 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupCustomerInfoStackView() {
-        self.customerName = LayoutController.getLabel(text: "Marcus Christiansen", parentView: self.view)
+        self.customerName = LayoutController.getLabel(text: nil, parentView: self.view)
         self.customerName.textAlignment = .center
         self.customerName.font = self.customerName.font.withSize(20)
 
-        self.customerPhoneNumber = LayoutController.getLabel(text: "25722345", parentView: self.view)
+        self.customerPhoneNumber = LayoutController.getLabel(text: nil, parentView: self.view)
         self.customerPhoneNumber.textAlignment = .center
         self.customerPhoneNumber.font = self.customerPhoneNumber.font.withSize(20)
 
@@ -202,8 +234,32 @@ class CreateOrderViewController: UIViewController {
 
     }
 
+    private func setupPickerViews() {
+        self.initPicker(picker: self.stringersPickerView, inputField: self.stringerTextField)
+        self.initPicker(picker: self.racketStringsPickerView, inputField: self.stringTextField)
+
+        // setup date picker
+        self.datePicker.datePickerMode = .dateAndTime
+        self.datePicker.minimumDate = Date()
+        self.datePicker.addTarget(self, action: #selector(dataChanged(datePicker:)), for: .valueChanged)
+        self.deliveryDateTextField.inputView = self.datePicker
+    }
+
+    @objc func dataChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+
+        self.deliveryDateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.deliveryDate = datePicker.date
+    }
+
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+
     @objc func pickCustomerButtonCliked(_ sender: UIButton) {
         let viewControllerToPresent = FindCustomerViewController()
+        viewControllerToPresent.delegate = self
         let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popup, animated: true, completion: nil)
     }
@@ -211,34 +267,123 @@ class CreateOrderViewController: UIViewController {
     @objc func placeOrderClicked(_ sender: UIButton) {
         print("Hello there from Place Order")
 
-        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text else { return }
+        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text else { submissionFailed(); return }
 
         let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
 
         orderController.putOrder(order: order) { (succes) in
             if succes {
-                self.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
             } else {
-                let alert = LayoutController.getAlert(withTitle: "Ups... something went wrong", withMessage: "Something in the order creation went wrong.")
-                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
-                    _ = alert
-                    self.placeOrderClicked(self.placeOrderButton)
-                }))
+                self.submissionFailed()
             }
         }
+    }
+
+    private func submissionFailed() {
+        let alert = LayoutController.getAlert(withTitle: "Ups... something went wrong", withMessage: "Something in the order creation went wrong.")
+        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
+            _ = alert
+            self.placeOrderClicked(self.placeOrderButton)
+        }))
+
+        self.present(alert, animated: true)
+    }
+
+    private func setCustomer(customer: Customer) {
+        self.customer = customer
+
+        if let customer = self.customer {
+            self.customerName.text = customer.name
+            self.customerPhoneNumber.text = customer.phoneNumber
+        }
+    }
+
+    private func initPicker(picker: UIPickerView, inputField: UITextField!) {
+        picker.delegate = self
+        picker.dataSource = self
+        inputField.inputView = picker
     }
 
     @objc func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            print("Badminton")
+            self.racketType = .BADMINTON
         case 1:
-            print("Tennis")
+            self.racketType = .TENNIS
         case 2:
-            print("Squash")
+            self.racketType = .SQUASH
         default:
             print("Default")
         }
+
+        self.reloadPickers()
+    }
+}
+
+extension CreateOrderViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView {
+        case self.stringersPickerView:
+            if let stringers = self.stringers {
+                return stringers.count
+            }
+        case self.racketStringsPickerView:
+            if let racketStrings = self.avalibleRacketString {
+                return racketStrings.count
+            }
+        default:
+            return 0
+        }
+
+        return 0
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView {
+        case self.stringersPickerView:
+            if let stringers = self.stringers {
+                return stringers[row].name
+            }
+        case self.racketStringsPickerView:
+            if let racketStrings = self.avalibleRacketString {
+                return racketStrings[row].getDescription()
+            }
+        default:
+            return nil
+        }
+
+        return nil
+    }
+}
+
+extension CreateOrderViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == self.stringersPickerView {
+            if let stringers = self.stringers {
+                self.stringer = stringers[row]
+                self.stringerTextField.text = stringers[row].name
+            }
+        } else if pickerView == self.racketStringsPickerView {
+            if let racketStrings = self.avalibleRacketString {
+                self.racketString = racketStrings[row]
+                self.stringTextField.text = racketStrings[row].getDescription()
+                self.priceTextField.text = String(racketStrings[row].pricePerRacket)
+            }
+        }
+    }
+}
+
+extension CreateOrderViewController: FindCustomerDelegate {
+    func addCustomer(customer: Customer) {
+        self.setCustomer(customer: customer)
+
     }
 }

@@ -24,8 +24,18 @@ class CustomerDAOFirebase: CustomerDAOProtocol {
 
     func getAllCustomers(completion: @escaping ([CustomerDTO]?) -> Void) {
         do {
-            try dataControl.getData(returnType: [CustomerDTO].self, url: Firebase.customer, completion: { (result) in
-                completion(result)
+            try dataControl.getData(returnType: [String: CustomerDTO?].self, url: Firebase.customer, completion: { (result) in
+
+                guard let result = result else { completion(nil); return }
+                var listToReturn: [CustomerDTO]? = []
+
+                for item in result {
+                    if let customer = item.value {
+                        listToReturn?.append(customer)
+                    }
+                }
+
+                completion(listToReturn)
             })
         } catch {
             completion(nil)

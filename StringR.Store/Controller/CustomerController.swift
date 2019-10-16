@@ -25,7 +25,7 @@ class CustomerController {
     }
 
     func getAllCustomers(completion: @escaping ([Customer]?) -> Void) {
-        var customersToReturn: [Customer]?
+        var customersToReturn: [Customer]? = []
 
         customerDAO.getAllCustomers { (result) in
             if let customers = result {

@@ -32,6 +32,9 @@
 		B34DF294232B780000D9CCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34DF293232B780000D9CCA8 /* Assets.xcassets */; };
 		B34DF297232B780000D9CCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */; };
 		B34DF2A3232B91B600D9CCA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */; };
+		B356A53F235727F5002B92A0 /* FindCustomerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */; };
+		B356A54123574570002B92A0 /* StorageDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B356A54023574570002B92A0 /* StorageDAOProtocol.swift */; };
+		B356A543235745D8002B92A0 /* StorageDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B356A542235745D8002B92A0 /* StorageDAOFirebase.swift */; };
 		B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */; };
 		B3660A762346421C005A780D /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3660A752346421C005A780D /* ShopDTO.swift */; };
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
@@ -118,6 +121,9 @@
 		B34DF296232B780000D9CCA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B34DF298232B780000D9CCA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34DF2A2232B91B600D9CCA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCustomerDelegate.swift; sourceTree = "<group>"; };
+		B356A54023574570002B92A0 /* StorageDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDAOProtocol.swift; sourceTree = "<group>"; };
+		B356A542235745D8002B92A0 /* StorageDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDAOFirebase.swift; sourceTree = "<group>"; };
 		B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveStringerDelegate.swift; sourceTree = "<group>"; };
 		B3660A752346421C005A780D /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
@@ -346,6 +352,7 @@
 				B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */,
 				B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */,
 				B39CCE8923565DA200EA892B /* CustomerDAOFirebase.swift */,
+				B356A542235745D8002B92A0 /* StorageDAOFirebase.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -360,6 +367,8 @@
 				B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */,
 				B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */,
 				B39CCE8723565CEB00EA892B /* CustomerDAOProtocol.swift */,
+				B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */,
+				B356A54023574570002B92A0 /* StorageDAOProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 				B38C5BA9232BE4DD00116BC1 /* StringColor.swift in Sources */,
 				B36B428C232BABFA00954357 /* Shop.swift in Sources */,
 				B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */,
+				B356A53F235727F5002B92A0 /* FindCustomerDelegate.swift in Sources */,
 				B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */,
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
@@ -561,6 +571,7 @@
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B3A1B5F523508B5900B1133E /* CreateOrderViewController.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
+				B356A54123574570002B92A0 /* StorageDAOProtocol.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
 				B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */,
@@ -580,6 +591,7 @@
 				B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */,
 				B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */,
 				1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */,
+				B356A543235745D8002B92A0 /* StorageDAOFirebase.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
 				B38C5B84232BC94000116BC1 /* Team.swift in Sources */,
 				1D7455CC23435E9700C33B0C /* CompanyDTO.swift in Sources */,

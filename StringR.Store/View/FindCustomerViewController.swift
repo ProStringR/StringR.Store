@@ -11,6 +11,8 @@ import UIKit
 
 class FindCustomerViewController: UIViewController {
 
+    weak var delegate: FindCustomerDelegate?
+
     weak var customerTableView: UITableView!
     var customers: [Customer]?
     var customerController = ControlReg.getCustomerController
@@ -23,17 +25,9 @@ class FindCustomerViewController: UIViewController {
     }
 
     private func getCustomers() {
-//        customerController.getAllCustomers { (result) in
-//            if let customers = result {
-//                self.customers = customers
-//            } else {
-//                print("Noget gik galt")
-//            }
-//        }
-
-        customerController.getCustomer(by: "929E5CDC-492D-46ED-8AA1-913D047B4473") { (result) in
-            if let customer = result {
-                self.customers = [customer]
+        customerController.getAllCustomers { (result) in
+            if let customers = result {
+                self.customers = customers
                 self.updateUI()
             } else {
                 print("Noget gik galt")
@@ -77,7 +71,10 @@ class FindCustomerViewController: UIViewController {
 extension FindCustomerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("Hello from \(indexPath.row). row")
+        guard let customers = self.customers else { return }
+
+        self.delegate?.addCustomer(customer: customers[indexPath.row])
+        self.closeAction()
     }
 }
 
