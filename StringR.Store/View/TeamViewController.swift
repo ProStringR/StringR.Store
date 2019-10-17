@@ -15,6 +15,7 @@ class TeamViewController: UIViewController {
     var stringers: [Stringer]?
 
     let teamController = ControlReg.getTeamController
+    let shopController = ControlReg.getShopController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +28,21 @@ class TeamViewController: UIViewController {
 
     private func getStringers() {
         // Call controller to get team data
+        teamController.getStringers(fromTeamId: "teamMJ") { (stringers) in
+            if let stringers = stringers {
+                // Store the team in the stringers array
+                self.stringers = stringers
+            }
 
-        // Store the team in the stringers array
+            self.updateUI()
+        }
+    }
 
-        // Reload the tableView
-        self.teamTableView.reloadData()
+    private func updateUI() {
+        // Reload the tableView in UI thread
+        DispatchQueue.main.async {
+            self.teamTableView.reloadData()
+        }
     }
 
     private func setLayout() {
@@ -56,25 +67,21 @@ extension TeamViewController: UITableViewDataSource {
         if let team = self.stringers {
             return team.count
         }
-        return 3
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-//        guard let team = self.stringers else { return UITableViewCell() }
+        guard let team = self.stringers else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
         let cell = self.teamTableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as! UserCell
         // swiftlint:enable force_cast
 
-//        let currentStringer = team[indexPath.row]
-//
-//        cell.nameLabel.text = currentStringer.name
-//        cell.phoneNumberLabel.text = currentStringer.phoneNumber
+        let currentStringer = team[indexPath.row]
 
-        // This needs to replaced with the code above...
-        cell.nameLabel.text = "Marcus August Christiansen"
-        cell.phoneNumberLabel.text = "25722345"
+        cell.nameLabel.text = currentStringer.name
+        cell.phoneNumberLabel.text = currentStringer.phoneNumber
 
         cell.accessoryType = .detailButton
         cell.tintColor = .black
@@ -86,10 +93,46 @@ extension TeamViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
+        guard let stringers = self.stringers else { return }
+
         let viewControllerToPresent = StringerDetailViewController()
-        viewControllerToPresent.stringerName = "Marcus August Christiansen"
+        viewControllerToPresent.delegate = self
+        viewControllerToPresent.currentStringer = stringers[indexPath.row]
 
         let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popup, animated: true, completion: nil)
+    }
+}
+
+extension TeamViewController: RemoveStringerDelegate {
+    func removeStringer(stringer: Stringer) {
+        self.dismiss(animated: true) {
+            self.stringers?.removeAll(where: {$0.userId == stringer.userId})
+            let team = self.teamController.createTeam(of: self.stringers, withId: "teamMJ")
+
+            if let team = team {
+                self.teamController.putTeam(team: team) { (succes) in
+                    if succes {
+                        self.updateUI()
+                    } else {
+                        self.stringers?.append(stringer)
+
+                        // Jump to UI thread and present the alert
+                        DispatchQueue.main.async {
+                            let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
+                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
+                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
+                                _ = alert
+                                // try again
+                                self.removeStringer(stringer: stringer)
+                            }))
+
+                            // present the alert
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

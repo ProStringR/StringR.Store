@@ -10,9 +10,10 @@ import Foundation
 
 class Team: Codable {
 
-    var stringerIds: [String]
+    var teamId: String
+    var stringerIds: [String]?
 
-    init(stringerIds: [String]) {
-        self.stringerIds = stringerIds
+    init(teamId: String) {
+        self.teamId = teamId
     }
 }

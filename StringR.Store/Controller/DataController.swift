@@ -10,44 +10,24 @@ import Foundation
 
 class DataController {
 
-    func getData<T: Codable>(returnType: T.Type, url: String) throws -> T {
+    func getData<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) throws {
 
         guard let url = URL(string: "\(url).json") else { throw Exception.url }
 
-        var dataFromUrl: Data?
-        var responseFromUrl: URLResponse?
-        var errorFromUrl: Error?
-
-        let semaphore = DispatchSemaphore(value: 0)
-
         URLSession.shared.dataTask(with: url) {(data, response, error) in
-            dataFromUrl = data
-            responseFromUrl = response
-            errorFromUrl = error
+            // TODO: if we want to handle the error or respons
+            _ = response
+            _ = error
 
-            semaphore.signal()
-            }.resume()
-
-        _ = semaphore.wait(timeout: .distantFuture)
-
-        if let statusCode = responseFromUrl as? HTTPURLResponse, statusCode.statusCode > 300 {
-            throw Exception.statusCode
-        }
-
-        if errorFromUrl != nil {
-            throw Exception.error
-        }
-
-        guard let dataResponse = dataFromUrl else {
-            throw Exception.error
-        }
-
-        do {
-            let data = try JSONDecoder().decode(returnType, from: dataResponse)
-            return data
-        } catch {
-            throw Exception.error
-        }
+            if let data = data {
+                do {
+                    let object = try JSONDecoder().decode(returnType, from: data)
+                    completion(object)
+                } catch {
+                    completion(nil)
+                }
+            }
+        }.resume()
     }
 
     func postData<T: Codable>(object: T, url: String) throws {
@@ -67,8 +47,8 @@ class DataController {
         URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 
-    func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String) throws {
-        guard let url = URL(string: "\(url)/\(objectId).json") else { throw Exception.url }
+    func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: "\(url)/\(objectId).json") else { completion(false); return }
 
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -78,10 +58,25 @@ class DataController {
             let data = try JSONEncoder().encode(object)
             request.httpBody = data
         } catch {
-            throw Exception.error
+            completion(false)
+            return
         }
 
-        URLSession.shared.dataTask(with: request as URLRequest).resume()
+        URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            _ = data
+
+            if error != nil {
+                completion(false)
+            }
+
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 300, response.statusCode >= 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }.resume()
     }
 
     func deleteData(objectIdToDelete objectId: String, url: String) throws {

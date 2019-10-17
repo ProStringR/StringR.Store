@@ -11,6 +11,8 @@ import UIKit
 
 class StringerDetailViewController: UIViewController {
 
+    weak var delegate: RemoveStringerDelegate?
+
     weak var generelStackView: UIStackView!
     weak var infoStackView: UIStackView!
     weak var contactStackView: UIStackView!
@@ -32,7 +34,6 @@ class StringerDetailViewController: UIViewController {
     weak var removeButton: UIButton!
 
     var currentStringer: Stringer?
-    var stringerName: String?
     var activeOrders: [Order]?
     var strings: [RacketString]?
 
@@ -41,10 +42,10 @@ class StringerDetailViewController: UIViewController {
 
         setGenerelLayout()
 
-        if let name = stringerName {
-            Layout.setupViewNavigationController(forView: self, withTitle: name)
+        if let currentStringer = currentStringer {
+            Layout.setupViewNavigationController(forView: self, withTitle: currentStringer.name)
         } else {
-            Layout.setupViewNavigationController(forView: self, withTitle: "Name")
+            Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "stringerDetailViewController_noStringerFound"))
         }
 
         initRemoveButton()
@@ -106,25 +107,19 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func initializeLabels() {
-//        guard let stringer = self.currentStringer else { return }
-//
-//        self.phoneLabel = initLabel(text: stringer.phoneNumber)
-//        self.mailLabel = initLabel(text: stringer.email)
-//        // make a string that can cell where the stringer lives.
-//        self.address = initLabel(text: stringer.address.city)
-//        // make birthday to a string representation.
-//        self.birthdayLabel = initLabel(text: String(stringer.birthday))
-//        self.preferredRacketTypeLabel = initLabel(text: stringer.preferedRacketType.rawValue)
+        guard let stringer = self.currentStringer else { return }
 
-        self.phoneLabel = LayoutController.getLabel(text: "25 72 23 45", parentView: self.view)
-        self.mailLabel = LayoutController.getLabel(text: "mac080497@gmail.com", parentView: self.view)
-        self.address = LayoutController.getLabel(text: "Vimmelskaftet 13, Holbæk", parentView: self.view)
-        self.birthdayLabel = LayoutController.getLabel(text: "08 / 04 - 97", parentView: self.view)
-        self.preferredRacketTypeLabel = LayoutController.getLabel(text: "Tennis", parentView: self.view)
+        self.phoneLabel = LayoutController.getLabel(text: stringer.phoneNumber, parentView: self.view)
+        self.mailLabel = LayoutController.getLabel(text: stringer.email, parentView: self.view)
+        // make a string that can cell where the stringer lives.
+        self.address = LayoutController.getLabel(text: stringer.address.city, parentView: self.view)
+        // make birthday to a string representation.
+        self.birthdayLabel = LayoutController.getLabel(text: String(stringer.birthday), parentView: self.view)
+        self.preferredRacketTypeLabel = LayoutController.getLabel(text: stringer.preferedRacketType.rawValue, parentView: self.view)
 
-        self.contactLabel = LayoutController.getSmallHeader(text: "Contact", parentView: self.view)
-        self.infoLabel = LayoutController.getSmallHeader(text: "Information", parentView: self.view)
-        self.orderLabel = LayoutController.getSmallHeader(text: "Active orders", parentView: self.view)
+        self.contactLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_contactLabel"), parentView: self.view)
+        self.infoLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_informationLabel"), parentView: self.view)
+        self.orderLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_activeOrdersLabel"), parentView: self.view)
     }
 
     private func initRemoveButton() {
@@ -153,8 +148,19 @@ class StringerDetailViewController: UIViewController {
     }
 
     @objc func onRemoveStringerClicked(_ sender: UIButton) {
+        guard let stringer = currentStringer else { return }
         if sender === self.removeButton {
-            print("Remove Stringer")
+            // make an alert
+            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), withMessage: Utility.getString(forKey: "stringerDetailViewController_alertBodyText", withArgs: [stringer.name]))
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
+                _ = alert
+                // remove stringer from team
+                self.delegate?.removeStringer(stringer: stringer)
+            }))
+
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .default, handler: nil))
+            // present the alert
+            self.present(alert, animated: true)
         }
     }
 }

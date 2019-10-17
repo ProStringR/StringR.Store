@@ -7,6 +7,9 @@
 */
 
 "common_close" = "Luk";
+"common_remove" = "Fjern";
+"common_cancel" = "Fortryd";
+"common_tryAgain" = "Prøv igen";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
@@ -55,3 +58,8 @@
 "racketViewController_racketOverviewDescription" = "Få et overblik over alle dine test ketcher.";
 
 "stringerDetailViewController_removeStringerButtonText" = "Fjern strenger";
+"stringerDetailViewController_alertBodyText" = "Er du sikker på du vil fjerne \n %@ \n fra dit team?";
+"stringerDetailViewController_noStringerFound" = "Ingen strenger fundet";
+"stringerDetailViewController_contactLabel" = "Kontakt";
+"stringerDetailViewController_informationLabel" = "Information";
+"stringerDetailViewController_activeOrdersLabel" = "Aktive Ordre";

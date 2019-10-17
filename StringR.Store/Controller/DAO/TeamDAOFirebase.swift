@@ -12,12 +12,23 @@ class TeamDAOFirebase: TeamDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getStringer(basedOn stringerId: String) -> StringerDTO? {
+    func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTO?) -> Void) {
         do {
-            let stringer = try dataControl.getData(returnType: StringerDTO.self, url: "\(Firebase.stringer)/\(stringerId)")
-            return stringer
+            try dataControl.getData(returnType: StringerDTO.self, url: "\(Firebase.stringer)/\(stringerId)", completion: { (result) in
+                completion(result)
+            })
         } catch {
-            return nil
+            completion(nil)
+        }
+    }
+
+    func getTeam(basedOn teamId: String, completion: @escaping (TeamDTO?) -> Void) {
+        do {
+            try dataControl.getData(returnType: TeamDTO.self, url: "\(Firebase.team)/\(teamId)", completion: { (result) in
+                completion(result)
+            })
+        } catch {
+            completion(nil)
         }
     }
 
@@ -25,10 +36,17 @@ class TeamDAOFirebase: TeamDAOProtocol {
         try dataControl.postData(object: stringer, url: Firebase.stringer)
     }
 
-    func putStringer(stringerDTO: StringerDTO?) throws {
-        guard let stringerDTO = stringerDTO, let id = stringerDTO.userId else { throw Exception.nilPoint }
-
-        try dataControl.putData(objectToUpdate: stringerDTO, objectId: id, url: Firebase.stringer)
+    func putStringer(stringer: StringerDTO?, completion: @escaping (Bool) -> Void) {
+        guard let stringerDTO = stringer, let id = stringerDTO.userId else { completion(false); return }
+        dataControl.putData(objectToUpdate: stringerDTO, objectId: id, url: Firebase.stringer) { (succes) in
+            completion(succes)
+        }
     }
 
+    func putTeam(team: TeamDTO?, completion: @escaping (Bool) -> Void) {
+        guard let team = team, let id = team.teamId else { completion(false); return }
+        dataControl.putData(objectToUpdate: team, objectId: id, url: Firebase.team) { (succes) in
+            completion(succes)
+        }
+    }
 }
