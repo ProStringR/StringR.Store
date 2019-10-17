@@ -61,7 +61,6 @@
 		B3903C092333654500367E5F /* OrderDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C082333654500367E5F /* OrderDAOProtocol.swift */; };
 		B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C0B233365B800367E5F /* OrderDTO.swift */; };
 		B3903C0E2333672900367E5F /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C0D2333672900367E5F /* Firebase.swift */; };
-		B3AE715F2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */; };
 		B3AE71612337F8ED001E2EF6 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AE71602337F8ED001E2EF6 /* StorageController.swift */; };
 		B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBD9233BA233001498D4 /* UserCell.swift */; };
 		B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */; };
@@ -143,7 +142,6 @@
 		B3903C082333654500367E5F /* OrderDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDAOProtocol.swift; sourceTree = "<group>"; };
 		B3903C0B233365B800367E5F /* OrderDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDTO.swift; sourceTree = "<group>"; };
 		B3903C0D2333672900367E5F /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
-		B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringStoragePopUpViewController.swift; sourceTree = "<group>"; };
 		B3AE71602337F8ED001E2EF6 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 		B3B3DBD9233BA233001498D4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 		1D7455D92346449500C33B0C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
-				B3AE715E2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift */,
 				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
 			);
 			path = PopUp;
@@ -533,7 +530,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3AE715F2337B070001E2EF6 /* AddStringStoragePopUpViewController.swift in Sources */,
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
 				1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */,
