@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class StorageDAOFirebase {
+    let dataControl = ControlReg.getDataController
+
+}
