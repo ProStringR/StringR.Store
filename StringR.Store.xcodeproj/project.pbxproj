@@ -22,6 +22,7 @@
 		1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455CF234372B300C33B0C /* RacketStringDTO.swift */; };
 		1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D12345C73400C33B0C /* EconomyDTO.swift */; };
 		1D7455D62345CD9900C33B0C /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D52345CD9900C33B0C /* CustomerDTO.swift */; };
+		1DE69BE923588F1900AD0864 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE69BE823588F1900AD0864 /* StorageController.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
@@ -98,6 +99,7 @@
 		1D7455CF234372B300C33B0C /* RacketStringDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDTO.swift; sourceTree = "<group>"; };
 		1D7455D12345C73400C33B0C /* EconomyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyDTO.swift; sourceTree = "<group>"; };
 		1D7455D52345CD9900C33B0C /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
+		1DE69BE823588F1900AD0864 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1DF66C2E232F73AC0007E2C3 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +342,7 @@
 				B3903C052333652700367E5F /* OrderDAOFirebase.swift */,
 				B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */,
 				B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */,
+				1DE69BE823588F1900AD0864 /* StorageController.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
 				B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
+				1DE69BE923588F1900AD0864 /* StorageController.swift in Sources */,
 				B3B92B5923339D1500C39052 /* Exception.swift in Sources */,
 				B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */,
 				B3660A762346421C005A780D /* ShopDTO.swift in Sources */,
