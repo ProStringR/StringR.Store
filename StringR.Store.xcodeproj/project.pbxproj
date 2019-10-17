@@ -14,6 +14,7 @@
 		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
 		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
 		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
+		1D6EF1502358AFA500BAB92A /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6EF14F2358AFA500BAB92A /* AddStringToStorageViewController.swift */; };
 		1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C523435D2200C33B0C /* AddressDTO.swift */; };
 		1D7455C823435DEA00C33B0C /* TeamDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C723435DEA00C33B0C /* TeamDTO.swift */; };
 		1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C923435E2000C33B0C /* RacketDTO.swift */; };
@@ -90,6 +91,7 @@
 		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
 		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
+		1D6EF14F2358AFA500BAB92A /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
 		1D7455C523435D2200C33B0C /* AddressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDTO.swift; sourceTree = "<group>"; };
 		1D7455C723435DEA00C33B0C /* TeamDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDTO.swift; sourceTree = "<group>"; };
 		1D7455C923435E2000C33B0C /* RacketDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDTO.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
+				1D6EF14F2358AFA500BAB92A /* AddStringToStorageViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,
+				1D6EF1502358AFA500BAB92A /* AddStringToStorageViewController.swift in Sources */,
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
