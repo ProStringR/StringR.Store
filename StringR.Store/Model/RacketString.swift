@@ -21,7 +21,6 @@ class RacketString: Codable {
     var thickness: Double
     var color: StringColor
     var stringPurpose: RacketType
-    var setUsed: Double
     var racketRemaining: Int {
         let stringPerRacket = Constant.stringLengthPerRacket
         let lengthRemaining = Double(self.length) / Double(stringPerRacket)
@@ -41,13 +40,17 @@ class RacketString: Codable {
         self.thickness = thickness
         self.color = color
         self.stringPurpose = stringPurpose
-        self.setUsed = setUsed
     }
 
     init?(stringId: String?, brand: String?, modelName: String?, stringType: String?, length: String?, buyDate: String?, buyPrice: String?, pricePerRacket: String?, thickness: String?, color: String?, stringPurpose: String?) {
 
         if let stringId = stringId, let brand = brand, let modelName = modelName, let stringType = stringType, let length = length, let buyDate = buyDate, let buyPrice = buyPrice,
             let pricePerRacket = pricePerRacket, let thickness = thickness, let color = color, let stringPurpose = stringPurpose {
+
+            if brand.isEmpty || modelName.isEmpty || stringType.isEmpty || length.isEmpty || buyDate.isEmpty || buyPrice.isEmpty || pricePerRacket.isEmpty || thickness.isEmpty || color.isEmpty || stringPurpose.isEmpty {
+                return nil
+            }
+
             self.stringId = stringId
             self.brand = StringBrand(rawValue: brand) ?? StringBrand.DEFAULT
             self.modelName = modelName
@@ -59,7 +62,6 @@ class RacketString: Codable {
             self.thickness = Double(thickness) ?? 0
             self.color = StringColor(rawValue: color) ?? StringColor.DEFAULT
             self.stringPurpose = RacketType(rawValue: stringPurpose) ?? RacketType.TENNIS
-            self.setUsed = 0
         } else {
             return nil
         }
