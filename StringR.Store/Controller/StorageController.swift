@@ -10,4 +10,13 @@ import Foundation
 
 class StorageController {
 
+    let dataControl = ControlReg.getDataController
+    let storageDAO = ControlReg.getStorageDAO
+
+    func putRacketString(racketString: RacketString, completion: @escaping (Bool) -> Void) {
+        let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTO.self)
+        storageDAO.putRacketString(racketString: racketStringDTO) { (succes) in
+            completion(succes)
+        }
+    }
 }
