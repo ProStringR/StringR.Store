@@ -85,7 +85,7 @@ class CreateOrderViewController: UIViewController {
             if let stringers = result {
                 self.stringers = stringers
             } else {
-                print("Noget gik galt")
+                // TODO: Manange if something went wrong
             }
         }
     }
@@ -95,7 +95,7 @@ class CreateOrderViewController: UIViewController {
             if let racketStrings = result {
                 self.racketStrings = racketStrings
                 self.reloadPickers()
-            }
+            } 
         }
     }
 
@@ -132,8 +132,8 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupCustromerStackView() {
-        self.customerLabel = LayoutController.getSmallHeader(text: "Customer", parentView: self.view)
-        self.pickCustomerButton = LayoutController.getButton(title: "Choose Customer", parentView: self.view)
+        self.customerLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "createOrderViewController_customerLabel"), parentView: self.view)
+        self.pickCustomerButton = LayoutController.getButton(title: Utility.getString(forKey: "createOrderViewController_chooseCustomerButton"), parentView: self.view)
         self.pickCustomerButton.addTarget(self, action: #selector(pickCustomerButtonCliked(_:)), for: .touchUpInside)
         setupCustomerInfoStackView()
 
@@ -143,10 +143,10 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupSpecificationStackView() {
-        self.specificationLabel = LayoutController.getSmallHeader(text: "Racket Specifications", parentView: self.view)
+        self.specificationLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "createOrderViewController_racketSpecificationLabel"), parentView: self.view)
         setupSegmentedControl()
-        self.stringTextField = LayoutController.getTextField(placeholder: "Choose String", parentView: self.view)
-        self.stringerTextField = LayoutController.getTextField(placeholder: "Choose Stringer", parentView: self.view)
+        self.stringTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_chooseString"), parentView: self.view)
+        self.stringerTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_chooseStringer"), parentView: self.view)
         setupTensionStackView()
 
         let content = [self.specificationLabel, self.racketTypeSegmentedControl, self.stringTextField, self.stringerTextField, self.tensionStackView]
@@ -156,8 +156,8 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupDeliveryStackView() {
-        self.deliveryLabel = LayoutController.getSmallHeader(text: "Delivery Information", parentView: self.view)
-        self.deliveryDateTextField = LayoutController.getTextField(placeholder: "Choose wanted delivery time", parentView: self.view)
+        self.deliveryLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "createOrderViewController_deliveryInfoLabel"), parentView: self.view)
+        self.deliveryDateTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_deliveryDate"), parentView: self.view)
 
         let content = [self.deliveryLabel, self.deliveryDateTextField]
         self.deliveryStackView = LayoutController.getStackView(content: content, orientation: .vertical, parentView: self.view)
@@ -165,8 +165,8 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupPriceStackView() {
-        self.priceLabel = LayoutController.getSmallHeader(text: "Price", parentView: self.view)
-        self.priceTextField = LayoutController.getTextField(placeholder: "Price", parentView: self.view)
+        self.priceLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "createOrderViewController_priceLabel"), parentView: self.view)
+        self.priceTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_priceLabel"), parentView: self.view)
 
         let content = [self.priceLabel, self.priceTextField]
         self.priceStackView = LayoutController.getStackView(content: content, orientation: .vertical, parentView: self.view)
@@ -174,8 +174,8 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupCommentStackView() {
-        self.commentLabel = LayoutController.getSmallHeader(text: "Comment", parentView: self.view)
-        self.commentTextField = LayoutController.getTextField(placeholder: "Comment, if you have some extra information about your order", parentView: self.view)
+        self.commentLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "createOrderViewController_commentLabel"), parentView: self.view)
+        self.commentTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_commentDescription"), parentView: self.view)
 
         let content = [self.commentLabel, self.commentTextField]
         self.commentStackView = LayoutController.getStackView(content: content, orientation: .vertical, parentView: self.view)
@@ -197,7 +197,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupSegmentedControl() {
-        let items = ["Badminton", "Tennis", "Squash"]
+        let items = [Utility.getString(forKey: "generel_Badminton"), Utility.getString(forKey: "generel_Tennis"), Utility.getString(forKey: "generel_Squash")]
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
 
@@ -214,9 +214,9 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupTensionStackView() {
-        self.tensionHorizontalTextField = LayoutController.getTextField(placeholder: "Main Tension", parentView: self.view)
+        self.tensionHorizontalTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_mainTension"), parentView: self.view)
         self.tensionHorizontalTextField.keyboardType = .decimalPad
-        self.tensionVerticalTextField = LayoutController.getTextField(placeholder: "Cross Tension", parentView: self.view)
+        self.tensionVerticalTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_crossTension"), parentView: self.view)
         self.tensionVerticalTextField.keyboardType = .decimalPad
 
         let content = [self.tensionHorizontalTextField, self.tensionVerticalTextField]
@@ -225,13 +225,12 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupPlaceOrderButton() {
-        self.placeOrderButton = LayoutController.getButton(title: "Place Order", parentView: self.view)
+        self.placeOrderButton = LayoutController.getButton(title: Utility.getString(forKey: "createOrderViewController_placeOrderButton"), parentView: self.view)
         self.placeOrderButton.addTarget(self, action: #selector(placeOrderClicked(_:)), for: .touchUpInside)
 
         Layout.addBottomConstraint(on: self.placeOrderButton, to: self.view.safeAreaLayoutGuide.bottomAnchor)
         Layout.addLeadingConstraint(on: self.placeOrderButton, to: self.generalStackView.leadingAnchor, by: 0)
         Layout.addTrailingConstraint(on: self.placeOrderButton, to: self.generalStackView.trailingAnchor, by: 0)
-
     }
 
     private func setupPickerViews() {
@@ -265,8 +264,6 @@ class CreateOrderViewController: UIViewController {
     }
 
     @objc func placeOrderClicked(_ sender: UIButton) {
-        print("Hello there from Place Order")
-
         guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text else { submissionFailed(); return }
 
         let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
@@ -283,7 +280,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func submissionFailed() {
-        let alert = LayoutController.getAlert(withTitle: "Ups... something went wrong", withMessage: "Something in the order creation went wrong.")
+        let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Utility.getString(forKey: "createOrderViewController_creationFail"))
         alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
             _ = alert

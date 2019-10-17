@@ -30,23 +30,19 @@ class FindCustomerViewController: UIViewController {
                 self.customers = customers
                 self.updateUI()
             } else {
-                print("Noget gik galt")
+                // TODO: Manage if something went wrong
             }
         }
     }
 
     private func updateUI() {
         DispatchQueue.main.async {
-            if self.customerTableView != nil {
-                self.customerTableView.reloadData()
-            } else {
-                print("TableView findes ikke")
-            }
+            self.customerTableView.reloadData()
         }
     }
 
     private func setGenerelLayout() {
-        Layout.setupViewNavigationController(forView: self, withTitle: "Find Customer")
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "findCustomerViewController_header"))
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Utility.getString(forKey: "common_close"), style: .plain, target: self, action: #selector(closeAction))
