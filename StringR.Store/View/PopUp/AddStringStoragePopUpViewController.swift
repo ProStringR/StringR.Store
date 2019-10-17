@@ -171,13 +171,22 @@ class AddStringStoragePopUpViewController: UIViewController {
         return tempLabel
     }
 
+    private func createStringToAdd() -> RacketString? {
+        return RacketString.init(stringId: "lol", brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: buyPriceInput.text, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
+    }
+
     @objc func cancelAction() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     @objc func addAction() {
-        // do something
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        let stringToAdd = createStringToAdd()
+
+        if let stringToAdd = stringToAdd {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } else {
+            print("something went wrong")
+        }
     }
 
     @objc func dataChanged(datePicker: UIDatePicker) {
