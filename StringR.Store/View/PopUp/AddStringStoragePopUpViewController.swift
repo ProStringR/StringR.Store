@@ -48,6 +48,8 @@ class AddStringStoragePopUpViewController: UIViewController {
 
     var buyDate: Date?
 
+    let storageController = ControlReg.getStorageController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -183,7 +185,13 @@ class AddStringStoragePopUpViewController: UIViewController {
         let stringToAdd = createStringToAdd()
 
         if let stringToAdd = stringToAdd {
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            storageController.putRacketString(racketString: stringToAdd) { (succes) in
+                if succes {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                } else {
+                    print("cant put it in firebase")
+                }
+            }
         } else {
             print("something went wrong")
         }
