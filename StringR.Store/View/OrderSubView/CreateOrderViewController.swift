@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable type_body_length
 class CreateOrderViewController: UIViewController {
 
     weak var generalStackView: UIStackView!
@@ -95,7 +96,7 @@ class CreateOrderViewController: UIViewController {
             if let racketStrings = result {
                 self.racketStrings = racketStrings
                 self.reloadPickers()
-            } 
+            }
         }
     }
 
@@ -384,3 +385,4 @@ extension CreateOrderViewController: FindCustomerDelegate {
 
     }
 }
+// swiftlint:enable type_body_length
