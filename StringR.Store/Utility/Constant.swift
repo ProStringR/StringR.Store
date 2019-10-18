@@ -27,4 +27,5 @@ class Constant {
 
     // Strings
     static let emptyString = ""
+    static let shopId = "shopId"
 }
