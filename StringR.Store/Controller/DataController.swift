@@ -30,6 +30,27 @@ class DataController {
         }.resume()
     }
 
+    func getListOfData<T: Codable>(returnType: T.Type, url: String, completion: @escaping ([T]?) -> Void) throws {
+        do {
+            try getData(returnType: [String: T?].self, url: url) { (result) in
+                guard let result = result else { completion(nil); return }
+
+                var listToReturn: [T]? = []
+
+                for item in result {
+                    if let object = item.value {
+                        listToReturn?.append(object)
+                    }
+                }
+
+                completion(listToReturn)
+            }
+        } catch {
+            print(error)
+            completion(nil)
+        }
+    }
+
     func postData<T: Codable>(object: T, url: String) throws {
         guard let url = URL(string: "\(url).json") else { throw Exception.url }
 

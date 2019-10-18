@@ -9,33 +9,42 @@
 import Foundation
 
 class StorageDAOFirebase: StorageDAOProtocol {
-
     let dataControl = ControlReg.getDataController
+
+    func putRacketString(racketString: RacketStringDTO?, storageId: String, completion: @escaping (Bool) -> Void) {
+        guard let racketStringDTO = racketString, let id = racketString?.stringId else { completion(false); return}
+        dataControl.putData(objectToUpdate: racketStringDTO, objectId: id, url: "\(Firebase.storage)/\(storageId)") { (succes) in
+            completion(succes)
+        }
+    }
+
+    func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTO]?) -> Void) {
+        do {
+            try dataControl.getListOfData(returnType: RacketStringDTO.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
+                completion(resultArray)
+            }
+        } catch {
+            print("something went wrong", error)
+            completion(nil)
+        }
+    }
 
     func getRacketStrings(by shopId: String, completion: @escaping ([RacketStringDTO]?) -> Void) {
         do {
             try dataControl.getData(returnType: [String: RacketStringDTO?].self, url: "\(Firebase.storage)/\(shopId)", completion: { (result) in
                 guard let result = result else { completion(nil); return }
-                    var listToReturn: [RacketStringDTO]? = []
+                var listToReturn: [RacketStringDTO]? = []
 
-                    for item in result {
-                        if let racketString = item.value {
-                            listToReturn?.append(racketString)
-                        }
+                for item in result {
+                    if let racketString = item.value {
+                        listToReturn?.append(racketString)
                     }
+                }
 
                 completion(listToReturn)
             })
         } catch {
             completion(nil)
-        }
-    }
-
-    func putRacketString(racketString: RacketStringDTO?, storageId: String, completion: @escaping (Bool) -> Void) {
-        guard let racketString = racketString, let id = racketString.stringId else { completion(false); return }
-
-        dataControl.putData(objectToUpdate: racketString, objectId: id, url: "\(Firebase.storage)/\(storageId)") { (succes) in
-            completion(succes)
         }
     }
 }
