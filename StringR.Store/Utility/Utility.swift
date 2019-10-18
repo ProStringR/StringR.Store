@@ -22,4 +22,19 @@ class Utility {
     static func getUUID() -> String {
         return NSUUID().uuidString
     }
+
+    static func readStringFromSharedPref(_ key: String) -> String {
+
+        let defaults = UserDefaults.standard
+        if let stringToReturn = defaults.string(forKey: key) {
+            return stringToReturn
+        } else {
+            return Constant.emptyString
+        }
+    }
+
+    static func writeStringToSharedPref(withKey key: String, value string: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(string, forKey: key)
+    }
 }
