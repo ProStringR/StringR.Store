@@ -93,7 +93,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func getRacketStrings() {
-        storageController.getRacketStrings(by: "ShopMJ") { (result) in
+        storageController.getListOfStringsInStorage(fromShopId: "ShopMJ") { (result) in
             if let racketStrings = result {
                 self.racketStrings = racketStrings
                 self.reloadPickers()

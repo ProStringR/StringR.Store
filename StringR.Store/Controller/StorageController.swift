@@ -13,28 +13,41 @@ class StorageController {
     let dataControl = ControlReg.getDataController
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
 
-    func getRacketStrings(by shopId: String, completion: @escaping ([RacketString]?) -> Void) {
-        var racketStringsToReturn: [RacketString]? = []
-
-        storageDAO.getRacketStrings(by: shopId, completion: { (result) in
-            if let racketStrings = result {
-                for racketString in racketStrings {
-                    let currentRacketString = self.dataControl.createObject(fromObject: racketString, toObject: RacketString.self)
-                    if let currentRacketString = currentRacketString {
-                        racketStringsToReturn?.append(currentRacketString)
-                    }
-                }
-            }
-
-            completion(racketStringsToReturn)
-        })
-    }
-
     func putRacketString(racketString: RacketString, storageId: String, completion: @escaping (Bool) -> Void) {
-
         let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTO.self)
         storageDAO.putRacketString(racketString: racketStringDTO, storageId: storageId) { (succes) in
             completion(succes)
+        }
+    }
+
+    func getStringInStorage(basedOnShopAndString id: String, completion: @escaping (RacketString?) -> Void) {
+        storageDAO.getStringsInStorage(basedOnId: id) { (dto) in
+            if let racketStringDTO = dto {
+                let racketString = self.dataControl.createObject(fromObject: racketStringDTO, toObject: RacketString.self)
+                completion(racketString)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+
+    func getListOfStringsInStorage(fromShopId id: String, completion: @escaping ([RacketString]?) -> Void) {
+        storageDAO.getStringsInStorage(basedOnId: id) { (resultArray) in
+            if let racketStringDtoArray = resultArray {
+                var racketStrings: [RacketString] = []
+
+                for dto in racketStringDtoArray {
+                    let racketString = self.dataControl.createObject(fromObject: dto, toObject: RacketString.self)
+
+                    if let racketString = racketString {
+                        racketStrings.append(racketString)
+                    }
+                }
+
+                completion(racketStrings)
+            } else {
+                completion(nil)
+            }
         }
     }
 

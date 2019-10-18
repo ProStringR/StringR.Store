@@ -22,6 +22,7 @@ enum StringColor: String, Codable {
     case TEAL = "Teal"
     case WHITE = "White"
     case YELLOW = "Yellow"
+    case DEFAULT = "No color"
 }
 
 extension StringColor {
@@ -41,6 +42,7 @@ extension StringColor {
         case .TEAL: allValues.append(.TEAL); fallthrough
         case .WHITE: allValues.append(.WHITE); fallthrough
         case .YELLOW: allValues.append(.YELLOW)
+        case .DEFAULT: allValues.append(.DEFAULT)
         }
         return allValues
     }

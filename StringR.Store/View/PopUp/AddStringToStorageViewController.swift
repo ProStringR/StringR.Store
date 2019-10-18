@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AddStringStoragePopUpViewController: UIViewController {
+class AddStringToStorageViewController: UIViewController {
 
     weak var brandLabel: UILabel!
     weak var brandInput: UITextField!
@@ -47,6 +47,8 @@ class AddStringStoragePopUpViewController: UIViewController {
     var datePicker = UIDatePicker()
 
     var buyDate: Date?
+
+    let storageController = ControlReg.getStorageController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,13 +173,29 @@ class AddStringStoragePopUpViewController: UIViewController {
         return tempLabel
     }
 
+    private func createStringToAdd() -> RacketString? {
+        return RacketString.init(stringId: Utility.getUUID(), brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: buyPriceInput.text, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
+    }
+
     @objc func cancelAction() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     @objc func addAction() {
-        // do something
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        let stringToAdd = createStringToAdd()
+
+        if let stringToAdd = stringToAdd {
+            let storageId = "ShopMJ"
+            storageController.putRacketString(racketString: stringToAdd, storageId: storageId) { (succes) in
+                if succes {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                } else {
+                    print("cant put it in firebase")
+                }
+            }
+        } else {
+            print("something went wrong")
+        }
     }
 
     @objc func dataChanged(datePicker: UIDatePicker) {
@@ -193,7 +211,7 @@ class AddStringStoragePopUpViewController: UIViewController {
     }
 }
 
-extension AddStringStoragePopUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension AddStringToStorageViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

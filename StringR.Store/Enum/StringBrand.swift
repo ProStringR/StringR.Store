@@ -23,6 +23,7 @@ enum StringBrand: String, Codable {
     case VOLKL = "Volkl"
     case WILSON = "Wilson"
     case YONEX = "Yonex"
+    case DEFAULT = "No Brand"
 }
 
 extension StringBrand {
@@ -43,6 +44,7 @@ extension StringBrand {
         case .VOLKL: allValues.append(.VOLKL); fallthrough
         case .WILSON: allValues.append(.WILSON); fallthrough
         case .YONEX: allValues.append(.YONEX)
+        case .DEFAULT: allValues.append(.DEFAULT)
         }
         return allValues
     }

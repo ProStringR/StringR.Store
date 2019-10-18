@@ -14,6 +14,7 @@ enum StringType: String, Codable {
     case SYNTHETICGUT = "Synthetic Gut"
     case MULTIFILAMENT = "Multifilament"
     case HYBRID = "Hybrid"
+    case DEAULT = "No Type"
 }
 
 extension StringType {
@@ -25,6 +26,7 @@ extension StringType {
         case .SYNTHETICGUT: allValues.append(.SYNTHETICGUT); fallthrough
         case .MULTIFILAMENT: allValues.append(.MULTIFILAMENT); fallthrough
         case .HYBRID: allValues.append(.HYBRID)
+        case .DEAULT: allValues.append(.DEAULT)
         }
         return allValues
     }

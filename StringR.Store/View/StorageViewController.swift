@@ -12,6 +12,7 @@ import UIKit
 class StorageViewController: UIViewController {
 
     weak var storageTableView: UITableView!
+    let storageController = ControlReg.getStorageController
     var strings: [RacketString]?
 
     override func viewDidLoad() {
@@ -24,8 +25,18 @@ class StorageViewController: UIViewController {
     }
 
     private func getStorageData() {
-        // reload data in the tableView
-        self.storageTableView.reloadData()
+        storageController.getListOfStringsInStorage(fromShopId: "ShopMJ") { (arrayOfRacketStrings) in
+            if let arrayOfRacketStrings = arrayOfRacketStrings {
+                self.strings = arrayOfRacketStrings
+                self.updateUI()
+            }
+        }
+    }
+
+    private func updateUI() {
+        DispatchQueue.main.async {
+            self.storageTableView.reloadData()
+        }
     }
 
     private func setLayout() {
@@ -46,7 +57,7 @@ class StorageViewController: UIViewController {
     }
 
     @objc func addAction() {
-        let popUp = LayoutController.getPopupView(viewControllerToPresent: AddStringStoragePopUpViewController())
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: AddStringToStorageViewController())
         self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
