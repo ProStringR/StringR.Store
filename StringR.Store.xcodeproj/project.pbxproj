@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */; };
+		1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
@@ -91,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
+		1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageDAOProtocol.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCell.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 		B3903C072333653000367E5F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */,
 				B3903C082333654500367E5F /* OrderDAOProtocol.swift */,
 				B3B92B5F2333AE9600C39052 /* Observer.swift */,
 				B3B92B612333AEF700C39052 /* Observerable.swift */,
@@ -617,6 +620,7 @@
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
 				B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */,
+				1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
 				1DE69BE923588F1900AD0864 /* StorageDAOFirebase.swift in Sources */,
 				B3B92B5923339D1500C39052 /* Exception.swift in Sources */,
