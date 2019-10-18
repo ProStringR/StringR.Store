@@ -37,6 +37,8 @@ class StringerDetailViewController: UIViewController {
     var activeOrders: [Order]?
     var strings: [RacketString]?
 
+    var orderController = ControlReg.getOrderController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,7 +70,13 @@ class StringerDetailViewController: UIViewController {
 
     private func getActiveOrders() {
         // reload data in the tableView
-        self.orderTableView.reloadData()
+        self.updateUI()
+    }
+
+    private func updateUI() {
+        DispatchQueue.main.async {
+            self.orderTableView.reloadData()
+        }
     }
 
     private func setupGenerelStackView() {

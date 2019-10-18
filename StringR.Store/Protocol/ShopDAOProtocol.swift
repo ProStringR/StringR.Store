@@ -11,4 +11,5 @@ import Foundation
 protocol ShopDAOProtocol {
     func getShop(by id: String, completion: @escaping (ShopDTO?) -> Void)
     func postShop(shop: ShopDTO?) throws
+    func putShop(shop: ShopDTO?, completion: @escaping (Bool) -> Void)
 }

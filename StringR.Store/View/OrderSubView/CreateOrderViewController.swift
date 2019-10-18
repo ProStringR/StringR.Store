@@ -275,6 +275,25 @@ class CreateOrderViewController: UIViewController {
 
         orderController.putOrder(order: order) { (succes) in
             if succes {
+                // set orderId to stringer
+                guard let order = order else { self.submissionFailed(); return }
+
+                if self.stringer?.orderIds != nil {
+                    self.stringer?.orderIds?.append(order.orderId)
+                } else {
+                    self.stringer?.orderIds = [order.orderId]
+                }
+
+                if let stringer = self.stringer {
+                    self.teamController.putStringer(stringer: stringer) { (succes) in
+                        if !succes {
+                            self.submissionFailed()
+                        }
+                    }
+                }
+                // set orderId to shop
+
+
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }

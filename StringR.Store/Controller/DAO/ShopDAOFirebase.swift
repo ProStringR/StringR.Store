@@ -27,4 +27,11 @@ class ShopDAOFirebase: ShopDAOProtocol {
         try dataControl.postData(object: shopDTO, url: Firebase.shop)
     }
 
+    func putShop(shop: ShopDTO?, completion: @escaping (Bool) -> Void) {
+        guard let shop = shop, let id = shop.shopId else { completion(false); return }
+        dataControl.putData(objectToUpdate: shop, objectId: id, url: Firebase.shop) { (succes) in
+            completion(succes)
+        }
+    }
+
 }
