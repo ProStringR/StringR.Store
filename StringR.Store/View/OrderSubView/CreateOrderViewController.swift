@@ -69,9 +69,10 @@ class CreateOrderViewController: UIViewController {
         setupDeliveryStackView()
         setupPriceStackView()
         setupCommentStackView()
-        setupGeneralStackView()
         setupPlaceOrderButton()
+        setupGeneralStackView()
         setupPickerViews()
+        setupConstraints()
         // Get data
         getStringers()
         getRacketStrings()
@@ -118,18 +119,7 @@ class CreateOrderViewController: UIViewController {
         let content = [self.customerStackView, self.specificationStackView, self.deliveryStackView, self.priceStackView, self.commentStackView]
         self.generalStackView = LayoutController.getStackView(content: content, orientation: .vertical, parentView: self.view)
         self.generalStackView.alignment = .top
-        self.generalStackView.distribution = .fill
-        self.generalStackView.spacing = 16
-
-        Layout.addTopConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.topAnchor)
-        Layout.addLeadingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: 64)
-        Layout.addTrailingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: 64)
-
-        Layout.addTrailingConstraint(on: self.customerStackView, to: self.generalStackView.trailingAnchor, by: 0)
-        Layout.addTrailingConstraint(on: self.specificationStackView, to: self.generalStackView.trailingAnchor, by: 0)
-        Layout.addTrailingConstraint(on: self.deliveryStackView, to: self.generalStackView.trailingAnchor, by: 0)
-        Layout.addTrailingConstraint(on: self.priceStackView, to: self.generalStackView.trailingAnchor, by: 0)
-        Layout.addTrailingConstraint(on: self.commentStackView, to: self.generalStackView.trailingAnchor, by: 0)
+        self.generalStackView.distribution = .fillProportionally
     }
 
     private func setupCustromerStackView() {
@@ -206,7 +196,7 @@ class CreateOrderViewController: UIViewController {
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         segmentedControl.selectedSegmentIndex = 0
         self.racketType = .BADMINTON
-        segmentedControl.layer.cornerRadius = 5.0
+        segmentedControl.layer.cornerRadius = Constant.standardCornerRadius
         segmentedControl.backgroundColor = .black
         segmentedControl.tintColor = .white
 
@@ -228,10 +218,24 @@ class CreateOrderViewController: UIViewController {
     private func setupPlaceOrderButton() {
         self.placeOrderButton = LayoutController.getButton(title: Utility.getString(forKey: "createOrderViewController_placeOrderButton"), parentView: self.view)
         self.placeOrderButton.addTarget(self, action: #selector(placeOrderClicked(_:)), for: .touchUpInside)
+    }
+
+    private func setupConstraints() {
+
+        Layout.addTopConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.topAnchor)
+        Layout.addLeadingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.gigantOffset)
+        Layout.addTrailingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.gigantOffset)
+        Layout.addBottomConstraint(on: self.generalStackView, to: self.placeOrderButton.topAnchor, by: Constant.hugeOffset)
+
+        Layout.addTrailingConstraint(on: self.customerStackView, to: self.generalStackView.trailingAnchor, by: Constant.noOffset)
+        Layout.addTrailingConstraint(on: self.specificationStackView, to: self.generalStackView.trailingAnchor, by: Constant.noOffset)
+        Layout.addTrailingConstraint(on: self.deliveryStackView, to: self.generalStackView.trailingAnchor, by: Constant.noOffset)
+        Layout.addTrailingConstraint(on: self.priceStackView, to: self.generalStackView.trailingAnchor, by: Constant.noOffset)
+        Layout.addTrailingConstraint(on: self.commentStackView, to: self.generalStackView.trailingAnchor, by: Constant.noOffset)
 
         Layout.addBottomConstraint(on: self.placeOrderButton, to: self.view.safeAreaLayoutGuide.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.placeOrderButton, to: self.generalStackView.leadingAnchor, by: 0)
-        Layout.addTrailingConstraint(on: self.placeOrderButton, to: self.generalStackView.trailingAnchor, by: 0)
+        Layout.addLeadingConstraint(on: self.placeOrderButton, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.gigantOffset)
+        Layout.addTrailingConstraint(on: self.placeOrderButton, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.gigantOffset)
     }
 
     private func setupPickerViews() {
