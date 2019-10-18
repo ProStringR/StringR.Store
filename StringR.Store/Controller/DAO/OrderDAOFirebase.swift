@@ -12,6 +12,16 @@ class OrderDAOFirebase: OrderDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
+    func getOrder(by id: String, completion: @escaping (OrderDTO?) -> Void) {
+        do {
+            try dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
+                completion(result)
+            })
+        } catch {
+            completion(nil)
+        }
+    }
+
     func postOrder(order: OrderDTO) throws {
         do {
             try dataControl.postData(object: order, url: Firebase.order)

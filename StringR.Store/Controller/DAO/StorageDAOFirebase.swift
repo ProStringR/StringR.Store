@@ -19,32 +19,24 @@ class StorageDAOFirebase: StorageDAOProtocol {
     }
 
     func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTO]?) -> Void) {
-        do {
-            try dataControl.getListOfData(returnType: RacketStringDTO.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
-                completion(resultArray)
-            }
-        } catch {
-            print("something went wrong", error)
-            completion(nil)
+        dataControl.getListOfData(returnType: RacketStringDTO.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
+            completion(resultArray)
         }
     }
 
     func getRacketStrings(by shopId: String, completion: @escaping ([RacketStringDTO]?) -> Void) {
-        do {
-            try dataControl.getData(returnType: [String: RacketStringDTO?].self, url: "\(Firebase.storage)/\(shopId)", completion: { (result) in
-                guard let result = result else { completion(nil); return }
-                var listToReturn: [RacketStringDTO]? = []
+        dataControl.getData(returnType: [String: RacketStringDTO?].self, url: "\(Firebase.storage)/\(shopId)", completion: { (result) in
+            guard let result = result else { completion(nil); return }
+            var listToReturn: [RacketStringDTO]? = []
 
-                for item in result {
-                    if let racketString = item.value {
-                        listToReturn?.append(racketString)
-                    }
+            for item in result {
+                if let racketString = item.value {
+                    listToReturn?.append(racketString)
                 }
+            }
 
-                completion(listToReturn)
-            })
-        } catch {
-            completion(nil)
-        }
+            completion(listToReturn)
+        })
+
     }
 }

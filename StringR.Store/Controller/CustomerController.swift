@@ -15,12 +15,7 @@ class CustomerController {
 
     func getCustomer(by id: String, completion: @escaping (Customer?) -> Void) {
         customerDAO.getCustomer(by: id) { (result) in
-            if let customerDTO = result {
-                let customer = self.dataControl.createObject(fromObject: customerDTO, toObject: Customer.self)
-                completion(customer)
-            } else {
-                completion(nil)
-            }
+            completion(self.dataControl.createObject(fromObject: result, toObject: Customer.self))
         }
     }
 
