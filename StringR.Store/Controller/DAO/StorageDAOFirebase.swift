@@ -23,20 +23,4 @@ class StorageDAOFirebase: StorageDAOProtocol {
             completion(resultArray)
         }
     }
-
-    func getRacketStrings(by shopId: String, completion: @escaping ([RacketStringDTO]?) -> Void) {
-        dataControl.getData(returnType: [String: RacketStringDTO?].self, url: "\(Firebase.storage)/\(shopId)", completion: { (result) in
-            guard let result = result else { completion(nil); return }
-            var listToReturn: [RacketStringDTO]? = []
-
-            for item in result {
-                if let racketString = item.value {
-                    listToReturn?.append(racketString)
-                }
-            }
-
-            completion(listToReturn)
-        })
-
-    }
 }

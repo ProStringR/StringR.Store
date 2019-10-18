@@ -13,32 +13,14 @@ class CustomerDAOFirebase: CustomerDAOProtocol {
     let dataControl = ControlReg.getDataController
 
     func getCustomer(by id: String, completion: @escaping (CustomerDTO?) -> Void) {
-        do {
-            try dataControl.getData(returnType: CustomerDTO.self, url: "\(Firebase.customer)/\(id)", completion: { (result) in
-                completion(result)
-            })
-        } catch {
-            completion(nil)
-        }
+        dataControl.getData(returnType: CustomerDTO.self, url: "\(Firebase.customer)/\(id)", completion: { (result) in
+            completion(result)
+        })
     }
 
     func getAllCustomers(completion: @escaping ([CustomerDTO]?) -> Void) {
-        do {
-            try dataControl.getData(returnType: [String: CustomerDTO?].self, url: Firebase.customer, completion: { (result) in
-
-                guard let result = result else { completion(nil); return }
-                var listToReturn: [CustomerDTO]? = []
-
-                for item in result {
-                    if let customer = item.value {
-                        listToReturn?.append(customer)
-                    }
-                }
-
-                completion(listToReturn)
-            })
-        } catch {
-            completion(nil)
+        dataControl.getListOfData(returnType: CustomerDTO.self, url: Firebase.customer) { (result) in
+            completion(result)
         }
     }
 

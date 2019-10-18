@@ -107,7 +107,7 @@ class DataController {
 
     func createObject<T: Codable, P: Codable>(fromObject: T?, toObject: P.Type) -> P? {
         guard let object = fromObject else { return nil }
-        
+
         do {
             let json = try JSONEncoder().encode(object)
             let newObject = try JSONDecoder().decode(toObject, from: json)

@@ -13,23 +13,15 @@ class TeamDAOFirebase: TeamDAOProtocol {
     let dataControl = ControlReg.getDataController
 
     func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTO?) -> Void) {
-        do {
-            try dataControl.getData(returnType: StringerDTO.self, url: "\(Firebase.stringer)/\(stringerId)", completion: { (result) in
-                completion(result)
-            })
-        } catch {
-            completion(nil)
-        }
+        dataControl.getData(returnType: StringerDTO.self, url: "\(Firebase.stringer)/\(stringerId)", completion: { (result) in
+            completion(result)
+        })
     }
 
     func getTeam(basedOn teamId: String, completion: @escaping (TeamDTO?) -> Void) {
-        do {
-            try dataControl.getData(returnType: TeamDTO.self, url: "\(Firebase.team)/\(teamId)", completion: { (result) in
-                completion(result)
-            })
-        } catch {
-            completion(nil)
-        }
+        dataControl.getData(returnType: TeamDTO.self, url: "\(Firebase.team)/\(teamId)", completion: { (result) in
+            completion(result)
+        })
     }
 
     func postStringer(stringer: Stringer) throws {
