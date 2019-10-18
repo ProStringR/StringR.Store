@@ -11,4 +11,5 @@ import Foundation
 protocol OrderDAOProtocol {
 
     func postOrder(order: OrderDTO) throws
+    func putOrder(order: OrderDTO?, completion: @escaping (Bool) -> Void)
 }

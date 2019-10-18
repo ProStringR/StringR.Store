@@ -10,10 +10,12 @@ import Foundation
 
 class Firebase {
 
-    static let ref = "https://prostringr.firebaseio.com/"
+    static let ref = "https://prostringr.firebaseio.com"
     static let order = "\(ref)/order"
     static let racket = "\(ref)/racket"
     static let stringer = "\(ref)/stringer"
     static let shop = "\(ref)/shop"
     static let team = "\(ref)/team"
+    static let customer = "\(ref)/customer"
+    static let storage = "\(ref)/storage"
 }

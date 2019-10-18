@@ -13,4 +13,13 @@ class OrderController {
     let dataControl = ControlReg.getDataController
     let teamControl = ControlReg.getTeamController
     let orderDAO: OrderDAOProtocol = ControlReg.getOrderDAO
+
+    func putOrder(order: Order?, completion: @escaping (Bool) -> Void) {
+        guard let order = order else { completion(false); return }
+        let orderDTO = dataControl.createObject(fromObject: order, toObject: OrderDTO.self)
+
+        orderDAO.putOrder(order: orderDTO) { (succes) in
+            completion(succes)
+        }
+    }
 }
