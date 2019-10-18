@@ -18,7 +18,7 @@ class StorageDAOFirebase {
         }
     }
 
-    func getStringsInStorage(basedOnShopId id: String, andStringId  completion: @escaping ([RacketStringDTO]?) -> Void) {
+    func getStringsInStorage(basedOnId id: String, andStringId  completion: @escaping ([RacketStringDTO]?) -> Void) {
         do {
             try dataControl.getListOfData(returnType: RacketStringDTO.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
                 completion(resultArray)

@@ -20,8 +20,8 @@ class StorageController {
         }
     }
 
-    func getStringInStorage(basedOn id: String, completion: @escaping (RacketString?) -> Void) {
-        storageDAO.getStringsInStorage(basedOnShopId: id) { (dto) in
+    func getStringInStorage(basedOnShopAndString id: String, completion: @escaping (RacketString?) -> Void) {
+        storageDAO.getStringsInStorage(basedOnId: id) { (dto) in
             if let racketStringDTO = dto {
                 let racketString = self.dataControl.createObject(fromObject: racketStringDTO, toObject: RacketString.self)
                 completion(racketString)
@@ -32,7 +32,7 @@ class StorageController {
     }
 
     func getListOfStringsInStorage(fromShopId id: String, completion: @escaping ([RacketString]?) -> Void) {
-        storageDAO.getStringsInStorage(basedOnShopId: id) { (resultArray) in
+        storageDAO.getStringsInStorage(basedOnId: id) { (resultArray) in
             if let racketStringDtoArray = resultArray {
                 var racketStrings: [RacketString] = []
 
