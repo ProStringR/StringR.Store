@@ -11,11 +11,11 @@ import Foundation
 class StorageController {
 
     let dataControl = ControlReg.getDataController
-    let storageDAO = ControlReg.getStorageDAO
+    let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
 
-    func putRacketString(racketString: RacketString, url: String, completion: @escaping (Bool) -> Void) {
+    func putRacketString(racketString: RacketString, storageId: String, completion: @escaping (Bool) -> Void) {
         let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTO.self)
-        storageDAO.putRacketString(racketString: racketStringDTO, url: url) { (succes) in
+        storageDAO.putRacketString(racketString: racketStringDTO, storageId: storageId) { (succes) in
             completion(succes)
         }
     }

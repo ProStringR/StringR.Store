@@ -11,9 +11,9 @@ import Foundation
 class StorageDAOFirebase: StorageDAOProtocol {
     let dataControl = ControlReg.getDataController
 
-    func putRacketString(racketString: RacketStringDTO?, url: String, completion: @escaping (Bool) -> Void) {
+    func putRacketString(racketString: RacketStringDTO?, storageId: String, completion: @escaping (Bool) -> Void) {
         guard let racketStringDTO = racketString, let id = racketString?.stringId else { completion(false); return}
-        dataControl.putData(objectToUpdate: racketStringDTO, objectId: id, url: url) { (succes) in
+        dataControl.putData(objectToUpdate: racketStringDTO, objectId: id, url: "\(Firebase.storage)/\(storageId)") { (succes) in
             completion(succes)
         }
     }
@@ -45,14 +45,6 @@ class StorageDAOFirebase: StorageDAOProtocol {
             })
         } catch {
             completion(nil)
-        }
-    }
-
-    func putRacketString(racketString: RacketStringDTO?, storageId: String, completion: @escaping (Bool) -> Void) {
-        guard let racketString = racketString, let id = racketString.stringId else { completion(false); return }
-
-        dataControl.putData(objectToUpdate: racketString, objectId: id, url: "\(Firebase.storage)/\(storageId)") { (succes) in
-            completion(succes)
         }
     }
 }

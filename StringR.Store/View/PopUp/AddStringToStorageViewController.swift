@@ -185,8 +185,8 @@ class AddStringToStorageViewController: UIViewController {
         let stringToAdd = createStringToAdd()
 
         if let stringToAdd = stringToAdd {
-            let url = "\(Firebase.storage)/ShopMJ"
-            storageController.putRacketString(racketString: stringToAdd, url: url) { (succes) in
+            let storageId = "ShopMJ"
+            storageController.putRacketString(racketString: stringToAdd, storageId: storageId) { (succes) in
                 if succes {
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 } else {
