@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StorageDAOFirebase {
+class StorageDAOFirebase: StorageDAOProtocol {
     let dataControl = ControlReg.getDataController
 
     func putRacketString(racketString: RacketStringDTO?, url: String, completion: @escaping (Bool) -> Void) {
