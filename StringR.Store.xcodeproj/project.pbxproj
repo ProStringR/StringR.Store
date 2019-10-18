@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */; };
 		1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */; };
+		1D1771822359EBFB00DBC870 /* ShopSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1771812359EBFB00DBC870 /* ShopSingleton.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
@@ -93,6 +94,7 @@
 /* Begin PBXFileReference section */
 		1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
 		1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageDAOProtocol.swift; sourceTree = "<group>"; };
+		1D1771812359EBFB00DBC870 /* ShopSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSingleton.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCell.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
@@ -201,6 +203,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1D1771802359EBD900DBC870 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1D1771812359EBFB00DBC870 /* ShopSingleton.swift */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
 		1D3987E0233B8D4500CDA0DD /* OrderSubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +297,7 @@
 		B34DF28B232B77FF00D9CCA8 /* StringR.Store */ = {
 			isa = PBXGroup;
 			children = (
+				1D1771802359EBD900DBC870 /* Singleton */,
 				B3B92B5723339D0800C39052 /* Error */,
 				B3903C072333653000367E5F /* Protocol */,
 				1D61CECA232FE345006FED94 /* Controller */,
@@ -589,6 +600,7 @@
 				1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */,
 				B3C4599F2355DEB100A50C51 /* FindCustomerViewController.swift in Sources */,
 				1D7455CE23435F2300C33B0C /* StorageDTO.swift in Sources */,
+				1D1771822359EBFB00DBC870 /* ShopSingleton.swift in Sources */,
 				B38C5BA5232BE45A00116BC1 /* RacketType.swift in Sources */,
 				B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */,
 				B39CCE8823565CEB00EA892B /* CustomerDAOProtocol.swift in Sources */,

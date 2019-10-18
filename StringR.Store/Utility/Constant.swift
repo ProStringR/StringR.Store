@@ -11,6 +11,7 @@ import UIKit
 
 class Constant {
 
+    // Numbers
     static let noOffset = CGFloat(0)
     static let standardOffset = CGFloat(8)
     static let bigOffset = CGFloat(16)
@@ -23,4 +24,8 @@ class Constant {
     static let popupLeadingTrailing = CGFloat(75)
     static let standardCornerRadius = CGFloat(10)
     static let standardButtonHeight = CGFloat(50)
+
+    // Strings
+    static let emptyString = ""
+    static let shopId = "shopId"
 }
