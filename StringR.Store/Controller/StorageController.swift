@@ -48,24 +48,4 @@ class StorageController {
 
         return stringsToReturn
     }
-
-//    func filterStringsByPurpose(racketStrings: [RacketString]) -> (badminton: [RacketString], tennis: [RacketString], squash: [RacketString]) {
-//
-//        var badminton: [RacketString] = []
-//        var tennis: [RacketString] = []
-//        var squash: [RacketString] = []
-//
-//        for string in racketStrings {
-//            switch string.stringPurpose {
-//            case .BADMINTON:
-//                badminton.append(string)
-//            case .TENNIS:
-//                tennis.append(string)
-//            case .SQUASH:
-//                squash.append(string)
-//            }
-//        }
-//
-//        return (badminton, tennis, squash)
-//    }
 }
