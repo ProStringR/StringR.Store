@@ -10,12 +10,16 @@
 "common_remove" = "Fjern";
 "common_cancel" = "Fortryd";
 "common_tryAgain" = "Prøv igen";
+"common_Ups" = "Ups... noget gik galt";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
 "generel_Racket" = "Ketcher";
 "generel_Storage" = "Lager";
 "generel_Team" = "Team";
+"generel_Badminton" = "Badminton";
+"generel_Tennis" = "Tennis";
+"generel_Squash" = "Squash";
 
 "addString_Head" = "Ny Streng";
 "addString_BrandLabel" = "Mærke";
@@ -63,3 +67,20 @@
 "stringerDetailViewController_contactLabel" = "Kontakt";
 "stringerDetailViewController_informationLabel" = "Information";
 "stringerDetailViewController_activeOrdersLabel" = "Aktive Ordre";
+
+"findCustomerViewController_header" = "Find Kunde";
+
+"createOrderViewController_customerLabel" = "Kunde";
+"createOrderViewController_chooseCustomerButton" = "Vælg Kunde";
+"createOrderViewController_racketSpecificationLabel" = "Ketcher Specifikationer";
+"createOrderViewController_chooseString" = "Vælg Streng";
+"createOrderViewController_chooseStringer" = "Vælg Strenger";
+"createOrderViewController_deliveryInfoLabel" = "Leveringsinformation";
+"createOrderViewController_deliveryDate" = "Vælg ønskede afhentningsdato";
+"createOrderViewController_priceLabel" = "Pris";
+"createOrderViewController_commentLabel" = "Kommentar";
+"createOrderViewController_commentDescription" = "Kommentér, hvis der er nogle specielle informationer til din ordre.";
+"createOrderViewController_mainTension" = "Vertikal Tension";
+"createOrderViewController_crossTension" = "Lodret Tension";
+"createOrderViewController_placeOrderButton" = "Opret Ordre";
+"createOrderViewController_creationFail" = "Noget gik galt under oprettelsen af ordren";

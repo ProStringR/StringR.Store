@@ -72,7 +72,7 @@ extension OrderViewController {
 
         switch indexPath.row {
         case 0:
-            print("Clicked \(indexPath.row)")
+            nextViewController = CreateOrderViewController()
         case 1:
             nextViewController = ReceivedViewController()
         case 2:

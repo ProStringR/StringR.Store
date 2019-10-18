@@ -10,12 +10,16 @@
 "common_remove" = "Remove";
 "common_cancel" = "Cancel";
 "common_tryAgain" = "Try again";
+"common_Ups" = "Ups... something went wrong";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
 "generel_Racket" = "Racket";
 "generel_Storage" = "Storage";
 "generel_Team" = "Team";
+"generel_Badminton" = "Badminton";
+"generel_Tennis" = "Tennis";
+"generel_Squash" = "Squash";
 
 "addString_Head" = "New String";
 "addString_BrandLabel" = "Brand";
@@ -63,3 +67,20 @@
 "stringerDetailViewController_contactLabel" = "Contact";
 "stringerDetailViewController_informationLabel" = "Information";
 "stringerDetailViewController_activeOrdersLabel" = "Active Orders";
+
+"findCustomerViewController_header" = "Find Customer";
+
+"createOrderViewController_customerLabel" = "Customer";
+"createOrderViewController_chooseCustomerButton" = "Choose Customer";
+"createOrderViewController_racketSpecificationLabel" = "Racket Specifications";
+"createOrderViewController_chooseString" = "Choose String";
+"createOrderViewController_chooseStringer" = "Choose Stringer";
+"createOrderViewController_deliveryInfoLabel" = "Delivery Information";
+"createOrderViewController_deliveryDate" = "Choose wanted delivery time";
+"createOrderViewController_priceLabel" = "Price";
+"createOrderViewController_commentLabel" = "Comment";
+"createOrderViewController_commentDescription" = "Comment, if you have some extra information about your order";
+"createOrderViewController_mainTension" = "Main Tension";
+"createOrderViewController_crossTension" = "Cross Tension";
+"createOrderViewController_placeOrderButton" = "Place Order";
+"createOrderViewController_creationFail" = "Something in the order creation went wrong.";

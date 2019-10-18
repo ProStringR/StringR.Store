@@ -50,4 +50,15 @@ class StorageController {
             }
         }
     }
+
+    func filterStrings(racketStrings: [RacketString], by purpose: RacketType) -> [RacketString] {
+
+        var stringsToReturn: [RacketString] = []
+
+        for string in racketStrings where string.stringPurpose == purpose {
+            stringsToReturn.append(string)
+        }
+
+        return stringsToReturn
+    }
 }

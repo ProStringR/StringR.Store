@@ -37,4 +37,20 @@ class Order: Codable {
         self.price = price
         self.paid = paid
     }
+
+    init?(orderId: String?, customerId: String?, stringerId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
+
+        guard let orderId = orderId, let customerId = customerId, let stringerId = stringerId, let racketType = racketType, let tensionVertical = tensionVertical, let tensionHorizontal = tensionHorizontal, let stringId = stringId, let deliveryDate = deliveryDate, let price = price, let paid = paid else { return nil }
+
+        self.orderId = orderId
+        self.customerId = customerId
+        self.stringerId = stringerId
+        self.racketType = racketType
+        self.tensionVertical = tensionVertical
+        self.tensionHorizontal = tensionHorizontal
+        self.stringId = stringId
+        self.deliveryDate = deliveryDate
+        self.price = price
+        self.paid = paid
+    }
 }
