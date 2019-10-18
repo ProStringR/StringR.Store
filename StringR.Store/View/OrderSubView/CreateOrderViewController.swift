@@ -60,6 +60,7 @@ class CreateOrderViewController: UIViewController {
     let orderController = ControlReg.getOrderController
     let teamController = ControlReg.getTeamController
     let storageController = ControlReg.getStorageController
+    let customerController = ControlReg.getCustomerController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -278,11 +279,7 @@ class CreateOrderViewController: UIViewController {
                 // set orderId to stringer
                 guard let order = order else { self.submissionFailed(); return }
 
-                if self.stringer?.orderIds != nil {
-                    self.stringer?.orderIds?.append(order.orderId)
-                } else {
-                    self.stringer?.orderIds = [order.orderId]
-                }
+                self.stringer?.orderIds = self.appendOrderId(orderIds: self.stringer?.orderIds, orderId: order.orderId)
 
                 if let stringer = self.stringer {
                     self.teamController.putStringer(stringer: stringer) { (succes) in
@@ -291,6 +288,18 @@ class CreateOrderViewController: UIViewController {
                         }
                     }
                 }
+
+                // set orderId to customer
+                self.customer?.orderIds = self.appendOrderId(orderIds: self.customer?.orderIds, orderId: order.orderId)
+
+                if let customer = self.customer {
+                    self.customerController.putCustomer(customer: customer) { (succes) in
+                        if !succes {
+                            self.submissionFailed()
+                        }
+                    }
+                }
+
                 // set orderId to shop
 
                 DispatchQueue.main.async {
@@ -299,6 +308,15 @@ class CreateOrderViewController: UIViewController {
             } else {
                 self.submissionFailed()
             }
+        }
+    }
+
+    private func appendOrderId(orderIds: [String]?, orderId: String) -> [String] {
+        if var orderIds = orderIds {
+            orderIds.append(orderId)
+            return orderIds
+        } else {
+            return [orderId]
         }
     }
 
