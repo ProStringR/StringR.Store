@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E4233B912400CDA0DD /* ReceivedOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
@@ -14,7 +15,6 @@
 		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
 		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
 		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
-		1D6EF1502358AFA500BAB92A /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6EF14F2358AFA500BAB92A /* AddStringToStorageViewController.swift */; };
 		1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C523435D2200C33B0C /* AddressDTO.swift */; };
 		1D7455C823435DEA00C33B0C /* TeamDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C723435DEA00C33B0C /* TeamDTO.swift */; };
 		1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C923435E2000C33B0C /* RacketDTO.swift */; };
@@ -90,6 +90,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E3233B912400CDA0DD /* ReceivedOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCell.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
 		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
-		1D6EF14F2358AFA500BAB92A /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
 		1D7455C523435D2200C33B0C /* AddressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDTO.swift; sourceTree = "<group>"; };
 		1D7455C723435DEA00C33B0C /* TeamDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDTO.swift; sourceTree = "<group>"; };
 		1D7455C923435E2000C33B0C /* RacketDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDTO.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		1D7455D92346449500C33B0C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
-				1D6EF14F2358AFA500BAB92A /* AddStringToStorageViewController.swift */,
+				1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -551,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */,
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
 				1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */,
@@ -609,7 +610,6 @@
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,
-				1D6EF1502358AFA500BAB92A /* AddStringToStorageViewController.swift in Sources */,
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
