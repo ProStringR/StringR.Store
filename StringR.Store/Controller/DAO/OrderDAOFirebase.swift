@@ -18,6 +18,25 @@ class OrderDAOFirebase: OrderDAOProtocol {
         })
     }
 
+    func getOrdersFiltered(orderIds: [String], status: OrderStatus, completion: @escaping ([OrderDTO]?) -> Void) {
+
+        var attempts = 0
+        var list: [OrderDTO] = []
+
+        for id in orderIds {
+            getOrder(by: id) { (result) in
+                attempts += 1
+                if let order = result, order.orderStatus == status {
+                    list.append(order)
+                }
+
+                if attempts == orderIds.count {
+                    completion(list)
+                }
+            }
+        }
+    }
+
     func postOrder(order: OrderDTO) throws {
         do {
             try dataControl.postData(object: order, url: Firebase.order)

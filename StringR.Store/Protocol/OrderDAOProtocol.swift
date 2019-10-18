@@ -11,6 +11,7 @@ import Foundation
 protocol OrderDAOProtocol {
 
     func getOrder(by id: String, completion: @escaping (OrderDTO?) -> Void)
+    func getOrdersFiltered(orderIds: [String], status: OrderStatus, completion: @escaping ([OrderDTO]?) -> Void)
     func postOrder(order: OrderDTO) throws
     func putOrder(order: OrderDTO?, completion: @escaping (Bool) -> Void)
 }

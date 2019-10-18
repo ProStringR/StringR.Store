@@ -14,6 +14,8 @@ class DataController {
 
         guard let url = URL(string: "\(url).json") else { completion(nil); return }
 
+        print("URL: \(url)")
+
         URLSession.shared.dataTask(with: url) {(data, response, error) in
             // TODO: if we want to handle the error or respons
             _ = response

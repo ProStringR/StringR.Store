@@ -28,6 +28,7 @@
 		1DE69BE923588F1900AD0864 /* StorageDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
+		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
 		B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */; };
 		B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */; };
@@ -116,6 +117,7 @@
 		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.release.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.release.xcconfig"; sourceTree = "<group>"; };
 		8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.debug.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.debug.xcconfig"; sourceTree = "<group>"; };
+		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
 		B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDAOFirebase.swift; sourceTree = "<group>"; };
 		B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDAOProtocol.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				B38C5BA8232BE4DD00116BC1 /* StringColor.swift */,
 				B38C5BAA232BE5BD00116BC1 /* RacketBrand.swift */,
 				B38C5BAC232BE70D00116BC1 /* StringBrand.swift */,
+				B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				B3CAF9892341FB67005F5B38 /* TeamDAOFirebase.swift in Sources */,
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B3A1B5F523508B5900B1133E /* CreateOrderViewController.swift in Sources */,
+				B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,

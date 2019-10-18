@@ -20,6 +20,7 @@ class Order: Codable {
     var deliveryDate: Int64
     var price: Double
     var paid: Bool
+    var orderStatus: OrderStatus
     var timePlaced: Int64?
     var timeDone: Int64?
     var timeDelivery: Int64?
@@ -36,6 +37,7 @@ class Order: Codable {
         self.deliveryDate = deliveryDate
         self.price = price
         self.paid = paid
+        self.orderStatus = .RECIEVED
     }
 
     init?(orderId: String?, customerId: String?, stringerId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
@@ -52,5 +54,6 @@ class Order: Codable {
         self.deliveryDate = deliveryDate
         self.price = price
         self.paid = paid
+        self.orderStatus = .RECIEVED
     }
 }

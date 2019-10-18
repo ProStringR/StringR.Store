@@ -13,6 +13,8 @@ class ReceivedViewController: UIViewController {
     weak var receivedOrdersTableView: UITableView!
     var orders: [Order]?
 
+    var orderController = ControlReg.getOrderController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,30 +36,24 @@ class ReceivedViewController: UIViewController {
 //        self.receivedOrdersTableView.delegate = self
     }
 
+    private func updateUI() {
+        DispatchQueue.main.async {
+            self.receivedOrdersTableView.reloadData()
+        }
+    }
+
     private func getData() {
-        let order1 = Order(orderId: "lol",
-                           customerId: "Jaafar Mahdi",
-                           stringerId: "22/09/2020",
-                           racketType: RacketType.TENNIS,
-                           tensionVertical: 25,
-                           tensionHorizontal: 25, stringId: "lol",
-                           deliveryDate: 22222,
-                           price: 22,
-                           paid: true)
-
-        let order2 = Order(orderId: "lol",
-                           customerId: "Marcus Christiansen",
-                           stringerId: "26/09/2019",
-                           racketType: RacketType.TENNIS,
-                           tensionVertical: 25,
-                           tensionHorizontal: 25, stringId: "lol",
-                           deliveryDate: 22222,
-                           price: 22,
-                           paid: false)
-
-        self.orders = [Order]()
-        self.orders?.append(order1)
-        self.orders?.append(order2)
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
+                self.orderController.getRecievedOrders(shop: shop) { (result) in
+                    if let result = result {
+                        print(result.count)
+                        self.orders = result
+                        self.updateUI()
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -77,7 +73,7 @@ extension ReceivedViewController: UITableViewDataSource {
         // swiftlint:enable force_cast
 
         cell.customerNameLabel.text = orders[indexPath.row].customerId
-        cell.deliveryDateLabel.text = orders[indexPath.row].stringerId
+        cell.deliveryDateLabel.text = String(orders[indexPath.row].deliveryDate)
 
         let image = orders[indexPath.row].paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "red_circle")
         cell.statusIndicatorImageView.image = image
