@@ -61,6 +61,7 @@ class CreateOrderViewController: UIViewController {
     let teamController = ControlReg.getTeamController
     let storageController = ControlReg.getStorageController
     let customerController = ControlReg.getCustomerController
+    let shopController = ControlReg.getShopController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -301,6 +302,16 @@ class CreateOrderViewController: UIViewController {
                 }
 
                 // set orderId to shop
+                ShopSingleton.shared.getShop { (shop) in
+                    if let shop = shop {
+                        shop.orderIds = self.appendOrderId(orderIds: shop.orderIds, orderId: order.orderId)
+                        self.shopController.putShop(shop: shop) { (succes) in
+                            if !succes {
+                                self.submissionFailed()
+                            }
+                        }
+                    }
+                }
 
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)

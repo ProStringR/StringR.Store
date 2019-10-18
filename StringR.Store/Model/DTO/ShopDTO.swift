@@ -16,4 +16,5 @@ struct ShopDTO: Codable {
     var storageId: String?
     var teamId: String?
     var companyId: String?
+    var orderIds: [String]?
 }
