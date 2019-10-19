@@ -62,7 +62,6 @@ class SpecificStringInStorageViewController: UIViewController {
 
     private func setupView() {
         self.view.backgroundColor = .white
-        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "generel_Order")))
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
