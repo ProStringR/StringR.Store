@@ -9,6 +9,7 @@
 import Foundation
 
 protocol StorageDAOProtocol {
+    func getRacketString(by id: String, completion: @escaping (RacketString?) -> Void)
     func putRacketString(racketString: RacketStringDTO?, storageId: String, completion: @escaping (Bool) -> Void)
     func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTO]?) -> Void)
 }
