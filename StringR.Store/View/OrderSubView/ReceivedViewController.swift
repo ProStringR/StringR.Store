@@ -29,7 +29,7 @@ class ReceivedViewController: UIViewController {
     }
 
     private func setupTableView() {
-        self.receivedOrdersTableView = LayoutController.getTableView(cellType: ReceivedOrderCell.self, cellIdentifier: ReceivedOrderCell.identifier, parentView: self.view)
+        self.receivedOrdersTableView = LayoutController.getTableView(cellType: OrderCellGeneral.self, cellIdentifier: OrderCellGeneral.identifier, parentView: self.view)
         Layout.setupFullPageConstraints(forView: self.receivedOrdersTableView, onParentView: self.view)
 
         self.receivedOrdersTableView.dataSource = self
@@ -68,13 +68,13 @@ extension ReceivedViewController: UITableViewDataSource {
         guard let orders = self.orders else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
-        let cell = self.receivedOrdersTableView.dequeueReusableCell(withIdentifier: ReceivedOrderCell.identifier, for: indexPath) as! ReceivedOrderCell
+        let cell = self.receivedOrdersTableView.dequeueReusableCell(withIdentifier: OrderCellGeneral.identifier, for: indexPath) as! OrderCellGeneral
         // swiftlint:enable force_cast
 
         let currentOrder = orders[indexPath.row]
 
         cell.customerNameLabel.text = currentOrder.customer?.name
-        cell.deliveryDateLabel.text = Utility.dateToString(date: Date(milliseconds: currentOrder.deliveryDate))
+        cell.rightLabel.text = Utility.dateToString(date: Date(milliseconds: currentOrder.deliveryDate))
 
         if currentOrder.daysToDeliver <= 1 {
             cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "red_circle")
@@ -84,18 +84,9 @@ extension ReceivedViewController: UITableViewDataSource {
             cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
         }
 
-        if let string = currentOrder.racketString {
-            switch string.stringPurpose {
-            case .TENNIS:
-                cell.typeIndicator.image = #imageLiteral(resourceName: "tennisball")
-            case .BADMINTON:
-                cell.typeIndicator.image = #imageLiteral(resourceName: "shuttlecock")
-            case .SQUASH:
-                cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
-            }
-        }
+        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
 
-        cell.accessoryType = .disclosureIndicator
+        cell.accessoryType = .detailButton
         cell.tintColor = .black
 
         return cell
