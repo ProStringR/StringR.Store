@@ -12,6 +12,7 @@ class ReceivedOrderCell: UITableViewCell {
 
     static var identifier: String = "ReceivedOrderCell"
 
+    weak var typeIndicator: UIImageView!
     weak var customerNameLabel: UILabel!
     weak var deliveryDateLabel: UILabel!
     weak var statusIndicatorImageView: UIImageView!
@@ -22,6 +23,7 @@ class ReceivedOrderCell: UITableViewCell {
         initializeCustomerNameLabel()
         initializeDeliveryDateLabel()
         initializeStatusIndicatorImageView()
+        initializeTypeImageView()
 
         setupConstraints()
     }
@@ -46,10 +48,23 @@ class ReceivedOrderCell: UITableViewCell {
         self.contentView.addSubview(self.statusIndicatorImageView)
     }
 
+    private func initializeTypeImageView() {
+        let type = UIImageView()
+        type.contentMode = .scaleAspectFit
+        type.clipsToBounds = true
+        self.typeIndicator = type
+
+        self.contentView.addSubview(self.typeIndicator)
+    }
+
     private func setupConstraints() {
+        Layout.addTopConstraint(on: self.typeIndicator, to: self.contentView.topAnchor, by: Constant.bigOffset)
+        Layout.addBottomConstraint(on: self.typeIndicator, to: self.contentView.bottomAnchor, by: Constant.bigOffset)
+        Layout.addLeadingConstraint(on: self.typeIndicator, to: self.contentView.leadingAnchor)
+
         Layout.addTopConstraint(on: self.customerNameLabel, to: self.contentView.topAnchor)
         Layout.addBottomConstraint(on: self.customerNameLabel, to: self.contentView.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.customerNameLabel, to: self.contentView.leadingAnchor)
+        Layout.addLeadingConstraint(on: self.customerNameLabel, to: self.typeIndicator.trailingAnchor)
 
         Layout.addTopConstraint(on: self.statusIndicatorImageView, to: self.contentView.topAnchor, by: Constant.bigOffset)
         Layout.addBottomConstraint(on: self.statusIndicatorImageView, to: self.contentView.bottomAnchor, by: Constant.bigOffset)
