@@ -71,13 +71,20 @@ extension ReceivedViewController: UITableViewDataSource {
         let cell = self.receivedOrdersTableView.dequeueReusableCell(withIdentifier: ReceivedOrderCell.identifier, for: indexPath) as! ReceivedOrderCell
         // swiftlint:enable force_cast
 
-        cell.customerNameLabel.text = orders[indexPath.row].customer?.name
-        cell.deliveryDateLabel.text = Utility.dateToString(date: Date(milliseconds: orders[indexPath.row].deliveryDate))
+        let currentOrder = orders[indexPath.row]
 
-        let image = orders[indexPath.row].paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "red_circle")
-        cell.statusIndicatorImageView.image = image
+        cell.customerNameLabel.text = currentOrder.customer?.name
+        cell.deliveryDateLabel.text = Utility.dateToString(date: Date(milliseconds: currentOrder.deliveryDate))
 
-        if let string = orders[indexPath.row].racketString {
+        if currentOrder.daysToDeliver <= 1 {
+            cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "red_circle")
+        } else if currentOrder.daysToDeliver <= 3 {
+            cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "yellow_circle")
+        } else if currentOrder.daysToDeliver > 3 {
+            cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
+        }
+
+        if let string = currentOrder.racketString {
             switch string.stringPurpose {
             case .TENNIS:
                 cell.typeIndicator.image = #imageLiteral(resourceName: "tennisball")
