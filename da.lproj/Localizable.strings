@@ -50,7 +50,9 @@
 "orderViewController_DoneOrdersHead" = "Færdiggjort";
 "orderViewController_DoneOrdersDescription" = "Her ses ketcher som er klar til levering.";
 "orderViewController_DeliveredOrdersHead" = "Afleveret";
-"orderViewController_DeliveredDescription" = "Se en oversigt over afsluttede ordre.";
+"orderViewController_DeliveredDescription" = "Se en oversigt over leveret ordre.";
+"orderViewController_CompletedOrdersHead" = "Færdiggjort";
+"orderViewController_CompletedDescription" = "Se en oversigt over færdiggjort ordre.";
 
 "racketViewController_RacketRentHead" = "Udlån";
 "racketViewController_RacketRentDescription" = "Her udlånes test ketcher.";

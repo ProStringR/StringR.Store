@@ -50,7 +50,9 @@
 "orderViewController_DoneOrdersHead" = "Done";
 "orderViewController_DoneOrdersDescription" = "Get an overview of rackets ready for delivery.";
 "orderViewController_DeliveredOrdersHead" = "Delivered";
-"orderViewController_DeliveredDescription" = "Get an overview of closed orders.";
+"orderViewController_DeliveredDescription" = "Get an overview of delivered orders.";
+"orderViewController_CompletedOrdersHead" = "Completed";
+"orderViewController_CompletedDescription" = "Get an overview of closed orders.";
 
 "racketViewController_RacketRentHead" = "Rent";
 "racketViewController_RacketRentDescription" = "Rent test rackets.";
