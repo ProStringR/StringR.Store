@@ -37,7 +37,9 @@ class ReceivedViewController: UIViewController {
     }
 
     private func updateUI() {
+
         DispatchQueue.main.async {
+            self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
             self.receivedOrdersTableView.reloadData()
         }
     }
@@ -46,11 +48,8 @@ class ReceivedViewController: UIViewController {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
                 self.orderController.getRecievedOrders(shop: shop) { (result) in
-                    if let result = result {
-                        print(result.count)
-                        self.orders = result
-                        self.updateUI()
-                    }
+                    self.orders = result
+                    self.updateUI()
                 }
             }
         }
@@ -72,11 +71,22 @@ extension ReceivedViewController: UITableViewDataSource {
         let cell = self.receivedOrdersTableView.dequeueReusableCell(withIdentifier: ReceivedOrderCell.identifier, for: indexPath) as! ReceivedOrderCell
         // swiftlint:enable force_cast
 
-        cell.customerNameLabel.text = orders[indexPath.row].customerId
-        cell.deliveryDateLabel.text = String(orders[indexPath.row].deliveryDate)
+        cell.customerNameLabel.text = orders[indexPath.row].customer?.name
+        cell.deliveryDateLabel.text = Utility.dateToString(date: Date(milliseconds: orders[indexPath.row].deliveryDate))
 
         let image = orders[indexPath.row].paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "red_circle")
         cell.statusIndicatorImageView.image = image
+
+        if let string = orders[indexPath.row].racketString {
+            switch string.stringPurpose {
+            case .TENNIS:
+                cell.typeIndicator.image = #imageLiteral(resourceName: "tennisball")
+            case .BADMINTON:
+                cell.typeIndicator.image = #imageLiteral(resourceName: "shuttlecock")
+            case .SQUASH:
+                cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
+            }
+        }
 
         cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
