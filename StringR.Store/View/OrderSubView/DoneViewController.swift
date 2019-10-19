@@ -35,29 +35,6 @@ class DoneViewController: UIViewController {
     }
 
     private func getData() {
-        let order1 = Order(orderId: "lol",
-                           customerId: "Jaafar Mahdi",
-                           stringerId: "Picked up",
-                           racketType: RacketType.TENNIS,
-                           tensionVertical: 25,
-                           tensionHorizontal: 25, stringId: "lol",
-                           deliveryDate: 22222,
-                           price: 22,
-                           paid: true)
-
-        let order2 = Order(orderId: "lol",
-                           customerId: "Marcus Christiansen",
-                           stringerId: "Ready for pick up",
-                           racketType: RacketType.TENNIS,
-                           tensionVertical: 25,
-                           tensionHorizontal: 25, stringId: "lol",
-                           deliveryDate: 22222,
-                           price: 22,
-                           paid: false)
-
-        self.orders = [Order]()
-        self.orders?.append(order1)
-        self.orders?.append(order2)
     }
 }
 
