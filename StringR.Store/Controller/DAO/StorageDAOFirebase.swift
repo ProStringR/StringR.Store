@@ -11,8 +11,8 @@ import Foundation
 class StorageDAOFirebase: StorageDAOProtocol {
     let dataControl = ControlReg.getDataController
 
-    func getRacketString(by id: String, completion: @escaping (RacketString?) -> Void) {
-        dataControl.getData(returnType: RacketStringDTO.self, url: "\(Firebase.storage)/ShopMJ/\(id)") { (result) in
+    func getRacketString(by id: String, storageId: String, completion: @escaping (RacketString?) -> Void) {
+        dataControl.getData(returnType: RacketStringDTO.self, url: "\(Firebase.storage)/\(storageId)/\(id)") { (result) in
             completion(self.dataControl.createObject(fromObject: result, toObject: RacketString.self))
         }
     }

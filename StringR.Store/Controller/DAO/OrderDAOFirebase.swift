@@ -13,13 +13,8 @@ class OrderDAOFirebase: OrderDAOProtocol {
     let dataControl = ControlReg.getDataController
     let customerDAO: CustomerDAOProtocol = ControlReg.getCustomerDAO
     let teamDAO: TeamDAOProtocol = ControlReg.getTeamDAO
+    let shopDAO: ShopDAOProtocol = ControlReg.getShopDAO
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
-
-//    func getOrder(by id: String, completion: @escaping (OrderDTO?) -> Void) {
-//        dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
-//            completion(result)
-//        })
-//    }
 
     func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
         dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
@@ -31,7 +26,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 self.customerDAO.getCustomer(by: order.customerId) { (customerDTO) in
                     attemps += 1
                     order.customer = self.dataControl.createObject(fromObject: customerDTO, toObject: Customer.self)
-                    if attemps == 3 {
+                    if attemps == 4 {
                         completion(order)
                     }
                 }
@@ -39,16 +34,24 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 self.teamDAO.getStringer(basedOn: order.stringerId) { (stringerDTO) in
                     attemps += 1
                     order.stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: Stringer.self)
-                    if attemps == 3 {
+                    if attemps == 4 {
                         completion(order)
                     }
                 }
 
                 // find racketString
-                self.storageDAO.getRacketString(by: order.stringId) { (racketString) in
+                self.storageDAO.getRacketString(by: order.stringId, storageId: order.shopId) { (racketString) in
                     attemps += 1
                     order.racketString = racketString
-                    if attemps == 3 {
+                    if attemps == 4 {
+                        completion(order)
+                    }
+                }
+                // find shop
+                self.shopDAO.getShop(by: order.shopId) { (shopDTO) in
+                    attemps += 1
+                    order.shop = self.dataControl.createObject(fromObject: shopDTO, toObject: Shop.self)
+                    if attemps == 4 {
                         completion(order)
                     }
                 }
