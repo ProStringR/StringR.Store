@@ -25,6 +25,9 @@ class Order: Codable {
     var timeDone: Int64?
     var timeDelivery: Int64?
     var comment: String?
+    var stringer: Stringer?
+    var customer: Customer?
+    var racketString: RacketString?
 
     init(orderId: String, customerId: String, stringerId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Int64, price: Double, paid: Bool) {
         self.orderId = orderId
