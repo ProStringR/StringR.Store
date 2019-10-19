@@ -36,26 +36,35 @@ class OrderController {
 //    }
 
     func getRecievedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
-
         if let orderIds = shop.orderIds {
             orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
                 completion(result)
             }
         }
-//        if let orderIds = shop.orderIds {
-//            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
-//                if let result = result {
-//                    var listToReturn: [Order] = []
-//                    for orderDTO in result {
-//                        let order = self.dataControl.createObject(fromObject: orderDTO, toObject: Order.self)
-//                        if let order = order {
-//                            listToReturn.append(order)
-//                        }
-//                    }
-//                    completion(listToReturn)
-//                }
-//            }
-//        }
+    }
+
+    func getDoneOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .DONE) { (result) in
+                completion(result)
+            }
+        }
+    }
+
+    func getDeliveredOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .DELIVERED) { (result) in
+                completion(result)
+            }
+        }
+    }
+
+    func getCompletedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .COMPLETE) { (result) in
+                completion(result)
+            }
+        }
     }
 
     func putOrder(order: Order?, completion: @escaping (Bool) -> Void) {
