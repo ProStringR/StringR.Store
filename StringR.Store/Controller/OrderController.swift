@@ -16,25 +16,46 @@ class OrderController {
 
     func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
         orderDAO.getOrder(by: id) { (result) in
-            completion(self.dataControl.createObject(fromObject: result, toObject: Order.self))
+            completion(result)
         }
     }
 
+//    func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
+//        orderDAO.getOrder(by: id) { (result) in
+//            let order = self.dataControl.createObject(fromObject: result, toObject: Order.self)
+//
+//            if let order = order {
+//                self.teamControl.getStringer(basedOn: order.stringerId) { (stringer) in
+//                    order.stringer = stringer
+//                    completion(order)
+//                }
+//            } else {
+//                completion(nil)
+//            }
+//        }
+//    }
+
     func getRecievedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+
         if let orderIds = shop.orderIds {
             orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
-                if let result = result {
-                    var listToReturn: [Order] = []
-                    for orderDTO in result {
-                        let order = self.dataControl.createObject(fromObject: orderDTO, toObject: Order.self)
-                        if let order = order {
-                            listToReturn.append(order)
-                        }
-                    }
-                    completion(listToReturn)
-                }
+                completion(result)
             }
         }
+//        if let orderIds = shop.orderIds {
+//            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
+//                if let result = result {
+//                    var listToReturn: [Order] = []
+//                    for orderDTO in result {
+//                        let order = self.dataControl.createObject(fromObject: orderDTO, toObject: Order.self)
+//                        if let order = order {
+//                            listToReturn.append(order)
+//                        }
+//                    }
+//                    completion(listToReturn)
+//                }
+//            }
+//        }
     }
 
     func putOrder(order: Order?, completion: @escaping (Bool) -> Void) {
