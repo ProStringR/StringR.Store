@@ -26,12 +26,11 @@ class SpecificStringInStorageViewController: UIViewController {
     weak var lengthRemaining: UILabel!
     weak var priceTitle: UILabel!
     weak var price: UILabel!
+    weak var purhcaseHistoryTitle: UILabel!
 
     weak var lengthInput: UITextField!
     weak var priceInput: UITextField!
     weak var dateInput: UITextField!
-
-    weak var additionButton: UIButton!
 
     weak var topHeaderStackView: UIStackView!
     weak var topValueStackView: UIStackView!
@@ -39,8 +38,15 @@ class SpecificStringInStorageViewController: UIViewController {
     weak var bottomValueStackView: UIStackView!
     weak var additionStackView: UIStackView!
 
+    weak var additionButton: UIButton!
+    weak var historyTableView: UITableView!
+
+    var purchaseHistoryList: [String]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.purchaseHistoryList = ["lol", "hej", "fuck", "lol", "hej", "fuck", "lol", "hej", "fuck", "lol", "hej", "fuck"]
 
         setupView()
         setupLabels()
@@ -50,6 +56,7 @@ class SpecificStringInStorageViewController: UIViewController {
         generateBottomHeaderStackView()
         generateBottomValueStackView()
         generateAdditionStackView()
+        generatePurchaseHistoryTableView()
         setupConstraints()
     }
 
@@ -64,24 +71,27 @@ class SpecificStringInStorageViewController: UIViewController {
 
     private func setupLabels() {
         brandTitle = LayoutController.getLabel(text: "Brand", parentView: self.view)
-        brandTitle.font = UIFont.boldSystemFont(ofSize: Constant.cardHeaderSize)
+        brandTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         brand = LayoutController.getLabel(text: "Babolat", parentView: self.view)
 
         modelTitle = LayoutController.getLabel(text: "Model", parentView: self.view)
-        modelTitle.font = UIFont.boldSystemFont(ofSize: Constant.cardHeaderSize)
+        modelTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         model = LayoutController.getLabel(text: "Rafa", parentView: self.view)
 
         typeTitle = LayoutController.getLabel(text: "Type", parentView: self.view)
-        typeTitle.font = UIFont.boldSystemFont(ofSize: Constant.cardHeaderSize)
+        typeTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         type = LayoutController.getLabel(text: "Tennis", parentView: self.view)
 
         lengthRemainingTitle = LayoutController.getLabel(text: "Length remaining", parentView: self.view)
-        lengthRemainingTitle.font = UIFont.boldSystemFont(ofSize: Constant.cardHeaderSize)
+        lengthRemainingTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         lengthRemaining = LayoutController.getLabel(text: "217", parentView: self.view)
 
         priceTitle = LayoutController.getLabel(text: "Avg. price per racket", parentView: self.view)
-        priceTitle.font = UIFont.boldSystemFont(ofSize: Constant.cardHeaderSize)
+        priceTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         price = LayoutController.getLabel(text: "98.02", parentView: self.view)
+
+        purhcaseHistoryTitle = LayoutController.getLabel(text: "Purchase history", parentView: self.view)
+        purhcaseHistoryTitle.font = UIFont.boldSystemFont(ofSize: Constant.smallHeaderSize)
     }
 
     private func generateTopHeaderStackView() {
@@ -122,6 +132,12 @@ class SpecificStringInStorageViewController: UIViewController {
         additionStackView = LayoutController.getStackView(content: listOfView, orientation: .horizontal, parentView: self.view)
     }
 
+    private func generatePurchaseHistoryTableView() {
+        self.historyTableView = LayoutController.getTableView(cellType: TwoSidedTextCell.self, cellIdentifier: TwoSidedTextCell.identifier, parentView: self.view)
+
+        self.historyTableView.dataSource = self
+    }
+
     private func centerAlignUILabels(uiLabelArry: [UILabel]) {
         for label in uiLabelArry {
             label.textAlignment = .center
@@ -136,6 +152,14 @@ class SpecificStringInStorageViewController: UIViewController {
         Layout.addTopConstraint(on: topValueStackView, to: self.topHeaderStackView.bottomAnchor)
         Layout.addLeadingConstraint(on: topValueStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
         Layout.addTrailingConstraint(on: topValueStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+
+        Layout.addTopConstraint(on: purhcaseHistoryTitle, to: topValueStackView.bottomAnchor, by: Constant.bigOffset)
+        Layout.addLeadingConstraint(on: purhcaseHistoryTitle, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
+
+        Layout.addTopConstraint(on: historyTableView, to: purhcaseHistoryTitle.bottomAnchor)
+        Layout.addLeadingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
+        Layout.addTrailingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+        Layout.addBottomConstraint(on: historyTableView, to: bottomHeaderStackView.topAnchor, by: Constant.bigOffset)
 
         Layout.addBottomConstraint(on: bottomHeaderStackView, to: bottomValueStackView.topAnchor)
         Layout.addLeadingConstraint(on: bottomHeaderStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
@@ -155,10 +179,35 @@ class SpecificStringInStorageViewController: UIViewController {
     }
 
     @objc func cancelAction() {
-
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     @objc func deleteAction() {
 
+    }
+}
+
+extension SpecificStringInStorageViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let list = self.purchaseHistoryList {
+            return list.count
+        }
+
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let purchaseHistory = self.purchaseHistoryList else { return UITableViewCell() }
+
+        // swiftlint:disable force_cast
+        let cell = self.historyTableView.dequeueReusableCell(withIdentifier: TwoSidedTextCell.identifier, for: indexPath) as! TwoSidedTextCell
+        // swiftlint:enable force_cast
+
+        let item = purchaseHistory[indexPath.row]
+
+        cell.leftLabel.text = item
+        cell.rightLabel.text = item
+
+        return cell
     }
 }

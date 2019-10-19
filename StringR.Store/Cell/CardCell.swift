@@ -42,7 +42,7 @@ class CardCell: UICollectionViewCell {
         let descriptionLabel = UILabel()
 
         self.headerLabel = headerLabel
-        self.headerLabel.font = UIFont.boldSystemFont(ofSize: Constant.cardHeaderSize)
+        self.headerLabel.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
 
         self.descriptionLabel = descriptionLabel
 
