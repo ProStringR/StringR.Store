@@ -23,6 +23,7 @@ class Constant {
     static let popupTopBottom = CGFloat(160)
     static let popupLeadingTrailing = CGFloat(75)
     static let standardCornerRadius = CGFloat(10)
+    static let smallCornerRadius = CGFloat(5)
     static let standardButtonHeight = CGFloat(50)
 
     // Strings
