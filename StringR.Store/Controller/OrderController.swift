@@ -20,21 +20,6 @@ class OrderController {
         }
     }
 
-//    func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
-//        orderDAO.getOrder(by: id) { (result) in
-//            let order = self.dataControl.createObject(fromObject: result, toObject: Order.self)
-//
-//            if let order = order {
-//                self.teamControl.getStringer(basedOn: order.stringerId) { (stringer) in
-//                    order.stringer = stringer
-//                    completion(order)
-//                }
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//    }
-
     func getRecievedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
         if let orderIds = shop.orderIds {
             orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
