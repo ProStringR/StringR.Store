@@ -65,6 +65,7 @@ class CreateOrderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
         setupCustromerStackView()
         setupSpecificationStackView()
@@ -252,10 +253,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     @objc func dataChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-
-        self.deliveryDateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.deliveryDateTextField.text = Utility.dateToString(date: datePicker.date)
         self.deliveryDate = datePicker.date
     }
 
