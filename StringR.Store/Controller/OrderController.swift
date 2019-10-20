@@ -14,6 +14,44 @@ class OrderController {
     let teamControl = ControlReg.getTeamController
     let orderDAO: OrderDAOProtocol = ControlReg.getOrderDAO
 
+    func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
+        orderDAO.getOrder(by: id) { (result) in
+            completion(result)
+        }
+    }
+
+    func getRecievedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
+                completion(result)
+            }
+        }
+    }
+
+    func getDoneOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .DONE) { (result) in
+                completion(result)
+            }
+        }
+    }
+
+    func getDeliveredOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .DELIVERED) { (result) in
+                completion(result)
+            }
+        }
+    }
+
+    func getCompletedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .COMPLETE) { (result) in
+                completion(result)
+            }
+        }
+    }
+
     func putOrder(order: Order?, completion: @escaping (Bool) -> Void) {
         guard let order = order else { completion(false); return }
         let orderDTO = dataControl.createObject(fromObject: order, toObject: OrderDTO.self)

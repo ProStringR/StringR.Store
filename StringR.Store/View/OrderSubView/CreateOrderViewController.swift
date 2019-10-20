@@ -60,9 +60,12 @@ class CreateOrderViewController: UIViewController {
     let orderController = ControlReg.getOrderController
     let teamController = ControlReg.getTeamController
     let storageController = ControlReg.getStorageController
+    let customerController = ControlReg.getCustomerController
+    let shopController = ControlReg.getShopController
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
         setupCustromerStackView()
         setupSpecificationStackView()
@@ -250,10 +253,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     @objc func dataChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-
-        self.deliveryDateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.deliveryDateTextField.text = Utility.dateToString(date: datePicker.date)
         self.deliveryDate = datePicker.date
     }
 
@@ -271,16 +271,66 @@ class CreateOrderViewController: UIViewController {
     @objc func placeOrderClicked(_ sender: UIButton) {
         guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text else { submissionFailed(); return }
 
-        let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
 
-        orderController.putOrder(order: order) { (succes) in
-            if succes {
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+
+                self.orderController.putOrder(order: order) { (succes) in
+                    if succes {
+                        // set orderId to stringer
+                        guard let order = order else { self.submissionFailed(); return }
+
+                        self.stringer?.orderIds = self.appendOrderId(orderIds: self.stringer?.orderIds, orderId: order.orderId)
+
+                        if let stringer = self.stringer {
+                            self.teamController.putStringer(stringer: stringer) { (succes) in
+                                if !succes {
+                                    self.submissionFailed()
+                                }
+                            }
+                        }
+
+                        // set orderId to customer
+                        self.customer?.orderIds = self.appendOrderId(orderIds: self.customer?.orderIds, orderId: order.orderId)
+
+                        if let customer = self.customer {
+                            self.customerController.putCustomer(customer: customer) { (succes) in
+                                if !succes {
+                                    self.submissionFailed()
+                                }
+                            }
+                        }
+
+                        // set orderId to shop
+                        ShopSingleton.shared.getShop { (shop) in
+                            if let shop = shop {
+                                shop.orderIds = self.appendOrderId(orderIds: shop.orderIds, orderId: order.orderId)
+                                self.shopController.putShop(shop: shop) { (succes) in
+                                    if !succes {
+                                        self.submissionFailed()
+                                    }
+                                }
+                            }
+                        }
+
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } else {
+                        self.submissionFailed()
+                    }
                 }
-            } else {
-                self.submissionFailed()
             }
+        }
+    }
+
+    private func appendOrderId(orderIds: [String]?, orderId: String) -> [String] {
+        if var orderIds = orderIds {
+            orderIds.append(orderId)
+            return orderIds
+        } else {
+            return [orderId]
         }
     }
 

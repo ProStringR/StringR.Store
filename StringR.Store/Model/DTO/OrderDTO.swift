@@ -13,6 +13,7 @@ struct OrderDTO: Codable {
     var orderId: String?
     var customerId: String?
     var stringerId: String?
+    var shopId: String?
     var racketType: RacketType?
     var tensionVertical: Double?
     var tensionHorizontal: Double?
@@ -24,4 +25,5 @@ struct OrderDTO: Codable {
     var timeDone: Int64?
     var timeDelivery: Int64?
     var comment: String?
+    var orderStatus: OrderStatus?
 }

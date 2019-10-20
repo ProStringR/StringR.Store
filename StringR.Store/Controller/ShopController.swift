@@ -29,4 +29,11 @@ class ShopController {
         let shopDTO = dataControl.createObject(fromObject: shop, toObject: ShopDTO.self)
         try shopDAO.postShop(shop: shopDTO)
     }
+
+    func putShop(shop: Shop, completion: @escaping (Bool) -> Void) {
+        let shopDTO = dataControl.createObject(fromObject: shop, toObject: ShopDTO.self)
+        shopDAO.putShop(shop: shopDTO) { (succes) in
+            completion(succes)
+        }
+    }
 }

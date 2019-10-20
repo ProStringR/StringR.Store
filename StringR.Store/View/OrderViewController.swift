@@ -46,6 +46,7 @@ class OrderViewController: CardCellViewController {
         self.list.append((Utility.getString(forKey: "orderViewController_ReceivedOrdersHead"), Utility.getString(forKey: "orderViewController_ReceivedOrdersDescription")))
         self.list.append((Utility.getString(forKey: "orderViewController_DoneOrdersHead"), Utility.getString(forKey: "orderViewController_DoneOrdersDescription")))
         self.list.append((Utility.getString(forKey: "orderViewController_DeliveredOrdersHead"), Utility.getString(forKey: "orderViewController_DeliveredDescription")))
+        self.list.append((Utility.getString(forKey: "orderViewController_CompletedOrdersHead"), Utility.getString(forKey: "orderViewController_CompletedDescription")))
     }
 }
 
@@ -79,6 +80,8 @@ extension OrderViewController {
             nextViewController = DoneViewController()
         case 3:
             nextViewController = DeliveredViewController()
+        case 4:
+            nextViewController = CompletedViewController()
         default:
             print("Something went wrong during navigation from OrdersViewController")
         }

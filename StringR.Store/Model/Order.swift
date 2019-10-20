@@ -13,6 +13,7 @@ class Order: Codable {
     var orderId: String
     var customerId: String
     var stringerId: String
+    var shopId: String
     var racketType: RacketType
     var tensionVertical: Double
     var tensionHorizontal: Double
@@ -20,31 +21,26 @@ class Order: Codable {
     var deliveryDate: Int64
     var price: Double
     var paid: Bool
+    var orderStatus: OrderStatus
     var timePlaced: Int64?
     var timeDone: Int64?
     var timeDelivery: Int64?
     var comment: String?
-
-    init(orderId: String, customerId: String, stringerId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Int64, price: Double, paid: Bool) {
-        self.orderId = orderId
-        self.customerId = customerId
-        self.stringerId = stringerId
-        self.racketType = racketType
-        self.tensionVertical = tensionVertical
-        self.tensionHorizontal = tensionHorizontal
-        self.stringId = stringId
-        self.deliveryDate = deliveryDate
-        self.price = price
-        self.paid = paid
+    var stringer: Stringer?
+    var customer: Customer?
+    var racketString: RacketString?
+    var shop: Shop?
+    var daysToDeliver: Int {
+            let diff = Int(self.deliveryDate - Date().millisecondsSince1970)
+            let daysToDeliver = diff / (86400000)
+            return daysToDeliver
     }
 
-    init?(orderId: String?, customerId: String?, stringerId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
-
-        guard let orderId = orderId, let customerId = customerId, let stringerId = stringerId, let racketType = racketType, let tensionVertical = tensionVertical, let tensionHorizontal = tensionHorizontal, let stringId = stringId, let deliveryDate = deliveryDate, let price = price, let paid = paid else { return nil }
-
+    init(orderId: String, customerId: String, stringerId: String, shopId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Int64, price: Double, paid: Bool) {
         self.orderId = orderId
         self.customerId = customerId
         self.stringerId = stringerId
+        self.shopId = shopId
         self.racketType = racketType
         self.tensionVertical = tensionVertical
         self.tensionHorizontal = tensionHorizontal
@@ -52,5 +48,24 @@ class Order: Codable {
         self.deliveryDate = deliveryDate
         self.price = price
         self.paid = paid
+        self.orderStatus = .RECIEVED
+    }
+
+    init?(orderId: String?, customerId: String?, stringerId: String?, shopId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
+
+        guard let orderId = orderId, let customerId = customerId, let stringerId = stringerId, let shopId = shopId, let racketType = racketType, let tensionVertical = tensionVertical, let tensionHorizontal = tensionHorizontal, let stringId = stringId, let deliveryDate = deliveryDate, let price = price, let paid = paid else { return nil }
+
+        self.orderId = orderId
+        self.customerId = customerId
+        self.stringerId = stringerId
+        self.shopId = shopId
+        self.racketType = racketType
+        self.tensionVertical = tensionVertical
+        self.tensionHorizontal = tensionHorizontal
+        self.stringId = stringId
+        self.deliveryDate = deliveryDate
+        self.price = price
+        self.paid = paid
+        self.orderStatus = .RECIEVED
     }
 }

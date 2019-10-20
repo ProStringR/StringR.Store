@@ -1,19 +1,21 @@
 //
-//  ReceivedOrderCell.swift
+//  OrderCellGenerel.swift
 //  StringR.Store
 //
-//  Created by Jaafar on 25/09/2019.
+//  Created by Marcus Christiansen on 19/10/2019.
 //  Copyright © 2019 StringR. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ReceivedOrderCell: UITableViewCell {
+class OrderCellGeneral: UITableViewCell {
 
-    static var identifier: String = "ReceivedOrderCell"
+    static var identifier: String = "OrderCellGeneral"
 
+    weak var typeIndicator: UIImageView!
     weak var customerNameLabel: UILabel!
-    weak var deliveryDateLabel: UILabel!
+    weak var rightLabel: UILabel!
     weak var statusIndicatorImageView: UIImageView!
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -22,6 +24,7 @@ class ReceivedOrderCell: UITableViewCell {
         initializeCustomerNameLabel()
         initializeDeliveryDateLabel()
         initializeStatusIndicatorImageView()
+        initializeTypeImageView()
 
         setupConstraints()
     }
@@ -35,7 +38,7 @@ class ReceivedOrderCell: UITableViewCell {
     }
 
     private func initializeDeliveryDateLabel() {
-        self.deliveryDateLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
+        self.rightLabel = LayoutController.getLabel(text: nil, parentView: self.contentView)
     }
 
     private func initializeStatusIndicatorImageView() {
@@ -46,17 +49,30 @@ class ReceivedOrderCell: UITableViewCell {
         self.contentView.addSubview(self.statusIndicatorImageView)
     }
 
+    private func initializeTypeImageView() {
+        let type = UIImageView()
+        type.contentMode = .scaleAspectFit
+        type.clipsToBounds = true
+        self.typeIndicator = type
+
+        self.contentView.addSubview(self.typeIndicator)
+    }
+
     private func setupConstraints() {
+        Layout.addTopConstraint(on: self.typeIndicator, to: self.contentView.topAnchor, by: Constant.bigOffset)
+        Layout.addBottomConstraint(on: self.typeIndicator, to: self.contentView.bottomAnchor, by: Constant.bigOffset)
+        Layout.addLeadingConstraint(on: self.typeIndicator, to: self.contentView.leadingAnchor)
+
         Layout.addTopConstraint(on: self.customerNameLabel, to: self.contentView.topAnchor)
         Layout.addBottomConstraint(on: self.customerNameLabel, to: self.contentView.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.customerNameLabel, to: self.contentView.leadingAnchor)
+        Layout.addLeadingConstraint(on: self.customerNameLabel, to: self.typeIndicator.trailingAnchor)
 
         Layout.addTopConstraint(on: self.statusIndicatorImageView, to: self.contentView.topAnchor, by: Constant.bigOffset)
         Layout.addBottomConstraint(on: self.statusIndicatorImageView, to: self.contentView.bottomAnchor, by: Constant.bigOffset)
         Layout.addTrailingConstraint(on: self.statusIndicatorImageView, to: self.contentView.trailingAnchor)
 
-        Layout.addTopConstraint(on: self.deliveryDateLabel, to: self.contentView.topAnchor)
-        Layout.addBottomConstraint(on: self.deliveryDateLabel, to: self.contentView.bottomAnchor)
-        Layout.addTrailingConstraint(on: self.deliveryDateLabel, to: self.statusIndicatorImageView.leadingAnchor)
+        Layout.addTopConstraint(on: self.rightLabel, to: self.contentView.topAnchor)
+        Layout.addBottomConstraint(on: self.rightLabel, to: self.contentView.bottomAnchor)
+        Layout.addTrailingConstraint(on: self.rightLabel, to: self.statusIndicatorImageView.leadingAnchor)
     }
 }

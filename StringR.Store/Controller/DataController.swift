@@ -10,9 +10,11 @@ import Foundation
 
 class DataController {
 
-    func getData<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) throws {
+    func getData<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) {
 
-        guard let url = URL(string: "\(url).json") else { throw Exception.url }
+        guard let url = URL(string: "\(url).json") else { completion(nil); return }
+
+//        print("URL: \(url)")
 
         URLSession.shared.dataTask(with: url) {(data, response, error) in
             // TODO: if we want to handle the error or respons
@@ -30,24 +32,19 @@ class DataController {
         }.resume()
     }
 
-    func getListOfData<T: Codable>(returnType: T.Type, url: String, completion: @escaping ([T]?) -> Void) throws {
-        do {
-            try getData(returnType: [String: T?].self, url: url) { (result) in
-                guard let result = result else { completion(nil); return }
+    func getListOfData<T: Codable>(returnType: T.Type, url: String, completion: @escaping ([T]?) -> Void) {
+        getData(returnType: [String: T?].self, url: url) { (result) in
+            guard let result = result else { completion(nil); return }
 
-                var listToReturn: [T]? = []
+            var listToReturn: [T]? = []
 
-                for item in result {
-                    if let object = item.value {
-                        listToReturn?.append(object)
-                    }
+            for item in result {
+                if let object = item.value {
+                    listToReturn?.append(object)
                 }
-
-                completion(listToReturn)
             }
-        } catch {
-            print(error)
-            completion(nil)
+
+            completion(listToReturn)
         }
     }
 
@@ -110,11 +107,12 @@ class DataController {
         URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 
-    func createObject<T: Codable, P: Codable>(fromObject: T, toObject: P.Type) -> P? {
-        do {
-            let json = try JSONEncoder().encode(fromObject)
-            let newObject = try JSONDecoder().decode(toObject, from: json)
+    func createObject<T: Codable, P: Codable>(fromObject: T?, toObject: P.Type) -> P? {
+        guard let object = fromObject else { return nil }
 
+        do {
+            let json = try JSONEncoder().encode(object)
+            let newObject = try JSONDecoder().decode(toObject, from: json)
             return newObject
         } catch {
             return nil

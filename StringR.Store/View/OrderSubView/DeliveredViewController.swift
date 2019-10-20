@@ -12,6 +12,7 @@ class DeliveredViewController: UIViewController {
 
     weak var doneOrdersTableView: UITableView!
     var orders: [Order]?
+    var orderController = ControlReg.getOrderController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class DeliveredViewController: UIViewController {
     }
 
     private func setupTableView() {
-        self.doneOrdersTableView = LayoutController.getTableView(cellType: TwoSidedTextCell.self, cellIdentifier: TwoSidedTextCell.identifier, parentView: self.view)
+        self.doneOrdersTableView = LayoutController.getTableView(cellType: OrderCellGeneral.self, cellIdentifier: OrderCellGeneral.identifier, parentView: self.view)
         Layout.setupFullPageConstraints(forView: self.doneOrdersTableView, onParentView: self.view)
 
         self.doneOrdersTableView.dataSource = self
@@ -35,29 +36,24 @@ class DeliveredViewController: UIViewController {
     }
 
     private func getData() {
-        let order1 = Order(orderId: "lol",
-                           customerId: "Jaafar Mahdi",
-                           stringerId: "11/09/2019",
-                           racketType: RacketType.TENNIS,
-                           tensionVertical: 25,
-                           tensionHorizontal: 25, stringId: "lol",
-                           deliveryDate: 22222,
-                           price: 22,
-                           paid: true)
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
+                self.orderController.getDeliveredOrders(shop: shop) { (result) in
+                    if let orders = result {
+                        self.orders = orders
+                        self.updateUI()
+                    }
+                }
+            }
+        }
+    }
 
-        let order2 = Order(orderId: "lol",
-                           customerId: "Marcus Christiansen",
-                           stringerId: "17/09/2019",
-                           racketType: RacketType.TENNIS,
-                           tensionVertical: 25,
-                           tensionHorizontal: 25, stringId: "lol",
-                           deliveryDate: 22222,
-                           price: 22,
-                           paid: false)
-
-        self.orders = [Order]()
-        self.orders?.append(order1)
-        self.orders?.append(order2)
+    private func updateUI() {
+        DispatchQueue.main.async {
+            //TODO: make the deliveryDate to deliveredDate
+            self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
+            self.doneOrdersTableView.reloadData()
+        }
     }
 }
 
@@ -73,12 +69,20 @@ extension DeliveredViewController: UITableViewDataSource {
         guard let orders = self.orders else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
-        let cell = self.doneOrdersTableView.dequeueReusableCell(withIdentifier: TwoSidedTextCell.identifier, for: indexPath) as! TwoSidedTextCell
+        let cell = self.doneOrdersTableView.dequeueReusableCell(withIdentifier: OrderCellGeneral.identifier, for: indexPath) as! OrderCellGeneral
         // swiftlint:enable force_cast
 
-        cell.leftLabel.text = orders[indexPath.row].customerId
-        cell.rightLabel.text = orders[indexPath.row].stringerId
+        let currentOrder = orders[indexPath.row]
 
+        cell.customerNameLabel.text = currentOrder.customer?.name
+        let paidText = currentOrder.paid ? "Paid" : "Not Paid"
+        cell.rightLabel.text = "\(currentOrder.orderStatus.rawValue) | \(paidText)"
+
+        cell.statusIndicatorImageView.image = currentOrder.paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "red_circle")
+
+        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
+
+        cell.accessoryType = .detailButton
         cell.tintColor = .black
 
         return cell
