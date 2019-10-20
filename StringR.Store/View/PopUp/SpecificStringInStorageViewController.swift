@@ -194,25 +194,25 @@ class SpecificStringInStorageViewController: UIViewController {
         Layout.addLeadingConstraint(on: topValueStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
         Layout.addTrailingConstraint(on: topValueStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
 
-        Layout.addTopConstraint(on: purhcaseHistoryTitle, to: topValueStackView.bottomAnchor, by: Constant.bigOffset)
+        Layout.addTopConstraint(on: bottomHeaderStackView, to: topValueStackView.bottomAnchor, by: Constant.hugeOffset)
+        Layout.addLeadingConstraint(on: bottomHeaderStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
+        Layout.addTrailingConstraint(on: bottomHeaderStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+
+        Layout.addTopConstraint(on: bottomValueStackView, to: bottomHeaderStackView.bottomAnchor)
+        Layout.addLeadingConstraint(on: bottomValueStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
+        Layout.addTrailingConstraint(on: bottomValueStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+
+        Layout.addTopConstraint(on: additionStackView, to: bottomValueStackView.bottomAnchor, by: Constant.hugeOffset)
+        Layout.addLeadingConstraint(on: additionStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
+        Layout.addTrailingConstraint(on: additionStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
+
+        Layout.addTopConstraint(on: purhcaseHistoryTitle, to: additionStackView.bottomAnchor, by: Constant.bigOffset)
         Layout.addLeadingConstraint(on: purhcaseHistoryTitle, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
 
         Layout.addTopConstraint(on: historyTableView, to: purhcaseHistoryTitle.bottomAnchor)
         Layout.addLeadingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
         Layout.addTrailingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
-        Layout.addBottomConstraint(on: historyTableView, to: bottomHeaderStackView.topAnchor, by: Constant.bigOffset)
-
-        Layout.addBottomConstraint(on: bottomHeaderStackView, to: bottomValueStackView.topAnchor)
-        Layout.addLeadingConstraint(on: bottomHeaderStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: bottomHeaderStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
-
-        Layout.addBottomConstraint(on: bottomValueStackView, to: additionButton.topAnchor, by: Constant.hugeOffset)
-        Layout.addLeadingConstraint(on: bottomValueStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: bottomValueStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
-
-        Layout.addBottomConstraint(on: additionStackView, to: self.view.safeAreaLayoutGuide.bottomAnchor, by: Constant.bigOffset)
-        Layout.addLeadingConstraint(on: additionStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
-        Layout.addTrailingConstraint(on: additionStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
+        Layout.addBottomConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.bottomAnchor, by: Constant.bigOffset)
 
         for constraint in additionButton.constraints {
             constraint.isActive = false
