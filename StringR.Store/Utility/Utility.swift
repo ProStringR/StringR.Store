@@ -40,9 +40,9 @@ class Utility {
 
     static func dateToString(date: Date, withTime: Bool = true) -> String {
         if withTime {
-            return date.toString(dateFormat: "dd / MM / yyyy | HH:mm")
+            return date.toString(dateFormat: "dd/MM/yyyy | HH:mm")
         }
 
-        return date.toString(dateFormat: "dd / MM / yyyy")
+        return date.toString(dateFormat: "dd/MM/yyyy")
     }
 }

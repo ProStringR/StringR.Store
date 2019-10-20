@@ -198,8 +198,8 @@ class SpecificStringInStorageViewController: UIViewController {
         Layout.addLeadingConstraint(on: purhcaseHistoryTitle, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
 
         Layout.addTopConstraint(on: historyTableView, to: purhcaseHistoryTitle.bottomAnchor)
-        Layout.addLeadingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+        Layout.addLeadingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
+        Layout.addTrailingConstraint(on: historyTableView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
         Layout.addBottomConstraint(on: historyTableView, to: bottomHeaderStackView.topAnchor, by: Constant.bigOffset)
 
         Layout.addBottomConstraint(on: bottomHeaderStackView, to: bottomValueStackView.topAnchor)
@@ -296,8 +296,9 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
 
         let item = purchaseHistory[indexPath.row]
 
-        cell.leftLabel.text = String(item.price)
-        cell.rightLabel.text = String(item.length)
+        let date = Utility.dateToString(date: Date.init(milliseconds: item.date), withTime: false)
+        cell.leftLabel.text = "\(date) | \(String(Int(item.price)))"
+        cell.rightLabel.text = String(Int(item.length))
 
         return cell
     }
