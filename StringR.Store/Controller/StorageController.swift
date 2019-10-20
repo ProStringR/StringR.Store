@@ -20,6 +20,17 @@ class StorageController {
         }
     }
 
+    func putRacketStringHistoryItem(purchaseHistoryItem: PurchaseHistory, stringId: String, historyNumber: Int, completion: @escaping (Bool) -> Void) {
+        let historyDTO = dataControl.createObject(fromObject: purchaseHistoryItem, toObject: PurchaseHistoryDTO.self)
+        let id = "\(stringId)\(Firebase.purchaseHistory)"
+
+        if let historyDTO = historyDTO {
+            storageDAO.putRacketStringHistoryItem(purchaseHistoryItem: historyDTO, storageId: id, itemId: String(historyNumber)) { (succes) in
+                completion(succes)
+            }
+        }
+    }
+
     func getStringInStorage(basedOnShopAndString id: String, completion: @escaping (RacketString?) -> Void) {
         storageDAO.getStringsInStorage(basedOnId: id) { (dto) in
             if let racketStringDTO = dto {

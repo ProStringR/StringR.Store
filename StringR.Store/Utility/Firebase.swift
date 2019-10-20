@@ -18,4 +18,5 @@ class Firebase {
     static let team = "\(ref)/team"
     static let customer = "\(ref)/customer"
     static let storage = "\(ref)/storage"
+    static let purchaseHistory = "/purchaseHistory"
 }

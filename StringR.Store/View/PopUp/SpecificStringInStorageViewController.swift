@@ -10,6 +10,10 @@ import UIKit
 
 class SpecificStringInStorageViewController: UIViewController {
 
+    let storageController = ControlReg.getStorageController
+
+    var racketString: RacketString?
+
     weak var brandTitle: UILabel!
     weak var brand: UILabel!
     weak var modelTitle: UILabel!
@@ -55,6 +59,7 @@ class SpecificStringInStorageViewController: UIViewController {
         generateBottomValueStackView()
         generateAdditionStackView()
         generatePurchaseHistoryTableView()
+        getStringData()
         setupConstraints()
     }
 
@@ -69,23 +74,23 @@ class SpecificStringInStorageViewController: UIViewController {
     private func setupLabels() {
         brandTitle = LayoutController.getLabel(text: "Brand", parentView: self.view)
         brandTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
-        brand = LayoutController.getLabel(text: "Babolat", parentView: self.view)
+        brand = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
         modelTitle = LayoutController.getLabel(text: "Model", parentView: self.view)
         modelTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
-        model = LayoutController.getLabel(text: "Rafa", parentView: self.view)
+        model = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
         typeTitle = LayoutController.getLabel(text: "Type", parentView: self.view)
         typeTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
-        type = LayoutController.getLabel(text: "Tennis", parentView: self.view)
+        type = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
         lengthRemainingTitle = LayoutController.getLabel(text: "Length remaining", parentView: self.view)
         lengthRemainingTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
-        lengthRemaining = LayoutController.getLabel(text: "217", parentView: self.view)
+        lengthRemaining = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
         priceTitle = LayoutController.getLabel(text: "Avg. price per racket", parentView: self.view)
         priceTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
-        price = LayoutController.getLabel(text: "98.02", parentView: self.view)
+        price = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
         purhcaseHistoryTitle = LayoutController.getLabel(text: "Purchase history", parentView: self.view)
         purhcaseHistoryTitle.font = UIFont.boldSystemFont(ofSize: Constant.smallHeaderSize)
@@ -121,6 +126,7 @@ class SpecificStringInStorageViewController: UIViewController {
         priceInput = LayoutController.getTextField(placeholder: "Price", parentView: self.view)
 
         additionButton = LayoutController.getButton(title: "Add", parentView: self.view)
+        additionButton.addTarget(self, action: #selector(onAddButtonClicked(_:)), for: .touchUpInside)
         additionButton.layer.cornerRadius = Constant.smallCornerRadius
     }
 
@@ -138,6 +144,19 @@ class SpecificStringInStorageViewController: UIViewController {
     private func centerAlignUILabels(uiLabelArry: [UILabel]) {
         for label in uiLabelArry {
             label.textAlignment = .center
+        }
+    }
+
+    private func getStringData() {
+        if let racketString = racketString {
+            self.purchaseHistoryList = racketString.purchaseHistory
+            self.historyTableView.reloadData()
+
+            self.brand.text = racketString.brand.rawValue
+            self.model.text = racketString.modelName
+            self.type.text = racketString.stringType.rawValue
+            self.lengthRemaining.text = String(racketString.lengthRemaining)
+            self.price.text = String(racketString.racketRemaining)
         }
     }
 
@@ -172,6 +191,20 @@ class SpecificStringInStorageViewController: UIViewController {
 
         for constraint in additionButton.constraints {
             constraint.isActive = false
+        }
+    }
+
+    @objc func onAddButtonClicked(_ sender: UIButton) {
+        guard let strindId = self.racketString?.stringId, let itemNumber = self.purchaseHistoryList?.count else { return }
+
+        let purchaseHistory = PurchaseHistory.init(date: 1234223, length: 22, price: 66)
+
+        self.storageController.putRacketStringHistoryItem(purchaseHistoryItem: purchaseHistory, stringId: strindId, historyNumber: itemNumber) { (succes) in
+            if succes {
+                print("All is good")
+            } else {
+                print("fuck this shit")
+            }
         }
     }
 

@@ -30,6 +30,10 @@ class RacketString: Codable {
         return Int(lengthRemaining / Double(stringPerRacket))
     }
 
+    var lengthRemaining: Int {
+        return Int(Double(self.length) / Double(Constant.stringLengthPerRacket))
+    }
+
     init(stringId: String, brand: StringBrand, modelName: String, stringType: StringType, length: Double, buyDate: Int64, buyPrice: Double, pricePerRacket: Double, thickness: Double, color: StringColor, stringPurpose: RacketType, setUsed: Double) {
         self.stringId = stringId
         self.brand = brand
@@ -67,10 +71,7 @@ class RacketString: Codable {
 
             self.purchaseHistory = []
             let historyItem = PurchaseHistory.init(date: self.buyDate, length: self.length, price: self.buyPrice)
-
-            if let historyItem = historyItem {
-                self.purchaseHistory?.append(historyItem)
-            }
+            self.purchaseHistory?.append(historyItem)
         } else {
             return nil
         }
