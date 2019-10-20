@@ -69,7 +69,6 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func getActiveOrders() {
-        // reload data in the tableView
         if let stringer = self.currentStringer, let orderIds = stringer.orderIds {
             orderController.getRecievedOrders(orderIds: orderIds) { (result) in
                 if let result = result {
@@ -78,7 +77,6 @@ class StringerDetailViewController: UIViewController {
                 }
             }
         }
-        self.updateUI()
     }
 
     private func updateUI() {
