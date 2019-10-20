@@ -16,8 +16,6 @@ class RacketString: Codable {
     var modelName: String
     var stringType: StringType
     var length: Double
-    var buyDate: Int64
-    var buyPrice: Double
     var pricePerRacket: Double
     var thickness: Double
     var color: StringColor
@@ -41,20 +39,20 @@ class RacketString: Codable {
         self.modelName = modelName
         self.stringType = stringType
         self.length = length
-        self.buyDate = buyDate
-        self.buyPrice = buyPrice
         self.pricePerRacket = pricePerRacket
         self.thickness = thickness
         self.color = color
         self.stringPurpose = stringPurpose
     }
 
-    init?(stringId: String?, brand: String?, modelName: String?, stringType: String?, length: String?, buyDate: String?, buyPrice: String?, pricePerRacket: String?, thickness: String?, color: String?, stringPurpose: String?) {
+    init?(stringId: String?, brand: String?, modelName: String?, stringType: String?, length: String?, buyDate: Int64, buyPrice: String?, pricePerRacket: String?, thickness: String?, color: String?, stringPurpose: String?) {
 
-        if let stringId = stringId, let brand = brand, let modelName = modelName, let stringType = stringType, let length = length, let buyDate = buyDate, let buyPrice = buyPrice,
+        if let stringId = stringId, let brand = brand, let modelName = modelName, let stringType = stringType, let length = length, let buyPrice = buyPrice,
             let pricePerRacket = pricePerRacket, let thickness = thickness, let color = color, let stringPurpose = stringPurpose {
 
-            if brand.isEmpty || modelName.isEmpty || stringType.isEmpty || length.isEmpty || buyDate.isEmpty || buyPrice.isEmpty || pricePerRacket.isEmpty || thickness.isEmpty || color.isEmpty || stringPurpose.isEmpty {
+            guard let buyPrice = Double(buyPrice) else { return nil }
+
+            if brand.isEmpty || modelName.isEmpty || stringType.isEmpty || length.isEmpty || pricePerRacket.isEmpty || thickness.isEmpty || color.isEmpty || stringPurpose.isEmpty {
                 return nil
             }
 
@@ -63,15 +61,13 @@ class RacketString: Codable {
             self.modelName = modelName
             self.stringType = StringType(rawValue: stringType) ?? StringType.DEAULT
             self.length = Double(length) ?? 0
-            self.buyDate = Int64(buyDate) ?? 0
-            self.buyPrice = Double(buyPrice) ?? 0
             self.pricePerRacket = Double(pricePerRacket) ?? 0
             self.thickness = Double(thickness) ?? 0
             self.color = StringColor(rawValue: color) ?? StringColor.DEFAULT
             self.stringPurpose = RacketType(rawValue: stringPurpose) ?? RacketType.TENNIS
 
             self.purchaseHistory = []
-            let historyItem = PurchaseHistory.init(date: self.buyDate, length: self.length, price: self.buyPrice)
+            let historyItem = PurchaseHistory.init(date: buyDate, length: self.length, price: buyPrice)
             self.purchaseHistory?.append(historyItem)
         } else {
             return nil
