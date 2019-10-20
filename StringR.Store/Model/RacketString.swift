@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RacketString: Codable {
 
@@ -77,5 +78,16 @@ class RacketString: Codable {
 
     func getDescription() -> String {
         return "\(self.brand.rawValue) | \(self.modelName) | \(self.thickness)"
+    }
+
+    func getImageIndication() -> UIImage {
+        switch self.stringPurpose {
+        case .TENNIS:
+            return #imageLiteral(resourceName: "tennisball")
+        case .BADMINTON:
+            return #imageLiteral(resourceName: "shuttlecock")
+        case .SQUASH:
+            return #imageLiteral(resourceName: "squashball")
+        }
     }
 }
