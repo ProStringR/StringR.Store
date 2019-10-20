@@ -12,8 +12,6 @@ class SpecificStringInStorageViewController: UIViewController {
 
     let storageController = ControlReg.getStorageController
 
-    var racketString: RacketString?
-
     weak var brandTitle: UILabel!
     weak var brand: UILabel!
     weak var modelTitle: UILabel!
@@ -45,7 +43,9 @@ class SpecificStringInStorageViewController: UIViewController {
     weak var additionButton: UIButton!
     weak var historyTableView: UITableView!
 
+    var racketString: RacketString?
     var purchaseHistoryList: [PurchaseHistory]?
+    var datePicker = UIDatePicker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,8 +122,13 @@ class SpecificStringInStorageViewController: UIViewController {
 
     private func setupStringAdditionFields() {
         lengthInput = LayoutController.getTextField(placeholder: "Length", parentView: self.view)
+        lengthInput.keyboardType = .numberPad
+
         dateInput = LayoutController.getTextField(placeholder: "Select date", parentView: self.view)
+        setupDatePicker()
+
         priceInput = LayoutController.getTextField(placeholder: "Price", parentView: self.view)
+        priceInput.keyboardType = .numberPad
 
         additionButton = LayoutController.getButton(title: "Add", parentView: self.view)
         additionButton.addTarget(self, action: #selector(onAddButtonClicked(_:)), for: .touchUpInside)
@@ -147,16 +152,32 @@ class SpecificStringInStorageViewController: UIViewController {
         }
     }
 
+    private func setupDatePicker() {
+        self.datePicker.datePickerMode = .date
+        self.datePicker.addTarget(self, action: #selector(dataChanged(datePicker:)), for: .valueChanged)
+        self.dateInput.inputView = self.datePicker
+    }
+
     private func getStringData() {
         if let racketString = racketString {
             self.purchaseHistoryList = racketString.purchaseHistory
-            self.historyTableView.reloadData()
 
             self.brand.text = racketString.brand.rawValue
             self.model.text = racketString.modelName
             self.type.text = racketString.stringType.rawValue
-            self.lengthRemaining.text = String(racketString.lengthRemaining)
-            self.price.text = String(racketString.racketRemaining)
+
+            self.updateUI()
+        }
+    }
+
+    private func updateUI() {
+        DispatchQueue.main.async {
+            self.historyTableView.reloadData()
+
+            if let racketString = self.racketString {
+                self.lengthRemaining.text = String(racketString.lengthRemaining)
+                self.price.text = String(racketString.racketRemaining)
+            }
         }
     }
 
@@ -194,16 +215,37 @@ class SpecificStringInStorageViewController: UIViewController {
         }
     }
 
+    private func createHistoryItem() -> PurchaseHistory? {
+        guard let date = dateInput.text, let price = priceInput.text, let length = lengthInput.text else { return nil }
+        if date.isEmpty || price.isEmpty || length.isEmpty { return nil }
+
+        return PurchaseHistory.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
+    }
+
+    @objc func dataChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+
+        self.dateInput.text = dateFormatter.string(from: datePicker.date)
+    }
+
     @objc func onAddButtonClicked(_ sender: UIButton) {
-        guard let strindId = self.racketString?.stringId, let itemNumber = self.purchaseHistoryList?.count else { return }
+        let purchaseHistory = createHistoryItem()
 
-        let purchaseHistory = PurchaseHistory.init(date: 1234223, length: 22, price: 66)
+        ShopSingleton.shared.getShop { (shop) in
+            if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
+                self.purchaseHistoryList?.append(purchaseHistory)
+                self.racketString?.updateLength(length: purchaseHistory.length)
 
-        self.storageController.putRacketStringHistoryItem(purchaseHistoryItem: purchaseHistory, stringId: strindId, historyNumber: itemNumber) { (succes) in
-            if succes {
-                print("All is good")
+                self.storageController.putRacketString(racketString: racketString, storageId: shop.storageId) { (succes) in
+                    if succes {
+                        self.updateUI()
+                    } else {
+                        print("fuck this shit")
+                    }
+                }
             } else {
-                print("fuck this shit")
+                print("something is nil")
             }
         }
     }

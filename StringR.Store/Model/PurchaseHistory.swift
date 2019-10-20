@@ -19,12 +19,12 @@ class PurchaseHistory: Codable {
         self.price = price
     }
 
-    init?(date: String?, length: String?, price: String?) {
-        guard let date = date, let length = length, let price = price else { return nil }
+    init?(date: Int64, length: String?, price: String?) {
+        guard let length = length, let price = price else { return nil }
 
-        if date.isEmpty || length.isEmpty || price.isEmpty { return nil }
+        if length.isEmpty || price.isEmpty { return nil }
 
-        if let date = Int64(date), let length = Double(length), let price = Double(price) {
+        if let length = Double(length), let price = Double(price) {
             self.date = date
             self.length = length
             self.price = price

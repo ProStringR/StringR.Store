@@ -23,6 +23,7 @@ class RacketString: Codable {
     var color: StringColor
     var stringPurpose: RacketType
     var purchaseHistory: [PurchaseHistory]?
+
     var racketRemaining: Int {
         let stringPerRacket = Constant.stringLengthPerRacket
         let lengthRemaining = Double(self.length) / Double(stringPerRacket)
@@ -91,4 +92,20 @@ class RacketString: Codable {
             return #imageLiteral(resourceName: "squashball")
         }
     }
+
+    func updateLength(length: Double) {
+        self.length += length
+    }
+
+//    func updatePrice(latestPrice: Double) {
+//        var accumulatedPrice: Double = 0
+//
+//        if let items = self.purchaseHistory {
+//            for item in items {
+//                accumulatedPrice += item.price
+//            }
+//
+//            self.buyPrice = accumulatedPrice / Double(items.count)
+//        }
+//    }
 }
