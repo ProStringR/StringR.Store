@@ -222,6 +222,14 @@ class SpecificStringInStorageViewController: UIViewController {
         return PurchaseHistory.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
     }
 
+    private func cleanUpInputFields() {
+        DispatchQueue.main.async {
+            self.priceInput.text = Constant.emptyString
+            self.lengthInput.text = Constant.emptyString
+            self.dateInput.text = Constant.emptyString
+        }
+    }
+
     @objc func dataChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -239,12 +247,14 @@ class SpecificStringInStorageViewController: UIViewController {
 
                 self.storageController.putRacketString(racketString: racketString, storageId: shop.storageId) { (succes) in
                     if succes {
+                        self.cleanUpInputFields()
                         self.updateUI()
                     } else {
-                        print("fuck this shit")
+                        //TODO: Show alert
                     }
                 }
             } else {
+                //TODO: show alert
                 print("something is nil")
             }
         }
