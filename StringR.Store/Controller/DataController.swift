@@ -97,14 +97,28 @@ class DataController {
         }.resume()
     }
 
-    func deleteData(objectIdToDelete objectId: String, url: String) throws {
-        guard let url = URL(string: "\(url)/\(objectId).json") else { throw Exception.url }
+    func deleteData(objectIdToDelete objectId: String, url: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: "\(url)/\(objectId).json") else { completion(false); return }
 
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "DELETE"
 
-        URLSession.shared.dataTask(with: request as URLRequest).resume()
+        URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            _ = data
+
+            if error != nil {
+                completion(false)
+            }
+
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 300, response.statusCode >= 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }.resume()
     }
 
     func createObject<T: Codable, P: Codable>(fromObject: T?, toObject: P.Type) -> P? {

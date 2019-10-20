@@ -270,7 +270,19 @@ class SpecificStringInStorageViewController: UIViewController {
     }
 
     @objc func deleteAction() {
-
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop, let strindId = self.racketString?.stringId {
+                self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
+                    if sucess {
+                        self.navigationController?.dismiss(animated: true, completion: nil)
+                    } else {
+                        print("something async went wrong")
+                    }
+                })
+            } else {
+                print("something went wrong")
+            }
+        }
     }
 
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {

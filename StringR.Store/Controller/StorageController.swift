@@ -61,4 +61,10 @@ class StorageController {
 
         return stringsToReturn
     }
+
+    func deleteStringFromStorage(fromShop shopId: String, stringId: String, completion: @escaping (Bool) -> Void) {
+        storageDAO.deleteStringFromStorage(fromShop: shopId, stringId: stringId) { (succes) in
+            completion(succes)
+        }
+    }
 }

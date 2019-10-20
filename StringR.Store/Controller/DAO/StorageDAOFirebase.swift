@@ -29,4 +29,10 @@ class StorageDAOFirebase: StorageDAOProtocol {
             completion(resultArray)
         }
     }
+
+    func deleteStringFromStorage(fromShop shopId: String, stringId: String, completion: @escaping (Bool) -> Void) {
+        dataControl.deleteData(objectIdToDelete: stringId, url: "\(Firebase.storage)/\(shopId)") { (succes) in
+            completion(succes)
+        }
+    }
 }
