@@ -11,6 +11,7 @@
 "common_cancel" = "Fortryd";
 "common_tryAgain" = "Prøv igen";
 "common_Ups" = "Ups... noget gik galt";
+"common_ok" = "Okay";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";

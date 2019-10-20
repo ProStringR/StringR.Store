@@ -235,6 +235,12 @@ class SpecificStringInStorageViewController: UIViewController {
         }
     }
 
+    private func presentDefaultAlert() {
+        let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Constant.emptyString)
+        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_ok"), style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+
     @objc func dataChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -255,12 +261,11 @@ class SpecificStringInStorageViewController: UIViewController {
                         self.cleanUpInputFields()
                         self.updateUI()
                     } else {
-                        //TODO: Show alert
+                        print("something went wrong on updating database, async")
                     }
                 }
             } else {
-                //TODO: show alert
-                print("something is nil")
+                self.presentDefaultAlert()
             }
         }
     }
@@ -276,11 +281,11 @@ class SpecificStringInStorageViewController: UIViewController {
                     if sucess {
                         self.navigationController?.dismiss(animated: true, completion: nil)
                     } else {
-                        print("something async went wrong")
+                        print("something went wrong during deletion of string from storage, async")
                     }
                 })
             } else {
-                print("something went wrong")
+                self.presentDefaultAlert()
             }
         }
     }

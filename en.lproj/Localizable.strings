@@ -11,6 +11,7 @@
 "common_cancel" = "Cancel";
 "common_tryAgain" = "Try again";
 "common_Ups" = "Ups... something went wrong";
+"common_ok" = "Okay";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
