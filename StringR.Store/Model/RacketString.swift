@@ -21,6 +21,7 @@ class RacketString: Codable {
     var thickness: Double
     var color: StringColor
     var stringPurpose: RacketType
+    var purchaseHistory: [PurchaseHistory]?
     var racketRemaining: Int {
         let stringPerRacket = Constant.stringLengthPerRacket
         let lengthRemaining = Double(self.length) / Double(stringPerRacket)
@@ -62,6 +63,13 @@ class RacketString: Codable {
             self.thickness = Double(thickness) ?? 0
             self.color = StringColor(rawValue: color) ?? StringColor.DEFAULT
             self.stringPurpose = RacketType(rawValue: stringPurpose) ?? RacketType.TENNIS
+
+            self.purchaseHistory = []
+            let historyItem = PurchaseHistory.init(date: self.buyDate, length: self.length, price: self.buyPrice)
+
+            if let historyItem = historyItem {
+                self.purchaseHistory?.append(historyItem)
+            }
         } else {
             return nil
         }

@@ -21,5 +21,5 @@ struct RacketStringDTO: Codable {
     var thickness: Double?
     var color: StringColor?
     var stringPurpose: RacketType?
-    var setUsed: Double?
+    var purchaseHistory: [PurchaseHistory]?
 }

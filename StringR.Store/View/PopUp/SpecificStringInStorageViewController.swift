@@ -41,12 +41,10 @@ class SpecificStringInStorageViewController: UIViewController {
     weak var additionButton: UIButton!
     weak var historyTableView: UITableView!
 
-    var purchaseHistoryList: [String]?
+    var purchaseHistoryList: [PurchaseHistory]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.purchaseHistoryList = ["lol", "hej", "fuck", "lol", "hej", "fuck", "lol", "hej", "fuck", "lol", "hej", "fuck"]
 
         setupView()
         setupLabels()
@@ -204,8 +202,8 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
 
         let item = purchaseHistory[indexPath.row]
 
-        cell.leftLabel.text = item
-        cell.rightLabel.text = item
+        cell.leftLabel.text = String(item.price)
+        cell.rightLabel.text = String(item.length)
 
         return cell
     }
