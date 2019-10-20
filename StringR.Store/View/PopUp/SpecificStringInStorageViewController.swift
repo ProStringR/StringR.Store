@@ -76,27 +76,27 @@ class SpecificStringInStorageViewController: UIViewController {
     }
 
     private func setupLabels() {
-        brandTitle = LayoutController.getLabel(text: "Brand", parentView: self.view)
+        brandTitle = LayoutController.getLabel(text: Utility.getString(forKey: "addString_BrandLabel"), parentView: self.view)
         brandTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         brand = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
-        modelTitle = LayoutController.getLabel(text: "Model", parentView: self.view)
+        modelTitle = LayoutController.getLabel(text: Utility.getString(forKey: "addString_ModelLabel"), parentView: self.view)
         modelTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         model = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
-        typeTitle = LayoutController.getLabel(text: "Type", parentView: self.view)
+        typeTitle = LayoutController.getLabel(text: Utility.getString(forKey: "addString_StringTypeLabel"), parentView: self.view)
         typeTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         type = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
-        lengthRemainingTitle = LayoutController.getLabel(text: "Length remaining", parentView: self.view)
+        lengthRemainingTitle = LayoutController.getLabel(text: Utility.getString(forKey: "specificString_length_remaining"), parentView: self.view)
         lengthRemainingTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         lengthRemaining = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
-        priceTitle = LayoutController.getLabel(text: "Avg. price per racket", parentView: self.view)
+        priceTitle = LayoutController.getLabel(text: Utility.getString(forKey: "specificString_Avg_price_per_racket"), parentView: self.view)
         priceTitle.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
         price = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
 
-        purhcaseHistoryTitle = LayoutController.getLabel(text: "Purchase history", parentView: self.view)
+        purhcaseHistoryTitle = LayoutController.getLabel(text: Utility.getString(forKey: "specificString_purchase_history"), parentView: self.view)
         purhcaseHistoryTitle.font = UIFont.boldSystemFont(ofSize: Constant.smallHeaderSize)
     }
 
@@ -125,16 +125,16 @@ class SpecificStringInStorageViewController: UIViewController {
     }
 
     private func setupStringAdditionFields() {
-        lengthInput = LayoutController.getTextField(placeholder: "Length", parentView: self.view)
+        lengthInput = LayoutController.getTextField(placeholder: Utility.getString(forKey: "addString_LengthLabel"), parentView: self.view)
         lengthInput.keyboardType = .numberPad
 
-        dateInput = LayoutController.getTextField(placeholder: "Select date", parentView: self.view)
+        dateInput = LayoutController.getTextField(placeholder: Utility.getString(forKey: "addString_BuyDatePlaceholder"), parentView: self.view)
         setupDatePicker()
 
-        priceInput = LayoutController.getTextField(placeholder: "Price", parentView: self.view)
+        priceInput = LayoutController.getTextField(placeholder: Utility.getString(forKey: "specificString_price"), parentView: self.view)
         priceInput.keyboardType = .numberPad
 
-        additionButton = LayoutController.getButton(title: "Add", parentView: self.view)
+        additionButton = LayoutController.getButton(title: Utility.getString(forKey: "common_add"), parentView: self.view)
         additionButton.addTarget(self, action: #selector(onAddButtonClicked(_:)), for: .touchUpInside)
         additionButton.layer.cornerRadius = Constant.smallCornerRadius
     }

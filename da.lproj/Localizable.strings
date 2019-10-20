@@ -12,6 +12,7 @@
 "common_tryAgain" = "Prøv igen";
 "common_Ups" = "Ups... noget gik galt";
 "common_ok" = "Okay";
+"common_add" = "Tilføj";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
@@ -87,3 +88,8 @@
 "createOrderViewController_crossTension" = "Lodret Tension";
 "createOrderViewController_placeOrderButton" = "Opret Ordre";
 "createOrderViewController_creationFail" = "Noget gik galt under oprettelsen af ordren";
+
+"specificString_length_remaining" = "Resterende længde";
+"specificString_Avg_price_per_racket" = "Gnsn. pris pr. ketcher";
+"specificString_purchase_history" = "Ordre historik";
+"specificString_price" = "Pris";

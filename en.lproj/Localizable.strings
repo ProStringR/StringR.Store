@@ -12,6 +12,7 @@
 "common_tryAgain" = "Try again";
 "common_Ups" = "Ups... something went wrong";
 "common_ok" = "Okay";
+"common_add" = "Add";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
@@ -87,3 +88,8 @@
 "createOrderViewController_crossTension" = "Cross Tension";
 "createOrderViewController_placeOrderButton" = "Place Order";
 "createOrderViewController_creationFail" = "Something in the order creation went wrong.";
+
+"specificString_length_remaining" = "Length remaining";
+"specificString_Avg_price_per_racket" = "Avg. price per racket";
+"specificString_purchase_history" = "Purchase history";
+"specificString_price" = "Price";
