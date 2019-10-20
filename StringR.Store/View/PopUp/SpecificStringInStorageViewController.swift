@@ -61,6 +61,10 @@ class SpecificStringInStorageViewController: UIViewController {
         generatePurchaseHistoryTableView()
         getStringData()
         setupConstraints()
+
+        // set tapGesture to close keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
     }
 
     private func setupView() {
@@ -227,6 +231,7 @@ class SpecificStringInStorageViewController: UIViewController {
             self.priceInput.text = Constant.emptyString
             self.lengthInput.text = Constant.emptyString
             self.dateInput.text = Constant.emptyString
+            self.view.endEditing(true)
         }
     }
 
@@ -266,6 +271,10 @@ class SpecificStringInStorageViewController: UIViewController {
 
     @objc func deleteAction() {
 
+    }
+
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
 
