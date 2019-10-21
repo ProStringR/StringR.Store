@@ -106,6 +106,10 @@ extension StorageViewController: UITableViewDataSource {
 extension StorageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // Do something
+
+        let viewControllerToPresent = SpecificStringInStorageViewController()
+        viewControllerToPresent.racketString = self.strings?[indexPath.row]
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
+        self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }

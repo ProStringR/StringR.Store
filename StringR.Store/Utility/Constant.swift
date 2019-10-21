@@ -17,12 +17,14 @@ class Constant {
     static let bigOffset = CGFloat(16)
     static let hugeOffset = CGFloat(32)
     static let gigantOffset = CGFloat(64)
-    static let cardHeaderSize = CGFloat(24)
+    static let headerSize = CGFloat(24)
+    static let smallHeaderSize = CGFloat(20)
     static let stringLengthPerRacket = 12
     static let tableViewRowHeight = CGFloat(60)
     static let popupTopBottom = CGFloat(160)
     static let popupLeadingTrailing = CGFloat(75)
     static let standardCornerRadius = CGFloat(10)
+    static let smallCornerRadius = CGFloat(5)
     static let standardButtonHeight = CGFloat(50)
 
     // Strings

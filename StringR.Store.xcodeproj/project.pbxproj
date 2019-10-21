@@ -10,6 +10,7 @@
 		1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */; };
 		1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */; };
 		1D1771822359EBFB00DBC870 /* ShopSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1771812359EBFB00DBC870 /* ShopSingleton.swift */; };
+		1D177184235A086C00DBC870 /* SpecificStringInStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
@@ -24,6 +25,8 @@
 		1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455CF234372B300C33B0C /* RacketStringDTO.swift */; };
 		1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D12345C73400C33B0C /* EconomyDTO.swift */; };
 		1D7455D62345CD9900C33B0C /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D52345CD9900C33B0C /* CustomerDTO.swift */; };
+		1DD8D19A235C67C900074BC2 /* PurchaseHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8D199235C67C900074BC2 /* PurchaseHistoryDTO.swift */; };
+		1DD8D19C235C681F00074BC2 /* PurchaseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */; };
 		1DE69BE923588F1900AD0864 /* StorageDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
@@ -97,6 +100,7 @@
 		1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
 		1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageDAOProtocol.swift; sourceTree = "<group>"; };
 		1D1771812359EBFB00DBC870 /* ShopSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSingleton.swift; sourceTree = "<group>"; };
+		1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificStringInStorageViewController.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		1D7455CF234372B300C33B0C /* RacketStringDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDTO.swift; sourceTree = "<group>"; };
 		1D7455D12345C73400C33B0C /* EconomyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyDTO.swift; sourceTree = "<group>"; };
 		1D7455D52345CD9900C33B0C /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
+		1DD8D199235C67C900074BC2 /* PurchaseHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryDTO.swift; sourceTree = "<group>"; };
+		1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistory.swift; sourceTree = "<group>"; };
 		1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDAOFirebase.swift; sourceTree = "<group>"; };
 		1DF66C2B232F733F0007E2C3 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1DF66C2E232F73AC0007E2C3 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -256,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */,
+				1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -353,6 +360,7 @@
 				B38C5B91232BD1D000116BC1 /* Customer.swift */,
 				B38C5B93232BD36900116BC1 /* Stringer.swift */,
 				B38C5B95232BD3FC00116BC1 /* Order.swift */,
+				1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,6 +420,7 @@
 				1D7455D12345C73400C33B0C /* EconomyDTO.swift */,
 				1D7455D52345CD9900C33B0C /* CustomerDTO.swift */,
 				B3660A752346421C005A780D /* ShopDTO.swift */,
+				1DD8D199235C67C900074BC2 /* PurchaseHistoryDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -571,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D177184235A086C00DBC870 /* SpecificStringInStorageViewController.swift in Sources */,
 				1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */,
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
@@ -584,6 +594,7 @@
 				B36B428C232BABFA00954357 /* Shop.swift in Sources */,
 				B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */,
 				B356A53F235727F5002B92A0 /* FindCustomerDelegate.swift in Sources */,
+				1DD8D19C235C681F00074BC2 /* PurchaseHistory.swift in Sources */,
 				B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */,
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
@@ -600,6 +611,7 @@
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
+				1DD8D19A235C67C900074BC2 /* PurchaseHistoryDTO.swift in Sources */,
 				B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */,
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
 				B38C5B88232BCAA800116BC1 /* Company.swift in Sources */,
