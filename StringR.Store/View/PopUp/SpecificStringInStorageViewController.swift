@@ -179,8 +179,8 @@ class SpecificStringInStorageViewController: UIViewController {
             self.historyTableView.reloadData()
 
             if let racketString = self.racketString {
-                self.lengthRemaining.text = String(racketString.lengthRemaining)
-                self.price.text = String(racketString.racketRemaining)
+                self.lengthRemaining.text = String(Int(racketString.length))
+                self.price.text = String(racketString.pricePerRacket)
             }
         }
     }
@@ -242,10 +242,7 @@ class SpecificStringInStorageViewController: UIViewController {
     }
 
     @objc func dataChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-
-        self.dateInput.text = dateFormatter.string(from: datePicker.date)
+        self.dateInput.text = Utility.dateToString(date: datePicker.date, withTime: false)
     }
 
     @objc func onAddButtonClicked(_ sender: UIButton) {
@@ -255,6 +252,7 @@ class SpecificStringInStorageViewController: UIViewController {
             if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
                 self.purchaseHistoryList?.append(purchaseHistory)
                 self.racketString?.updateLength(length: purchaseHistory.length)
+                self.racketString?.purchaseHistory?.append(purchaseHistory)
 
                 self.storageController.putRacketString(racketString: racketString, storageId: shop.storageId) { (succes) in
                     if succes {
@@ -279,7 +277,9 @@ class SpecificStringInStorageViewController: UIViewController {
             if let shop = shop, let strindId = self.racketString?.stringId {
                 self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
                     if sucess {
-                        self.navigationController?.dismiss(animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self.navigationController?.dismiss(animated: true, completion: nil)
+                        }
                     } else {
                         print("something went wrong during deletion of string from storage, async")
                     }
@@ -316,6 +316,9 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
         let date = Utility.dateToString(date: Date.init(milliseconds: item.date), withTime: false)
         cell.leftLabel.text = "\(date) | \(String(Int(item.price)))"
         cell.rightLabel.text = String(Int(item.length))
+
+        // not clickable
+        cell.selectionStyle = .none
 
         return cell
     }
