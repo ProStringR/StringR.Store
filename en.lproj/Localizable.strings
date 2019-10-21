@@ -93,3 +93,5 @@
 "specificString_Avg_price_per_racket" = "Avg. price per racket";
 "specificString_purchase_history" = "Purchase history";
 "specificString_price" = "Price";
+"specificString_alertHeder" = "Are you sure?";
+"specificString_alertMessege" = "You are about to remove your string from your storage. You will not be able to reach this string again, if you remove it.";
