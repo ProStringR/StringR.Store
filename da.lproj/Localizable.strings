@@ -93,3 +93,5 @@
 "specificString_Avg_price_per_racket" = "Gnsn. pris pr. ketcher";
 "specificString_purchase_history" = "Ordre historik";
 "specificString_price" = "Pris";
+"specificString_alertHeder" = "Er du sikker?";
+"specificString_alertMessege" = "Du er ved at fjerne din streng fra dit laget. Du vil ikke have muligheden for at tilgå denne streng igen efter fjernelse.";

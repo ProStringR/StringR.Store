@@ -57,7 +57,9 @@ class StorageViewController: UIViewController {
     }
 
     @objc func addAction() {
-        let popUp = LayoutController.getPopupView(viewControllerToPresent: AddStringToStorageViewController())
+        let viewControllerToPresent = AddStringToStorageViewController()
+        viewControllerToPresent.delegate = self
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
@@ -108,8 +110,37 @@ extension StorageViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let viewControllerToPresent = SpecificStringInStorageViewController()
+        viewControllerToPresent.delegate = self
         viewControllerToPresent.racketString = self.strings?[indexPath.row]
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
+    }
+}
+
+extension StorageViewController: UpdateStorageDelegate {
+    func removeString(string: RacketString?) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true) {
+                guard let racketString = string else { return }
+                self.strings?.removeAll(where: {$0.stringId == racketString.stringId})
+                self.updateUI()
+            }
+        }
+    }
+
+    func addString(string: RacketString?) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true) {
+                guard let racketString = string else { return }
+
+                if self.strings != nil {
+                    self.strings?.append(racketString)
+                } else {
+                    self.strings = [racketString]
+                }
+
+                self.updateUI()
+            }
+        }
     }
 }

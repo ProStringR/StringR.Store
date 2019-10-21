@@ -11,6 +11,7 @@ import UIKit
 class SpecificStringInStorageViewController: UIViewController {
 
     let storageController = ControlReg.getStorageController
+    weak var delegate: UpdateStorageDelegate?
 
     weak var brandTitle: UILabel!
     weak var brand: UILabel!
@@ -71,7 +72,7 @@ class SpecificStringInStorageViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancelAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteAction))
     }
 
@@ -275,15 +276,25 @@ class SpecificStringInStorageViewController: UIViewController {
     @objc func deleteAction() {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop, let strindId = self.racketString?.stringId {
-                self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
-                    if sucess {
-                        DispatchQueue.main.async {
-                            self.navigationController?.dismiss(animated: true, completion: nil)
-                        }
-                    } else {
-                        print("something went wrong during deletion of string from storage, async")
-                    }
-                })
+                // make an alert
+                DispatchQueue.main.async {
+                    let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "specificString_alertHeder"), withMessage: Utility.getString(forKey: "specificString_alertMessege"))
+                    alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
+                        _ = alert
+                        // remove string from team
+                        self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
+                            if sucess {
+                                self.delegate?.removeString(string: self.racketString)
+                            } else {
+                                print("something went wrong during deletion of string from storage, async")
+                            }
+                        })
+                    }))
+
+                    alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .default, handler: nil))
+                    // present the alert
+                    self.present(alert, animated: true)
+                }
             } else {
                 self.presentDefaultAlert()
             }
