@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class AddStringToStorageViewController: UIViewController {
+    weak var delegate: UpdateStorageDelegate?
 
     weak var brandLabel: UILabel!
     weak var brandInput: UITextField!
@@ -178,7 +179,9 @@ class AddStringToStorageViewController: UIViewController {
     }
 
     @objc func cancelAction() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc func addAction() {
@@ -188,7 +191,8 @@ class AddStringToStorageViewController: UIViewController {
             let storageId = "ShopMJ"
             storageController.putRacketString(racketString: stringToAdd, storageId: storageId) { (succes) in
                 if succes {
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    print("Jeg kalder Delegate")
+                    self.delegate?.addString(string: stringToAdd)
                 } else {
                     print("cant put it in firebase")
                 }
