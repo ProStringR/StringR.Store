@@ -39,7 +39,7 @@ class CompletedViewController: UIViewController {
     private func getData() {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
-                self.orderController.getCompletedOrders(shop: shop) { (result) in
+                self.orderController.getCompletedOrders(orderIds: shop.orderIds) { (result) in
                     if let orders = result {
                         self.orders = orders
                         self.updateUI()

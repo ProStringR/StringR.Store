@@ -69,8 +69,14 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func getActiveOrders() {
-        // reload data in the tableView
-        self.updateUI()
+        if let stringer = self.currentStringer, let orderIds = stringer.orderIds {
+            orderController.getRecievedOrders(orderIds: orderIds) { (result) in
+                if let result = result {
+                    self.activeOrders = result
+                    self.updateUI()
+                }
+            }
+        }
     }
 
     private func updateUI() {
@@ -108,7 +114,7 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func setupTableView() {
-        self.orderTableView = LayoutController.getTableView(cellType: StorageCell.self, cellIdentifier: StorageCell.identifier, parentView: self.view)
+        self.orderTableView = LayoutController.getTableView(cellType: OrderCellGeneral.self, cellIdentifier: OrderCellGeneral.identifier, parentView: self.view)
 
         self.orderTableView.delegate = self
         self.orderTableView.dataSource = self
@@ -175,39 +181,37 @@ class StringerDetailViewController: UIViewController {
 
 extension StringerDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let storage = self.strings {
-            return storage.count
+        if let orders = self.activeOrders {
+            return orders.count
         }
         return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let storage = self.strings else { return UITableViewCell() }
+        guard let orders = self.activeOrders else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
-        let cell = self.orderTableView.dequeueReusableCell(withIdentifier: StorageCell.identifier, for: indexPath) as! StorageCell
+        let cell = self.orderTableView.dequeueReusableCell(withIdentifier: OrderCellGeneral.identifier, for: indexPath) as! OrderCellGeneral
         // swiftlint:enable force_cast
 
-        let currentString = storage[indexPath.row]
+        let currentOrder = orders[indexPath.row]
 
-        cell.descriptionLabel.text = currentString.getDescription()
+        cell.customerNameLabel.text = currentOrder.customer?.name
+        cell.rightLabel.text = Utility.dateToString(date: Date(milliseconds: currentOrder.deliveryDate))
 
-        switch currentString.stringPurpose {
-        case .TENNIS:
-            cell.typeIndicator.image = #imageLiteral(resourceName: "tennisball")
-        case .BADMINTON:
-            cell.typeIndicator.image = #imageLiteral(resourceName: "shuttlecock")
-        case .SQUASH:
-            cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
+        if currentOrder.daysToDeliver <= 1 {
+            cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "red_circle")
+        } else if currentOrder.daysToDeliver <= 3 {
+            cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "yellow_circle")
+        } else if currentOrder.daysToDeliver > 3 {
+            cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
         }
 
-        // Do this dynamic
-        cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
+        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
 
-        cell.accessoryType = .disclosureIndicator
-        cell.tintColor = .black
+        // tableView is not clickable
+        cell.selectionStyle = .none
 
-        // do the calculation of rackets remaining, and set the color indicator.
         return cell
     }
 }

@@ -20,35 +20,27 @@ class OrderController {
         }
     }
 
-    func getRecievedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
-        if let orderIds = shop.orderIds {
-            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
-                completion(result)
-            }
+    func getRecievedOrders(orderIds: [String]?, completion: @escaping ([Order]?) -> Void) {
+        getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
+            completion(result)
         }
     }
 
-    func getDoneOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
-        if let orderIds = shop.orderIds {
-            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .DONE) { (result) in
-                completion(result)
-            }
+    func getDoneOrders(orderIds: [String]?, completion: @escaping ([Order]?) -> Void) {
+        getOrdersFiltered(orderIds: orderIds, status: .DONE) { (result) in
+            completion(result)
         }
     }
 
-    func getDeliveredOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
-        if let orderIds = shop.orderIds {
-            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .DELIVERED) { (result) in
-                completion(result)
-            }
+    func getDeliveredOrders(orderIds: [String]?, completion: @escaping ([Order]?) -> Void) {
+        getOrdersFiltered(orderIds: orderIds, status: .DELIVERED) { (result) in
+            completion(result)
         }
     }
 
-    func getCompletedOrders(shop: Shop, completion: @escaping ([Order]?) -> Void) {
-        if let orderIds = shop.orderIds {
-            orderDAO.getOrdersFiltered(orderIds: orderIds, status: .COMPLETE) { (result) in
-                completion(result)
-            }
+    func getCompletedOrders(orderIds: [String]?, completion: @escaping ([Order]?) -> Void) {
+        getOrdersFiltered(orderIds: orderIds, status: .COMPLETE) { (result) in
+            completion(result)
         }
     }
 
@@ -58,6 +50,16 @@ class OrderController {
 
         orderDAO.putOrder(order: orderDTO) { (succes) in
             completion(succes)
+        }
+    }
+
+    private func getOrdersFiltered(orderIds: [String]?, status: OrderStatus, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = orderIds {
+            orderDAO.getOrdersFiltered(orderIds: orderIds, status: status) { (result) in
+                completion(result)
+            }
+        } else {
+            completion(nil)
         }
     }
 }

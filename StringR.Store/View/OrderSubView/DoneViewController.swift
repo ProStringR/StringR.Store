@@ -38,7 +38,7 @@ class DoneViewController: UIViewController {
     private func getData() {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
-                self.orderController.getDoneOrders(shop: shop) { (result) in
+                self.orderController.getDoneOrders(orderIds: shop.orderIds) { (result) in
                     if let orders = result {
                         self.orders = orders
                         self.updateUI()

@@ -38,7 +38,7 @@ class DeliveredViewController: UIViewController {
     private func getData() {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
-                self.orderController.getDeliveredOrders(shop: shop) { (result) in
+                self.orderController.getDeliveredOrders(orderIds: shop.orderIds) { (result) in
                     if let orders = result {
                         self.orders = orders
                         self.updateUI()

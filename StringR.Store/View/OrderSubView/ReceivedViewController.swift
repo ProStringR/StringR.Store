@@ -47,7 +47,7 @@ class ReceivedViewController: UIViewController {
     private func getData() {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
-                self.orderController.getRecievedOrders(shop: shop) { (result) in
+                self.orderController.getRecievedOrders(orderIds: shop.orderIds) { (result) in
                     self.orders = result
                     self.updateUI()
                 }
