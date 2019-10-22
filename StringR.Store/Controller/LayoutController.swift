@@ -107,7 +107,8 @@ class LayoutController {
 
     static func getSpinner(forParent view: UIView) -> UIView {
         let spinnerView = UIView.init(frame: view.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let colorAndAlpha = CGFloat(0.5)
+        spinnerView.backgroundColor = UIColor.init(red: colorAndAlpha, green: colorAndAlpha, blue: colorAndAlpha, alpha: colorAndAlpha)
 
         return spinnerView
     }
