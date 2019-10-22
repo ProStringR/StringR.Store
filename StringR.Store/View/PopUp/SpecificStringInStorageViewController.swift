@@ -248,6 +248,8 @@ class SpecificStringInStorageViewController: UIViewController {
 
     @objc func onAddButtonClicked(_ sender: UIButton) {
         let purchaseHistory = createHistoryItem()
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
 
         ShopSingleton.shared.getShop { (shop) in
             if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
@@ -262,8 +264,11 @@ class SpecificStringInStorageViewController: UIViewController {
                     } else {
                         print("something went wrong on updating database, async")
                     }
+
+                    self.removeSpinner(forSpinner: spinner)
                 }
             } else {
+                self.removeSpinner(forSpinner: spinner)
                 self.presentDefaultAlert()
             }
         }
