@@ -8,6 +8,7 @@
 
 import UIKit
 
+// swiftlint:disable type_body_length
 class SpecificStringInStorageViewController: UIViewController {
 
     let storageController = ControlReg.getStorageController
@@ -343,3 +344,4 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
         return cell
     }
 }
+// swiftlint:enable type_body_length
