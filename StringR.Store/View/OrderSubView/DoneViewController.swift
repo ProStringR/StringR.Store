@@ -36,12 +36,15 @@ class DoneViewController: UIViewController {
     }
 
     private func getData() {
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
                 self.orderController.getDoneOrders(orderIds: shop.orderIds) { (result) in
                     if let orders = result {
                         self.orders = orders
                         self.updateUI()
+                        self.removeSpinner(forSpinner: spinner)
                     }
                 }
             }
