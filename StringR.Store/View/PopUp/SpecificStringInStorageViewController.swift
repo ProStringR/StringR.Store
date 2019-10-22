@@ -286,6 +286,8 @@ class SpecificStringInStorageViewController: UIViewController {
                     let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "specificString_alertHeder"), withMessage: Utility.getString(forKey: "specificString_alertMessege"))
                     alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
                         _ = alert
+                        let spinner = LayoutController.getSpinner(forParent: self.view)
+                        self.showSpinner(withSpinner: spinner)
                         // remove string from team
                         self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
                             if sucess {
@@ -293,6 +295,8 @@ class SpecificStringInStorageViewController: UIViewController {
                             } else {
                                 print("something went wrong during deletion of string from storage, async")
                             }
+
+                            self.removeSpinner(forSpinner: spinner)
                         })
                     }))
 
