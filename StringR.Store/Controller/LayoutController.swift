@@ -104,4 +104,11 @@ class LayoutController {
 
         return textField
     }
+
+    static func getSpinner(forParent view: UIView) -> UIView {
+        let spinnerView = UIView.init(frame: view.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+
+        return spinnerView
+    }
  }
