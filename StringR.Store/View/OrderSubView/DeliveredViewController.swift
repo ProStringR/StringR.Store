@@ -74,7 +74,12 @@ extension DeliveredViewController: UITableViewDataSource {
 
         let currentOrder = orders[indexPath.row]
 
-        cell.customerNameLabel.text = currentOrder.customer?.name
+        if let customer = currentOrder.customer {
+            cell.customerNameLabel.text = "\(customer.name) | \(Utility.getLastChars(string: currentOrder.orderId, amount: 4))"
+        } else {
+            cell.customerNameLabel.text = Utility.getLastChars(string: currentOrder.orderId, amount: 4)
+        }
+
         let paidText = currentOrder.paid ? "Paid" : "Not Paid"
         cell.rightLabel.text = "\(currentOrder.orderStatus.rawValue) | \(paidText)"
 

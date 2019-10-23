@@ -75,7 +75,12 @@ extension CompletedViewController: UITableViewDataSource {
 
         let currentOrder = orders[indexPath.row]
 
-        cell.customerNameLabel.text = currentOrder.customer?.name
+        if let customer = currentOrder.customer {
+            cell.customerNameLabel.text = "\(customer.name) | \(Utility.getLastChars(string: currentOrder.orderId, amount: 4))"
+        } else {
+            cell.customerNameLabel.text = Utility.getLastChars(string: currentOrder.orderId, amount: 4)
+        }
+
         cell.rightLabel.text = currentOrder.orderStatus.rawValue
         cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
 
