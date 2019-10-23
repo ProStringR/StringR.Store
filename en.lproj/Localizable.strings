@@ -13,6 +13,8 @@
 "common_Ups" = "Ups... something went wrong";
 "common_ok" = "Okay";
 "common_add" = "Add";
+"common_paid" = "Paid";
+"common_notPaid" = "Not Paid";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
