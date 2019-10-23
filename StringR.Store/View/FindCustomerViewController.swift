@@ -46,6 +46,7 @@ class FindCustomerViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Utility.getString(forKey: "common_close"), style: .plain, target: self, action: #selector(closeAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Utility.getString(forKey: "findCustomer_guest_barItem"), style: .plain, target: self, action: #selector(useGuestUser))
     }
 
     private func setupTableView() {
@@ -60,7 +61,48 @@ class FindCustomerViewController: UIViewController {
     }
 
     @objc func closeAction() {
-        self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+
+    @objc func useGuestUser() {
+        let alert = UIAlertController(title: Utility.getString(forKey: "findCustomer_guest_head"), message: Utility.getString(forKey: "findCustomer_guest_body"), preferredStyle: .alert)
+
+        alert.addTextField { (textField) in
+            textField.placeholder = Utility.getString(forKey: "findCustomer_guest_placeholder_name")
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = Utility.getString(forKey: "findCustomer_guest_placeholder_phoneNumber")
+            textField.keyboardType = .phonePad
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = Utility.getString(forKey: "findCustomer_guest_placeholder_mail")
+            textField.keyboardType = .emailAddress
+        }
+
+        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_continue"), style: .default, handler: { [weak alert] (_) in
+            let name = alert?.textFields?[0].text ?? Constant.emptyString
+            let phoneNumber = alert?.textFields?[1].text ?? Constant.emptyString
+            let mail = alert?.textFields?[2].text ?? Constant.emptyString
+
+            let guest = Customer(userId: Utility.getUUID(), name: name, birthday: 0, email: mail, phoneNumber: phoneNumber, preferedStringType: .DEAULT, preferedTensionVertical: 0, prederedTensionHorizontal: 0)
+
+            self.customerController.putCustomer(customer: guest) { (succes) in
+                if succes {
+                    self.delegate?.addCustomer(customer: guest)
+                    self.closeAction()
+                }
+            }
+
+        }))
+
+        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: { [weak alert] (_) in
+            alert?.dismiss(animated: true, completion: nil)
+        }))
+
+        // Present the alert.
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
