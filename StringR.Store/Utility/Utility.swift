@@ -45,4 +45,8 @@ class Utility {
 
         return date.toString(dateFormat: "dd/MM/yyyy")
     }
+
+    static func getLastChars(string: String, amount: Int) -> String {
+        return String(string.suffix(amount))
+    }
 }
