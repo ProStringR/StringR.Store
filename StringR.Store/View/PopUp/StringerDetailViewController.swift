@@ -11,7 +11,7 @@ import UIKit
 
 class StringerDetailViewController: UIViewController {
 
-    weak var delegate: PopUpDelegate?
+    weak var delegate: RemoveStringerDelegate?
 
     weak var generelStackView: UIStackView!
     weak var infoStackView: UIStackView!

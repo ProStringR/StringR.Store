@@ -90,8 +90,6 @@
 		B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */; };
 		B3CAF98D2341FD7E005F5B38 /* ControlReg.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF98C2341FD7E005F5B38 /* ControlReg.swift */; };
 		B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CAF98E2342017E005F5B38 /* StringerDTO.swift */; };
-		B3DBEAD4236067F200BF329F /* PopUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBEAD3236067F200BF329F /* PopUpDelegate.swift */; };
-		B3DBEAD6236068FF00BF329F /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBEAD5236068FF00BF329F /* OverlayViewController.swift */; };
 		B3FB2C78232D0335003728C4 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C77232D0335003728C4 /* Extention.swift */; };
 		B3FB2C88232D2AA2003728C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3FB2C8A232D2AA2003728C4 /* Localizable.strings */; };
 		B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB2C8C232D2BF4003728C4 /* Utility.swift */; };
@@ -188,8 +186,6 @@
 		B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDAOProtocol.swift; sourceTree = "<group>"; };
 		B3CAF98C2341FD7E005F5B38 /* ControlReg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlReg.swift; sourceTree = "<group>"; };
 		B3CAF98E2342017E005F5B38 /* StringerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerDTO.swift; sourceTree = "<group>"; };
-		B3DBEAD3236067F200BF329F /* PopUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpDelegate.swift; sourceTree = "<group>"; };
-		B3DBEAD5236068FF00BF329F /* OverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		B3FB2C77232D0335003728C4 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		B3FB2C85232D2A01003728C4 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B3FB2C89232D2AA2003728C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -260,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				1D61CED32330AEC2006FED94 /* CardCellViewController.swift */,
-				B3DBEAD5236068FF00BF329F /* OverlayViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -410,7 +405,6 @@
 				B39CCE8723565CEB00EA892B /* CustomerDAOProtocol.swift */,
 				B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */,
 				B342AF22235DB1200033E869 /* UpdateStorageDelegate.swift */,
-				B3DBEAD3236067F200BF329F /* PopUpDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -651,7 +645,6 @@
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
 				B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */,
 				B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */,
-				B3DBEAD6236068FF00BF329F /* OverlayViewController.swift in Sources */,
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
@@ -663,7 +656,6 @@
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B327847B235B592C00D67B9B /* OrderCellGenerel.swift in Sources */,
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
-				B3DBEAD4236067F200BF329F /* PopUpDelegate.swift in Sources */,
 				B3CAF98F2342017E005F5B38 /* StringerDTO.swift in Sources */,
 				1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,

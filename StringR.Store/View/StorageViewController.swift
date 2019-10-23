@@ -64,6 +64,8 @@ class StorageViewController: UIViewController {
         viewControllerToPresent.delegate = self
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
+
+        self.openAction()
     }
 }
 
@@ -117,6 +119,8 @@ extension StorageViewController: UITableViewDelegate {
         viewControllerToPresent.racketString = self.strings?[indexPath.row]
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
+
+        self.openAction()
     }
 }
 
@@ -127,6 +131,7 @@ extension StorageViewController: UpdateStorageDelegate {
                 guard let racketString = string else { return }
                 self.strings?.removeAll(where: {$0.stringId == racketString.stringId})
                 self.updateUI()
+                self.closeAction()
             }
         }
     }
@@ -143,7 +148,16 @@ extension StorageViewController: UpdateStorageDelegate {
                 }
 
                 self.updateUI()
+                self.closeAction()
             }
         }
+    }
+
+    func closeAction() {
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
+    }
+
+    func openAction() {
+        self.navigationController?.tabBarController?.tabBar.isHidden = true
     }
 }

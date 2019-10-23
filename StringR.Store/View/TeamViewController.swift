@@ -104,6 +104,8 @@ extension TeamViewController: UITableViewDelegate {
 
         let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popup, animated: true, completion: nil)
+
+        self.navigationController?.tabBarController?.tabBar.isHidden = true
     }
 }
 
@@ -136,6 +138,11 @@ extension TeamViewController: RemoveStringerDelegate {
                     }
                 }
             }
+            self.closeAction()
         }
+    }
+
+    func closeAction() {
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
     }
 }
