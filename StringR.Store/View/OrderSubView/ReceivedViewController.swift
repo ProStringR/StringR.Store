@@ -33,7 +33,6 @@ class ReceivedViewController: UIViewController {
         Layout.setupFullPageConstraints(forView: self.receivedOrdersTableView, onParentView: self.view)
 
         self.receivedOrdersTableView.dataSource = self
-//        self.receivedOrdersTableView.delegate = self
     }
 
     private func updateUI() {
@@ -45,11 +44,14 @@ class ReceivedViewController: UIViewController {
     }
 
     private func getData() {
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
                 self.orderController.getRecievedOrders(orderIds: shop.orderIds) { (result) in
                     self.orders = result
                     self.updateUI()
+                    self.removeSpinner(forSpinner: spinner)
                 }
             }
         }

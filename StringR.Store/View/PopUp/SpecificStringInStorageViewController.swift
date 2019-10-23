@@ -8,6 +8,7 @@
 
 import UIKit
 
+// swiftlint:disable type_body_length
 class SpecificStringInStorageViewController: UIViewController {
 
     let storageController = ControlReg.getStorageController
@@ -248,6 +249,8 @@ class SpecificStringInStorageViewController: UIViewController {
 
     @objc func onAddButtonClicked(_ sender: UIButton) {
         let purchaseHistory = createHistoryItem()
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
 
         ShopSingleton.shared.getShop { (shop) in
             if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
@@ -262,8 +265,11 @@ class SpecificStringInStorageViewController: UIViewController {
                     } else {
                         print("something went wrong on updating database, async")
                     }
+
+                    self.removeSpinner(forSpinner: spinner)
                 }
             } else {
+                self.removeSpinner(forSpinner: spinner)
                 self.presentDefaultAlert()
             }
         }
@@ -281,6 +287,8 @@ class SpecificStringInStorageViewController: UIViewController {
                     let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "specificString_alertHeder"), withMessage: Utility.getString(forKey: "specificString_alertMessege"))
                     alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
                         _ = alert
+                        let spinner = LayoutController.getSpinner(forParent: self.view)
+                        self.showSpinner(withSpinner: spinner)
                         // remove string from team
                         self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
                             if sucess {
@@ -288,6 +296,8 @@ class SpecificStringInStorageViewController: UIViewController {
                             } else {
                                 print("something went wrong during deletion of string from storage, async")
                             }
+
+                            self.removeSpinner(forSpinner: spinner)
                         })
                     }))
 
@@ -334,3 +344,4 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
         return cell
     }
 }
+// swiftlint:enable type_body_length

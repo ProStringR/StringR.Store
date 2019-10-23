@@ -42,3 +42,24 @@ extension Date {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }
+
+extension UIViewController {
+    func showSpinner(withSpinner spinnerView: UIView) {
+        let activityIndicator = UIActivityIndicatorView.init(style: .whiteLarge)
+        activityIndicator.startAnimating()
+        activityIndicator.center = spinnerView.center
+
+        DispatchQueue.main.async {
+            spinnerView.addSubview(activityIndicator)
+            self.view.addSubview(spinnerView)
+            self.navigationController?.tabBarController?.tabBar.isHidden = true
+        }
+    }
+
+    func removeSpinner(forSpinner spinnerView: UIView) {
+        DispatchQueue.main.async {
+            spinnerView.removeFromSuperview()
+            self.navigationController?.tabBarController?.tabBar.isHidden = false
+        }
+    }
+}

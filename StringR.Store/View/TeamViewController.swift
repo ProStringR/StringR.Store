@@ -27,6 +27,8 @@ class TeamViewController: UIViewController {
     }
 
     private func getStringers() {
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
         // Call controller to get team data
         teamController.getStringers(fromTeamId: "teamMJ") { (stringers) in
             if let stringers = stringers {
@@ -35,6 +37,7 @@ class TeamViewController: UIViewController {
             }
 
             self.updateUI()
+            self.removeSpinner(forSpinner: spinner)
         }
     }
 
