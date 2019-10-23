@@ -11,7 +11,7 @@ import UIKit
 
 class StringerDetailViewController: UIViewController {
 
-    weak var delegate: RemoveStringerDelegate?
+    weak var delegate: PopUpDelegate?
 
     weak var generelStackView: UIStackView!
     weak var infoStackView: UIStackView!
@@ -159,6 +159,7 @@ class StringerDetailViewController: UIViewController {
 
     @objc func closeAction() {
         self.dismiss(animated: true, completion: nil)
+        self.delegate?.closeAction()
     }
 
     @objc func onRemoveStringerClicked(_ sender: UIButton) {
