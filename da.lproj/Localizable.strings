@@ -13,6 +13,8 @@
 "common_Ups" = "Ups... noget gik galt";
 "common_ok" = "Okay";
 "common_add" = "Tilføj";
+"common_paid" = "Betalt";
+"common_notPaid" = "Ikke Betalt";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
