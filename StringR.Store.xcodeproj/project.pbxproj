@@ -263,6 +263,7 @@
 		1D7455D92346449500C33B0C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
 				1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */,
 				1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */,
 			);
@@ -341,7 +342,6 @@
 				B38C5B9F232BDF1700116BC1 /* StorageViewController.swift */,
 				B38C5BA1232BDF4000116BC1 /* TeamViewController.swift */,
 				B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */,
-				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
 				B3C4599E2355DEB100A50C51 /* FindCustomerViewController.swift */,
 			);
 			path = View;
