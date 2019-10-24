@@ -29,8 +29,10 @@ class SpecificOrderViewController: UIViewController {
     weak var racketModel: UILabel!
     weak var stringer: UILabel!
 
+    let orderController = ControlReg.getOrderController
     var order: Order?
     var orderStatus: Int?
+    var paidStatus: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,7 @@ class SpecificOrderViewController: UIViewController {
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancelAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
     }
 
     private func setupLabels() {
@@ -171,6 +174,7 @@ class SpecificOrderViewController: UIViewController {
         DispatchQueue.main.async {
             if let order = self.order, let racketString = self.order?.racketString, let customer = self.order?.customer, let stringer = order.stringer {
                 self.orderStatus = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
+                self.paidStatus = order.paid
 
                 self.nameAndIdLabel.text = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
                 self.brand.text = racketString.brand.rawValue
@@ -234,6 +238,26 @@ class SpecificOrderViewController: UIViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
+    @objc func saveAction() {
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
+
+        if let order = self.order, let orderStatus = self.orderStatus, let paidStatus = self.paidStatus {
+            order.orderStatus = OrderStatus.allValues[orderStatus]
+            order.paid = paidStatus
+
+            self.orderController.putOrder(order: order) { (success) in
+                if success {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                } else {
+                    self.presentDefaultAlert()
+                }
+
+                self.removeSpinner(forSpinner: spinner)
+            }
+        }
+    }
+
     @objc func statusIndexChanged(_ sender: UISegmentedControl) {
         if let orderStatus = self.orderStatus, let order = self.order {
             if !(sender.selectedSegmentIndex == OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus) + 1 ||
@@ -244,21 +268,16 @@ class SpecificOrderViewController: UIViewController {
                 self.orderStatus = sender.selectedSegmentIndex
             }
         }
-
-        switch sender.selectedSegmentIndex {
-        case 0:
-            print("first index chosen")
-        default:
-            print("default")
-        }
     }
 
     @objc func priceIndexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            print("price shit")
+            self.paidStatus = false
+        case 1:
+            self.paidStatus = true
         default:
-            print("price default")
+            print("Something went wrong during update of paid/unpaid status")
         }
     }
 }
