@@ -21,7 +21,7 @@ class OrderController {
     }
 
     func getRecievedOrders(orderIds: [String]?, completion: @escaping ([Order]?) -> Void) {
-        getOrdersFiltered(orderIds: orderIds, status: .RECIEVED) { (result) in
+        getOrdersFiltered(orderIds: orderIds, status: .RECEIVED) { (result) in
             completion(result)
         }
     }

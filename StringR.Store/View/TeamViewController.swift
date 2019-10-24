@@ -51,6 +51,7 @@ class TeamViewController: UIViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Team"))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
     }
 
     private func setupTableView() {
@@ -62,6 +63,10 @@ class TeamViewController: UIViewController {
 
     private func setupConstraints() {
         Layout.setupFullPageConstraints(forView: self.teamTableView, onParentView: self.view)
+    }
+
+    @objc func updateData() {
+        self.getStringers()
     }
 }
 

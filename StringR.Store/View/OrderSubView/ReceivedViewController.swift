@@ -26,6 +26,7 @@ class ReceivedViewController: UIViewController {
     private func setupView() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "orderViewController_ReceivedOrdersHead")))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
     }
 
     private func setupTableView() {
@@ -55,6 +56,10 @@ class ReceivedViewController: UIViewController {
                 }
             }
         }
+    }
+
+    @objc func updateData() {
+        self.getData()
     }
 }
 

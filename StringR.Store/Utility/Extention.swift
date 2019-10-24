@@ -45,7 +45,7 @@ extension Date {
 
 extension UIViewController {
     func showSpinner(withSpinner spinnerView: UIView) {
-        let activityIndicator = UIActivityIndicatorView.init(style: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
         activityIndicator.startAnimating()
         activityIndicator.center = spinnerView.center
 
