@@ -26,4 +26,8 @@ extension OrderStatus {
         }
         return allValues
     }
+
+    static func indexOfOrderStatus(orderStatus: OrderStatus) -> Int {
+        return OrderStatus.allValues.firstIndex(of: orderStatus) ?? 0
+    }
 }
