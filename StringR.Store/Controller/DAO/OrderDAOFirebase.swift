@@ -15,6 +15,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
     let teamDAO: TeamDAOProtocol = ControlReg.getTeamDAO
     let shopDAO: ShopDAOProtocol = ControlReg.getShopDAO
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
+    let racketDAO: RacketDAOProtocol = ControlReg.getRacketDAO
 
     func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
         dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
@@ -26,7 +27,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 self.customerDAO.getCustomer(by: order.customerId) { (customerDTO) in
                     attemps += 1
                     order.customer = self.dataControl.createObject(fromObject: customerDTO, toObject: Customer.self)
-                    if attemps == 4 {
+                    if attemps == 5 {
                         completion(order)
                     }
                 }
@@ -34,7 +35,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 self.teamDAO.getStringer(basedOn: order.stringerId) { (stringerDTO) in
                     attemps += 1
                     order.stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: Stringer.self)
-                    if attemps == 4 {
+                    if attemps == 5 {
                         completion(order)
                     }
                 }
@@ -43,7 +44,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 self.storageDAO.getRacketString(by: order.stringId, storageId: order.shopId) { (racketString) in
                     attemps += 1
                     order.racketString = racketString
-                    if attemps == 4 {
+                    if attemps == 5 {
                         completion(order)
                     }
                 }
@@ -51,7 +52,16 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 self.shopDAO.getShop(by: order.shopId) { (shopDTO) in
                     attemps += 1
                     order.shop = self.dataControl.createObject(fromObject: shopDTO, toObject: Shop.self)
-                    if attemps == 4 {
+                    if attemps == 5 {
+                        completion(order)
+                    }
+                }
+
+                // find racket
+                self.racketDAO.getRacket(racketId: order.racketId) { (racket) in
+                    attemps += 1
+                    order.racket = racket
+                    if attemps == 5 {
                         completion(order)
                     }
                 }
