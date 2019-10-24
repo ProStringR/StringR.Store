@@ -30,6 +30,7 @@ class SpecificOrderViewController: UIViewController {
     weak var stringer: UILabel!
 
     var order: Order?
+    var orderStatus: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,6 +170,8 @@ class SpecificOrderViewController: UIViewController {
     private func updateUI() {
         DispatchQueue.main.async {
             if let order = self.order, let racketString = self.order?.racketString, let customer = self.order?.customer, let stringer = order.stringer {
+                self.orderStatus = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
+
                 self.nameAndIdLabel.text = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
                 self.brand.text = racketString.brand.rawValue
                 self.model.text = racketString.modelName
@@ -178,6 +181,8 @@ class SpecificOrderViewController: UIViewController {
                 self.deliveryDate.text = Utility.dateToString(date: Date.init(milliseconds: order.deliveryDate), withTime: false)
                 self.stringer.text = stringer.name
                 self.comment.text = order.comment ?? Utility.getString(forKey: "specificOrder_order_comment_noComment")
+                self.paidSegmentedControl.selectedSegmentIndex = order.paid ? 1 : 0
+                self.statusSegmentedControl.selectedSegmentIndex = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
             }
         }
     }
@@ -219,11 +224,27 @@ class SpecificOrderViewController: UIViewController {
         }
     }
 
+    private func presentDefaultAlert() {
+        let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Constant.emptyString)
+        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_ok"), style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+
     @objc func cancelAction() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     @objc func statusIndexChanged(_ sender: UISegmentedControl) {
+        if let orderStatus = self.orderStatus, let order = self.order {
+            if !(sender.selectedSegmentIndex == OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus) + 1 ||
+                sender.selectedSegmentIndex == OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)) {
+                self.statusSegmentedControl.selectedSegmentIndex = orderStatus
+                self.presentDefaultAlert()
+            } else {
+                self.orderStatus = sender.selectedSegmentIndex
+            }
+        }
+
         switch sender.selectedSegmentIndex {
         case 0:
             print("first index chosen")
