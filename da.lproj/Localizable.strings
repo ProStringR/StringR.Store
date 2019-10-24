@@ -105,6 +105,9 @@
 "specificOrder_stringer" = "Strenger";
 "specificOrder_order_commentHeader" = "Kommentar";
 "specificOrder_order_comment_noComment" = "Der er ingen kommentar knyttet til denne ordre";
+"specificOrder_one_step_error" = "Du kan kun tage ét skridt ad gangen.";
+"specificOrder_racket_brand" = "Ketcher mærke";
+"specificOrder_racket_model" = "Ketcher model";
 
 "findCustomer_guest_barItem" = "Brug Gæst";
 "findCustomer_guest_head" = "Gæst";
