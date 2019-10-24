@@ -68,8 +68,8 @@ class SpecificOrderViewController: UIViewController {
         tension = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
         price = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
         deliveryDate = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
-        racketBrand = LayoutController.getLabel(text: "Babolat", parentView: self.view)
-        racketModel = LayoutController.getLabel(text: "Rafa", parentView: self.view)
+        racketBrand = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
+        racketModel = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
         stringer = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
     }
 
@@ -125,8 +125,8 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func setupBottomHeaderStackView() -> UIStackView {
-        let racketBrand = LayoutController.getLabel(text: "Racket Brand", parentView: self.view)
-        let racketModel = LayoutController.getLabel(text: "Racket Model", parentView: self.view)
+        let racketBrand = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_racket_brand"), parentView: self.view)
+        let racketModel = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_racket_model"), parentView: self.view)
         let stringerHeader = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_stringer"), parentView: self.view)
         let listOfViews: [UILabel] = [racketBrand, racketModel, stringerHeader]
         centerAlignUILabels(uiLabelArry: listOfViews)
@@ -229,7 +229,7 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func presentDefaultAlert() {
-        let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Constant.emptyString)
+        let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Utility.getString(forKey: "specificOrder_one_step_error"))
         alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_ok"), style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
