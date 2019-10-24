@@ -48,7 +48,7 @@ class Order: Codable {
         self.deliveryDate = deliveryDate
         self.price = price
         self.paid = paid
-        self.orderStatus = .RECIEVED
+        self.orderStatus = .RECEIVED
     }
 
     init?(orderId: String?, customerId: String?, stringerId: String?, shopId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
@@ -66,6 +66,6 @@ class Order: Codable {
         self.deliveryDate = deliveryDate
         self.price = price
         self.paid = paid
-        self.orderStatus = .RECIEVED
+        self.orderStatus = .RECEIVED
     }
 }
