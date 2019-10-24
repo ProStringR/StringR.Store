@@ -108,6 +108,8 @@ extension ReceivedViewController: UITableViewDataSource {
 
 extension ReceivedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
         let viewControllerToPresent = SpecificOrderViewController()
 
         if let orders = self.orders {
