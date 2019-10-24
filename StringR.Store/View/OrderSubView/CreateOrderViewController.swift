@@ -349,8 +349,10 @@ class CreateOrderViewController: UIViewController {
         self.customer = customer
 
         if let customer = self.customer {
-            self.customerName.text = customer.name
-            self.customerPhoneNumber.text = customer.phoneNumber
+            DispatchQueue.main.async {
+                self.customerName.text = customer.name
+                self.customerPhoneNumber.text = customer.phoneNumber
+            }
         }
     }
 

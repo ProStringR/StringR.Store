@@ -15,6 +15,7 @@
 "common_add" = "Tilføj";
 "common_paid" = "Betalt";
 "common_notPaid" = "Ikke Betalt";
+"common_continue" = "Fortsæt";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
@@ -97,3 +98,10 @@
 "specificString_price" = "Pris";
 "specificString_alertHeder" = "Er du sikker?";
 "specificString_alertMessege" = "Du er ved at fjerne din streng fra dit laget. Du vil ikke have muligheden for at tilgå denne streng igen efter fjernelse.";
+
+"findCustomer_guest_barItem" = "Brug Gæst";
+"findCustomer_guest_head" = "Gæst";
+"findCustomer_guest_body" = "Indtast kundens information";
+"findCustomer_guest_placeholder_name" = "Navn";
+"findCustomer_guest_placeholder_phoneNumber" = "Mobil";
+"findCustomer_guest_placeholder_mail" = "Mail";
