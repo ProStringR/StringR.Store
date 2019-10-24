@@ -15,6 +15,9 @@
 "common_add" = "Tilføj";
 "common_paid" = "Betalt";
 "common_notPaid" = "Ikke Betalt";
+"common_tension" = "Tension";
+"common_price" = "Pris";
+"common_deliveryDate" = "Leveringsdato";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
@@ -55,7 +58,7 @@
 "orderViewController_DoneOrdersDescription" = "Her ses ketcher som er klar til levering.";
 "orderViewController_DeliveredOrdersHead" = "Afleveret";
 "orderViewController_DeliveredDescription" = "Se en oversigt over leveret ordre.";
-"orderViewController_CompletedOrdersHead" = "Færdiggjort";
+"orderViewController_CompletedOrdersHead" = "Afsluttet ";
 "orderViewController_CompletedDescription" = "Se en oversigt over færdiggjort ordre.";
 
 "racketViewController_RacketRentHead" = "Udlån";
@@ -97,3 +100,7 @@
 "specificString_price" = "Pris";
 "specificString_alertHeder" = "Er du sikker?";
 "specificString_alertMessege" = "Du er ved at fjerne din streng fra dit laget. Du vil ikke have muligheden for at tilgå denne streng igen efter fjernelse.";
+
+"specificOrder_stringer" = "Strenger";
+"specificOrder_order_commentHeader" = "Kommentar";
+"specificOrder_order_comment_noComment" = "Der er ingen kommentar knyttet til denne ordre";

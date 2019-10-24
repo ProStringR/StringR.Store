@@ -15,6 +15,9 @@
 "common_add" = "Add";
 "common_paid" = "Paid";
 "common_notPaid" = "Not Paid";
+"common_tension" = "Tension";
+"common_price" = "Price";
+"common_deliveryDate" = "Delivery Date";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
@@ -97,3 +100,8 @@
 "specificString_price" = "Price";
 "specificString_alertHeder" = "Are you sure?";
 "specificString_alertMessege" = "You are about to remove your string from your storage. You will not be able to reach this string again, if you remove it.";
+
+"specificOrder_stringer" = "Stringer";
+"specificOrder_order_commentHeader" = "Comment";
+"specificOrder_order_comment_noComment" = "There is no comment attached to this order";
+
