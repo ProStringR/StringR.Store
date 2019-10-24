@@ -196,6 +196,7 @@ class SpecificOrderViewController: UIViewController {
         Layout.addTopConstraint(on: self.comment, to: self.commentHeader.bottomAnchor)
         Layout.addLeadingConstraint(on: self.comment, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
         Layout.addTrailingConstraint(on: self.comment, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
+        // TODO: there are no constraints for the bottom, which is not good
 //        Layout.addBottomConstraint(on: self.comment, to: self.segmentControlStackView.topAnchor)
 
         Layout.addBottomConstraint(on: self.segmentControlStackView, to: self.view.safeAreaLayoutGuide.bottomAnchor)
