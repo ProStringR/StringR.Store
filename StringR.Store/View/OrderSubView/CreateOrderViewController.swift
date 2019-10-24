@@ -29,6 +29,9 @@ class CreateOrderViewController: UIViewController {
     weak var tensionVerticalTextField: UITextField!
     weak var tensionHorizontalTextField: UITextField!
     weak var stringerTextField: UITextField!
+    weak var racketInfoStackView: UIStackView!
+    weak var racketBrandTextField: UITextField!
+    weak var racketModelTextView: UITextField!
 
     weak var deliveryStackView: UIStackView!
     weak var deliveryLabel: UILabel!
@@ -49,19 +52,24 @@ class CreateOrderViewController: UIViewController {
     var racketString: RacketString?
     var stringer: Stringer?
     var deliveryDate: Date?
+    var racketBrand: RacketBrand?
 
     var racketStrings: [RacketString]?
     var avalibleRacketString: [RacketString]?
     var stringers: [Stringer]?
+    var racketBrands = RacketBrand.allValues
     var racketStringsPickerView = UIPickerView()
     var stringersPickerView = UIPickerView()
     var datePicker = UIDatePicker()
+    var racketBrandPickerView = UIPickerView()
 
     let orderController = ControlReg.getOrderController
     let teamController = ControlReg.getTeamController
     let storageController = ControlReg.getStorageController
     let customerController = ControlReg.getCustomerController
     let shopController = ControlReg.getShopController
+    // TODO: Delete, when we have a racket on Customer.
+    let racketController = ControlReg.getRacketController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,8 +150,9 @@ class CreateOrderViewController: UIViewController {
         self.stringTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_chooseString"), parentView: self.view)
         self.stringerTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_chooseStringer"), parentView: self.view)
         setupTensionStackView()
+        setupRacketInfoStackView()
 
-        let content = [self.specificationLabel, self.racketTypeSegmentedControl, self.stringTextField, self.stringerTextField, self.tensionStackView]
+        let content = [self.specificationLabel, self.racketTypeSegmentedControl, self.stringTextField, self.stringerTextField, self.tensionStackView, self.racketInfoStackView]
         self.specificationStackView = LayoutController.getStackView(content: content, orientation: .vertical, parentView: self.view)
         self.specificationStackView.alignment = .fill
         self.specificationStackView.spacing = 16
@@ -218,6 +227,15 @@ class CreateOrderViewController: UIViewController {
         self.tensionStackView.distribution = .fillEqually
     }
 
+    private func setupRacketInfoStackView() {
+        self.racketBrandTextField = LayoutController.getTextField(placeholder: "Racket Brand", parentView: self.view)
+        self.racketModelTextView = LayoutController.getTextField(placeholder: "Racket Model", parentView: self.view)
+
+        let content = [self.racketBrandTextField, self.racketModelTextView]
+        self.racketInfoStackView = LayoutController.getStackView(content: content, orientation: .horizontal, parentView: self.view)
+        self.racketInfoStackView.distribution = .fillEqually
+    }
+
     private func setupPlaceOrderButton() {
         self.placeOrderButton = LayoutController.getButton(title: Utility.getString(forKey: "createOrderViewController_placeOrderButton"), parentView: self.view)
         self.placeOrderButton.addTarget(self, action: #selector(placeOrderClicked(_:)), for: .touchUpInside)
@@ -244,6 +262,7 @@ class CreateOrderViewController: UIViewController {
     private func setupPickerViews() {
         self.initPicker(picker: self.stringersPickerView, inputField: self.stringerTextField)
         self.initPicker(picker: self.racketStringsPickerView, inputField: self.stringTextField)
+        self.initPicker(picker: self.racketBrandPickerView, inputField: self.racketBrandTextField)
 
         // setup date picker
         self.datePicker.datePickerMode = .dateAndTime
@@ -269,56 +288,63 @@ class CreateOrderViewController: UIViewController {
     }
 
     @objc func placeOrderClicked(_ sender: UIButton) {
-        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text else { submissionFailed(); return }
+        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text, let racketBrand = self.racketBrand, let racketModel = self.racketModelTextView.text else { submissionFailed(); return }
 
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
 
-                let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+                // TODO: delete, when we have racket on the Customer. Then pass the racketId on to the order.
+                let tempRacket = Racket(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel, weight: 0, main: 0, cross: 0)
 
-                self.orderController.putOrder(order: order) { (succes) in
+                let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+
+                self.racketController.putRacket(racket: tempRacket) { (succes) in
                     if succes {
-                        // set orderId to stringer
-                        guard let order = order else { self.submissionFailed(); return }
+                        self.orderController.putOrder(order: order) { (succes) in
+                            if succes {
+                                // set orderId to stringer
+                                guard let order = order else { self.submissionFailed(); return }
 
-                        self.stringer?.orderIds = self.appendOrderId(orderIds: self.stringer?.orderIds, orderId: order.orderId)
+                                self.stringer?.orderIds = self.appendOrderId(orderIds: self.stringer?.orderIds, orderId: order.orderId)
 
-                        if let stringer = self.stringer {
-                            self.teamController.putStringer(stringer: stringer) { (succes) in
-                                if !succes {
-                                    self.submissionFailed()
-                                }
-                            }
-                        }
-
-                        // set orderId to customer
-                        self.customer?.orderIds = self.appendOrderId(orderIds: self.customer?.orderIds, orderId: order.orderId)
-
-                        if let customer = self.customer {
-                            self.customerController.putCustomer(customer: customer) { (succes) in
-                                if !succes {
-                                    self.submissionFailed()
-                                }
-                            }
-                        }
-
-                        // set orderId to shop
-                        ShopSingleton.shared.getShop { (shop) in
-                            if let shop = shop {
-                                shop.orderIds = self.appendOrderId(orderIds: shop.orderIds, orderId: order.orderId)
-                                self.shopController.putShop(shop: shop) { (succes) in
-                                    if !succes {
-                                        self.submissionFailed()
+                                if let stringer = self.stringer {
+                                    self.teamController.putStringer(stringer: stringer) { (succes) in
+                                        if !succes {
+                                            self.submissionFailed()
+                                        }
                                     }
                                 }
+
+                                // set orderId to customer
+                                self.customer?.orderIds = self.appendOrderId(orderIds: self.customer?.orderIds, orderId: order.orderId)
+
+                                if let customer = self.customer {
+                                    self.customerController.putCustomer(customer: customer) { (succes) in
+                                        if !succes {
+                                            self.submissionFailed()
+                                        }
+                                    }
+                                }
+
+                                // set orderId to shop
+                                ShopSingleton.shared.getShop { (shop) in
+                                    if let shop = shop {
+                                        shop.orderIds = self.appendOrderId(orderIds: shop.orderIds, orderId: order.orderId)
+                                        self.shopController.putShop(shop: shop) { (succes) in
+                                            if !succes {
+                                                self.submissionFailed()
+                                            }
+                                        }
+                                    }
+                                }
+
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            } else {
+                                self.submissionFailed()
                             }
                         }
-
-                        DispatchQueue.main.async {
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    } else {
-                        self.submissionFailed()
                     }
                 }
             }
@@ -393,6 +419,8 @@ extension CreateOrderViewController: UIPickerViewDataSource {
             if let racketStrings = self.avalibleRacketString {
                 return racketStrings.count
             }
+        case self.racketBrandPickerView:
+            return self.racketBrands.count
         default:
             return 0
         }
@@ -410,6 +438,8 @@ extension CreateOrderViewController: UIPickerViewDataSource {
             if let racketStrings = self.avalibleRacketString {
                 return racketStrings[row].getDescription()
             }
+        case self.racketBrandPickerView:
+            return self.racketBrands[row].rawValue
         default:
             return nil
         }
@@ -431,6 +461,9 @@ extension CreateOrderViewController: UIPickerViewDelegate {
                 self.stringTextField.text = racketStrings[row].getDescription()
                 self.priceTextField.text = String(racketStrings[row].pricePerRacket)
             }
+        } else if pickerView == self.racketBrandPickerView {
+            self.racketBrand = self.racketBrands[row]
+            self.racketBrandTextField.text = self.racketBrands[row].rawValue
         }
     }
 }
