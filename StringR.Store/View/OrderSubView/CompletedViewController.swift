@@ -26,6 +26,7 @@ class CompletedViewController: UIViewController {
     private func setupView() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "orderViewController_CompletedOrdersHead")))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
     }
 
     private func setupTableView() {
@@ -58,6 +59,10 @@ class CompletedViewController: UIViewController {
             self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
             self.completedOrdersTableView.reloadData()
         }
+    }
+
+    @objc func updateData() {
+        self.getData()
     }
 }
 

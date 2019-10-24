@@ -45,7 +45,9 @@ class StorageViewController: UIViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Storage"))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.addAction))
+        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.addAction))
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
+        self.navigationItem.rightBarButtonItems = [addButton, refreshButton]
     }
 
     private func setupTableView() {
@@ -66,6 +68,10 @@ class StorageViewController: UIViewController {
         self.navigationController?.present(popUp, animated: true, completion: nil)
 
         self.openAction()
+    }
+
+    @objc func updateData() {
+        self.getStorageData()
     }
 }
 

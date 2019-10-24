@@ -51,6 +51,7 @@ class TeamViewController: UIViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Team"))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
     }
 
     private func setupTableView() {
@@ -58,10 +59,6 @@ class TeamViewController: UIViewController {
 
         self.teamTableView.delegate = self
         self.teamTableView.dataSource = self
-
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
-        self.teamTableView.refreshControl = refreshControl
     }
 
     private func setupConstraints() {
@@ -70,7 +67,6 @@ class TeamViewController: UIViewController {
 
     @objc func updateData() {
         self.getStringers()
-        self.teamTableView.refreshControl?.endRefreshing()
     }
 }
 
