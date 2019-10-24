@@ -12,6 +12,7 @@
 		1D1771822359EBFB00DBC870 /* ShopSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1771812359EBFB00DBC870 /* ShopSingleton.swift */; };
 		1D177184235A086C00DBC870 /* SpecificStringInStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */; };
 		1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */; };
+		1D29807F2361CEC300225DCE /* StringerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
@@ -78,7 +79,6 @@
 		B3AE71612337F8ED001E2EF6 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AE71602337F8ED001E2EF6 /* StorageController.swift */; };
 		B3B3DBDA233BA233001498D4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBD9233BA233001498D4 /* UserCell.swift */; };
 		B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */; };
-		B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */; };
 		B3B92B5923339D1500C39052 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5823339D1500C39052 /* Exception.swift */; };
 		B3B92B5B2333A44600C39052 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5A2333A44600C39052 /* DataController.swift */; };
 		B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B92B5D2333A9A500C39052 /* OrderController.swift */; };
@@ -104,6 +104,7 @@
 		1D1771812359EBFB00DBC870 /* ShopSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSingleton.swift; sourceTree = "<group>"; };
 		1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificStringInStorageViewController.swift; sourceTree = "<group>"; };
 		1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderViewController.swift; sourceTree = "<group>"; };
+		1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringerDetailViewController.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		B3AE71602337F8ED001E2EF6 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 		B3B3DBD9233BA233001498D4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
-		B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerDetailViewController.swift; sourceTree = "<group>"; };
 		B3B92B5823339D1500C39052 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		B3B92B5A2333A44600C39052 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B3B92B5D2333A9A500C39052 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 		1D7455D92346449500C33B0C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
-				B3B3DBDD233BAE8D001498D4 /* StringerDetailViewController.swift */,
+				1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */,
 				1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */,
 				1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */,
 				1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */,
@@ -619,6 +619,7 @@
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
+				1D29807F2361CEC300225DCE /* StringerDetailViewController.swift in Sources */,
 				1DD8D19A235C67C900074BC2 /* PurchaseHistoryDTO.swift in Sources */,
 				B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */,
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
@@ -648,7 +649,6 @@
 				B3FB2C78232D0335003728C4 /* Extention.swift in Sources */,
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
 				B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */,
-				B3B3DBDE233BAE8D001498D4 /* StringerDetailViewController.swift in Sources */,
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
