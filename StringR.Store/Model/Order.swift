@@ -14,6 +14,7 @@ class Order: Codable {
     var customerId: String
     var stringerId: String
     var shopId: String
+    var racketId: String
     var racketType: RacketType
     var tensionVertical: Double
     var tensionHorizontal: Double
@@ -30,17 +31,19 @@ class Order: Codable {
     var customer: Customer?
     var racketString: RacketString?
     var shop: Shop?
+    var racket: Racket?
     var daysToDeliver: Int {
             let diff = Int(self.deliveryDate - Date().millisecondsSince1970)
             let daysToDeliver = diff / (86400000)
             return daysToDeliver
     }
 
-    init(orderId: String, customerId: String, stringerId: String, shopId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Int64, price: Double, paid: Bool) {
+    init(orderId: String, customerId: String, stringerId: String, shopId: String, racketId: String, racketType: RacketType, tensionVertical: Double, tensionHorizontal: Double, stringId: String, deliveryDate: Int64, price: Double, paid: Bool) {
         self.orderId = orderId
         self.customerId = customerId
         self.stringerId = stringerId
         self.shopId = shopId
+        self.racketId = racketId
         self.racketType = racketType
         self.tensionVertical = tensionVertical
         self.tensionHorizontal = tensionHorizontal
@@ -51,14 +54,15 @@ class Order: Codable {
         self.orderStatus = .RECEIVED
     }
 
-    init?(orderId: String?, customerId: String?, stringerId: String?, shopId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
+    init?(orderId: String?, customerId: String?, stringerId: String?, shopId: String?, racketId: String?, racketType: RacketType?, tensionVertical: Double?, tensionHorizontal: Double?, stringId: String?, deliveryDate: Int64?, price: Double?, paid: Bool?) {
 
-        guard let orderId = orderId, let customerId = customerId, let stringerId = stringerId, let shopId = shopId, let racketType = racketType, let tensionVertical = tensionVertical, let tensionHorizontal = tensionHorizontal, let stringId = stringId, let deliveryDate = deliveryDate, let price = price, let paid = paid else { return nil }
+        guard let orderId = orderId, let customerId = customerId, let stringerId = stringerId, let shopId = shopId, let racketId = racketId, let racketType = racketType, let tensionVertical = tensionVertical, let tensionHorizontal = tensionHorizontal, let stringId = stringId, let deliveryDate = deliveryDate, let price = price, let paid = paid else { return nil }
 
         self.orderId = orderId
         self.customerId = customerId
         self.stringerId = stringerId
         self.shopId = shopId
+        self.racketId = racketId
         self.racketType = racketType
         self.tensionVertical = tensionVertical
         self.tensionHorizontal = tensionHorizontal
