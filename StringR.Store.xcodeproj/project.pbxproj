@@ -11,6 +11,7 @@
 		1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */; };
 		1D1771822359EBFB00DBC870 /* ShopSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1771812359EBFB00DBC870 /* ShopSingleton.swift */; };
 		1D177184235A086C00DBC870 /* SpecificStringInStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */; };
+		1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
@@ -102,6 +103,7 @@
 		1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageDAOProtocol.swift; sourceTree = "<group>"; };
 		1D1771812359EBFB00DBC870 /* ShopSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSingleton.swift; sourceTree = "<group>"; };
 		1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificStringInStorageViewController.swift; sourceTree = "<group>"; };
+		1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderViewController.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */,
 				1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */,
+				1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
+				1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */,
 				B38C5B8C232BCBDE00116BC1 /* RacketString.swift in Sources */,
 				B3B92B602333AE9600C39052 /* Observer.swift in Sources */,
 				B3CAF9892341FB67005F5B38 /* TeamDAOFirebase.swift in Sources */,
