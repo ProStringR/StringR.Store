@@ -173,7 +173,16 @@ class SpecificOrderViewController: UIViewController {
     private func updateUI() {
         if let order = self.order, let racketString = self.order?.racketString, let customer = self.order?.customer, let stringer = order.stringer, let racket = order.racket {
             self.orderStatus = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
+
+            if OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus) == 3 {
+                self.statusSegmentedControl.isEnabled = false
+            }
+
             self.paidStatus = order.paid
+
+            if order.paid {
+                self.paidSegmentedControl.isEnabled = false
+            }
 
             self.nameAndIdLabel.text = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
             self.brand.text = racketString.brand.rawValue
@@ -229,9 +238,17 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func presentDefaultAlert() {
-        let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Utility.getString(forKey: "specificOrder_one_step_error"))
-        alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_ok"), style: .cancel, handler: nil))
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Utility.getString(forKey: "specificOrder_one_step_error"))
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_ok"), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+
+    private func dismiss() {
+        DispatchQueue.main.async {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc func cancelAction() {
@@ -248,7 +265,7 @@ class SpecificOrderViewController: UIViewController {
 
             self.orderController.putOrder(order: order) { (success) in
                 if success {
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    self.dismiss()
                 } else {
                     self.presentDefaultAlert()
                 }
