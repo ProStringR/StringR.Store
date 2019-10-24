@@ -9,7 +9,7 @@
 import Foundation
 
 enum OrderStatus: String, Codable {
-    case RECIEVED = "Recieved"
+    case RECEIVED = "Received"
     case DONE = "Done"
     case DELIVERED = "Delivered"
     case COMPLETE = "Complete"
@@ -18,8 +18,8 @@ enum OrderStatus: String, Codable {
 extension OrderStatus {
     static var allValues: [OrderStatus] {
         var allValues: [OrderStatus] = []
-        switch OrderStatus.RECIEVED {
-        case .RECIEVED: allValues.append(.RECIEVED); fallthrough
+        switch OrderStatus.RECEIVED {
+        case .RECEIVED: allValues.append(.RECEIVED); fallthrough
         case .DONE: allValues.append(.DONE); fallthrough
         case .DELIVERED: allValues.append(.DELIVERED); fallthrough
         case .COMPLETE: allValues.append(.COMPLETE)
