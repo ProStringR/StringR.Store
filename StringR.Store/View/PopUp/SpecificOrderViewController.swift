@@ -171,23 +171,23 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func updateUI() {
-        DispatchQueue.main.async {
-            if let order = self.order, let racketString = self.order?.racketString, let customer = self.order?.customer, let stringer = order.stringer {
-                self.orderStatus = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
-                self.paidStatus = order.paid
+        if let order = self.order, let racketString = self.order?.racketString, let customer = self.order?.customer, let stringer = order.stringer, let racket = order.racket {
+            self.orderStatus = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
+            self.paidStatus = order.paid
 
-                self.nameAndIdLabel.text = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
-                self.brand.text = racketString.brand.rawValue
-                self.model.text = racketString.modelName
-                self.type.text = racketString.stringType.rawValue
-                self.tension.text = "M:\(order.tensionVertical) | C:\(order.tensionHorizontal)"
-                self.price.text = String(Int(order.price))
-                self.deliveryDate.text = Utility.dateToString(date: Date.init(milliseconds: order.deliveryDate), withTime: false)
-                self.stringer.text = stringer.name
-                self.comment.text = order.comment ?? Utility.getString(forKey: "specificOrder_order_comment_noComment")
-                self.paidSegmentedControl.selectedSegmentIndex = order.paid ? 1 : 0
-                self.statusSegmentedControl.selectedSegmentIndex = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
-            }
+            self.nameAndIdLabel.text = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
+            self.brand.text = racketString.brand.rawValue
+            self.model.text = racketString.modelName
+            self.type.text = racketString.stringType.rawValue
+            self.tension.text = "M:\(order.tensionVertical) | C:\(order.tensionHorizontal)"
+            self.price.text = String(Int(order.price))
+            self.deliveryDate.text = Utility.dateToString(date: Date.init(milliseconds: order.deliveryDate), withTime: false)
+            self.stringer.text = stringer.name
+            self.comment.text = order.comment ?? Utility.getString(forKey: "specificOrder_order_comment_noComment")
+            self.paidSegmentedControl.selectedSegmentIndex = order.paid ? 1 : 0
+            self.statusSegmentedControl.selectedSegmentIndex = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
+            self.racketBrand.text = racket.brand.rawValue
+            self.racketModel.text = racket.modelName
         }
     }
 
