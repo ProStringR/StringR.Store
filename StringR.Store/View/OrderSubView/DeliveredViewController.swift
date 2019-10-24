@@ -33,7 +33,7 @@ class DeliveredViewController: UIViewController {
         Layout.setupFullPageConstraints(forView: self.doneOrdersTableView, onParentView: self.view)
 
         self.doneOrdersTableView.dataSource = self
-        // self.doneOrdersTableView.delegate = self
+         self.doneOrdersTableView.delegate = self
     }
 
     private func getData() {
@@ -99,5 +99,20 @@ extension DeliveredViewController: UITableViewDataSource {
         cell.tintColor = .black
 
         return cell
+    }
+}
+
+extension DeliveredViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let viewControllerToPresent = SpecificOrderViewController()
+
+        if let orders = self.orders {
+            viewControllerToPresent.order = orders[indexPath.row]
+        }
+
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
+        self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
