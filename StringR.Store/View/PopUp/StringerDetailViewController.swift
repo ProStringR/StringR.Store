@@ -159,6 +159,7 @@ class StringerDetailViewController: UIViewController {
 
     @objc func closeAction() {
         self.dismiss(animated: true, completion: nil)
+        self.delegate?.closeAction()
     }
 
     @objc func onRemoveStringerClicked(_ sender: UIButton) {

@@ -277,6 +277,7 @@ class SpecificStringInStorageViewController: UIViewController {
 
     @objc func cancelAction() {
         self.navigationController?.dismiss(animated: true, completion: nil)
+        self.delegate?.closeAction()
     }
 
     @objc func deleteAction() {

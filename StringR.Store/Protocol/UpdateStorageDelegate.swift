@@ -11,4 +11,5 @@ import Foundation
 protocol UpdateStorageDelegate: class {
     func removeString(string: RacketString?)
     func addString(string: RacketString?)
+    func closeAction()
 }

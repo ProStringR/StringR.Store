@@ -25,6 +25,7 @@ class DeliveredViewController: UIViewController {
     private func setupView() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: Utility.getString(forKey: "orderViewController_DeliveredOrdersHead")))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
     }
 
     private func setupTableView() {
@@ -57,6 +58,10 @@ class DeliveredViewController: UIViewController {
             self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
             self.doneOrdersTableView.reloadData()
         }
+    }
+
+    @objc func updateData() {
+        self.getData()
     }
 }
 

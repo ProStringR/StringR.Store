@@ -181,6 +181,7 @@ class AddStringToStorageViewController: UIViewController {
     @objc func cancelAction() {
         DispatchQueue.main.async {
             self.navigationController?.dismiss(animated: true, completion: nil)
+            self.delegate?.closeAction()
         }
     }
 

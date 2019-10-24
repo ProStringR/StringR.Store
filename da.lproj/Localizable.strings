@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   StringR.Store
 
@@ -18,6 +18,7 @@
 "common_tension" = "Tension";
 "common_price" = "Pris";
 "common_deliveryDate" = "Leveringsdato";
+"common_continue" = "Fortsæt";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
@@ -104,3 +105,10 @@
 "specificOrder_stringer" = "Strenger";
 "specificOrder_order_commentHeader" = "Kommentar";
 "specificOrder_order_comment_noComment" = "Der er ingen kommentar knyttet til denne ordre";
+
+"findCustomer_guest_barItem" = "Brug Gæst";
+"findCustomer_guest_head" = "Gæst";
+"findCustomer_guest_body" = "Indtast kundens information";
+"findCustomer_guest_placeholder_name" = "Navn";
+"findCustomer_guest_placeholder_phoneNumber" = "Mobil";
+"findCustomer_guest_placeholder_mail" = "Mail";
