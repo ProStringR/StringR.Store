@@ -33,6 +33,7 @@
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
 		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
+		B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319DDCD2361DD42007878F6 /* RacketController.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
 		B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */; };
 		B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */; };
@@ -49,6 +50,8 @@
 		B3660A762346421C005A780D /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3660A752346421C005A780D /* ShopDTO.swift */; };
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
 		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
+		B382008C2361D52F00C2D666 /* RacketDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */; };
+		B382008E2361D54A00C2D666 /* RacketDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */; };
 		B38C5B84232BC94000116BC1 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B83232BC94000116BC1 /* Team.swift */; };
 		B38C5B86232BC97400116BC1 /* Racket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B85232BC97400116BC1 /* Racket.swift */; };
 		B38C5B88232BCAA800116BC1 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B87232BCAA800116BC1 /* Company.swift */; };
@@ -128,6 +131,7 @@
 		60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.release.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.release.xcconfig"; sourceTree = "<group>"; };
 		8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.debug.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.debug.xcconfig"; sourceTree = "<group>"; };
 		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
+		B319DDCD2361DD42007878F6 /* RacketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketController.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
 		B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDAOFirebase.swift; sourceTree = "<group>"; };
 		B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDAOProtocol.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 		B3660A752346421C005A780D /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOFirebase.swift; sourceTree = "<group>"; };
+		B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOProtocol.swift; sourceTree = "<group>"; };
 		B38C5B83232BC94000116BC1 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		B38C5B85232BC97400116BC1 /* Racket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Racket.swift; sourceTree = "<group>"; };
 		B38C5B87232BCAA800116BC1 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				B3CAF9862341F229005F5B38 /* TeamController.swift */,
 				B326E87123435C4F0040E9F3 /* ShopController.swift */,
 				B3C4599C2355DE5900A50C51 /* CustomerController.swift */,
+				B319DDCD2361DD42007878F6 /* RacketController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -370,6 +377,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B382008F2361DB4600C2D666 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */,
+				B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */,
+				B342AF22235DB1200033E869 /* UpdateStorageDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		B38C5BA3232BE40C00116BC1 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +408,7 @@
 				B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */,
 				1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */,
 				B39CCE8923565DA200EA892B /* CustomerDAOFirebase.swift */,
+				B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -398,16 +416,15 @@
 		B3903C072333653000367E5F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				B382008F2361DB4600C2D666 /* Delegate */,
 				1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */,
 				B3903C082333654500367E5F /* OrderDAOProtocol.swift */,
 				B3B92B5F2333AE9600C39052 /* Observer.swift */,
 				B3B92B612333AEF700C39052 /* Observerable.swift */,
 				B3CAF98A2341FC6D005F5B38 /* TeamDAOProtocol.swift */,
 				B326E87523435C7E0040E9F3 /* ShopDAOProtocol.swift */,
-				B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */,
 				B39CCE8723565CEB00EA892B /* CustomerDAOProtocol.swift */,
-				B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */,
-				B342AF22235DB1200033E869 /* UpdateStorageDelegate.swift */,
+				B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -591,6 +608,7 @@
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
 				1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */,
+				B382008E2361D54A00C2D666 /* RacketDAOProtocol.swift in Sources */,
 				B3AE71612337F8ED001E2EF6 /* StorageController.swift in Sources */,
 				B327847D235B5E6800D67B9B /* CompletedViewController.swift in Sources */,
 				B3903C092333654500367E5F /* OrderDAOProtocol.swift in Sources */,
@@ -625,6 +643,7 @@
 				B3B92B622333AEF700C39052 /* Observerable.swift in Sources */,
 				B38C5B88232BCAA800116BC1 /* Company.swift in Sources */,
 				B3CAF9872341F229005F5B38 /* TeamController.swift in Sources */,
+				B382008C2361D52F00C2D666 /* RacketDAOFirebase.swift in Sources */,
 				1D7455C823435DEA00C33B0C /* TeamDTO.swift in Sources */,
 				1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */,
 				B3C4599F2355DEB100A50C51 /* FindCustomerViewController.swift in Sources */,
@@ -635,6 +654,7 @@
 				B39CCE8823565CEB00EA892B /* CustomerDAOProtocol.swift in Sources */,
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
+				B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */,
 				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
 				B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */,
 				B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */,
