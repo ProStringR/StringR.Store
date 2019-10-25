@@ -91,7 +91,7 @@
 "createOrderViewController_commentLabel" = "Kommentar";
 "createOrderViewController_commentDescription" = "Kommentér, hvis der er nogle specielle informationer til din ordre.";
 "createOrderViewController_mainTension" = "Vertikal Tension";
-"createOrderViewController_crossTension" = "Lodret Tension";
+"createOrderViewController_crossTension" = "Horisontal Tension";
 "createOrderViewController_placeOrderButton" = "Opret Ordre";
 "createOrderViewController_creationFail" = "Noget gik galt under oprettelsen af ordren";
 
