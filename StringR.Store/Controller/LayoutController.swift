@@ -126,7 +126,7 @@ class LayoutController {
 
         return segmentedControl
     }
-    
+
     static func getSearchBar() -> UISearchController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
