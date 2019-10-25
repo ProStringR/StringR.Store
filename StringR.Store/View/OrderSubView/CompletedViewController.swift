@@ -51,10 +51,7 @@ class CompletedViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        Layout.addTopConstraint(on: self.completedOrdersTableView, to: self.view.safeAreaLayoutGuide.topAnchor)
-        Layout.addLeadingConstraint(on: self.completedOrdersTableView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: self.completedOrdersTableView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
-        Layout.addBottomConstraint(on: self.completedOrdersTableView, to: self.view.safeAreaLayoutGuide.bottomAnchor)
+        Layout.setupFullPageConstraints(forView: self.completedOrdersTableView, onParentView: self.view)
     }
 
     private func getData() {
