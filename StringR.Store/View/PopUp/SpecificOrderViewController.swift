@@ -50,7 +50,9 @@ class SpecificOrderViewController: UIViewController {
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancelAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
+        let historyButton = UIBarButtonItem(title: "History", style: .plain, target: self, action: #selector(onHistoryBarButtonPressed))
+        self.navigationItem.rightBarButtonItems = [saveButton, historyButton]
     }
 
     private func setupLabels() {
@@ -274,6 +276,11 @@ class SpecificOrderViewController: UIViewController {
                 self.removeSpinner(forSpinner: spinner)
             }
         }
+    }
+
+    @objc func onHistoryBarButtonPressed() {
+        let historyViewController = StorageViewController()
+        self.navigationController?.pushViewController(historyViewController, animated: true)
     }
 
     @objc func statusIndexChanged(_ sender: UISegmentedControl) {
