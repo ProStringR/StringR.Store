@@ -14,19 +14,23 @@ class FindCustomerViewController: UIViewController {
     weak var delegate: FindCustomerDelegate?
 
     weak var customerTableView: UITableView!
+    var searchCustomers: [Customer]?
     var customers: [Customer]?
     var customerController = ControlReg.getCustomerController
+    var searchController: UISearchController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setGenerelLayout()
         setupTableView()
+        setupSearchBar()
         getCustomers()
     }
 
     private func getCustomers() {
         customerController.getAllCustomers { (result) in
             if let customers = result {
+                self.searchCustomers = customers
                 self.customers = customers
                 self.updateUI()
             } else {
@@ -58,6 +62,15 @@ class FindCustomerViewController: UIViewController {
 
         self.customerTableView.delegate = self
         self.customerTableView.dataSource = self
+    }
+
+    private func setupSearchBar() {
+        self.searchController = LayoutController.getSearchBar()
+
+        self.searchController?.searchResultsUpdater = self
+        self.searchController?.searchBar.delegate = self
+
+        self.navigationItem.searchController = self.searchController
     }
 
     @objc func closeAction() {
@@ -106,10 +119,27 @@ class FindCustomerViewController: UIViewController {
     }
 }
 
+extension FindCustomerViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+
+        if searchText == Constant.emptyString {
+            self.searchCustomers = self.customers
+        } else {
+            if let customers = self.customers {
+                self.searchCustomers = customers.filter {
+                    return $0.name.lowercased().contains(searchText.lowercased()) || $0.phoneNumber.lowercased().contains(searchText.lowercased()) || $0.email.lowercased().contains(searchText.lowercased())
+                }
+            }
+        }
+       self.customerTableView.reloadData()
+    }
+}
+
 extension FindCustomerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let customers = self.customers else { return }
+        guard let customers = self.searchCustomers else { return }
 
         self.delegate?.addCustomer(customer: customers[indexPath.row])
         self.closeAction()
@@ -118,13 +148,13 @@ extension FindCustomerViewController: UITableViewDelegate {
 
 extension FindCustomerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let customers = self.customers else { return 0 }
+        guard let customers = self.searchCustomers else { return 0 }
 
         return customers.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let customers = self.customers else { return UITableViewCell() }
+        guard let customers = self.searchCustomers else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
         let cell = self.customerTableView.dequeueReusableCell(withIdentifier: TwoSidedTextCell.identifier, for: indexPath) as! TwoSidedTextCell
