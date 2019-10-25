@@ -176,6 +176,7 @@ class SpecificOrderViewController: UIViewController {
 
             if OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus) == 3 {
                 self.statusSegmentedControl.isEnabled = false
+                self.navigationItem.rightBarButtonItem = nil
             }
 
             self.paidStatus = order.paid
