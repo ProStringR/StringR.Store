@@ -112,4 +112,11 @@ class LayoutController {
 
         return spinnerView
     }
+
+    static func getSearchBar() -> UISearchController {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+
+        return searchController
+    }
  }

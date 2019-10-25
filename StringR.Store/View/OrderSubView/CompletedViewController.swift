@@ -12,6 +12,9 @@ import UIKit
 class CompletedViewController: UIViewController {
 
     weak var completedOrdersTableView: UITableView!
+
+    var searchController: UISearchController?
+    var searchOrders: [Order]?
     var orders: [Order]?
     var orderController = ControlReg.getOrderController
 
@@ -20,6 +23,8 @@ class CompletedViewController: UIViewController {
 
         setupView()
         setupTableView()
+        setupSearchBar()
+        setupConstraints()
         getData()
     }
 
@@ -31,10 +36,22 @@ class CompletedViewController: UIViewController {
 
     private func setupTableView() {
         self.completedOrdersTableView = LayoutController.getTableView(cellType: OrderCellGeneral.self, cellIdentifier: OrderCellGeneral.identifier, parentView: self.view)
-        Layout.setupFullPageConstraints(forView: self.completedOrdersTableView, onParentView: self.view)
 
         self.completedOrdersTableView.dataSource = self
         // self.doneOrdersTableView.delegate = self
+    }
+
+    private func setupSearchBar() {
+        self.searchController = LayoutController.getSearchBar()
+
+        self.searchController?.searchResultsUpdater = self
+        self.searchController?.searchBar.delegate = self
+
+        self.navigationItem.searchController = self.searchController
+    }
+
+    private func setupConstraints() {
+        Layout.setupFullPageConstraints(forView: self.completedOrdersTableView, onParentView: self.view)
     }
 
     private func getData() {
@@ -45,6 +62,7 @@ class CompletedViewController: UIViewController {
                 self.orderController.getCompletedOrders(orderIds: shop.orderIds) { (result) in
                     if let orders = result {
                         self.orders = orders
+                        self.searchOrders = orders
                         self.updateUI()
                         self.removeSpinner(forSpinner: spinner)
                     }
@@ -56,7 +74,7 @@ class CompletedViewController: UIViewController {
     private func updateUI() {
         DispatchQueue.main.async {
             //TODO: make the deliveryDate to deliveredDate
-            self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
+            self.searchOrders =  self.searchOrders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
             self.completedOrdersTableView.reloadData()
         }
     }
@@ -66,16 +84,35 @@ class CompletedViewController: UIViewController {
     }
 }
 
+extension CompletedViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+
+        if searchText == Constant.emptyString {
+            self.searchOrders = orders
+        } else {
+            self.searchOrders = self.orders?.filter {
+                if let customer = $0.customer {
+                    return customer.name.lowercased().contains(searchText.lowercased()) || customer.phoneNumber.lowercased().contains(searchText.lowercased()) || customer.email.lowercased().contains(searchText.lowercased())
+                } else {
+                    return $0.orderId.lowercased().contains(searchText.lowercased())
+                }
+            }
+        }
+        self.completedOrdersTableView.reloadData()
+    }
+}
+
 extension CompletedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let orders = self.orders {
+        if let orders = self.searchOrders {
             return orders.count
         }
         return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let orders = self.orders else { return UITableViewCell() }
+        guard let orders = self.searchOrders else { return UITableViewCell() }
 
         // swiftlint:disable force_cast
         let cell = self.completedOrdersTableView.dequeueReusableCell(withIdentifier: OrderCellGeneral.identifier, for: indexPath) as! OrderCellGeneral
