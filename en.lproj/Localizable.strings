@@ -19,6 +19,7 @@
 "common_price" = "Price";
 "common_deliveryDate" = "Delivery Date";
 "common_continue" = "Continue";
+"common_history" = "History";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";

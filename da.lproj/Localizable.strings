@@ -19,6 +19,7 @@
 "common_price" = "Pris";
 "common_deliveryDate" = "Leveringsdato";
 "common_continue" = "Fortsæt";
+"common_history" = "Historik";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
