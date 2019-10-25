@@ -217,19 +217,19 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func setupTensionStackView() {
-        self.tensionHorizontalTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_mainTension"), parentView: self.view)
+        self.tensionHorizontalTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_crossTension"), parentView: self.view)
         self.tensionHorizontalTextField.keyboardType = .decimalPad
-        self.tensionVerticalTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_crossTension"), parentView: self.view)
+        self.tensionVerticalTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "createOrderViewController_mainTension"), parentView: self.view)
         self.tensionVerticalTextField.keyboardType = .decimalPad
 
-        let content = [self.tensionHorizontalTextField, self.tensionVerticalTextField]
+        let content = [self.tensionVerticalTextField, self.tensionHorizontalTextField]
         self.tensionStackView = LayoutController.getStackView(content: content, orientation: .horizontal, parentView: self.view)
         self.tensionStackView.distribution = .fillEqually
     }
 
     private func setupRacketInfoStackView() {
-        self.racketBrandTextField = LayoutController.getTextField(placeholder: "Racket Brand", parentView: self.view)
-        self.racketModelTextView = LayoutController.getTextField(placeholder: "Racket Model", parentView: self.view)
+        self.racketBrandTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "specificOrder_racket_brand"), parentView: self.view)
+        self.racketModelTextView = LayoutController.getTextField(placeholder: Utility.getString(forKey: "specificOrder_racket_model"), parentView: self.view)
 
         let content = [self.racketBrandTextField, self.racketModelTextView]
         self.racketInfoStackView = LayoutController.getStackView(content: content, orientation: .horizontal, parentView: self.view)
@@ -288,7 +288,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     @objc func placeOrderClicked(_ sender: UIButton) {
-        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text, let racketBrand = self.racketBrand, let racketModel = self.racketModelTextView.text else { submissionFailed(); return }
+        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text, let racketBrand = self.racketBrand, let racketModel = self.racketModelTextView.text, let comment = self.commentTextField.text else { submissionFailed(); return }
 
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
@@ -297,6 +297,8 @@ class CreateOrderViewController: UIViewController {
                 let tempRacket = Racket(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel, weight: 0, main: 0, cross: 0)
 
                 let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+
+                order?.comment = comment
 
                 self.racketController.putRacket(racket: tempRacket) { (succes) in
                     if succes {
