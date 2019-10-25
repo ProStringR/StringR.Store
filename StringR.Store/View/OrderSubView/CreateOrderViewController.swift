@@ -340,6 +340,14 @@ class CreateOrderViewController: UIViewController {
                                     }
                                 }
 
+                                if let racketString = self.racketString {
+                                    self.storageController.removeSpecificLengthFromRacketString(racketString: racketString, length: Double(Constant.stringLengthPerRacket), storageId: order.shopId) { (succes) in
+                                        if !succes {
+                                            self.submissionFailed()
+                                        }
+                                    }
+                                }
+
                                 DispatchQueue.main.async {
                                     self.navigationController?.popViewController(animated: true)
                                 }
