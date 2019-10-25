@@ -19,6 +19,8 @@
 		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
 		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
 		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
+		1D6BB09B2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */; };
+		1D6BB09D2362D68000DDAF11 /* OrderHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BB09C2362D68000DDAF11 /* OrderHistory.swift */; };
 		1D7455C623435D2200C33B0C /* AddressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C523435D2200C33B0C /* AddressDTO.swift */; };
 		1D7455C823435DEA00C33B0C /* TeamDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C723435DEA00C33B0C /* TeamDTO.swift */; };
 		1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455C923435E2000C33B0C /* RacketDTO.swift */; };
@@ -114,6 +116,8 @@
 		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
 		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
+		1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderHistoryViewController.swift; sourceTree = "<group>"; };
+		1D6BB09C2362D68000DDAF11 /* OrderHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistory.swift; sourceTree = "<group>"; };
 		1D7455C523435D2200C33B0C /* AddressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDTO.swift; sourceTree = "<group>"; };
 		1D7455C723435DEA00C33B0C /* TeamDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDTO.swift; sourceTree = "<group>"; };
 		1D7455C923435E2000C33B0C /* RacketDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDTO.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 				1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */,
 				1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */,
 				1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */,
+				1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				B38C5B93232BD36900116BC1 /* Stringer.swift */,
 				B38C5B95232BD3FC00116BC1 /* Order.swift */,
 				1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */,
+				1D6BB09C2362D68000DDAF11 /* OrderHistory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 				B36B428C232BABFA00954357 /* Shop.swift in Sources */,
 				B34DF28D232B77FF00D9CCA8 /* AppDelegate.swift in Sources */,
 				B356A53F235727F5002B92A0 /* FindCustomerDelegate.swift in Sources */,
+				1D6BB09D2362D68000DDAF11 /* OrderHistory.swift in Sources */,
 				1DD8D19C235C681F00074BC2 /* PurchaseHistory.swift in Sources */,
 				B38C5B92232BD1D000116BC1 /* Customer.swift in Sources */,
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
@@ -657,6 +664,7 @@
 				B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */,
 				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
 				B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */,
+				1D6BB09B2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift in Sources */,
 				B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */,
 				1D7455CA23435E2000C33B0C /* RacketDTO.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
