@@ -8,6 +8,7 @@
 
 import UIKit
 
+// swiftlint:disable type_body_length
 class SpecificOrderViewController: UIViewController {
 
     weak var generalStackView: UIStackView!
@@ -51,7 +52,7 @@ class SpecificOrderViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancelAction))
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
-        let historyButton = UIBarButtonItem(title: "History", style: .plain, target: self, action: #selector(onHistoryBarButtonPressed))
+        let historyButton = UIBarButtonItem(title: Utility.getString(forKey: "common_history"), style: .plain, target: self, action: #selector(onHistoryBarButtonPressed))
         self.navigationItem.rightBarButtonItems = [saveButton, historyButton]
     }
 
@@ -257,6 +258,11 @@ class SpecificOrderViewController: UIViewController {
         self.showSpinner(withSpinner: spinner)
 
         if let order = self.order, let orderStatus = self.orderStatus, let paidStatus = self.paidStatus {
+            if OrderStatus.allValues[orderStatus] != order.orderStatus || paidStatus != order.paid {
+                let history = OrderHistory.init(date: Date().millisecondsSince1970, paid: paidStatus, orderStatus: OrderStatus.allValues[orderStatus])
+                order.orderHistory?.append(history)
+            }
+
             order.orderStatus = OrderStatus.allValues[orderStatus]
             order.paid = paidStatus
 
@@ -273,7 +279,8 @@ class SpecificOrderViewController: UIViewController {
     }
 
     @objc func onHistoryBarButtonPressed() {
-        let historyViewController = StorageViewController()
+        let historyViewController = SpecificOrderHistoryViewController()
+        historyViewController.orderHistory = self.order?.orderHistory
         self.navigationController?.pushViewController(historyViewController, animated: true)
     }
 
@@ -300,3 +307,4 @@ class SpecificOrderViewController: UIViewController {
         }
     }
 }
+// swiftlint:enable type_body_length
