@@ -16,7 +16,6 @@ class SpecificOrderViewController: UIViewController {
     weak var statusSegmentedControl: UISegmentedControl!
     weak var paidSegmentedControl: UISegmentedControl!
 
-    weak var nameAndIdLabel: UILabel!
     weak var commentHeader: UILabel!
     weak var comment: UILabel!
     weak var brand: UILabel!
@@ -49,6 +48,7 @@ class SpecificOrderViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancelAction))
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
         let historyButton = UIBarButtonItem(title: "History", style: .plain, target: self, action: #selector(onHistoryBarButtonPressed))
@@ -56,9 +56,6 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func setupLabels() {
-        nameAndIdLabel = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
-        nameAndIdLabel.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
-
         commentHeader = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_order_commentHeader"), parentView: self.view)
         commentHeader.font = UIFont.boldSystemFont(ofSize: Constant.smallHeaderSize)
         comment = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
@@ -187,7 +184,7 @@ class SpecificOrderViewController: UIViewController {
                 self.paidSegmentedControl.isEnabled = false
             }
 
-            self.nameAndIdLabel.text = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
+            self.title = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
             self.brand.text = racketString.brand.rawValue
             self.model.text = racketString.modelName
             self.type.text = racketString.stringType.rawValue
@@ -204,10 +201,7 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        Layout.addTopConstraint(on: self.nameAndIdLabel, to: self.view.safeAreaLayoutGuide.topAnchor)
-        Layout.centerHorizontally(on: self.nameAndIdLabel, withParent: self.view)
-
-        Layout.addTopConstraint(on: self.generalStackView, to: self.nameAndIdLabel.bottomAnchor, by: Constant.bigOffset)
+        Layout.addTopConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.topAnchor)
         Layout.addLeadingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
         Layout.addTrailingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
 
