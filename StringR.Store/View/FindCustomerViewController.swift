@@ -66,7 +66,6 @@ class FindCustomerViewController: UIViewController {
 
     private func setupSearchBar() {
         self.searchController = LayoutController.getSearchBar()
-
         self.searchController?.searchResultsUpdater = self
         self.searchController?.searchBar.delegate = self
 
