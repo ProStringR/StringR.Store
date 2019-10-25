@@ -27,4 +27,5 @@ struct OrderDTO: Codable {
     var timeDelivery: Int64?
     var comment: String?
     var orderStatus: OrderStatus?
+    var orderHistory: [OrderHistory]?
 }

@@ -113,6 +113,20 @@ class LayoutController {
         return spinnerView
     }
 
+    static func getSegmentedControl(withItems items: [String], forParent view: UIView) -> UISegmentedControl {
+        let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.layer.cornerRadius = Constant.standardCornerRadius
+        segmentedControl.backgroundColor = .black
+        segmentedControl.tintColor = .white
+
+        view.addSubview(segmentedControl)
+
+        return segmentedControl
+    }
+    
     static func getSearchBar() -> UISearchController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false

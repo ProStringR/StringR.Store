@@ -23,6 +23,7 @@ class Order: Codable {
     var price: Double
     var paid: Bool
     var orderStatus: OrderStatus
+    var orderHistory: [OrderHistory]?
     var timePlaced: Int64?
     var timeDone: Int64?
     var timeDelivery: Int64?
@@ -71,5 +72,10 @@ class Order: Codable {
         self.price = price
         self.paid = paid
         self.orderStatus = .RECEIVED
+
+        let timePlaced = Date().millisecondsSince1970
+        self.timePlaced = timePlaced
+
+        self.orderHistory = [OrderHistory.init(date: timePlaced, paid: self.paid, orderStatus: self.orderStatus)]
     }
 }

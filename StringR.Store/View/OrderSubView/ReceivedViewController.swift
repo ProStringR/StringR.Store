@@ -34,6 +34,7 @@ class ReceivedViewController: UIViewController {
         Layout.setupFullPageConstraints(forView: self.receivedOrdersTableView, onParentView: self.view)
 
         self.receivedOrdersTableView.dataSource = self
+        self.receivedOrdersTableView.delegate = self
     }
 
     private func updateUI() {
@@ -102,5 +103,20 @@ extension ReceivedViewController: UITableViewDataSource {
         cell.tintColor = .black
 
         return cell
+    }
+}
+
+extension ReceivedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let viewControllerToPresent = SpecificOrderViewController()
+
+        if let orders = self.orders {
+            viewControllerToPresent.order = orders[indexPath.row]
+        }
+
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
+        self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
