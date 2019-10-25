@@ -23,7 +23,7 @@ class SpecificOrderHistoryViewController: UIViewController {
     private func setupView() {
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = Constant.standardCornerRadius
-        Layout.setupViewNavigationController(forView: self, withTitle: "Order History")
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "common_history"))
     }
 
     private func setupTableView() {
