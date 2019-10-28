@@ -11,6 +11,8 @@ import UIKit
 // swiftlint:disable type_body_length
 class SpecificOrderViewController: UIViewController {
 
+    weak var delegate: OrderModifierDelegate?
+
     weak var generalStackView: UIStackView!
     weak var segmentControlStackView: UIStackView!
 
@@ -245,7 +247,9 @@ class SpecificOrderViewController: UIViewController {
 
     private func dismiss() {
         DispatchQueue.main.async {
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.navigationController?.dismiss(animated: true, completion: {
+                self.delegate?.orderHasBeenModified()
+            })
         }
     }
 
