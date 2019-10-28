@@ -143,6 +143,7 @@ extension CompletedViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let viewControllerToPresent = SpecificOrderViewController()
+        viewControllerToPresent.delegate = self
 
         if let orders = self.orders {
             viewControllerToPresent.order = orders[indexPath.row]
@@ -150,5 +151,11 @@ extension CompletedViewController: UITableViewDelegate {
 
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
+    }
+}
+
+extension CompletedViewController: OrderModifierDelegate {
+    func orderHasBeenModified() {
+        self.getData()
     }
 }
