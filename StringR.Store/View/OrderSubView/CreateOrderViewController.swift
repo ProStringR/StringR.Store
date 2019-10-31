@@ -288,7 +288,7 @@ class CreateOrderViewController: UIViewController {
     }
 
     @objc func placeOrderClicked(_ sender: UIButton) {
-        guard let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text, let racketBrand = self.racketBrand, let racketModel = self.racketModelTextView.text, let comment = self.commentTextField.text else { submissionFailed(); return }
+        guard let customer = self.customer, let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text, let racketBrand = self.racketBrand, let racketModel = self.racketModelTextView.text, let comment = self.commentTextField.text else { submissionFailed(); return }
 
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
@@ -296,7 +296,7 @@ class CreateOrderViewController: UIViewController {
                 // TODO: delete, when we have racket on the Customer. Then pass the racketId on to the order.
                 let tempRacket = Racket(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel)
 
-                let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+                let order = Order.init(orderId: Utility.getUUID(), customerId: customer.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension.replacingOccurrences(of: ",", with: ".")), tensionHorizontal: Double(horizontalTension.replacingOccurrences(of: ",", with: ".")), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
 
                 order?.comment = comment
 
