@@ -294,7 +294,7 @@ class CreateOrderViewController: UIViewController {
             if let shop = shop {
 
                 // TODO: delete, when we have racket on the Customer. Then pass the racketId on to the order.
-                let tempRacket = Racket(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel, weight: 0, main: 0, cross: 0)
+                let tempRacket = Racket(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel)
 
                 let order = Order.init(orderId: Utility.getUUID(), customerId: self.customer?.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension), tensionHorizontal: Double(horizontalTension), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
 
@@ -346,6 +346,11 @@ class CreateOrderViewController: UIViewController {
                                             self.submissionFailed()
                                         }
                                     }
+                                }
+
+                                // collect the racketBrand and racketModel to the racketDict table in the database
+                                self.racketController.putTempRacket(racket: tempRacket) { (succes) in
+                                    _ = succes
                                 }
 
                                 DispatchQueue.main.async {

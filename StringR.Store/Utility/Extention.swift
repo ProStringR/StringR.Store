@@ -14,7 +14,7 @@ extension UINavigationController {
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.isTranslucent = true
-        self.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = .white
     }
 }
 
@@ -40,6 +40,54 @@ extension Date {
 
     init(milliseconds: Int64) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    }
+
+    func isInSameWeek(date: Date) -> Bool {
+        return Calendar.current.isDate(self, equalTo: date, toGranularity: .weekOfYear)
+    }
+
+    func isInSameMonth(date: Date) -> Bool {
+        return Calendar.current.isDate(self, equalTo: date, toGranularity: .month)
+    }
+
+    func isInSameYear(date: Date) -> Bool {
+        return Calendar.current.isDate(self, equalTo: date, toGranularity: .year)
+    }
+
+    func isInSameDay(date: Date) -> Bool {
+        return Calendar.current.isDate(self, equalTo: date, toGranularity: .day)
+    }
+
+    var isInCurrentWeek: Bool {
+        return isInSameWeek(date: Date())
+    }
+
+    var isInCurrentMonth: Bool {
+        return isInSameMonth(date: Date())
+    }
+
+    var isInCurrentYear: Bool {
+        return isInSameYear(date: Date())
+    }
+
+    var isInYesterday: Bool {
+        return Calendar.current.isDateInYesterday(self)
+    }
+
+    var isInToday: Bool {
+        return Calendar.current.isDateInToday(self)
+    }
+
+    var isInTomorrow: Bool {
+        return Calendar.current.isDateInTomorrow(self)
+    }
+
+    var isInTheFuture: Bool {
+        return Date() < self
+    }
+
+    var isInThePast: Bool {
+        return self < Date()
     }
 }
 

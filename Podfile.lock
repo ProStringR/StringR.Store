@@ -66,6 +66,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.2.5):
     - GoogleUtilities/Logger
+  - IQKeyboardManagerSwift (6.5.2)
   - leveldb-library (1.22)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -76,9 +77,10 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Database
+  - IQKeyboardManagerSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -93,6 +95,8 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+  trunk:
+    - IQKeyboardManagerSwift
 
 SPEC CHECKSUMS:
   Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
@@ -107,9 +111,10 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 91e682bd60a49d3f8f69f2e909a66efaed5a1e7a
   GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
+  IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: 8f85c9799eb0d1da8a52c920f8e46ad7617472d9
+PODFILE CHECKSUM: e761d3553e9927065d7861266188f2ed156053f2
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
