@@ -350,7 +350,7 @@ class CreateOrderViewController: UIViewController {
 
                                 // collect the racketBrand and racketModel to the racketDict table in the database
                                 self.racketController.putTempRacket(racket: tempRacket) { (succes) in
-                                    // do something
+                                    _ = succes
                                 }
 
                                 DispatchQueue.main.async {
