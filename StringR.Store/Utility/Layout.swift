@@ -60,4 +60,16 @@ class Layout {
         addLeadingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.leadingAnchor, by: sidePoints)
         addTrailingConstraint(on: view, to: parentView.view.safeAreaLayoutGuide.trailingAnchor, by: sidePoints)
     }
+
+    static func centerAlignUILabels(uiLabelArry: [UILabel]) {
+        for label in uiLabelArry {
+            label.textAlignment = .center
+        }
+    }
+
+    static func setLabelAsHeader(labels: [UILabel]) {
+        for label in labels {
+            label.font = UIFont.boldSystemFont(ofSize: Constant.headerSize)
+        }
+    }
 }
