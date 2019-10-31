@@ -27,4 +27,14 @@ class RacketDAOFirebase: RacketDAOProtocol {
             completion(succes)
         }
     }
+
+    func putTempRacket(racket: Racket, completion: @escaping (Bool) -> Void) {
+        let dto = self.dataControl.createObject(fromObject: racket, toObject: RacketDTO.self)
+
+        guard let object = dto, let id = dto?.racketId else { completion(false); return }
+
+        dataControl.putData(objectToUpdate: object, objectId: id, url: Firebase.racketDict) { (succes) in
+            completion(succes)
+        }
+    }
 }
