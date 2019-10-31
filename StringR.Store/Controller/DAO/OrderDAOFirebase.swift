@@ -17,8 +17,29 @@ class OrderDAOFirebase: OrderDAOProtocol {
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
     let racketDAO: RacketDAOProtocol = ControlReg.getRacketDAO
 
+    func getAllOrders(for shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        if let orderIds = shop.orderIds {
+            var listOfOrders: [Order] = []
+            var attempts = 0
+
+            for orderId in orderIds {
+                getOrder(by: orderId) { (order) in
+                    attempts += 1
+                    if let order = order {
+                        listOfOrders.append(order)
+                    }
+
+                    if attempts == orderIds.count {
+                        completion(listOfOrders)
+                    }
+                }
+            }
+        }
+    }
+
     func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
         dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
+            print("\(Firebase.order)/\(id)")
             let order = self.dataControl.createObject(fromObject: result, toObject: Order.self)
 
             if let order = order {
