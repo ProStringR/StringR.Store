@@ -13,6 +13,7 @@
 		1D177184235A086C00DBC870 /* SpecificStringInStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */; };
 		1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */; };
 		1D29807F2361CEC300225DCE /* StringerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */; };
+		1D32FC1F236A1E4100AABEFB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32FC1E236A1E4100AABEFB /* Color.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
@@ -110,6 +111,7 @@
 		1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificStringInStorageViewController.swift; sourceTree = "<group>"; };
 		1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderViewController.swift; sourceTree = "<group>"; };
 		1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringerDetailViewController.swift; sourceTree = "<group>"; };
+		1D32FC1E236A1E4100AABEFB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				B3FB2C8C232D2BF4003728C4 /* Utility.swift */,
 				B3FB2CAC232D4119003728C4 /* Layout.swift */,
 				B3903C0D2333672900367E5F /* Firebase.swift */,
+				1D32FC1E236A1E4100AABEFB /* Color.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				B38C5B8A232BCB2C00116BC1 /* Storage.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
 				B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */,
+				1D32FC1F236A1E4100AABEFB /* Color.swift in Sources */,
 				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
 				B326E87623435C7E0040E9F3 /* ShopDAOProtocol.swift in Sources */,
 				1D6BB09B2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift in Sources */,
@@ -849,6 +853,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -867,6 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
