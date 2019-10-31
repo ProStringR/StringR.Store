@@ -12,6 +12,7 @@ import Charts
 
 class EconomyViewController: UIViewController {
 
+    let orderController = ControlReg.getOrderController
     weak var dateSegmentControl: UISegmentedControl!
     weak var pieChart: PieChartView!
     weak var dataStackView: UIStackView!
@@ -24,6 +25,19 @@ class EconomyViewController: UIViewController {
         setupChart()
         setupDataStackView()
         setupConstraints()
+        getData()
+    }
+
+    private func getData() {
+        ShopSingleton.shared.refreshAndGetShop { (shop) in
+            if let shop = shop {
+                self.orderController.getAllOrders(for: shop, completion: { (orders) in
+                    if let orders = orders {
+                        print(orders)
+                    }
+                })
+            }
+        }
     }
 
     private func setupLayout() {
@@ -115,8 +129,7 @@ class EconomyViewController: UIViewController {
         Layout.addTrailingConstraint(on: self.dateSegmentControl, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
 
         Layout.addTopConstraint(on: self.pieChart, to: self.dateSegmentControl.bottomAnchor, by: Constant.bigOffset)
-        Layout.addLeadingConstraint(on: self.pieChart, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: self.pieChart, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+        Layout.centerHorizontally(on: self.pieChart, withParent: self.view)
         self.pieChart.widthAnchor.constraint(equalToConstant: 500).isActive = true
         self.pieChart.heightAnchor.constraint(equalToConstant: 500).isActive = true
 
