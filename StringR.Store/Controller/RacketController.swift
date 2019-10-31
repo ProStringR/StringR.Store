@@ -23,4 +23,10 @@ class RacketController {
             completion(succes)
         }
     }
+
+    func putTempRacket(racket: Racket, completion: @escaping (Bool) -> Void) {
+        racketDAO.putTempRacket(racket: racket) { (succes) in
+            completion(succes)
+        }
+    }
 }
