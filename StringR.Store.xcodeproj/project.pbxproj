@@ -52,6 +52,7 @@
 		B3660A762346421C005A780D /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3660A752346421C005A780D /* ShopDTO.swift */; };
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
 		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
+		B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37564D0236AC9D500830FFC /* SplashScreen.swift */; };
 		B380D0D323630589004144B5 /* OrderModifierDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380D0D223630589004144B5 /* OrderModifierDelegate.swift */; };
 		B382008C2361D52F00C2D666 /* RacketDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */; };
 		B382008E2361D54A00C2D666 /* RacketDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */; };
@@ -155,6 +156,7 @@
 		B3660A752346421C005A780D /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		B37564D0236AC9D500830FFC /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B380D0D223630589004144B5 /* OrderModifierDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModifierDelegate.swift; sourceTree = "<group>"; };
 		B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOFirebase.swift; sourceTree = "<group>"; };
 		B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOProtocol.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				B38C5BA1232BDF4000116BC1 /* TeamViewController.swift */,
 				B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */,
 				B3C4599E2355DEB100A50C51 /* FindCustomerViewController.swift */,
+				B37564D0236AC9D500830FFC /* SplashScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
+				B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */,
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
@@ -853,12 +857,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2PZ9LBK934;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -871,12 +876,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2PZ9LBK934;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
