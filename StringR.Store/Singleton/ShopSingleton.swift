@@ -31,4 +31,13 @@ class ShopSingleton {
             }
         }
     }
+
+    func refreshAndGetShop(completion: @escaping (Shop?) -> Void) {
+        shopController.getShop(basedOn: Utility.readStringFromSharedPref(Constant.shopId)) { (shop) in
+            if let shop = shop {
+                self.shop = shop
+                completion(shop)
+            }
+        }
+    }
 }
