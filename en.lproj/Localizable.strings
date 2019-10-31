@@ -97,7 +97,7 @@
 "createOrderViewController_creationFail" = "Something in the order creation went wrong.";
 
 "specificString_length_remaining" = "Length remaining";
-"specificString_Avg_price_per_racket" = "Avg. price per racket";
+"specificString_Avg_price_per_racket" = "Price per racket";
 "specificString_purchase_history" = "Purchase history";
 "specificString_price" = "Price";
 "specificString_alertHeder" = "Are you sure?";

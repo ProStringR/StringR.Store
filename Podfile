@@ -9,5 +9,6 @@ target 'StringR.Store' do
     pod 'Firebase/Analytics'
     pod 'Firebase/Database'
     pod 'Charts'
+    pod 'IQKeyboardManagerSwift'
 
 end

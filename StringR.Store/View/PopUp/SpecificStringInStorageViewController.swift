@@ -181,8 +181,8 @@ class SpecificStringInStorageViewController: UIViewController {
             self.historyTableView.reloadData()
 
             if let racketString = self.racketString {
-                self.lengthRemaining.text = String(Int(racketString.length))
-                self.price.text = String(racketString.pricePerRacket)
+                self.lengthRemaining.text = "\(Int(racketString.length)) m"
+                self.price.text = "\(Int(racketString.pricePerRacket)) kr"
             }
         }
     }
@@ -336,8 +336,8 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
         let item = purchaseHistory[indexPath.row]
 
         let date = Utility.dateToString(date: Date.init(milliseconds: item.date), withTime: false)
-        cell.leftLabel.text = "\(date) | \(String(Int(item.price)))"
-        cell.rightLabel.text = String(Int(item.length))
+        cell.leftLabel.text = "\(date) | \(String(Int(item.price))) kr"
+        cell.rightLabel.text = "\(Int(item.length)) m"
 
         // not clickable
         cell.selectionStyle = .none

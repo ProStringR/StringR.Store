@@ -55,6 +55,8 @@
 		B3660A762346421C005A780D /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3660A752346421C005A780D /* ShopDTO.swift */; };
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
 		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
+		B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37564D0236AC9D500830FFC /* SplashScreen.swift */; };
+		B380D0D323630589004144B5 /* OrderModifierDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380D0D223630589004144B5 /* OrderModifierDelegate.swift */; };
 		B382008C2361D52F00C2D666 /* RacketDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */; };
 		B382008E2361D54A00C2D666 /* RacketDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */; };
 		B38C5B84232BC94000116BC1 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38C5B83232BC94000116BC1 /* Team.swift */; };
@@ -160,6 +162,8 @@
 		B3660A752346421C005A780D /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		B37564D0236AC9D500830FFC /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B380D0D223630589004144B5 /* OrderModifierDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModifierDelegate.swift; sourceTree = "<group>"; };
 		B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOFirebase.swift; sourceTree = "<group>"; };
 		B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOProtocol.swift; sourceTree = "<group>"; };
 		B38C5B83232BC94000116BC1 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -365,6 +369,7 @@
 				B38C5BA1232BDF4000116BC1 /* TeamViewController.swift */,
 				B3B3DBDB233BAA0E001498D4 /* PopupViewController.swift */,
 				B3C4599E2355DEB100A50C51 /* FindCustomerViewController.swift */,
+				B37564D0236AC9D500830FFC /* SplashScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				B3606A46234DCAED003199FB /* RemoveStringerDelegate.swift */,
 				B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */,
 				B342AF22235DB1200033E869 /* UpdateStorageDelegate.swift */,
+				B380D0D223630589004144B5 /* OrderModifierDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
+				B380D0D323630589004144B5 /* OrderModifierDelegate.swift in Sources */,
 				1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */,
 				B38C5B8C232BCBDE00116BC1 /* RacketString.swift in Sources */,
 				B3B92B602333AE9600C39052 /* Observer.swift in Sources */,
@@ -692,6 +699,7 @@
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
+				B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */,
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
@@ -862,12 +870,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
+				DEVELOPMENT_TEAM = 2PZ9LBK934;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -881,12 +890,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
+				DEVELOPMENT_TEAM = 2PZ9LBK934;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;

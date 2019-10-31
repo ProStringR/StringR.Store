@@ -51,6 +51,14 @@ class StorageController {
         }
     }
 
+    func removeSpecificLengthFromRacketString(racketString: RacketString, length: Double, storageId: String, completion: @escaping (Bool) -> Void) {
+        racketString.removeLength(length: length)
+
+        putRacketString(racketString: racketString, storageId: storageId) { (succes) in
+            completion(succes)
+        }
+    }
+
     func filterStrings(racketStrings: [RacketString], by purpose: RacketType) -> [RacketString] {
 
         var stringsToReturn: [RacketString] = []

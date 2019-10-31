@@ -92,4 +92,8 @@ class RacketString: Codable {
     func updateLength(length: Double) {
         self.length += length
     }
+
+    func removeLength(length: Double) {
+        self.length -= length
+    }
 }

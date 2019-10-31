@@ -97,7 +97,7 @@
 "createOrderViewController_creationFail" = "Noget gik galt under oprettelsen af ordren";
 
 "specificString_length_remaining" = "Resterende længde";
-"specificString_Avg_price_per_racket" = "Gnsn. pris pr. ketcher";
+"specificString_Avg_price_per_racket" = "Pris pr. ketcher";
 "specificString_purchase_history" = "Ordre historik";
 "specificString_price" = "Pris";
 "specificString_alertHeder" = "Er du sikker?";
