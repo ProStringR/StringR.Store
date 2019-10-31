@@ -16,6 +16,7 @@ class EconomyViewController: UIViewController {
     weak var dateSegmentControl: UISegmentedControl!
     weak var pieChart: PieChartView!
     weak var dataStackView: UIStackView!
+    var economy: Economy?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class EconomyViewController: UIViewController {
             if let shop = shop {
                 self.orderController.getAllOrders(for: shop, completion: { (orders) in
                     if let orders = orders {
-                        print(orders)
+                        
                     }
                 })
             }
