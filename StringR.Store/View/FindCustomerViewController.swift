@@ -74,7 +74,9 @@ class FindCustomerViewController: UIViewController {
 
     @objc func closeAction() {
         DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true) {
+                self.delegate?.closeAction()
+            }
         }
     }
 

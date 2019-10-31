@@ -285,6 +285,8 @@ class CreateOrderViewController: UIViewController {
         viewControllerToPresent.delegate = self
         let popup = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popup, animated: true, completion: nil)
+
+        self.navigationController?.tabBarController?.tabBar.isHidden = true
     }
 
     @objc func placeOrderClicked(_ sender: UIButton) {
@@ -481,7 +483,11 @@ extension CreateOrderViewController: UIPickerViewDelegate {
 extension CreateOrderViewController: FindCustomerDelegate {
     func addCustomer(customer: Customer) {
         self.setCustomer(customer: customer)
+    }
 
+    func closeAction() {
+        // show tabbar
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
     }
 }
 // swiftlint:enable type_body_length
