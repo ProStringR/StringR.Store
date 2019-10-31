@@ -14,6 +14,8 @@
 		1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */; };
 		1D29807F2361CEC300225DCE /* StringerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */; };
 		1D32FC1F236A1E4100AABEFB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32FC1E236A1E4100AABEFB /* Color.swift */; };
+		1D32FC21236B24FF00AABEFB /* EconomyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32FC20236B24FF00AABEFB /* EconomyController.swift */; };
+		1D32FC23236B25E700AABEFB /* EconomyInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32FC22236B25E700AABEFB /* EconomyInterval.swift */; };
 		1D3987E2233B8E4B00CDA0DD /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */; };
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
@@ -112,6 +114,8 @@
 		1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderViewController.swift; sourceTree = "<group>"; };
 		1D29807E2361CEC300225DCE /* StringerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringerDetailViewController.swift; sourceTree = "<group>"; };
 		1D32FC1E236A1E4100AABEFB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1D32FC20236B24FF00AABEFB /* EconomyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyController.swift; sourceTree = "<group>"; };
+		1D32FC22236B25E700AABEFB /* EconomyInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyInterval.swift; sourceTree = "<group>"; };
 		1D3987E1233B8E4B00CDA0DD /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 				B326E87123435C4F0040E9F3 /* ShopController.swift */,
 				B3C4599C2355DE5900A50C51 /* CustomerController.swift */,
 				B319DDCD2361DD42007878F6 /* RacketController.swift */,
+				1D32FC20236B24FF00AABEFB /* EconomyController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				B38C5BAA232BE5BD00116BC1 /* RacketBrand.swift */,
 				B38C5BAC232BE70D00116BC1 /* StringBrand.swift */,
 				B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */,
+				1D32FC22236B25E700AABEFB /* EconomyInterval.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -647,6 +653,8 @@
 				B38C5B86232BC97400116BC1 /* Racket.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
+				1D32FC23236B25E700AABEFB /* EconomyInterval.swift in Sources */,
+				1D32FC21236B24FF00AABEFB /* EconomyController.swift in Sources */,
 				1D29807F2361CEC300225DCE /* StringerDetailViewController.swift in Sources */,
 				1DD8D19A235C67C900074BC2 /* PurchaseHistoryDTO.swift in Sources */,
 				B3CAF98B2341FC6D005F5B38 /* TeamDAOProtocol.swift in Sources */,
