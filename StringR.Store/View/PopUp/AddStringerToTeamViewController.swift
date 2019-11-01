@@ -150,7 +150,11 @@ class AddStringerToTeamViewController: UIViewController {
     @objc func saveStringer() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
-        guard let stringer = createStringer() else { return }
+        guard let stringer = createStringer() else {
+            self.removeSpinner(forSpinner: spinner)
+            self.presentDefaultAlert()
+            return
+        }
 
         teamController.putStringer(stringer: stringer, completion: { (succes) in
             if succes {
