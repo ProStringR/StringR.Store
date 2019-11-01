@@ -51,7 +51,9 @@ class ReceivedViewController: UIViewController {
         ShopSingleton.shared.getShop { (shop) in
             if let shop = shop {
                 self.orderController.getRecievedOrders(orderIds: shop.orderIds) { (result) in
-                    self.orders = result
+                    if let orders = result {
+                        self.orders = orders
+                    }
                     self.updateUI()
                     self.removeSpinner(forSpinner: spinner)
                 }

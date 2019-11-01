@@ -64,8 +64,8 @@ class CompletedViewController: UIViewController {
                         self.orders = orders
                         self.searchOrders = orders
                         self.updateUI()
-                        self.removeSpinner(forSpinner: spinner)
                     }
+                    self.removeSpinner(forSpinner: spinner)
                 }
             }
         }
