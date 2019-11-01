@@ -129,3 +129,10 @@
 "economy_labour" = "Arbejdskraft";
 "economy_profit" = "Profit";
 "economy_chart_noData" = "Ingen data tilgængelig";
+
+"addStringer_title" = "Tilføj strenger";
+"addStringer_firstName" = "Fornavn";
+"addStringer_lastName" = "Efternavn";
+"addStringer_email" = "Email";
+"addStringer_phoneNumber" = "Mobil nummer";
+"addStringer_preferredRacket" = "Fortrukken ketchertype";

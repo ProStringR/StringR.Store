@@ -41,7 +41,7 @@ class AddStringerToTeamViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
-        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "common_history"))
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "addStringer_title"))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveStringer))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeAction))
     }
@@ -60,7 +60,7 @@ class AddStringerToTeamViewController: UIViewController {
 
     private func setupFirstNameStackView() -> UIStackView {
         var listOfViews: [UIView] = []
-        let title = LayoutController.getLabel(text: "First Name", parentView: self.view)
+        let title = LayoutController.getLabel(text: Utility.getString(forKey: "addStringer_firstName"), parentView: self.view)
         self.firstNameInput = LayoutController.getTextField(placeholder: "John", parentView: self.view)
 
         listOfViews.append(title)
@@ -71,7 +71,7 @@ class AddStringerToTeamViewController: UIViewController {
 
     private func setupLastNameStackView() -> UIStackView {
         var listOfViews: [UIView] = []
-        let title = LayoutController.getLabel(text: "Last Name", parentView: self.view)
+        let title = LayoutController.getLabel(text: Utility.getString(forKey: "addStringer_lastName"), parentView: self.view)
         self.lastNameInput = LayoutController.getTextField(placeholder: "Doe", parentView: self.view)
 
         listOfViews.append(title)
@@ -82,7 +82,7 @@ class AddStringerToTeamViewController: UIViewController {
 
     private func setupEmailStackView() -> UIStackView {
         var listOfViews: [UIView] = []
-        let title = LayoutController.getLabel(text: "Email", parentView: self.view)
+        let title = LayoutController.getLabel(text: Utility.getString(forKey: "addStringer_email"), parentView: self.view)
         self.emailInput = LayoutController.getTextField(placeholder: "johndoe@example.com", parentView: self.view)
 
         listOfViews.append(title)
@@ -93,7 +93,7 @@ class AddStringerToTeamViewController: UIViewController {
 
     private func setupPhoneNumberStackView() -> UIStackView {
         var listOfViews: [UIView] = []
-        let title = LayoutController.getLabel(text: "Phone number", parentView: self.view)
+        let title = LayoutController.getLabel(text: Utility.getString(forKey: "addStringer_phoneNumber"), parentView: self.view)
         self.phoneNumerInput = LayoutController.getTextField(placeholder: "88772233", parentView: self.view)
 
         listOfViews.append(title)
@@ -104,7 +104,7 @@ class AddStringerToTeamViewController: UIViewController {
 
     private func setupPreferredRacketStackView() -> UIStackView {
         var listOfViews: [UIView] = []
-        let title = LayoutController.getLabel(text: "Preferred Racket", parentView: self.view)
+        let title = LayoutController.getLabel(text: Utility.getString(forKey: "addStringer_preferredRacket"), parentView: self.view)
         self.preferredRacketTypeInput = LayoutController.getTextField(placeholder: "Tennis", parentView: self.view)
 
         listOfViews.append(title)
@@ -156,7 +156,7 @@ class AddStringerToTeamViewController: UIViewController {
             return
         }
 
-        teamController.putStringer(stringer: stringer, completion: { (succes) in
+        teamController.putStringerToTeam(stringer: stringer, completion: { (succes) in
             if succes {
                 self.dismiss()
                 self.delegate?.addStringerToTeam(stringer: stringer)
