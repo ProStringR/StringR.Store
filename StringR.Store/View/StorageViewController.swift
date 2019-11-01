@@ -33,8 +33,8 @@ class StorageViewController: UIViewController {
                 if let arrayOfRacketStrings = arrayOfRacketStrings {
                     self.strings = arrayOfRacketStrings
                     self.updateUI()
-                    self.removeSpinner(forSpinner: spinner)
                 }
+                self.removeSpinner(forSpinner: spinner)
             }
         }
     }
