@@ -195,11 +195,16 @@ class SpecificOrderViewController: UIViewController {
             self.price.text = String(Int(order.price))
             self.deliveryDate.text = Utility.dateToString(date: Date.init(milliseconds: order.deliveryDate), withTime: false)
             self.stringer.text = stringer.name
-            self.comment.text = order.comment ?? Utility.getString(forKey: "specificOrder_order_comment_noComment")
             self.paidSegmentedControl.selectedSegmentIndex = order.paid ? 1 : 0
             self.statusSegmentedControl.selectedSegmentIndex = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
             self.racketBrand.text = racket.brand.rawValue
             self.racketModel.text = racket.modelName
+
+            if let comment = order.comment {
+                self.comment.text = comment.isEmpty ? Utility.getString(forKey: "specificOrder_order_comment_noComment") : comment
+            } else {
+                self.comment.text = Utility.getString(forKey: "specificOrder_order_comment_noComment")
+            }
         }
     }
 
