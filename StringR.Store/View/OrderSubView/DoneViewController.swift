@@ -115,11 +115,18 @@ extension DoneViewController: UITableViewDelegate {
 
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
+
+        self.navigationController?.tabBarController?.tabBar.isHidden = true
     }
 }
 
 extension DoneViewController: OrderModifierDelegate {
-    func orderHasBeenModified() {
-        self.getData()
+    func orderHasBeenModified(update: Bool) {
+        if update {
+            self.getData()
+        }
+
+        // show tabBar
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
     }
 }

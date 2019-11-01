@@ -9,5 +9,5 @@
 import Foundation
 
 protocol OrderModifierDelegate: class {
-    func orderHasBeenModified()
+    func orderHasBeenModified(update: Bool)
 }
