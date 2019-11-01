@@ -65,14 +65,20 @@ class TeamController {
         try teamDAO.postStringer(stringer: stringer)
     }
 
+    func putStringer(stringer: Stringer, completion: @escaping (Bool) -> Void) {
+        teamDAO.putStringer(stringer: stringer) { (succes) in
+            completion(succes)
+        }
+    }
+
     /**
      Put a stringer to the database. Uses the stringers id to place the stringer in the database.
 
      - Parameter stringer: The stringer you want to put to the database.
      */
-    func putStringer(stringer: Stringer, completion: @escaping (Bool) -> Void) {
+    func putStringerToTeam(stringer: Stringer, completion: @escaping (Bool) -> Void) {
         let stringerDTO = dataControl.createObject(fromObject: stringer, toObject: StringerDTO.self)
-        teamDAO.putStringer(stringer: stringerDTO) { (succes) in
+        teamDAO.putStringerToTeam(stringer: stringerDTO) { (succes) in
             completion(succes)
         }
     }

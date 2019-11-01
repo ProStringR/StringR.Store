@@ -96,7 +96,7 @@ class CreateOrderViewController: UIViewController {
     private func getStringers() {
         ShopSingleton.shared.getShop { (shop) in
             guard let shop = shop else { return }
-            self.teamController.getStringers(fromTeamId: shop.shopId) { (result) in
+            self.teamController.getStringers(fromTeamId: shop.teamId) { (result) in
                 if let stringers = result {
                     self.stringers = stringers
                 } else {

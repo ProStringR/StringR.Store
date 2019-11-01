@@ -130,3 +130,9 @@
 "economy_profit" = "Profit";
 "economy_chart_noData" = "No data available";
 
+"addStringer_title" = "Add stringer";
+"addStringer_firstName" = "First Name";
+"addStringer_lastName" = "Last Name";
+"addStringer_email" = "Email";
+"addStringer_phoneNumber" = "Phone Number";
+"addStringer_preferredRacket" = "Preferred Racket";
