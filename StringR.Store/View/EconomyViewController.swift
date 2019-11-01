@@ -69,7 +69,7 @@ class EconomyViewController: UIViewController {
                 self.labour.text = String(Int(economy.expenses))
                 self.profit.text = String(Int(economy.profit))
 
-                self.doneAmount = economy.totalStrung
+                self.doneAmount = economy.totalStrung - economy.numberOfPendingOrders
                 self.pendingAmount = economy.numberOfPendingOrders
 
                 self.pieChart.data = self.getUpdatedChartData()

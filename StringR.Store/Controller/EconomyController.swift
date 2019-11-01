@@ -70,7 +70,9 @@ class EconomyController {
 
             if order.orderStatus != .RECEIVED && !order.paid {
                 unpaid += order.price
-            } else {
+            }
+
+            if order.paid {
                 revenue += order.price
             }
 
