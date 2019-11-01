@@ -78,8 +78,7 @@ class TeamController {
     }
 
     func putTeam(team: Team, completion: @escaping (Bool) -> Void) {
-        let teamDTO = dataControl.createObject(fromObject: team, toObject: TeamDTO.self)
-        teamDAO.putTeam(team: teamDTO) { (succes) in
+        teamDAO.putTeam(team: team) { (succes) in
             completion(succes)
         }
     }
