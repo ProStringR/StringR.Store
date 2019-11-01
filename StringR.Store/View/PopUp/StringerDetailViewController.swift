@@ -125,10 +125,6 @@ class StringerDetailViewController: UIViewController {
 
         self.phoneLabel = LayoutController.getLabel(text: stringer.phoneNumber, parentView: self.view)
         self.mailLabel = LayoutController.getLabel(text: stringer.email, parentView: self.view)
-        // make a string that can cell where the stringer lives.
-        self.address = LayoutController.getLabel(text: stringer.address.city, parentView: self.view)
-        // make birthday to a string representation.
-        self.birthdayLabel = LayoutController.getLabel(text: String(stringer.birthday), parentView: self.view)
         self.preferredRacketTypeLabel = LayoutController.getLabel(text: stringer.preferedRacketType.rawValue, parentView: self.view)
 
         self.contactLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_contactLabel"), parentView: self.view)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D11C1DC236C16DF00F764A4 /* AddStringerToTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11C1DB236C16DF00F764A4 /* AddStringerToTeamViewController.swift */; };
+		1D11C1DE236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11C1DD236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift */; };
 		1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */; };
 		1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */; };
 		1D1771822359EBFB00DBC870 /* ShopSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1771812359EBFB00DBC870 /* ShopSingleton.swift */; };
@@ -109,6 +111,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D11C1DB236C16DF00F764A4 /* AddStringerToTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringerToTeamViewController.swift; sourceTree = "<group>"; };
+		1D11C1DD236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringerToTeamDelegate.swift; sourceTree = "<group>"; };
 		1D17717C2359CB0300DBC870 /* AddStringToStorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStringToStorageViewController.swift; sourceTree = "<group>"; };
 		1D17717E2359CC2700DBC870 /* StorageDAOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageDAOProtocol.swift; sourceTree = "<group>"; };
 		1D1771812359EBFB00DBC870 /* ShopSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSingleton.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				1D177183235A086C00DBC870 /* SpecificStringInStorageViewController.swift */,
 				1D29807C23607C0E00225DCE /* SpecificOrderViewController.swift */,
 				1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */,
+				1D11C1DB236C16DF00F764A4 /* AddStringerToTeamViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -402,6 +407,7 @@
 				B356A53E235727F5002B92A0 /* FindCustomerDelegate.swift */,
 				B342AF22235DB1200033E869 /* UpdateStorageDelegate.swift */,
 				B380D0D223630589004144B5 /* OrderModifierDelegate.swift */,
+				1D11C1DD236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
 				B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */,
+				1D11C1DE236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift in Sources */,
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
@@ -698,6 +705,7 @@
 				B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */,
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
+				1D11C1DC236C16DF00F764A4 /* AddStringerToTeamViewController.swift in Sources */,
 				1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */,
 				B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */,
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,

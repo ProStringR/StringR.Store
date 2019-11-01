@@ -192,12 +192,15 @@ class AddStringToStorageViewController: UIViewController {
         let stringToAdd = createStringToAdd()
 
         if let stringToAdd = stringToAdd {
-            let storageId = "ShopMJ"
-            storageController.putRacketString(racketString: stringToAdd, storageId: storageId) { (succes) in
-                if succes {
-                    self.delegate?.addString(string: stringToAdd)
-                } else {
-                    print("cant put it in firebase")
+            ShopSingleton.shared.getShop { (shop) in
+                guard let shop = shop else { return }
+                let storageId = shop.storageId
+                self.storageController.putRacketString(racketString: stringToAdd, storageId: storageId) { (succes) in
+                    if succes {
+                        self.delegate?.addString(string: stringToAdd)
+                    } else {
+                        print("cant put it in firebase")
+                    }
                 }
             }
         } else {

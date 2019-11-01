@@ -13,5 +13,5 @@ protocol TeamDAOProtocol {
     func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTO?) -> Void)
     func getTeam(basedOn teamId: String, completion: @escaping (TeamDTO?) -> Void)
     func putStringer(stringer: StringerDTO?, completion: @escaping (Bool) -> Void)
-    func putTeam(team: TeamDTO?, completion: @escaping (Bool) -> Void)
+    func putTeam(team: Team?, completion: @escaping (Bool) -> Void)
 }

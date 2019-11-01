@@ -37,7 +37,7 @@
 
 "addString_Head" = "Ny Streng";
 "addString_BrandLabel" = "Mærke";
-"addString_BuyDate" = "Købsdato";
+"addString_BuyDateLabel" = "Købsdato";
 "addString_BuyPriceLabel" = "Købspris";
 "addString_ColorLabel" = "Farve";
 "addString_ModelLabel" = "Model";

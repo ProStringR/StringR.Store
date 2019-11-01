@@ -30,14 +30,18 @@ class TeamViewController: UIViewController {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
         // Call controller to get team data
-        teamController.getStringers(fromTeamId: "teamMJ") { (stringers) in
-            if let stringers = stringers {
-                // Store the team in the stringers array
-                self.stringers = stringers
-            }
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
+                self.teamController.getStringers(fromTeamId: shop.teamId) { (stringers) in
+                    if let stringers = stringers {
+                        // Store the team in the stringers array
+                        self.stringers = stringers
+                    }
 
-            self.updateUI()
-            self.removeSpinner(forSpinner: spinner)
+                    self.updateUI()
+                    self.removeSpinner(forSpinner: spinner)
+                }
+            }
         }
     }
 
@@ -51,7 +55,9 @@ class TeamViewController: UIViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Team"))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addStringerAction))
+        self.navigationItem.rightBarButtonItems = [add, refresh]
     }
 
     private func setupTableView() {
@@ -67,6 +73,13 @@ class TeamViewController: UIViewController {
 
     @objc func updateData() {
         self.getStringers()
+    }
+
+    @objc func addStringerAction() {
+        let viewControllerToPresent = AddStringerToTeamViewController()
+        viewControllerToPresent.delegate = self
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
+        self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
 
@@ -114,36 +127,54 @@ extension TeamViewController: UITableViewDelegate {
     }
 }
 
-extension TeamViewController: RemoveStringerDelegate {
+extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate {
+    func addStringerToTeam(stringer: Stringer) {
+        print("Jeg bliver kaldt")
+        if self.stringers != nil {
+            print("Jeg tilføjer")
+            self.stringers?.append(stringer)
+        } else {
+            let array = [stringer]
+            self.stringers = array
+        }
+
+        DispatchQueue.main.async {
+            self.teamTableView.reloadData()
+        }
+    }
+
     func removeStringer(stringer: Stringer) {
-        self.dismiss(animated: true) {
-            self.stringers?.removeAll(where: {$0.userId == stringer.userId})
-            let team = self.teamController.createTeam(of: self.stringers, withId: "teamMJ")
+        ShopSingleton.shared.getShop { (shop) in
+            guard let shop = shop else { return }
+            self.dismiss(animated: true) {
+                self.stringers?.removeAll(where: {$0.userId == stringer.userId})
+                let team = self.teamController.createTeam(of: self.stringers, withId: shop.teamId)
 
-            if let team = team {
-                self.teamController.putTeam(team: team) { (succes) in
-                    if succes {
-                        self.updateUI()
-                    } else {
-                        self.stringers?.append(stringer)
+                if let team = team {
+                    self.teamController.putTeam(team: team) { (succes) in
+                        if succes {
+                            self.updateUI()
+                        } else {
+                            self.stringers?.append(stringer)
 
-                        // Jump to UI thread and present the alert
-                        DispatchQueue.main.async {
-                            let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
-                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
-                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
-                                _ = alert
-                                // try again
-                                self.removeStringer(stringer: stringer)
-                            }))
+                            // Jump to UI thread and present the alert
+                            DispatchQueue.main.async {
+                                let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
+                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
+                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
+                                    _ = alert
+                                    // try again
+                                    self.removeStringer(stringer: stringer)
+                                }))
 
-                            // present the alert
-                            self.present(alert, animated: true)
+                                // present the alert
+                                self.present(alert, animated: true)
+                            }
                         }
                     }
                 }
+                self.closeAction()
             }
-            self.closeAction()
         }
     }
 
