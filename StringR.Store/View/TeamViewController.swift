@@ -51,7 +51,9 @@ class TeamViewController: UIViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "generel_Team"))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateData))
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addStringerAction))
+        self.navigationItem.rightBarButtonItems = [add, refresh]
     }
 
     private func setupTableView() {
@@ -67,6 +69,12 @@ class TeamViewController: UIViewController {
 
     @objc func updateData() {
         self.getStringers()
+    }
+
+    @objc func addStringerAction() {
+        let viewControllerToPresent = AddStringerToTeamViewController()
+        let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
+        self.navigationController?.present(popUp, animated: true, completion: nil)
     }
 }
 
