@@ -52,7 +52,7 @@ class SpecificOrderViewController: UIViewController {
         self.view.layer.cornerRadius = Constant.standardCornerRadius
         self.navigationController?.hideNavigationBar()
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(cancelAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissPopup))
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction))
         let historyButton = UIBarButtonItem(title: Utility.getString(forKey: "common_history"), style: .plain, target: self, action: #selector(onHistoryBarButtonPressed))
         self.navigationItem.rightBarButtonItems = [saveButton, historyButton]
@@ -245,16 +245,20 @@ class SpecificOrderViewController: UIViewController {
         }
     }
 
-    private func dismiss() {
+    private func saveAndDismiss() {
         DispatchQueue.main.async {
             self.navigationController?.dismiss(animated: true, completion: {
-                self.delegate?.orderHasBeenModified()
+                self.delegate?.orderHasBeenModified(update: true)
             })
         }
     }
 
-    @objc func cancelAction() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+    @objc func dismissPopup() {
+        DispatchQueue.main.async {
+            self.navigationController?.dismiss(animated: true, completion: {
+                self.delegate?.orderHasBeenModified(update: false)
+            })
+        }
     }
 
     @objc func saveAction() {
@@ -272,7 +276,7 @@ class SpecificOrderViewController: UIViewController {
 
             self.orderController.putOrder(order: order) { (success) in
                 if success {
-                    self.dismiss()
+                    self.saveAndDismiss()
                 } else {
                     self.presentDefaultAlert()
                 }
