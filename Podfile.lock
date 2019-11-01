@@ -98,10 +98,9 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
-  trunk:
-    - IQKeyboardManagerSwift
 
 SPEC CHECKSUMS:
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
@@ -121,6 +120,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: 5225123aa3fe3f6e6c8ff9d46be39c87f9358e26
+PODFILE CHECKSUM: 7e2012cbde7302202617d90c680c68c28b8f1c5b
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5
