@@ -46,9 +46,11 @@ class EconomyViewController: UIViewController {
             if let shop = shop {
                 self.orderController.getAllOrders(for: shop, completion: { (orders) in
                     if let orders = orders {
-                        self.orders = orders
-                        self.updateUI(with: 0)
-                        self.removeSpinner(forSpinner: spinner)
+                        DispatchQueue.main.async {
+                            self.orders = orders
+                            self.updateUI(with: self.dateSegmentControl.selectedSegmentIndex)
+                            self.removeSpinner(forSpinner: spinner)
+                        }
                     }
                 })
             }
