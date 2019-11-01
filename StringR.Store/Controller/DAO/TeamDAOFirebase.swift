@@ -35,18 +35,25 @@ class TeamDAOFirebase: TeamDAOProtocol {
             ShopSingleton.shared.getShop(completion: { (shop) in
                 if let shop = shop {
                     self.dataControl.getData(returnType: Team.self, url: "\(Firebase.team)/\(shop.teamId)", completion: { (team) in
-                        if var teamStringers = team?.stringerIds {
-                            teamStringers.append(id)
-                            team?.stringerIds = teamStringers
-                        } else {
-                            let array = [id]
-                            team?.stringerIds = array
-                        }
-
                         if let team = team {
+                            if var teamStringers = team.stringerIds {
+                                teamStringers.append(id)
+                                team.stringerIds = teamStringers
+                            } else {
+                                let array = [id]
+                                team.stringerIds = array
+                            }
+
                             self.putTeam(team: team, completion: { (innerSucces) in
                                 completion(innerSucces && outSucces)
                             })
+                        } else {
+                            let newTeam = Team(teamId: shop.teamId)
+                            newTeam.stringerIds = [id]
+
+                            self.dataControl.putData(objectToUpdate: newTeam, objectId: newTeam.teamId, url: Firebase.team) { (succes) in
+                                completion(succes && outSucces)
+                            }
                         }
                     })
                 }

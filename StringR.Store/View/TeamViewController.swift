@@ -129,9 +129,7 @@ extension TeamViewController: UITableViewDelegate {
 
 extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate {
     func addStringerToTeam(stringer: Stringer) {
-        print("Jeg bliver kaldt")
         if self.stringers != nil {
-            print("Jeg tilføjer")
             self.stringers?.append(stringer)
         } else {
             let array = [stringer]
