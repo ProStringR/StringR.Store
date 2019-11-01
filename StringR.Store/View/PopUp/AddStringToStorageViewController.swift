@@ -70,7 +70,7 @@ class AddStringToStorageViewController: UIViewController {
     private func setupLayout() {
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = 10
-        self.title = Utility.getString(forKey: "addString_Head")
+        Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "addString_Head"))
         self.navigationController?.hideNavigationBar()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addAction))
@@ -105,7 +105,7 @@ class AddStringToStorageViewController: UIViewController {
     private func initializeStackView() {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.spacing = Constant.standardOffset
         self.view.addSubview(stackView)
         self.generelStackView = stackView
     }
@@ -136,7 +136,10 @@ class AddStringToStorageViewController: UIViewController {
     }
 
     private func setConstraints() {
-        Layout.setupFullPageConstraints(forView: self.generelStackView, onParentView: self.view, by: Constant.bigOffset)
+//        Layout.setupFullPageConstraints(forView: self.generelStackView, onParentView: self.view, by: Constant.bigOffset)
+        Layout.addTopConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.topAnchor, by: Constant.bigOffset)
+        Layout.addLeadingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
+        Layout.addTrailingConstraint(on: self.generelStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor, by: Constant.bigOffset)
     }
 
     private func initPicker(picker: UIPickerView, inputField: UITextField!) {

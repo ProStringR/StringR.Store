@@ -151,7 +151,7 @@
 		B327847C235B5E6800D67B9B /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		B32B6BB923360B1700ABD6A8 /* StorageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCell.swift; sourceTree = "<group>"; };
 		B342AF22235DB1200033E869 /* UpdateStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStorageDelegate.swift; sourceTree = "<group>"; };
-		B34DF289232B77FF00D9CCA8 /* StringR.Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StringR.Store.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34DF289232B77FF00D9CCA8 /* StringR Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StringR Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34DF28C232B77FF00D9CCA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B34DF293232B780000D9CCA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B34DF296232B780000D9CCA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -330,7 +330,7 @@
 		B34DF28A232B77FF00D9CCA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B34DF289232B77FF00D9CCA8 /* StringR.Store.app */,
+				B34DF289232B77FF00D9CCA8 /* StringR Store.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -509,7 +509,7 @@
 			);
 			name = StringR.Store;
 			productName = StringR.Store;
-			productReference = B34DF289232B77FF00D9CCA8 /* StringR.Store.app */;
+			productReference = B34DF289232B77FF00D9CCA8 /* StringR Store.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -869,7 +869,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
 				DEVELOPMENT_TEAM = 2PZ9LBK934;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -877,7 +876,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "StringR Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -889,7 +888,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
 				DEVELOPMENT_TEAM = 2PZ9LBK934;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -897,7 +895,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "StringR Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
