@@ -26,4 +26,5 @@ class ControlReg {
     static let getStorageController = StorageController()
     static let getCustomerController = CustomerController()
     static let getRacketController = RacketController()
+    static let getEconomyController = EconomyController()
 }
