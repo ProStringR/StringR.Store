@@ -49,9 +49,9 @@ class EconomyViewController: UIViewController {
                         DispatchQueue.main.async {
                             self.orders = orders
                             self.updateUI(with: self.dateSegmentControl.selectedSegmentIndex)
-                            self.removeSpinner(forSpinner: spinner)
                         }
                     }
+                    self.removeSpinner(forSpinner: spinner)
                 })
             }
         }

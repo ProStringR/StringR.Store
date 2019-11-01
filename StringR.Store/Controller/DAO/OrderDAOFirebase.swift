@@ -34,6 +34,8 @@ class OrderDAOFirebase: OrderDAOProtocol {
                     }
                 }
             }
+        } else {
+            completion(nil)
         }
     }
 
