@@ -45,8 +45,9 @@ class DeliveredViewController: UIViewController {
                     if let orders = result {
                         self.orders = orders
                         self.updateUI()
-                        self.removeSpinner(forSpinner: spinner)
                     }
+
+                    self.removeSpinner(forSpinner: spinner)
                 }
             }
         }

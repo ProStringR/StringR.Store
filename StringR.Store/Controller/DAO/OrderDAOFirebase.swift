@@ -34,6 +34,8 @@ class OrderDAOFirebase: OrderDAOProtocol {
                     }
                 }
             }
+        } else {
+            completion(nil)
         }
     }
 
@@ -89,9 +91,11 @@ class OrderDAOFirebase: OrderDAOProtocol {
         })
     }
 
-    func getOrdersFiltered(orderIds: [String], status: OrderStatus, completion: @escaping ([Order]?) -> Void) {
+    func getOrdersFiltered(orderIds: [String]?, status: OrderStatus, completion: @escaping ([Order]?) -> Void) {
         var attempts = 0
         var list: [Order] = []
+
+        guard let orderIds = orderIds else { completion(list); return}
 
         for id in orderIds {
             self.getOrder(by: id) { (result) in
