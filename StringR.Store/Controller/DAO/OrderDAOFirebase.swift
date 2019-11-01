@@ -39,7 +39,6 @@ class OrderDAOFirebase: OrderDAOProtocol {
 
     func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
         dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
-            print("\(Firebase.order)/\(id)")
             let order = self.dataControl.createObject(fromObject: result, toObject: Order.self)
 
             if let order = order {
