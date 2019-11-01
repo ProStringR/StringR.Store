@@ -33,6 +33,22 @@ class RacketString: Codable {
         return Int(Double(self.length) / Double(Constant.stringLengthPerRacket))
     }
 
+    var expencePerRacket: Double {
+        var expenceOverall = 0.0
+        var lengthOverAll = 0.0
+
+        if let history = purchaseHistory {
+            for item in history {
+                expenceOverall += item.price
+                lengthOverAll += item.length
+            }
+        }
+
+        let pricePerMeter = expenceOverall / lengthOverAll
+
+        return pricePerMeter * Double(Constant.stringLengthPerRacket)
+    }
+
     init(stringId: String, brand: StringBrand, modelName: String, stringType: StringType, length: Double, buyDate: Int64, buyPrice: Double, pricePerRacket: Double, thickness: Double, color: StringColor, stringPurpose: RacketType, setUsed: Double) {
         self.stringId = stringId
         self.brand = brand

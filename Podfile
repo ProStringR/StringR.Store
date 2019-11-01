@@ -8,6 +8,7 @@ target 'StringR.Store' do
   # Pods for StringR.Store
     pod 'Firebase/Analytics'
     pod 'Firebase/Database'
+    pod 'Charts'
     pod 'IQKeyboardManagerSwift'
 
 end

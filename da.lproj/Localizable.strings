@@ -20,6 +20,11 @@
 "common_deliveryDate" = "Leveringsdato";
 "common_continue" = "Fortsæt";
 "common_history" = "Historik";
+"common_day" = "Dag";
+"common_week" = "Uge";
+"common_month" = "Måned";
+"common_year" = "År";
+"common_all" = "Altid";
 
 "generel_Economy" = "Økonomi";
 "generel_Order" = "Ordre";
@@ -116,3 +121,11 @@
 "findCustomer_guest_placeholder_name" = "Navn";
 "findCustomer_guest_placeholder_phoneNumber" = "Mobil";
 "findCustomer_guest_placeholder_mail" = "Mail";
+
+"economy_done" = "Færdig";
+"economy_pending" = "Igang";
+"economy_revenue" = "Omsætning";
+"economy_stringExpense" = "Streng udgifter";
+"economy_labour" = "Arbejdskraft";
+"economy_profit" = "Profit";
+"economy_chart_noData" = "Ingen data tilgængelig";

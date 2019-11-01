@@ -20,6 +20,11 @@
 "common_deliveryDate" = "Delivery Date";
 "common_continue" = "Continue";
 "common_history" = "History";
+"common_day" = "Day";
+"common_week" = "Week";
+"common_month" = "Month";
+"common_year" = "Year";
+"common_all" = "All";
 
 "generel_Economy" = "Economy";
 "generel_Order" = "Order";
@@ -116,3 +121,12 @@
 "findCustomer_guest_placeholder_name" = "Name";
 "findCustomer_guest_placeholder_phoneNumber" = "PhoneNumber";
 "findCustomer_guest_placeholder_mail" = "Mail";
+
+"economy_done" = "Done";
+"economy_pending" = "Pending";
+"economy_revenue" = "Revenue";
+"economy_stringExpense" = "String expenses";
+"economy_labour" = "Labour";
+"economy_profit" = "Profit";
+"economy_chart_noData" = "No data available";
+

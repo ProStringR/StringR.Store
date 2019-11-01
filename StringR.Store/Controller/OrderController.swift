@@ -14,6 +14,12 @@ class OrderController {
     let teamControl = ControlReg.getTeamController
     let orderDAO: OrderDAOProtocol = ControlReg.getOrderDAO
 
+    func getAllOrders(for shop: Shop, completion: @escaping ([Order]?) -> Void) {
+        orderDAO.getAllOrders(for: shop) { (orders) in
+            completion(orders)
+        }
+    }
+
     func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
         orderDAO.getOrder(by: id) { (result) in
             completion(result)
