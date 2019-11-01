@@ -20,6 +20,7 @@ class AddStringerToTeamViewController: UIViewController {
 
     var preferredRacketTypePicker = UIPickerView()
     var racketTypes = RacketType.allValues
+    var teamController = ControlReg.getTeamController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,8 +133,32 @@ class AddStringerToTeamViewController: UIViewController {
         inputField.inputView = picker
     }
 
-    @objc func saveStringer() {
+    private func createStringer() -> Stringer? {
+        return Stringer.init(firstName: self.firstNameInput.text, lastName: self.lastNameInput.text, email: self.emailInput.text, phoneNumber: self.phoneNumerInput.text, preferredRacketType: self.preferredRacketTypeInput.text)
+    }
 
+    private func presentDefaultAlert() {
+        DispatchQueue.main.async {
+            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "common_Ups"), withMessage: Utility.getString(forKey: "specificOrder_one_step_error"))
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_ok"), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+
+    @objc func saveStringer() {
+        let spinner = LayoutController.getSpinner(forParent: self.view)
+        self.showSpinner(withSpinner: spinner)
+        guard let stringer = createStringer() else { return }
+
+        teamController.putStringer(stringer: stringer, completion: { (succes) in
+            if succes {
+                self.dismiss()
+            } else {
+                self.presentDefaultAlert()
+            }
+
+            self.removeSpinner(forSpinner: spinner)
+        })
     }
 
     @objc func closeAction() {
