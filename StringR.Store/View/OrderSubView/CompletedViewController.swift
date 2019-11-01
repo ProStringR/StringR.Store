@@ -131,7 +131,7 @@ extension CompletedViewController: UITableViewDataSource {
 
         cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
 
-        cell.accessoryType = .detailButton
+        cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
 
         return cell

@@ -19,7 +19,6 @@ class Constant {
     static let gigantOffset = CGFloat(64)
     static let headerSize = CGFloat(24)
     static let smallHeaderSize = CGFloat(20)
-    static let stringLengthPerRacket = 12
     static let tableViewRowHeight = CGFloat(60)
     static let popupTopBottom = CGFloat(160)
     static let popupLeadingTrailing = CGFloat(75)
@@ -30,4 +29,6 @@ class Constant {
     // Strings
     static let emptyString = ""
     static let shopId = "shopId"
+
+    static let stringLengthPerRacket = 10
 }

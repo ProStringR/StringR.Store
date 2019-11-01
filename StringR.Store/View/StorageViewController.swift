@@ -108,8 +108,13 @@ extension StorageViewController: UITableViewDataSource {
             cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
         }
 
-        // Do this dynamic
-        cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
+        if currentString.lengthRemaining <= 5 {
+            cell.colorIndicator.image = #imageLiteral(resourceName: "red_circle")
+        } else if currentString.lengthRemaining <= 10 {
+            cell.colorIndicator.image = #imageLiteral(resourceName: "yellow_circle")
+        } else if currentString.lengthRemaining > 10 {
+            cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
+        }
 
         cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
