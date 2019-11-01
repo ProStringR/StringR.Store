@@ -27,11 +27,14 @@ class StorageViewController: UIViewController {
     private func getStorageData() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         showSpinner(withSpinner: spinner)
-        storageController.getListOfStringsInStorage(fromShopId: "ShopMJ") { (arrayOfRacketStrings) in
-            if let arrayOfRacketStrings = arrayOfRacketStrings {
-                self.strings = arrayOfRacketStrings
-                self.updateUI()
-                self.removeSpinner(forSpinner: spinner)
+        ShopSingleton.shared.getShop { (shop) in
+            guard let shop = shop else { return }
+            self.storageController.getListOfStringsInStorage(fromShopId: shop.shopId) { (arrayOfRacketStrings) in
+                if let arrayOfRacketStrings = arrayOfRacketStrings {
+                    self.strings = arrayOfRacketStrings
+                    self.updateUI()
+                    self.removeSpinner(forSpinner: spinner)
+                }
             }
         }
     }

@@ -94,20 +94,26 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func getStringers() {
-        teamController.getStringers(fromTeamId: "teamMJ") { (result) in
-            if let stringers = result {
-                self.stringers = stringers
-            } else {
-                // TODO: Manange if something went wrong
+        ShopSingleton.shared.getShop { (shop) in
+            guard let shop = shop else { return }
+            self.teamController.getStringers(fromTeamId: shop.shopId) { (result) in
+                if let stringers = result {
+                    self.stringers = stringers
+                } else {
+                    // TODO: Manange if something went wrong
+                }
             }
         }
     }
 
     private func getRacketStrings() {
-        storageController.getListOfStringsInStorage(fromShopId: "ShopMJ") { (result) in
-            if let racketStrings = result {
-                self.racketStrings = racketStrings
-                self.reloadPickers()
+        ShopSingleton.shared.getShop { (shop) in
+            guard let shop = shop else { return }
+            self.storageController.getListOfStringsInStorage(fromShopId: shop.storageId) { (result) in
+                if let racketStrings = result {
+                    self.racketStrings = racketStrings
+                    self.reloadPickers()
+                }
             }
         }
     }

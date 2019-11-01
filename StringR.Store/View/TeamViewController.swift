@@ -144,34 +144,37 @@ extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate 
     }
 
     func removeStringer(stringer: Stringer) {
-        self.dismiss(animated: true) {
-            self.stringers?.removeAll(where: {$0.userId == stringer.userId})
-            let team = self.teamController.createTeam(of: self.stringers, withId: "teamMJ")
+        ShopSingleton.shared.getShop { (shop) in
+            guard let shop = shop else { return }
+            self.dismiss(animated: true) {
+                self.stringers?.removeAll(where: {$0.userId == stringer.userId})
+                let team = self.teamController.createTeam(of: self.stringers, withId: shop.teamId)
 
-            if let team = team {
-                self.teamController.putTeam(team: team) { (succes) in
-                    if succes {
-                        self.updateUI()
-                    } else {
-                        self.stringers?.append(stringer)
+                if let team = team {
+                    self.teamController.putTeam(team: team) { (succes) in
+                        if succes {
+                            self.updateUI()
+                        } else {
+                            self.stringers?.append(stringer)
 
-                        // Jump to UI thread and present the alert
-                        DispatchQueue.main.async {
-                            let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
-                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
-                            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
-                                _ = alert
-                                // try again
-                                self.removeStringer(stringer: stringer)
-                            }))
+                            // Jump to UI thread and present the alert
+                            DispatchQueue.main.async {
+                                let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
+                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
+                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
+                                    _ = alert
+                                    // try again
+                                    self.removeStringer(stringer: stringer)
+                                }))
 
-                            // present the alert
-                            self.present(alert, animated: true)
+                                // present the alert
+                                self.present(alert, animated: true)
+                            }
                         }
                     }
                 }
+                self.closeAction()
             }
-            self.closeAction()
         }
     }
 
