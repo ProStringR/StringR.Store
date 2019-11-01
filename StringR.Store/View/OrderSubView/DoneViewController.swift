@@ -54,7 +54,6 @@ class DoneViewController: UIViewController {
 
     private func updateUI() {
         DispatchQueue.main.async {
-            //TODO: make the deliveryDate to doneDate
             self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
             self.doneOrdersTableView.reloadData()
         }

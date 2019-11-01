@@ -73,8 +73,13 @@ class CompletedViewController: UIViewController {
 
     private func updateUI() {
         DispatchQueue.main.async {
-            //TODO: make the deliveryDate to deliveredDate
-            self.searchOrders =  self.searchOrders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
+            self.searchOrders =  self.searchOrders?.sorted(by: {
+                if let firstTime = $0.timeDelivery, let secondTime = $1.timeDelivery {
+                    return firstTime > secondTime
+                } else {
+                    return $0.deliveryDate < $1.deliveryDate
+                }
+            })
             self.completedOrdersTableView.reloadData()
         }
     }
@@ -145,7 +150,7 @@ extension CompletedViewController: UITableViewDelegate {
         let viewControllerToPresent = SpecificOrderViewController()
         viewControllerToPresent.delegate = self
 
-        if let orders = self.orders {
+        if let orders = self.searchOrders {
             viewControllerToPresent.order = orders[indexPath.row]
         }
 
