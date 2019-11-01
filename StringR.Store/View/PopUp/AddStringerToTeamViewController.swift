@@ -10,6 +10,8 @@ import UIKit
 
 class AddStringerToTeamViewController: UIViewController {
 
+    weak var delegate: AddStringerToTeamDelegate?
+
     weak var mainStackView: UIStackView!
 
     weak var firstNameInput: UITextField!
@@ -153,6 +155,7 @@ class AddStringerToTeamViewController: UIViewController {
         teamController.putStringer(stringer: stringer, completion: { (succes) in
             if succes {
                 self.dismiss()
+                self.delegate?.addStringerToTeam(stringer: stringer)
             } else {
                 self.presentDefaultAlert()
             }

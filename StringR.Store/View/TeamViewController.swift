@@ -30,14 +30,18 @@ class TeamViewController: UIViewController {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
         // Call controller to get team data
-        teamController.getStringers(fromTeamId: "teamMJ") { (stringers) in
-            if let stringers = stringers {
-                // Store the team in the stringers array
-                self.stringers = stringers
-            }
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
+                self.teamController.getStringers(fromTeamId: shop.teamId) { (stringers) in
+                    if let stringers = stringers {
+                        // Store the team in the stringers array
+                        self.stringers = stringers
+                    }
 
-            self.updateUI()
-            self.removeSpinner(forSpinner: spinner)
+                    self.updateUI()
+                    self.removeSpinner(forSpinner: spinner)
+                }
+            }
         }
     }
 
@@ -73,6 +77,7 @@ class TeamViewController: UIViewController {
 
     @objc func addStringerAction() {
         let viewControllerToPresent = AddStringerToTeamViewController()
+        viewControllerToPresent.delegate = self
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
     }
@@ -122,7 +127,22 @@ extension TeamViewController: UITableViewDelegate {
     }
 }
 
-extension TeamViewController: RemoveStringerDelegate {
+extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate {
+    func addStringerToTeam(stringer: Stringer) {
+        print("Jeg bliver kaldt")
+        if self.stringers != nil {
+            print("Jeg tilføjer")
+            self.stringers?.append(stringer)
+        } else {
+            let array = [stringer]
+            self.stringers = array
+        }
+
+        DispatchQueue.main.async {
+            self.teamTableView.reloadData()
+        }
+    }
+
     func removeStringer(stringer: Stringer) {
         self.dismiss(animated: true) {
             self.stringers?.removeAll(where: {$0.userId == stringer.userId})
