@@ -14,19 +14,25 @@ class Economy: Codable {
     var badmintonStrung: Int
     var squashStrung: Int
     var revenue: Double
-    var purchase: Double
+    var stringExpense: Double
     var profit: Double
     var unpaid: Double
     var expenses: Double
+    var numberOfPendingOrders: Int
 
-    init(tennisStrung: Int, badmintonStrung: Int, squashStrung: Int, revenue: Double, purchase: Double, profit: Double, unpaid: Double, expenses: Double) {
+    var totalStrung: Int {
+        return tennisStrung + badmintonStrung + squashStrung
+    }
+
+    init(tennisStrung: Int, badmintonStrung: Int, squashStrung: Int, revenue: Double, stringExpense: Double, profit: Double, unpaid: Double, expenses: Double, pendingOrders: Int) {
         self.tennisStrung = tennisStrung
         self.badmintonStrung = badmintonStrung
         self.squashStrung = squashStrung
         self.revenue = revenue
-        self.purchase = purchase
+        self.stringExpense = stringExpense
         self.profit = profit
         self.unpaid = unpaid
         self.expenses = expenses
+        self.numberOfPendingOrders = pendingOrders
     }
 }
