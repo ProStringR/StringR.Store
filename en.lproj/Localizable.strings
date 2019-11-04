@@ -114,6 +114,9 @@
 "specificOrder_one_step_error" = "Only one step at a time is allowed.";
 "specificOrder_racket_brand" = "Racket brand";
 "specificOrder_racket_model" = "Racket model";
+"specificOrder_customerName" = "Customer";
+"specificOrder_customerPhone" = "Phone number";
+"specificOrder_customerMail" = "Email";
 
 "findCustomer_guest_barItem" = "Use A Guest";
 "findCustomer_guest_head" = "Guest";

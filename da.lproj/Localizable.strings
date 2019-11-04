@@ -114,6 +114,9 @@
 "specificOrder_one_step_error" = "Du kan kun tage ét skridt ad gangen.";
 "specificOrder_racket_brand" = "Ketcher mærke";
 "specificOrder_racket_model" = "Ketcher model";
+"specificOrder_customerName" = "Kunde";
+"specificOrder_customerPhone" = "Mobil nummer";
+"specificOrder_customerMail" = "Email";
 
 "findCustomer_guest_barItem" = "Brug Gæst";
 "findCustomer_guest_head" = "Gæst";
