@@ -30,6 +30,9 @@ class SpecificOrderViewController: UIViewController {
     weak var racketBrand: UILabel!
     weak var racketModel: UILabel!
     weak var stringer: UILabel!
+    weak var name: UILabel!
+    weak var phoneNumber: UILabel!
+    weak var mail: UILabel!
 
     let orderController = ControlReg.getOrderController
     var order: Order?
@@ -73,6 +76,9 @@ class SpecificOrderViewController: UIViewController {
         racketBrand = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
         racketModel = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
         stringer = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
+        name = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
+        phoneNumber = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
+        mail = LayoutController.getLabel(text: Constant.emptyString, parentView: self.view)
     }
 
     private func setupGeneralStackView() {
@@ -83,6 +89,8 @@ class SpecificOrderViewController: UIViewController {
         listOfStackviews.append(setupMiddleValueStackView())
         listOfStackviews.append(setupBottomHeaderStackView())
         listOfStackviews.append(setupBottomValueStackView())
+        listOfStackviews.append(setupContactInfoHeaderStackView())
+        listOfStackviews.append(setupContantInfoValueStackView())
 
         self.generalStackView = LayoutController.getStackView(content: listOfStackviews, orientation: .vertical, parentView: self.view)
         self.generalStackView.alignment = .fill
@@ -158,6 +166,24 @@ class SpecificOrderViewController: UIViewController {
         return LayoutController.getStackView(content: listOfViews, orientation: .horizontal, parentView: self.view)
     }
 
+    private func setupContactInfoHeaderStackView() -> UIStackView {
+        let name = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_customerName"), parentView: self.view)
+        let phone = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_customerPhone"), parentView: self.view)
+        let mail = LayoutController.getLabel(text: Utility.getString(forKey: "specificOrder_customerMail"), parentView: self.view)
+        let listOfViews: [UILabel] = [name, phone, mail]
+        Layout.centerAlignUILabels(uiLabelArry: listOfViews)
+        Layout.setLabelAsHeader(labels: listOfViews)
+
+        return LayoutController.getStackView(content: listOfViews, orientation: .horizontal, parentView: self.view)
+    }
+
+    private func setupContantInfoValueStackView() -> UIStackView {
+        let listOfViews: [UILabel] = [name, phoneNumber, mail]
+        Layout.centerAlignUILabels(uiLabelArry: listOfViews)
+
+        return LayoutController.getStackView(content: listOfViews, orientation: .horizontal, parentView: self.view)
+    }
+
     private func setupStatusSegmentedControl() -> UISegmentedControl {
         let strings = [Utility.getString(forKey: "orderViewController_ReceivedOrdersHead"),
                        Utility.getString(forKey: "orderViewController_DoneOrdersHead"),
@@ -199,6 +225,9 @@ class SpecificOrderViewController: UIViewController {
             self.statusSegmentedControl.selectedSegmentIndex = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
             self.racketBrand.text = racket.brand.rawValue
             self.racketModel.text = racket.modelName
+            self.name.text = customer.name
+            self.phoneNumber.text = customer.phoneNumber
+            self.mail.text = customer.email
 
             if let comment = order.comment {
                 self.comment.text = comment.isEmpty ? Utility.getString(forKey: "specificOrder_order_comment_noComment") : comment
