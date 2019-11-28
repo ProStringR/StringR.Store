@@ -32,6 +32,7 @@ enum RacketBrand: String, Codable {
     case WILSON = "Wilson"
     case YONEX = "Yonex"
     case ZERV = "Zerv"
+    case OTHER = "Other"
 }
 
 extension RacketBrand {
@@ -60,7 +61,8 @@ extension RacketBrand {
         case .VOLKL: allValues.append(.VOLKL); fallthrough
         case .WILSON: allValues.append(.WILSON); fallthrough
         case .YONEX: allValues.append(.YONEX); fallthrough
-        case .ZERV: allValues.append(.ZERV);
+        case .ZERV: allValues.append(.ZERV); fallthrough
+        case .OTHER: allValues.append(.OTHER)
         }
         return allValues
     }
