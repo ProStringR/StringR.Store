@@ -26,6 +26,10 @@ class SignInViewController: UIViewController {
         setupLogo()
         setupButton()
         setupConstraints()
+
+        // set tapGesture to close keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
     }
 
     private func setLayout() {
@@ -119,5 +123,9 @@ class SignInViewController: UIViewController {
                 self.removeSpinner(forSpinner: spinner)
             }
         }
+    }
+
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
