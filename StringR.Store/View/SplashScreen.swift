@@ -46,21 +46,27 @@ class SplashScreen: UIViewController {
     private func navigate() {
         sleep(2)
 
+        var jwt: JWT?
+
         do {
-            let jwt = try decode(jwt: Utility.readStringFromSharedPref(Constant.token))
+            jwt = try decode(jwt: Utility.readStringFromSharedPref(Constant.token))
+        } catch {
+            print(error)
+        }
 
-            var viewController: UIViewController
+        var viewController: UIViewController
 
+        if let jwt = jwt {
             if jwt.expired {
                 viewController = SignInViewController()
             } else {
                 viewController = RootTabBarController()
             }
-
-            viewController.modalPresentationStyle = .fullScreen
-            self.present(viewController, animated: true, completion: nil)
-        } catch {
-            print(error)
+        } else {
+            viewController = SignInViewController()
         }
+
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
     }
 }
