@@ -93,11 +93,11 @@ extension Date {
 
 extension UIViewController {
     func showSpinner(withSpinner spinnerView: UIView) {
-        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
-        activityIndicator.startAnimating()
-        activityIndicator.center = spinnerView.center
-
         DispatchQueue.main.async {
+            let activityIndicator = UIActivityIndicatorView.init(style: .gray)
+            activityIndicator.startAnimating()
+            activityIndicator.center = spinnerView.center
+
             spinnerView.addSubview(activityIndicator)
             self.view.addSubview(spinnerView)
             self.navigationController?.tabBarController?.tabBar.isHidden = true
