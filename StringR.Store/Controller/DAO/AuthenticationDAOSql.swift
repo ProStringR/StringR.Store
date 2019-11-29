@@ -12,7 +12,7 @@ class AuthenticationDAOSql: AuthenticationDAOProtocol {
     let dataControl = ControlReg.getDataController
 
     func authenticateShop(login: Login, completion: @escaping (String?) -> Void) {
-        dataControl.authenticateShop(body: login, url: "\(Constant.baseUrl)/Authentication") { (token) in
+        dataControl.authenticateShop(body: login, url: Constant.authenticationUrl) { (token) in
             completion(token)
         }
     }
