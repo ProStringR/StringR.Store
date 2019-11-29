@@ -34,8 +34,6 @@ class SignInViewController: UIViewController {
 
     private func setLayout() {
         self.view.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        Layout.setupViewNavigationController(forView: self, withTitle: "Sign In")
     }
 
     private func setupLogo() {
@@ -49,13 +47,13 @@ class SignInViewController: UIViewController {
     private func setupCredentialsStackView() {
         var listOfViews: [UIView] = []
 
-        let userNameLabel = LayoutController.getLabel(text: "User Name", parentView: self.view)
-        let passwordLabel = LayoutController.getLabel(text: "Password", parentView: self.view)
+        let userNameLabel = LayoutController.getLabel(text: Utility.getString(forKey: "signIn_username"), parentView: self.view)
+        let passwordLabel = LayoutController.getLabel(text: Utility.getString(forKey: "signIn_password"), parentView: self.view)
         Layout.centerAlignUILabels(uiLabelArry: [userNameLabel, passwordLabel])
         Layout.setLabelAsHeader(labels: [userNameLabel, passwordLabel])
 
-        self.userNameTextField = LayoutController.getTextField(placeholder: "User Name", parentView: self.view)
-        self.passwordTextField = LayoutController.getTextField(placeholder: "Password", parentView: self.view)
+        self.userNameTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "signIn_username"), parentView: self.view)
+        self.passwordTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "signIn_password"), parentView: self.view)
 
         listOfViews.append(userNameLabel)
         listOfViews.append(self.userNameTextField)
@@ -68,7 +66,7 @@ class SignInViewController: UIViewController {
     }
 
     private func setupButton() {
-        self.button = LayoutController.getButton(title: "Sign In", parentView: self.view)
+        self.button = LayoutController.getButton(title: Utility.getString(forKey: "signIn_buttonText"), parentView: self.view)
         self.button.addTarget(self, action: #selector(onSignInPressed(_:)), for: .touchUpInside)
     }
 
