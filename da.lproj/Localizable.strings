@@ -139,3 +139,7 @@
 "addStringer_email" = "Email";
 "addStringer_phoneNumber" = "Mobil nummer";
 "addStringer_preferredRacket" = "Fortrukken ketchertype";
+
+"signIn_username" = "Brugernavn";
+"signIn_password" = "Kodeord";
+"signIn_buttonText" = "Log ind";

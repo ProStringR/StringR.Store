@@ -11,6 +11,10 @@ import UIKit
 
 class Constant {
 
+    //REST API
+    static let baseUrl = "https://prostringr.com/api/v1"
+    static let authenticationUrl = "\(baseUrl)/authentication"
+
     // Numbers
     static let noOffset = CGFloat(0)
     static let standardOffset = CGFloat(8)
@@ -29,6 +33,7 @@ class Constant {
     // Strings
     static let emptyString = ""
     static let shopId = "shopId"
+    static let token = "token"
 
     static let stringLengthPerRacket = 10
 }

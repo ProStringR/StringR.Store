@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import JWTDecode
 
 class SplashScreen: UIViewController {
 
@@ -45,7 +46,26 @@ class SplashScreen: UIViewController {
     private func navigate() {
         sleep(2)
 
-        let viewController = RootTabBarController()
+        var jwt: JWT?
+
+        do {
+            jwt = try decode(jwt: Utility.readStringFromSharedPref(Constant.token))
+        } catch {
+            print(error)
+        }
+
+        var viewController: UIViewController
+
+        if let jwt = jwt {
+            if jwt.expired {
+                viewController = SignInViewController()
+            } else {
+                viewController = RootTabBarController()
+            }
+        } else {
+            viewController = SignInViewController()
+        }
+
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true, completion: nil)
     }

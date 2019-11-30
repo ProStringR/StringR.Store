@@ -139,3 +139,7 @@
 "addStringer_email" = "Email";
 "addStringer_phoneNumber" = "Phone Number";
 "addStringer_preferredRacket" = "Preferred Racket";
+
+"signIn_username" = "User Name";
+"signIn_password" = "Password";
+"signIn_buttonText" = "Sign In";

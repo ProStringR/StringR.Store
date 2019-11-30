@@ -14,8 +14,6 @@ class DataController {
 
         guard let url = URL(string: "\(url).json") else { completion(nil); return }
 
-//        print("URL: \(url)")
-
         URLSession.shared.dataTask(with: url) {(data, response, error) in
             // TODO: if we want to handle the error or respons
             _ = response
@@ -131,5 +129,46 @@ class DataController {
         } catch {
             return nil
         }
+    }
+
+    func authenticateShop<T: Codable>(body object: T, url: String, completion: @escaping (String?) -> Void) {
+        guard let url = URL(string: url) else { completion(nil); return }
+
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+
+        do {
+            let data = try JSONEncoder().encode(object)
+            request.httpBody = data
+        } catch {
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            _ = data
+
+            var isGoodResponse = false
+
+            if error != nil {
+                completion(nil)
+            }
+
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 300, response.statusCode >= 200 {
+                    isGoodResponse = true
+                } else {
+                    completion(nil)
+                }
+            }
+
+            if let data = data {
+                if isGoodResponse {
+                    let token = String.init(data: data, encoding: .utf8)
+                    completion(token)
+                }
+            }
+        }.resume()
     }
 }

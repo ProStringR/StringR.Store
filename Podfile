@@ -10,5 +10,6 @@ target 'StringR.Store' do
     pod 'Firebase/Database'
     pod 'Charts'
     pod 'IQKeyboardManagerSwift'
+    pod 'JWTDecode', '~> 2.4'
 
 end
