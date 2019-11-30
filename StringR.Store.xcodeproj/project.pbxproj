@@ -27,6 +27,7 @@
 		1D4728D72391B88B0068919F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D62391B88B0068919F /* AuthenticationController.swift */; };
 		1D4728D92391B9340068919F /* AuthenticationDAOSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */; };
 		1D4728DB2391CBD00068919F /* AuthenticationDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728DA2391CBD00068919F /* AuthenticationDAOProtocol.swift */; };
+		1D4728CB23918D580068919F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728CA23918D580068919F /* Test.swift */; };
 		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
 		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
 		1D6BB09B2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */; };
@@ -115,6 +116,16 @@
 		F21A83B64C99ECB253DEFAEC /* Pods_StringR_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1D4728CD23918D580068919F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B34DF281232B77FF00D9CCA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B34DF288232B77FF00D9CCA8;
+			remoteInfo = StringR.Store;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1D11C1DB236C16DF00F764A4 /* AddStringerToTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringerToTeamViewController.swift; sourceTree = "<group>"; };
 		1D11C1DD236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStringerToTeamDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +147,9 @@
 		1D4728D62391B88B0068919F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDAOSql.swift; sourceTree = "<group>"; };
 		1D4728DA2391CBD00068919F /* AuthenticationDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDAOProtocol.swift; sourceTree = "<group>"; };
+		1D4728C823918D580068919F /* StringR StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StringR StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D4728CA23918D580068919F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		1D4728CC23918D580068919F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
 		1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderHistoryViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +245,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1D4728C523918D580068919F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B34DF286232B77FF00D9CCA8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +290,15 @@
 				B327847C235B5E6800D67B9B /* CompletedViewController.swift */,
 			);
 			path = OrderSubView;
+			sourceTree = "<group>";
+		};
+		1D4728C923918D580068919F /* StringR StoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				1D4728CA23918D580068919F /* Test.swift */,
+				1D4728CC23918D580068919F /* Info.plist */,
+			);
+			path = "StringR StoreTests";
 			sourceTree = "<group>";
 		};
 		1D61CECA232FE345006FED94 /* Controller */ = {
@@ -337,6 +367,7 @@
 			children = (
 				B3FB2C8A232D2AA2003728C4 /* Localizable.strings */,
 				B34DF28B232B77FF00D9CCA8 /* StringR.Store */,
+				1D4728C923918D580068919F /* StringR StoreTests */,
 				B34DF28A232B77FF00D9CCA8 /* Products */,
 				0DEFAA9F022B6C91A9B58C46 /* Pods */,
 				4BBDA51BD0769BBE3FC52377 /* Frameworks */,
@@ -347,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				B34DF289232B77FF00D9CCA8 /* StringR Store.app */,
+				1D4728C823918D580068919F /* StringR StoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,6 +545,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1D4728C723918D580068919F /* StringR StoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D4728D123918D580068919F /* Build configuration list for PBXNativeTarget "StringR StoreTests" */;
+			buildPhases = (
+				1D4728C423918D580068919F /* Sources */,
+				1D4728C523918D580068919F /* Frameworks */,
+				1D4728C623918D580068919F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D4728CE23918D580068919F /* PBXTargetDependency */,
+			);
+			name = "StringR StoreTests";
+			productName = "StringR StoreTests";
+			productReference = 1D4728C823918D580068919F /* StringR StoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B34DF288232B77FF00D9CCA8 /* StringR.Store */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B34DF29B232B780000D9CCA8 /* Build configuration list for PBXNativeTarget "StringR.Store" */;
@@ -539,10 +589,13 @@
 		B34DF281232B77FF00D9CCA8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = StringR;
 				TargetAttributes = {
+					1D4728C723918D580068919F = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
 					B34DF288232B77FF00D9CCA8 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -563,11 +616,19 @@
 			projectRoot = "";
 			targets = (
 				B34DF288232B77FF00D9CCA8 /* StringR.Store */,
+				1D4728C723918D580068919F /* StringR StoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1D4728C623918D580068919F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B34DF287232B77FF00D9CCA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -641,6 +702,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1D4728C423918D580068919F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D4728CB23918D580068919F /* Test.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B34DF285232B77FF00D9CCA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -751,6 +820,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1D4728CE23918D580068919F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B34DF288232B77FF00D9CCA8 /* StringR.Store */;
+			targetProxy = 1D4728CD23918D580068919F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		B34DF295232B780000D9CCA8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -773,6 +850,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1D4728CF23918D580068919F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "StringR StoreTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.prostringr.StringR-StoreTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D4728D023918D580068919F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "StringR StoreTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.prostringr.StringR-StoreTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B34DF299232B780000D9CCA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -932,6 +1045,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1D4728D123918D580068919F /* Build configuration list for PBXNativeTarget "StringR StoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D4728CF23918D580068919F /* Debug */,
+				1D4728D023918D580068919F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B34DF284232B77FF00D9CCA8 /* Build configuration list for PBXProject "StringR.Store" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
