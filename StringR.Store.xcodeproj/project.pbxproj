@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,12 +22,12 @@
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
 		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
+		1D4728CB23918D580068919F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728CA23918D580068919F /* Test.swift */; };
 		1D4728D3239198FA0068919F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D2239198FA0068919F /* SignInViewController.swift */; };
 		1D4728D52391ADB20068919F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D42391ADB20068919F /* Login.swift */; };
 		1D4728D72391B88B0068919F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D62391B88B0068919F /* AuthenticationController.swift */; };
 		1D4728D92391B9340068919F /* AuthenticationDAOSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */; };
 		1D4728DB2391CBD00068919F /* AuthenticationDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728DA2391CBD00068919F /* AuthenticationDAOProtocol.swift */; };
-		1D4728CB23918D580068919F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728CA23918D580068919F /* Test.swift */; };
 		1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CECB232FE36A006FED94 /* LayoutController.swift */; };
 		1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61CED32330AEC2006FED94 /* CardCellViewController.swift */; };
 		1D6BB09B2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */; };
@@ -142,14 +142,14 @@
 		1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedTextCell.swift; sourceTree = "<group>"; };
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
+		1D4728C823918D580068919F /* StringR StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StringR StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D4728CA23918D580068919F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		1D4728CC23918D580068919F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4728D2239198FA0068919F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1D4728D42391ADB20068919F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		1D4728D62391B88B0068919F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDAOSql.swift; sourceTree = "<group>"; };
 		1D4728DA2391CBD00068919F /* AuthenticationDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDAOProtocol.swift; sourceTree = "<group>"; };
-		1D4728C823918D580068919F /* StringR StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StringR StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D4728CA23918D580068919F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		1D4728CC23918D580068919F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D61CECB232FE36A006FED94 /* LayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		1D61CED32330AEC2006FED94 /* CardCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewController.swift; sourceTree = "<group>"; };
 		1D6BB09A2362D50A00DDAF11 /* SpecificOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificOrderHistoryViewController.swift; sourceTree = "<group>"; };
@@ -823,6 +823,7 @@
 /* Begin PBXTargetDependency section */
 		1D4728CE23918D580068919F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = B34DF288232B77FF00D9CCA8 /* StringR.Store */;
 			targetProxy = 1D4728CD23918D580068919F /* PBXContainerItemProxy */;
 		};
@@ -853,6 +854,7 @@
 		1D4728CF23918D580068919F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StringR Store.app/StringR Store";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "StringR StoreTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -865,12 +867,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
 		};
 		1D4728D023918D580068919F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StringR Store.app/StringR Store";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "StringR StoreTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -883,6 +887,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
@@ -1010,13 +1015,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2PZ9LBK934;
+				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
 				PRODUCT_NAME = "StringR Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1029,13 +1035,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2PZ9LBK934;
+				DEVELOPMENT_TEAM = 9KKEDA9RJ4;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = StringR.Store/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Stor";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.StringR.StringR-Store";
 				PRODUCT_NAME = "StringR Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;

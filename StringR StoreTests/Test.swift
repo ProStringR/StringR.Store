@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import StringR_Store
 
 class Test: XCTestCase {
 
@@ -23,5 +24,10 @@ class Test: XCTestCase {
         let actual = 2
 
         assert(exp == actual)
+    }
+
+    func testUtilityString() {
+        let string = Utility.getString(forKey: "common_ok")
+        XCTAssertEqual("Okay", string)
     }
 }
