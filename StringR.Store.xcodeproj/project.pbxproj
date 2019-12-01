@@ -40,6 +40,7 @@
 		1D7455D0234372B300C33B0C /* RacketStringDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455CF234372B300C33B0C /* RacketStringDTO.swift */; };
 		1D7455D22345C73400C33B0C /* EconomyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D12345C73400C33B0C /* EconomyDTO.swift */; };
 		1D7455D62345CD9900C33B0C /* CustomerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7455D52345CD9900C33B0C /* CustomerDTO.swift */; };
+		1DB88BC32393F3F800223265 /* UtilityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB88BC22393F3F800223265 /* UtilityTest.swift */; };
 		1DD8D19A235C67C900074BC2 /* PurchaseHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8D199235C67C900074BC2 /* PurchaseHistoryDTO.swift */; };
 		1DD8D19C235C681F00074BC2 /* PurchaseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */; };
 		1DE69BE923588F1900AD0864 /* StorageDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */; };
@@ -162,6 +163,7 @@
 		1D7455CF234372B300C33B0C /* RacketStringDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDTO.swift; sourceTree = "<group>"; };
 		1D7455D12345C73400C33B0C /* EconomyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomyDTO.swift; sourceTree = "<group>"; };
 		1D7455D52345CD9900C33B0C /* CustomerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDTO.swift; sourceTree = "<group>"; };
+		1DB88BC22393F3F800223265 /* UtilityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityTest.swift; sourceTree = "<group>"; };
 		1DD8D199235C67C900074BC2 /* PurchaseHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryDTO.swift; sourceTree = "<group>"; };
 		1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistory.swift; sourceTree = "<group>"; };
 		1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDAOFirebase.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		1D4728C923918D580068919F /* StringR StoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				1DB88BC22393F3F800223265 /* UtilityTest.swift */,
 				1D4728CA23918D580068919F /* Test.swift */,
 				1D4728CC23918D580068919F /* Info.plist */,
 			);
@@ -706,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DB88BC32393F3F800223265 /* UtilityTest.swift in Sources */,
 				1D4728CB23918D580068919F /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

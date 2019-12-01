@@ -25,9 +25,4 @@ class Test: XCTestCase {
 
         assert(exp == actual)
     }
-
-    func testUtilityString() {
-        let string = Utility.getString(forKey: "common_ok")
-        XCTAssertEqual("Okay", string)
-    }
 }
