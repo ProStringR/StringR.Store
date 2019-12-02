@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AuthenticationDAOProtocol {
-    func authenticateShop(login: Login, completion: @escaping (String?) -> Void)
+    func authenticateShop(login: Login, completion: @escaping (LoginResponse?) -> Void)
 }

@@ -131,7 +131,7 @@ class DataController {
         }
     }
 
-    func authenticateShop<T: Codable>(body object: T, url: String, completion: @escaping (String?) -> Void) {
+    func authenticateShop<T: Codable>(body object: T, url: String, completion: @escaping (LoginResponse?) -> Void) {
         guard let url = URL(string: url) else { completion(nil); return }
 
         var request = URLRequest(url: url)
@@ -165,9 +165,15 @@ class DataController {
 
             if let data = data {
                 if isGoodResponse {
-                    let token = String.init(data: data, encoding: .utf8)
-                    completion(token)
+                    do {
+                        let response = try JSONDecoder().decode(LoginResponse.self, from: data)
+                        completion(response)
+                    } catch {
+                        completion(nil)
+                    }
                 }
+            } else {
+                completion(nil)
             }
         }.resume()
     }

@@ -11,9 +11,9 @@ import Foundation
 class AuthenticationDAOSql: AuthenticationDAOProtocol {
     let dataControl = ControlReg.getDataController
 
-    func authenticateShop(login: Login, completion: @escaping (String?) -> Void) {
-        dataControl.authenticateShop(body: login, url: Constant.authenticationUrl) { (token) in
-            completion(token)
+    func authenticateShop(login: Login, completion: @escaping (LoginResponse?) -> Void) {
+        dataControl.authenticateShop(body: login, url: Constant.authenticationUrl) { (response) in
+            completion(response)
         }
     }
 }
