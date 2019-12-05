@@ -22,7 +22,6 @@
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
 		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
-		1D4728CB23918D580068919F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728CA23918D580068919F /* Test.swift */; };
 		1D4728D3239198FA0068919F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D2239198FA0068919F /* SignInViewController.swift */; };
 		1D4728D52391ADB20068919F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D42391ADB20068919F /* Login.swift */; };
 		1D4728D72391B88B0068919F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D62391B88B0068919F /* AuthenticationController.swift */; };
@@ -144,7 +143,6 @@
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
 		1D4728C823918D580068919F /* StringR StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StringR StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D4728CA23918D580068919F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		1D4728CC23918D580068919F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4728D2239198FA0068919F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1D4728D42391ADB20068919F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				1DB88BC22393F3F800223265 /* UtilityTest.swift */,
-				1D4728CA23918D580068919F /* Test.swift */,
 				1D4728CC23918D580068919F /* Info.plist */,
 			);
 			path = "StringR StoreTests";
@@ -710,7 +707,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DB88BC32393F3F800223265 /* UtilityTest.swift in Sources */,
-				1D4728CB23918D580068919F /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
