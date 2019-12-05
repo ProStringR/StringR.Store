@@ -12,9 +12,9 @@ class AuthenticationController {
 
     let authenticationDAO: AuthenticationDAOProtocol = ControlReg.getAuthenticationDAO
 
-    func authenticateShop(login: Login, completion: @escaping (String?) -> Void) {
-        authenticationDAO.authenticateShop(login: login) { (token) in
-            completion(token)
+    func authenticateShop(login: Login, completion: @escaping (LoginResponse?) -> Void) {
+        authenticationDAO.authenticateShop(login: login) { (response) in
+            completion(response)
         }
     }
 }

@@ -22,6 +22,7 @@
 		1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */; };
 		1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */; };
 		1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */; };
+		1D4728CB23918D580068919F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728CA23918D580068919F /* Test.swift */; };
 		1D4728D3239198FA0068919F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D2239198FA0068919F /* SignInViewController.swift */; };
 		1D4728D52391ADB20068919F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D42391ADB20068919F /* Login.swift */; };
 		1D4728D72391B88B0068919F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4728D62391B88B0068919F /* AuthenticationController.swift */; };
@@ -91,6 +92,7 @@
 		B3903C092333654500367E5F /* OrderDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C082333654500367E5F /* OrderDAOProtocol.swift */; };
 		B3903C0C233365B800367E5F /* OrderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C0B233365B800367E5F /* OrderDTO.swift */; };
 		B3903C0E2333672900367E5F /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3903C0D2333672900367E5F /* Firebase.swift */; };
+		B398EC1A2395225000ECFF59 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B398EC192395225000ECFF59 /* LoginResponse.swift */; };
 		B39CCE8823565CEB00EA892B /* CustomerDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CCE8723565CEB00EA892B /* CustomerDAOProtocol.swift */; };
 		B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CCE8923565DA200EA892B /* CustomerDAOFirebase.swift */; };
 		B3A1B5F523508B5900B1133E /* CreateOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A1B5F423508B5900B1133E /* CreateOrderViewController.swift */; };
@@ -143,6 +145,7 @@
 		1D3987E7233BE1AB00CDA0DD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		1D3987E9233BE64500CDA0DD /* DeliveredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveredViewController.swift; sourceTree = "<group>"; };
 		1D4728C823918D580068919F /* StringR StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StringR StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D4728CA23918D580068919F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		1D4728CC23918D580068919F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4728D2239198FA0068919F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1D4728D42391ADB20068919F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -218,6 +221,7 @@
 		B3903C082333654500367E5F /* OrderDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDAOProtocol.swift; sourceTree = "<group>"; };
 		B3903C0B233365B800367E5F /* OrderDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDTO.swift; sourceTree = "<group>"; };
 		B3903C0D2333672900367E5F /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B398EC192395225000ECFF59 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		B39CCE8723565CEB00EA892B /* CustomerDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDAOProtocol.swift; sourceTree = "<group>"; };
 		B39CCE8923565DA200EA892B /* CustomerDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDAOFirebase.swift; sourceTree = "<group>"; };
 		B3A1B5F423508B5900B1133E /* CreateOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderViewController.swift; sourceTree = "<group>"; };
@@ -441,6 +445,7 @@
 				1DD8D19B235C681F00074BC2 /* PurchaseHistory.swift */,
 				1D6BB09C2362D68000DDAF11 /* OrderHistory.swift */,
 				1D4728D42391ADB20068919F /* Login.swift */,
+				B398EC192395225000ECFF59 /* LoginResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -746,6 +751,7 @@
 				1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */,
 				B38C5B8C232BCBDE00116BC1 /* RacketString.swift in Sources */,
 				B3B92B602333AE9600C39052 /* Observer.swift in Sources */,
+				B398EC1A2395225000ECFF59 /* LoginResponse.swift in Sources */,
 				B3CAF9892341FB67005F5B38 /* TeamDAOFirebase.swift in Sources */,
 				B38C5B96232BD3FC00116BC1 /* Order.swift in Sources */,
 				B3A1B5F523508B5900B1133E /* CreateOrderViewController.swift in Sources */,

@@ -54,6 +54,7 @@ class SignInViewController: UIViewController {
 
         self.userNameTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "signIn_username"), parentView: self.view)
         self.passwordTextField = LayoutController.getTextField(placeholder: Utility.getString(forKey: "signIn_password"), parentView: self.view)
+        self.passwordTextField.isSecureTextEntry = true
 
         listOfViews.append(userNameLabel)
         listOfViews.append(self.userNameTextField)
@@ -109,10 +110,10 @@ class SignInViewController: UIViewController {
             let login: Login = Login.init(userName: userName, password: password)
 
             let spinner = LayoutController.getSpinner(forParent: self.view)
-            authenticationController.authenticateShop(login: login) { (token) in
+            authenticationController.authenticateShop(login: login) { (reponse) in
                 self.showSpinner(withSpinner: spinner)
-                if let token = token {
-                    Utility.writeStringToSharedPref(withKey: Constant.token, value: token)
+                if let reponse = reponse {
+                    Utility.writeStringToSharedPref(withKey: Constant.token, value: reponse.token)
                     self.navigateToMainView()
                 } else {
                     self.presentDefaultAlert()
