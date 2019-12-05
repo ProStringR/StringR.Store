@@ -61,10 +61,6 @@ class TeamController {
         }
     }
 
-    func postStringer(stringer: Stringer) throws {
-        try teamDAO.postStringer(stringer: stringer)
-    }
-
     func putStringer(stringer: Stringer, completion: @escaping (Bool) -> Void) {
         teamDAO.putStringer(stringer: stringer) { (succes) in
             completion(succes)

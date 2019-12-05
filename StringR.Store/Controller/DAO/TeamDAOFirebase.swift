@@ -24,10 +24,6 @@ class TeamDAOFirebase: TeamDAOProtocol {
         })
     }
 
-    func postStringer(stringer: Stringer) throws {
-        try dataControl.postData(object: stringer, url: Firebase.stringer)
-    }
-
     func putStringer(stringer: Stringer?, completion: @escaping (Bool) -> Void) {
         guard let stringer = stringer else { completion(false); return }
 

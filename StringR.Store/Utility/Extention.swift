@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+
 extension UINavigationController {
+    // borrowed from - https://stackoverflow.com/questions/55583820/uinavigationcontroller-navigationbar-not-applying-transparent-image
     func hideNavigationBar() {
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage()
@@ -18,15 +20,7 @@ extension UINavigationController {
     }
 }
 
-extension UIStackView {
-    func addBackground(color: UIColor) {
-        let subView = UIView(frame: bounds)
-        subView.backgroundColor = color
-        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        insertSubview(subView, at: 0)
-    }
-}
-
+// Date extension is develop by the internet - https://stackoverflow.com/questions/43663622/is-a-date-in-same-week-month-year-of-another-date-in-swift
 extension Date {
     var millisecondsSince1970: Int64 {
         return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
@@ -91,6 +85,7 @@ extension Date {
     }
 }
 
+// spinner extension borrowed from - http://brainwashinc.com/2017/07/21/loading-activity-indicator-ios-swift/
 extension UIViewController {
     func showSpinner(withSpinner spinnerView: UIView) {
         DispatchQueue.main.async {
