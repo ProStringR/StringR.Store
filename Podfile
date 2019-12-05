@@ -6,8 +6,6 @@ target 'StringR.Store' do
   use_frameworks!
 
   # Pods for StringR.Store
-    pod 'Firebase/Analytics'
-    pod 'Firebase/Database'
     pod 'Charts'
     pod 'IQKeyboardManagerSwift'
     pod 'JWTDecode', '~> 2.4'
