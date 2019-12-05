@@ -33,6 +33,7 @@ class EconomyViewController: UIViewController {
         setupLayout()
         setupLabels()
         setupSegmentControl()
+
         setupChart()
         setupDataStackView()
         setupConstraints()
@@ -104,6 +105,9 @@ class EconomyViewController: UIViewController {
     }
 
     private func setupChart() {
+        /*
+        This chart is 3. party library
+         */
         let chart = PieChartView()
 
         chart.data = getUpdatedChartData()

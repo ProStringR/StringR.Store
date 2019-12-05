@@ -67,11 +67,6 @@ class TeamController {
         }
     }
 
-    /**
-     Put a stringer to the database. Uses the stringers id to place the stringer in the database.
-
-     - Parameter stringer: The stringer you want to put to the database.
-     */
     func putStringerToTeam(stringer: Stringer, completion: @escaping (Bool) -> Void) {
         let stringerDTO = dataControl.createObject(fromObject: stringer, toObject: StringerDTO.self)
         teamDAO.putStringerToTeam(stringer: stringerDTO) { (succes) in
@@ -85,12 +80,6 @@ class TeamController {
         }
     }
 
-    /**
-        Generate a Team based on a list of Stringers. The Team consist of a teamId and a list of stringerIds
-
-     - Parameter of: The list of stringers you want to make to a Team.
-     - Parameter withId: The id of the Team.
-     */
     func createTeam(of stringers: [Stringer]?, withId id: String) -> Team? {
         guard let stringers = stringers else { return nil }
         var ids: [String] = []

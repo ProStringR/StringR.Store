@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension UINavigationController {
     // borrowed from - https://stackoverflow.com/questions/55583820/uinavigationcontroller-navigationbar-not-applying-transparent-image
     func hideNavigationBar() {
