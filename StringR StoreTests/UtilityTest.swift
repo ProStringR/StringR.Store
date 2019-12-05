@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import StringR_Store
+@testable import ProStringR_Store
 
 class UtilityTest: XCTestCase {
 

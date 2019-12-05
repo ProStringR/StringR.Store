@@ -598,6 +598,7 @@
 				TargetAttributes = {
 					1D4728C723918D580068919F = {
 						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = B34DF288232B77FF00D9CCA8;
 					};
 					B34DF288232B77FF00D9CCA8 = {
 						CreatedOnToolsVersion = 10.3;
@@ -858,6 +859,7 @@
 		1D4728CF23918D580068919F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "StringR StoreTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -870,12 +872,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProStringR Store.app/ProStringR Store";
 			};
 			name = Debug;
 		};
 		1D4728D023918D580068919F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "StringR StoreTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -888,6 +892,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProStringR Store.app/ProStringR Store";
 			};
 			name = Release;
 		};
