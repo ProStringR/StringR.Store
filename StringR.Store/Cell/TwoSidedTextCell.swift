@@ -37,12 +37,12 @@ class TwoSidedTextCell: UITableViewCell {
     }
 
     private func setupConstraints() {
-        Layout.addTopConstraint(on: self.leftLabel, to: self.contentView.topAnchor)
-        Layout.addBottomConstraint(on: self.leftLabel, to: self.contentView.bottomAnchor)
-        Layout.addLeadingConstraint(on: self.leftLabel, to: self.contentView.leadingAnchor)
+        Layout.addTopConstraint(on: self.leftLabel, to: self.contentView.safeAreaLayoutGuide.topAnchor)
+        Layout.addBottomConstraint(on: self.leftLabel, to: self.contentView.safeAreaLayoutGuide.bottomAnchor)
+        Layout.addLeadingConstraint(on: self.leftLabel, to: self.contentView.safeAreaLayoutGuide.leadingAnchor)
 
-        Layout.addTopConstraint(on: self.rightLabel, to: self.contentView.topAnchor)
-        Layout.addBottomConstraint(on: self.rightLabel, to: self.contentView.bottomAnchor)
-        Layout.addTrailingConstraint(on: self.rightLabel, to: self.contentView.trailingAnchor)
+        Layout.addTopConstraint(on: self.rightLabel, to: self.contentView.safeAreaLayoutGuide.topAnchor)
+        Layout.addBottomConstraint(on: self.rightLabel, to: self.contentView.safeAreaLayoutGuide.bottomAnchor)
+        Layout.addTrailingConstraint(on: self.rightLabel, to: self.contentView.safeAreaLayoutGuide.trailingAnchor)
     }
 }

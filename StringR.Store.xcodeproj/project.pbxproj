@@ -64,6 +64,7 @@
 		B36B428C232BABFA00954357 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428B232BABFA00954357 /* Shop.swift */; };
 		B36B428E232BACA000954357 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B428D232BACA000954357 /* Address.swift */; };
 		B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37564D0236AC9D500830FFC /* SplashScreen.swift */; };
+		B37998A523ACEAF000627B61 /* OrderInfoTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37998A423ACEAF000627B61 /* OrderInfoTitleCell.swift */; };
 		B380D0D323630589004144B5 /* OrderModifierDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380D0D223630589004144B5 /* OrderModifierDelegate.swift */; };
 		B382008C2361D52F00C2D666 /* RacketDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */; };
 		B382008E2361D54A00C2D666 /* RacketDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */; };
@@ -192,6 +193,7 @@
 		B36B428B232BABFA00954357 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		B36B428D232BACA000954357 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B37564D0236AC9D500830FFC /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B37998A423ACEAF000627B61 /* OrderInfoTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoTitleCell.swift; sourceTree = "<group>"; };
 		B380D0D223630589004144B5 /* OrderModifierDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModifierDelegate.swift; sourceTree = "<group>"; };
 		B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOFirebase.swift; sourceTree = "<group>"; };
 		B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketDAOProtocol.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				1D3987E5233BE06900CDA0DD /* TwoSidedTextCell.swift */,
 				B3B3DBD9233BA233001498D4 /* UserCell.swift */,
 				B327847A235B592C00D67B9B /* OrderCellGenerel.swift */,
+				B37998A423ACEAF000627B61 /* OrderInfoTitleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */,
 				1D11C1DE236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift in Sources */,
 				B36B428E232BACA000954357 /* Address.swift in Sources */,
+				B37998A523ACEAF000627B61 /* OrderInfoTitleCell.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
 				B380D0D323630589004144B5 /* OrderModifierDelegate.swift in Sources */,

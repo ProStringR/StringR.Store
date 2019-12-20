@@ -8,6 +8,17 @@
 
 import UIKit
 
+struct CellData {
+    var opened = Bool()
+    var title = String()
+    var sectionData = [SectionData]()
+}
+
+struct SectionData {
+    var title = String()
+    var value = String()
+}
+
 // swiftlint:disable type_body_length
 class SpecificOrderViewController: UIViewController {
 
@@ -39,15 +50,51 @@ class SpecificOrderViewController: UIViewController {
     var orderStatus: Int?
     var paidStatus: Bool?
 
+    // testing
+    weak var orderInfoTableView: UITableView!
+    var tableViewData = [CellData]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // data for testing
+        tableViewData = [
+            CellData(opened: false, title: "Order Info", sectionData: [
+                SectionData(title: "String", value: "\(self.order!.racketString!.brand.rawValue) | \(self.order!.racketString!.modelName) | \(self.order!.racketString!.color.rawValue)"),
+                SectionData(title: "Price", value: "\(self.order?.price ?? 0)"),
+                SectionData(title: "Delivery date", value: Utility.dateToString(date: Date(milliseconds: self.order!.deliveryDate), withTime: true) )]),
+            CellData(opened: false, title: "Customer", sectionData: [
+                SectionData(title: "Name", value: self.order?.customer?.name ?? "No Value"),
+                SectionData(title: "PhoneNumber", value: self.order?.customer?.phoneNumber ?? "No Value"),
+                SectionData(title: "Email", value: self.order?.customer?.email ?? "No Value")]),
+            CellData(opened: false, title: "Stringer", sectionData: [
+                SectionData(title: "Name", value: self.order?.stringer?.name ?? "No Value"),
+                SectionData(title: "PhoneNumber", value: self.order?.stringer?.phoneNumber ?? "No Value"),
+                SectionData(title: "Email", value: self.order?.stringer?.email ?? "No Value")]),
+            CellData(opened: false, title: "Racket specifications", sectionData: [
+                SectionData(title: "Brand", value: self.order?.racket?.brand.rawValue ?? "No Value"),
+                SectionData(title: "Model", value: self.order?.racket?.modelName ?? "No Value"),
+                SectionData(title: "String pattern", value: "M: \(self.order?.racket?.main ?? 0) | C: \(self.order?.racket?.cross ?? 0)")])]
+
         setupView()
         setupLabels()
-        setupGeneralStackView()
+        //setupGeneralStackView()
         setupSegmentedControlStackView()
         setupConstraints()
+        setupOrderInfoTableView()
         updateUI()
+    }
+
+    private func setupOrderInfoTableView() {
+        self.orderInfoTableView = LayoutController.getTableView(cellType: OrderInfoTitleCell.self, cellIdentifier: OrderInfoTitleCell.identifier, parentView: self.view)
+
+        Layout.addTopConstraint(on: self.orderInfoTableView, to: self.comment.bottomAnchor)
+        Layout.addBottomConstraint(on: self.orderInfoTableView, to: self.paidSegmentedControl.topAnchor)
+        Layout.addLeadingConstraint(on: self.orderInfoTableView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
+        Layout.addTrailingConstraint(on: self.orderInfoTableView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+
+        self.orderInfoTableView.dataSource = self
+        self.orderInfoTableView.delegate = self
     }
 
     private func setupView() {
@@ -238,11 +285,11 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        Layout.addTopConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.topAnchor)
-        Layout.addLeadingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
-        Layout.addTrailingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
-
-        Layout.addTopConstraint(on: self.commentHeader, to: self.generalStackView.bottomAnchor, by: Constant.bigOffset)
+//        Layout.addTopConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.topAnchor)
+//        Layout.addLeadingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.leadingAnchor)
+//        Layout.addTrailingConstraint(on: self.generalStackView, to: self.view.safeAreaLayoutGuide.trailingAnchor)
+//
+        Layout.addTopConstraint(on: self.commentHeader, to: self.view.safeAreaLayoutGuide.topAnchor, by: Constant.bigOffset)
         Layout.addLeadingConstraint(on: self.commentHeader, to: self.view.safeAreaLayoutGuide.leadingAnchor, by: Constant.bigOffset)
 
         Layout.addTopConstraint(on: self.comment, to: self.commentHeader.bottomAnchor)
@@ -346,6 +393,59 @@ class SpecificOrderViewController: UIViewController {
             self.paidStatus = true
         default:
             print("Something went wrong during update of paid/unpaid status")
+        }
+    }
+}
+
+extension SpecificOrderViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableViewData[section].opened {
+            return tableViewData[section].sectionData.count + 1
+        } else {
+            return 1
+        }
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.tableViewData.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderInfoTitleCell.identifier) else { return UITableViewCell() }
+
+            cell.textLabel?.text = tableViewData[indexPath.section].title
+
+            return cell
+        } else {
+            let cell = TwoSidedTextCell()
+
+            cell.leftLabel.text = tableViewData[indexPath.section].sectionData[indexPath.row - 1].title
+            cell.rightLabel.text = tableViewData[indexPath.section].sectionData[indexPath.row - 1].value
+
+            cell.isUserInteractionEnabled = false
+
+            return cell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            if tableViewData[indexPath.section].opened {
+                tableViewData[indexPath.section].opened = false
+
+                let sections = IndexSet.init(integer: indexPath.section)
+                tableView.reloadSections(sections, with: .none)
+            } else {
+                tableViewData[indexPath.section].opened = true
+
+                let sections = IndexSet.init(integer: indexPath.section)
+                tableView.reloadSections(sections, with: .none)
+            }
         }
     }
 }
