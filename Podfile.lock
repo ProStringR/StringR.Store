@@ -4,23 +4,27 @@ PODS:
   - Charts/Core (3.4.0)
   - IQKeyboardManagerSwift (6.5.2)
   - JWTDecode (2.4.0)
+  - SwiftLint (0.39.1)
 
 DEPENDENCIES:
   - Charts
   - IQKeyboardManagerSwift
   - JWTDecode (~> 2.4)
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Charts
     - IQKeyboardManagerSwift
     - JWTDecode
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
   JWTDecode: 0930fb517c27bac2daef7cabc13577b18fdee0da
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: 7b7d2ac4e6089ed8496e21ea019ddd3e0fe8666e
+PODFILE CHECKSUM: 2006b225983f54c6d4f21436ae7097cdde586697
 
 COCOAPODS: 1.8.4
