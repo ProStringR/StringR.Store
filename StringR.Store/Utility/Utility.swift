@@ -37,12 +37,11 @@ class Utility {
         let defaults = UserDefaults.standard
         defaults.set(primitive, forKey: key)
     }
-    
+
     static func deletePrimitiveFromSharedPref(withKey key: String) {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: key)
     }
-    
 
     static func dateToString(date: Date, withTime: Bool = true) -> String {
         if withTime {
