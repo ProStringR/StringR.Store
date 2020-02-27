@@ -177,8 +177,8 @@ class AddStringToStorageViewController: UIViewController {
         return tempLabel
     }
 
-    private func createStringToAdd() -> RacketString? {
-        return RacketString.init(stringId: Utility.getUUID(), brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: datePicker.date.millisecondsSince1970, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
+    private func createStringToAdd() -> RacketStringFb? {
+        return RacketStringFb.init(stringId: Utility.getUUID(), brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: datePicker.date.millisecondsSince1970, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
     }
 
     @objc func cancelAction() {

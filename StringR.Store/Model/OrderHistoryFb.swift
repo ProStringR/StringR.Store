@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OrderHistory: Codable {
+class OrderHistoryFb: Codable {
     var date: Int64
     var paid: Bool
     var orderStatus: OrderStatus

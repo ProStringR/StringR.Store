@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PurchaseHistoryDTO: Codable {
+struct PurchaseHistoryDTOFb: Codable {
     var date: Int64?
     var length: Double?
     var price: Double?

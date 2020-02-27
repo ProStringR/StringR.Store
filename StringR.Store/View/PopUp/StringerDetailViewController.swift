@@ -33,9 +33,9 @@ class StringerDetailViewController: UIViewController {
 
     weak var removeButton: UIButton!
 
-    var currentStringer: Stringer?
-    var activeOrders: [Order]?
-    var strings: [RacketString]?
+    var currentStringer: StringerFb?
+    var activeOrders: [OrderFb]?
+    var strings: [RacketStringFb]?
 
     var orderController = ControlReg.getOrderController
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct OrderDTO: Codable {
+struct OrderDTOFb: Codable {
 
     var orderId: String?
     var customerId: String?
@@ -27,5 +27,5 @@ struct OrderDTO: Codable {
     var timeDelivery: Int64?
     var comment: String?
     var orderStatus: OrderStatus?
-    var orderHistory: [OrderHistory]?
+    var orderHistory: [OrderHistoryFb]?
 }

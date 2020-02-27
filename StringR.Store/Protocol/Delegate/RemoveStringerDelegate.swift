@@ -9,6 +9,6 @@
 import Foundation
 
 protocol RemoveStringerDelegate: class {
-    func removeStringer(stringer: Stringer)
+    func removeStringer(stringer: StringerFb)
     func closeAction()
 }

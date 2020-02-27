@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Team: Codable {
+class TeamFb: Codable {
 
     var teamId: String
     var stringerIds: [String]?

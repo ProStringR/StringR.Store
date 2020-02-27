@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Customer: Codable {
+class CustomerFb: Codable {
 
     var userId: String
     var name: String

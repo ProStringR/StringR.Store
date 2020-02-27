@@ -14,8 +14,8 @@ class CompletedViewController: UIViewController {
     weak var completedOrdersTableView: UITableView!
 
     var searchController: UISearchController?
-    var searchOrders: [Order]?
-    var orders: [Order]?
+    var searchOrders: [OrderFb]?
+    var orders: [OrderFb]?
     var orderController = ControlReg.getOrderController
 
     override func viewDidLoad() {

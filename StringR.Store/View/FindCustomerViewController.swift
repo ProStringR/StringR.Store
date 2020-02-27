@@ -14,8 +14,8 @@ class FindCustomerViewController: UIViewController {
     weak var delegate: FindCustomerDelegate?
 
     weak var customerTableView: UITableView!
-    var searchCustomers: [Customer]?
-    var customers: [Customer]?
+    var searchCustomers: [CustomerFb]?
+    var customers: [CustomerFb]?
     var customerController = ControlReg.getCustomerController
     var searchController: UISearchController?
 
@@ -100,7 +100,7 @@ class FindCustomerViewController: UIViewController {
             let phoneNumber = alert?.textFields?[1].text ?? Constant.emptyString
             let mail = alert?.textFields?[2].text ?? Constant.emptyString
 
-            let guest = Customer(userId: Utility.getUUID(), name: name, birthday: 0, email: mail, phoneNumber: phoneNumber, preferedStringType: .DEAULT, preferedTensionVertical: 0, prederedTensionHorizontal: 0)
+            let guest = CustomerFb(userId: Utility.getUUID(), name: name, birthday: 0, email: mail, phoneNumber: phoneNumber, preferedStringType: .DEAULT, preferedTensionVertical: 0, prederedTensionHorizontal: 0)
 
             self.customerController.putCustomer(customer: guest) { (succes) in
                 if succes {

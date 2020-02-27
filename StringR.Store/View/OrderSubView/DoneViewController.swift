@@ -11,7 +11,7 @@ import UIKit
 class DoneViewController: UIViewController {
 
     weak var doneOrdersTableView: UITableView!
-    var orders: [Order]?
+    var orders: [OrderFb]?
     var orderController = ControlReg.getOrderController
 
     override func viewDidLoad() {

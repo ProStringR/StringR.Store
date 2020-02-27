@@ -12,19 +12,19 @@ class CustomerDAOFirebase: CustomerDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getCustomer(by id: String, completion: @escaping (CustomerDTO?) -> Void) {
-        dataControl.getData(returnType: CustomerDTO.self, url: "\(Firebase.customer)/\(id)", completion: { (result) in
+    func getCustomer(by id: String, completion: @escaping (CustomerDTOFb?) -> Void) {
+        dataControl.getData(returnType: CustomerDTOFb.self, url: "\(Firebase.customer)/\(id)", completion: { (result) in
             completion(result)
         })
     }
 
-    func getAllCustomers(completion: @escaping ([CustomerDTO]?) -> Void) {
-        dataControl.getListOfData(returnType: CustomerDTO.self, url: Firebase.customer) { (result) in
+    func getAllCustomers(completion: @escaping ([CustomerDTOFb]?) -> Void) {
+        dataControl.getListOfData(returnType: CustomerDTOFb.self, url: Firebase.customer) { (result) in
             completion(result)
         }
     }
 
-    func putCustomer(customer: CustomerDTO?, completion: @escaping (Bool) -> Void) {
+    func putCustomer(customer: CustomerDTOFb?, completion: @escaping (Bool) -> Void) {
         guard let customer = customer, let id = customer.userId else { completion(false); return }
         dataControl.putData(objectToUpdate: customer, objectId: id, url: Firebase.customer) { (succes) in
             completion(succes)

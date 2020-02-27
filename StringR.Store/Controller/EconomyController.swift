@@ -9,8 +9,8 @@
 import Foundation
 
 class EconomyController {
-    func getListOfOrders(basedOn interval: EconomyInterval, with orders: [Order]?) -> [Order] {
-        var listOfOrders: [Order] = []
+    func getListOfOrders(basedOn interval: EconomyInterval, with orders: [OrderFb]?) -> [OrderFb] {
+        var listOfOrders: [OrderFb] = []
 
         guard let orders = orders else { return listOfOrders }
 
@@ -39,7 +39,7 @@ class EconomyController {
         return listOfOrders
     }
 
-    func calculateEconomy(basedOn orders: [Order]) -> Economy {
+    func calculateEconomy(basedOn orders: [OrderFb]) -> EconomyFb {
         var tennisStrung: Int = 0
         var badmintonStrung: Int = 0
         var squashStrung: Int = 0
@@ -82,6 +82,6 @@ class EconomyController {
             profit = revenue - expenses - stringExpence
         }
 
-        return Economy.init(tennisStrung: tennisStrung, badmintonStrung: badmintonStrung, squashStrung: squashStrung, revenue: revenue, stringExpense: stringExpence, profit: profit, unpaid: unpaid, expenses: expenses, pendingOrders: numberOfPendingOrders)
+        return EconomyFb.init(tennisStrung: tennisStrung, badmintonStrung: badmintonStrung, squashStrung: squashStrung, revenue: revenue, stringExpense: stringExpence, profit: profit, unpaid: unpaid, expenses: expenses, pendingOrders: numberOfPendingOrders)
     }
 }

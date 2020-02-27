@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Company: Codable {
+class CompanyFb: Codable {
 
     var companyId: String
     var shopId: [String]

@@ -17,9 +17,9 @@ class OrderDAOFirebase: OrderDAOProtocol {
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
     let racketDAO: RacketDAOProtocol = ControlReg.getRacketDAO
 
-    func getAllOrders(for shop: Shop, completion: @escaping ([Order]?) -> Void) {
+    func getAllOrders(for shop: ShopFb, completion: @escaping ([OrderFb]?) -> Void) {
         if let orderIds = shop.orderIds {
-            var listOfOrders: [Order] = []
+            var listOfOrders: [OrderFb] = []
             var attempts = 0
 
             for orderId in orderIds {
@@ -39,16 +39,16 @@ class OrderDAOFirebase: OrderDAOProtocol {
         }
     }
 
-    func getOrder(by id: String, completion: @escaping (Order?) -> Void) {
-        dataControl.getData(returnType: OrderDTO.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
-            let order = self.dataControl.createObject(fromObject: result, toObject: Order.self)
+    func getOrder(by id: String, completion: @escaping (OrderFb?) -> Void) {
+        dataControl.getData(returnType: OrderDTOFb.self, url: "\(Firebase.order)/\(id)", completion: { (result) in
+            let order = self.dataControl.createObject(fromObject: result, toObject: OrderFb.self)
 
             if let order = order {
                 var attemps = 0
                 // find customer
                 self.customerDAO.getCustomer(by: order.customerId) { (customerDTO) in
                     attemps += 1
-                    order.customer = self.dataControl.createObject(fromObject: customerDTO, toObject: Customer.self)
+                    order.customer = self.dataControl.createObject(fromObject: customerDTO, toObject: CustomerFb.self)
                     if attemps == 5 {
                         completion(order)
                     }
@@ -56,7 +56,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 // find stringer
                 self.teamDAO.getStringer(basedOn: order.stringerId) { (stringerDTO) in
                     attemps += 1
-                    order.stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: Stringer.self)
+                    order.stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: StringerFb.self)
                     if attemps == 5 {
                         completion(order)
                     }
@@ -73,7 +73,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
                 // find shop
                 self.shopDAO.getShop(by: order.shopId) { (shopDTO) in
                     attemps += 1
-                    order.shop = self.dataControl.createObject(fromObject: shopDTO, toObject: Shop.self)
+                    order.shop = self.dataControl.createObject(fromObject: shopDTO, toObject: ShopFb.self)
                     if attemps == 5 {
                         completion(order)
                     }
@@ -91,9 +91,9 @@ class OrderDAOFirebase: OrderDAOProtocol {
         })
     }
 
-    func getOrdersFiltered(orderIds: [String]?, status: OrderStatus, completion: @escaping ([Order]?) -> Void) {
+    func getOrdersFiltered(orderIds: [String]?, status: OrderStatus, completion: @escaping ([OrderFb]?) -> Void) {
         var attempts = 0
-        var list: [Order] = []
+        var list: [OrderFb] = []
 
         guard let orderIds = orderIds else { completion(list); return}
 
@@ -111,7 +111,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
         }
     }
 
-    func postOrder(order: OrderDTO) throws {
+    func postOrder(order: OrderDTOFb) throws {
         do {
             try dataControl.postData(object: order, url: Firebase.order)
         } catch {
@@ -119,7 +119,7 @@ class OrderDAOFirebase: OrderDAOProtocol {
         }
     }
 
-    func putOrder(order: OrderDTO?, completion: @escaping (Bool) -> Void) {
+    func putOrder(order: OrderDTOFb?, completion: @escaping (Bool) -> Void) {
         guard let order = order, let id = order.orderId else { completion(false); return }
         dataControl.putData(objectToUpdate: order, objectId: id, url: Firebase.order) { (succes) in
             completion(succes)

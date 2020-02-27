@@ -14,11 +14,11 @@ class ShopSingleton {
 
     static let shared = ShopSingleton()
 
-    var shop: Shop?
+    var shop: ShopFb?
 
     private init() { }
 
-    func getShop(completion: @escaping (Shop?) -> Void) {
+    func getShop(completion: @escaping (ShopFb?) -> Void) {
         if let shop = self.shop {
             completion(shop)
             return
@@ -32,7 +32,7 @@ class ShopSingleton {
         }
     }
 
-    func refreshAndGetShop(completion: @escaping (Shop?) -> Void) {
+    func refreshAndGetShop(completion: @escaping (ShopFb?) -> Void) {
         shopController.getShop(basedOn: Utility.readPrimitiveFromSharedPref(Constant.shopId) as? String ?? Constant.emptyString) { (shop) in
             if let shop = shop {
                 self.shop = shop

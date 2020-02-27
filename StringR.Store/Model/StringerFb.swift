@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Stringer: Codable {
+class StringerFb: Codable {
 
     var userId: String
     var name: String

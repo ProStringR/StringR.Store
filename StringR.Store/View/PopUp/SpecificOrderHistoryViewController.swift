@@ -11,7 +11,7 @@ import UIKit
 class SpecificOrderHistoryViewController: UIViewController {
 
     weak var orderHistoryTabelView: UITableView!
-    var orderHistory: [OrderHistory]?
+    var orderHistory: [OrderHistoryFb]?
 
     override func viewDidLoad() {
         super.viewDidLoad()

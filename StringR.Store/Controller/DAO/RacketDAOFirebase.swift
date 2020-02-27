@@ -12,14 +12,14 @@ class RacketDAOFirebase: RacketDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getRacket(racketId: String, completion: @escaping (Racket?) -> Void) {
-        dataControl.getData(returnType: RacketDTO.self, url: "\(Firebase.racket)/\(racketId)") { (result) in
-            completion(self.dataControl.createObject(fromObject: result, toObject: Racket.self))
+    func getRacket(racketId: String, completion: @escaping (RacketFb?) -> Void) {
+        dataControl.getData(returnType: RacketDTOFb.self, url: "\(Firebase.racket)/\(racketId)") { (result) in
+            completion(self.dataControl.createObject(fromObject: result, toObject: RacketFb.self))
         }
     }
 
-    func putRacket(racket: Racket, completion: @escaping (Bool) -> Void) {
-        let dto = self.dataControl.createObject(fromObject: racket, toObject: RacketDTO.self)
+    func putRacket(racket: RacketFb, completion: @escaping (Bool) -> Void) {
+        let dto = self.dataControl.createObject(fromObject: racket, toObject: RacketDTOFb.self)
 
         guard let object = dto, let id = dto?.racketId else { completion(false); return }
 
@@ -28,8 +28,8 @@ class RacketDAOFirebase: RacketDAOProtocol {
         }
     }
 
-    func putTempRacket(racket: Racket, completion: @escaping (Bool) -> Void) {
-        let dto = self.dataControl.createObject(fromObject: racket, toObject: RacketDTO.self)
+    func putTempRacket(racket: RacketFb, completion: @escaping (Bool) -> Void) {
+        let dto = self.dataControl.createObject(fromObject: racket, toObject: RacketDTOFb.self)
 
         guard let object = dto, let id = dto?.racketId else { completion(false); return }
 

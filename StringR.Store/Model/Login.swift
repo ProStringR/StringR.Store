@@ -9,11 +9,11 @@
 import Foundation
 
 struct Login: Codable {
-    var userName: String
+    var email: String
     var password: String
 
     init(userName: String, password: String) {
-        self.userName = userName
+        self.email = userName
         self.password = password
     }
 }

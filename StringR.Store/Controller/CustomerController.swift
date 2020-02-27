@@ -13,19 +13,19 @@ class CustomerController {
     private let dataControl = ControlReg.getDataController
     private let customerDAO: CustomerDAOProtocol = ControlReg.getCustomerDAO
 
-    func getCustomer(by id: String, completion: @escaping (Customer?) -> Void) {
+    func getCustomer(by id: String, completion: @escaping (CustomerFb?) -> Void) {
         customerDAO.getCustomer(by: id) { (result) in
-            completion(self.dataControl.createObject(fromObject: result, toObject: Customer.self))
+            completion(self.dataControl.createObject(fromObject: result, toObject: CustomerFb.self))
         }
     }
 
-    func getAllCustomers(completion: @escaping ([Customer]?) -> Void) {
-        var customersToReturn: [Customer]? = []
+    func getAllCustomers(completion: @escaping ([CustomerFb]?) -> Void) {
+        var customersToReturn: [CustomerFb]? = []
 
         customerDAO.getAllCustomers { (result) in
             if let customers = result {
                 for customer in customers {
-                    let currentCustomer = self.dataControl.createObject(fromObject: customer, toObject: Customer.self)
+                    let currentCustomer = self.dataControl.createObject(fromObject: customer, toObject: CustomerFb.self)
                     if let currentCustomer = currentCustomer {
                         customersToReturn?.append(currentCustomer)
                     }
@@ -36,8 +36,8 @@ class CustomerController {
         }
     }
 
-    func putCustomer(customer: Customer, completion: @escaping (Bool) -> Void) {
-        let customerDTO = dataControl.createObject(fromObject: customer, toObject: CustomerDTO.self)
+    func putCustomer(customer: CustomerFb, completion: @escaping (Bool) -> Void) {
+        let customerDTO = dataControl.createObject(fromObject: customer, toObject: CustomerDTOFb.self)
         customerDAO.putCustomer(customer: customerDTO) { (succes) in
             completion(succes)
         }

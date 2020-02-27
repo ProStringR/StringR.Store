@@ -45,8 +45,8 @@ class SpecificStringInStorageViewController: UIViewController {
     weak var additionButton: UIButton!
     weak var historyTableView: UITableView!
 
-    var racketString: RacketString?
-    var purchaseHistoryList: [PurchaseHistory]?
+    var racketString: RacketStringFb?
+    var purchaseHistoryList: [PurchaseHistoryFb]?
     var datePicker = UIDatePicker()
 
     override func viewDidLoad() {
@@ -221,11 +221,11 @@ class SpecificStringInStorageViewController: UIViewController {
         }
     }
 
-    private func createHistoryItem() -> PurchaseHistory? {
+    private func createHistoryItem() -> PurchaseHistoryFb? {
         guard let date = dateInput.text, let price = priceInput.text, let length = lengthInput.text else { return nil }
         if date.isEmpty || price.isEmpty || length.isEmpty { return nil }
 
-        return PurchaseHistory.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
+        return PurchaseHistoryFb.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
     }
 
     private func cleanUpInputFields() {

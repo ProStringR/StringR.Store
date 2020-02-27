@@ -12,18 +12,18 @@ class ShopDAOFirebase: ShopDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getShop(by id: String, completion: @escaping (ShopDTO?) -> Void) {
-        dataControl.getData(returnType: ShopDTO.self, url: "\(Firebase.shop)/\(id)", completion: { (result) in
+    func getShop(by id: String, completion: @escaping (ShopDTOFb?) -> Void) {
+        dataControl.getData(returnType: ShopDTOFb.self, url: "\(Firebase.shop)/\(id)", completion: { (result) in
             completion(result)
         })
     }
 
-    func postShop(shop: ShopDTO?) throws {
+    func postShop(shop: ShopDTOFb?) throws {
         guard let shopDTO = shop else { throw Exception.nilPoint }
         try dataControl.postData(object: shopDTO, url: Firebase.shop)
     }
 
-    func putShop(shop: ShopDTO?, completion: @escaping (Bool) -> Void) {
+    func putShop(shop: ShopDTOFb?, completion: @escaping (Bool) -> Void) {
         guard let shop = shop, let id = shop.shopId else { completion(false); return }
         dataControl.putData(objectToUpdate: shop, objectId: id, url: Firebase.shop) { (succes) in
             completion(succes)

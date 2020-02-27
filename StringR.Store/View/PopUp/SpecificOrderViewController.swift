@@ -35,7 +35,7 @@ class SpecificOrderViewController: UIViewController {
     weak var mail: UILabel!
 
     let orderController = ControlReg.getOrderController
-    var order: Order?
+    var order: OrderFb?
     var orderStatus: Int?
     var paidStatus: Bool?
 
@@ -301,7 +301,7 @@ class SpecificOrderViewController: UIViewController {
 
         if let order = self.order, let orderStatus = self.orderStatus, let paidStatus = self.paidStatus {
             if OrderStatus.allValues[orderStatus] != order.orderStatus || paidStatus != order.paid {
-                let history = OrderHistory.init(date: Date().millisecondsSince1970, paid: paidStatus, orderStatus: OrderStatus.allValues[orderStatus])
+                let history = OrderHistoryFb.init(date: Date().millisecondsSince1970, paid: paidStatus, orderStatus: OrderStatus.allValues[orderStatus])
                 order.orderHistory?.append(history)
             }
 

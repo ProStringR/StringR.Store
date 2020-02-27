@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RacketStringDTO: Codable {
+struct RacketStringDTOFb: Codable {
 
     var stringId: String?
     var brand: StringBrand?
@@ -21,5 +21,5 @@ struct RacketStringDTO: Codable {
     var thickness: Double?
     var color: StringColor?
     var stringPurpose: RacketType?
-    var purchaseHistory: [PurchaseHistory]?
+    var purchaseHistory: [PurchaseHistoryFb]?
 }

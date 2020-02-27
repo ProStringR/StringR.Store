@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RacketDAOProtocol {
-    func getRacket(racketId: String, completion: @escaping (Racket?) -> Void)
-    func putRacket(racket: Racket, completion: @escaping (Bool) -> Void)
-    func putTempRacket(racket: Racket, completion: @escaping (Bool) -> Void)
+    func getRacket(racketId: String, completion: @escaping (RacketFb?) -> Void)
+    func putRacket(racket: RacketFb, completion: @escaping (Bool) -> Void)
+    func putTempRacket(racket: RacketFb, completion: @escaping (Bool) -> Void)
 }

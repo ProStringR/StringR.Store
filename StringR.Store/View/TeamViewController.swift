@@ -12,7 +12,7 @@ import UIKit
 class TeamViewController: UIViewController {
 
     weak var teamTableView: UITableView!
-    var stringers: [Stringer]?
+    var stringers: [StringerFb]?
 
     let teamController = ControlReg.getTeamController
     let shopController = ControlReg.getShopController
@@ -128,7 +128,7 @@ extension TeamViewController: UITableViewDelegate {
 }
 
 extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate {
-    func addStringerToTeam(stringer: Stringer) {
+    func addStringerToTeam(stringer: StringerFb) {
         if self.stringers != nil {
             self.stringers?.append(stringer)
         } else {
@@ -141,7 +141,7 @@ extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate 
         }
     }
 
-    func removeStringer(stringer: Stringer) {
+    func removeStringer(stringer: StringerFb) {
         ShopSingleton.shared.getShop { (shop) in
             guard let shop = shop else { return }
             self.dismiss(animated: true) {

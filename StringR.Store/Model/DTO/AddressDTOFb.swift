@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AddressDTO: Codable {
+struct AddressDTOFb: Codable {
 
     var street: String?
     var zipCode: String?

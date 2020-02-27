@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RacketDTO: Codable {
+struct RacketDTOFb: Codable {
 
     var racketId: String?
     var brand: RacketBrand?

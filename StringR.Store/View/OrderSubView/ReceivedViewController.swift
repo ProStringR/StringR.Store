@@ -11,7 +11,7 @@ import UIKit
 class ReceivedViewController: UIViewController {
 
     weak var receivedOrdersTableView: UITableView!
-    var orders: [Order]?
+    var orders: [OrderFb]?
 
     var orderController = ControlReg.getOrderController
 

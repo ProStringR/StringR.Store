@@ -13,11 +13,11 @@ class TeamController {
     let teamDAO: TeamDAOProtocol = ControlReg.getTeamDAO
     let dataControl = ControlReg.getDataController
 
-    func getStringer(basedOn stringerId: String, completion: @escaping (Stringer?) -> Void) {
+    func getStringer(basedOn stringerId: String, completion: @escaping (StringerFb?) -> Void) {
 
         teamDAO.getStringer(basedOn: stringerId) { (dto) in
             if let stringerDTO = dto {
-                let stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: Stringer.self)
+                let stringer = self.dataControl.createObject(fromObject: stringerDTO, toObject: StringerFb.self)
                 completion(stringer)
             } else {
                 completion(nil)
@@ -25,11 +25,11 @@ class TeamController {
         }
     }
 
-    func getTeam(basedOn teamId: String, completion: @escaping (Team?) -> Void) {
+    func getTeam(basedOn teamId: String, completion: @escaping (TeamFb?) -> Void) {
 
         teamDAO.getTeam(basedOn: teamId) { (dto) in
             if let teamDTO = dto {
-                let team = self.dataControl.createObject(fromObject: teamDTO, toObject: Team.self)
+                let team = self.dataControl.createObject(fromObject: teamDTO, toObject: TeamFb.self)
                 completion(team)
             } else {
                 completion(nil)
@@ -37,9 +37,9 @@ class TeamController {
         }
     }
 
-    func getStringers(fromTeamId id: String, completion: @escaping ([Stringer]?) -> Void) {
+    func getStringers(fromTeamId id: String, completion: @escaping ([StringerFb]?) -> Void) {
         getTeam(basedOn: id) { (team) in
-            var stringers: [Stringer] = []
+            var stringers: [StringerFb] = []
 
             if let team = team, let ids = team.stringerIds {
                 var attempts = 0
@@ -61,26 +61,26 @@ class TeamController {
         }
     }
 
-    func putStringer(stringer: Stringer, completion: @escaping (Bool) -> Void) {
+    func putStringer(stringer: StringerFb, completion: @escaping (Bool) -> Void) {
         teamDAO.putStringer(stringer: stringer) { (succes) in
             completion(succes)
         }
     }
 
-    func putStringerToTeam(stringer: Stringer, completion: @escaping (Bool) -> Void) {
-        let stringerDTO = dataControl.createObject(fromObject: stringer, toObject: StringerDTO.self)
+    func putStringerToTeam(stringer: StringerFb, completion: @escaping (Bool) -> Void) {
+        let stringerDTO = dataControl.createObject(fromObject: stringer, toObject: StringerDTOFb.self)
         teamDAO.putStringerToTeam(stringer: stringerDTO) { (succes) in
             completion(succes)
         }
     }
 
-    func putTeam(team: Team, completion: @escaping (Bool) -> Void) {
+    func putTeam(team: TeamFb, completion: @escaping (Bool) -> Void) {
         teamDAO.putTeam(team: team) { (succes) in
             completion(succes)
         }
     }
 
-    func createTeam(of stringers: [Stringer]?, withId id: String) -> Team? {
+    func createTeam(of stringers: [StringerFb]?, withId id: String) -> TeamFb? {
         guard let stringers = stringers else { return nil }
         var ids: [String] = []
 
@@ -88,7 +88,7 @@ class TeamController {
             ids.append(stringer.userId)
         }
 
-        let team = Team(teamId: id)
+        let team = TeamFb(teamId: id)
         team.stringerIds = ids
 
         return team

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PurchaseHistory: Codable {
+class PurchaseHistoryFb: Codable {
     var date: Int64
     var length: Double
     var price: Double

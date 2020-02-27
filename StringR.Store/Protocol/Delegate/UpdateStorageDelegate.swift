@@ -9,7 +9,7 @@
 import Foundation
 
 protocol UpdateStorageDelegate: class {
-    func removeString(string: RacketString?)
-    func addString(string: RacketString?)
+    func removeString(string: RacketStringFb?)
+    func addString(string: RacketStringFb?)
     func closeAction()
 }

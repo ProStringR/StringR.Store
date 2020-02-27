@@ -13,7 +13,7 @@ class StorageViewController: UIViewController {
 
     weak var storageTableView: UITableView!
     let storageController = ControlReg.getStorageController
-    var strings: [RacketString]?
+    var strings: [RacketStringFb]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +139,7 @@ extension StorageViewController: UITableViewDelegate {
 }
 
 extension StorageViewController: UpdateStorageDelegate {
-    func removeString(string: RacketString?) {
+    func removeString(string: RacketStringFb?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
                 guard let racketString = string else { return }
@@ -150,7 +150,7 @@ extension StorageViewController: UpdateStorageDelegate {
         }
     }
 
-    func addString(string: RacketString?) {
+    func addString(string: RacketStringFb?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
                 guard let racketString = string else { return }

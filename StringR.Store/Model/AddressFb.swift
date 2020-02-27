@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Address: Codable {
+class AddressFb: Codable {
 
     var street: String
     var zipCode: String

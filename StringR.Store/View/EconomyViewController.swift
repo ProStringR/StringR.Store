@@ -17,8 +17,8 @@ class EconomyViewController: UIViewController {
     weak var dateSegmentControl: UISegmentedControl!
     weak var pieChart: PieChartView!
     weak var dataStackView: UIStackView!
-    var economy: Economy?
-    var orders: [Order]?
+    var economy: EconomyFb?
+    var orders: [OrderFb]?
     var pendingAmount = 0
     var doneAmount = 0
 

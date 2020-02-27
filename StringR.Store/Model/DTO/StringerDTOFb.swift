@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct StringerDTO: Codable {
+struct StringerDTOFb: Codable {
 
     var userId: String?
     var name: String?
     var birthday: Int64?
     var email: String?
     var phoneNumber: String?
-    var address: Address?
+    var address: AddressFb?
     var preferedRacketType: RacketType?
     var orderIds: [String]?
 }

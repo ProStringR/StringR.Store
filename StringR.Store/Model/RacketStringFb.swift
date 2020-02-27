@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RacketString: Codable {
+class RacketStringFb: Codable {
 
     var stringId: String
     var brand: StringBrand
@@ -20,7 +20,7 @@ class RacketString: Codable {
     var thickness: Double
     var color: StringColor
     var stringPurpose: RacketType
-    var purchaseHistory: [PurchaseHistory]?
+    var purchaseHistory: [PurchaseHistoryFb]?
 
     var racketRemaining: Int {
         let stringPerRacket = Constant.stringLengthPerRacket
@@ -83,7 +83,7 @@ class RacketString: Codable {
             self.stringPurpose = RacketType(rawValue: stringPurpose) ?? RacketType.TENNIS
 
             self.purchaseHistory = []
-            let historyItem = PurchaseHistory.init(date: buyDate, length: self.length, price: buyPrice)
+            let historyItem = PurchaseHistoryFb.init(date: buyDate, length: self.length, price: buyPrice)
             self.purchaseHistory?.append(historyItem)
         } else {
             return nil

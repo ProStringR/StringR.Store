@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CompanyDTO: Codable {
+struct CompanyDTOFb: Codable {
 
     var companyId: String?
     var shopId: [String]?

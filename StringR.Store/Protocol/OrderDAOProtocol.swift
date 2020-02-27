@@ -9,9 +9,9 @@
 import Foundation
 
 protocol OrderDAOProtocol {
-    func getAllOrders(for shop: Shop, completion: @escaping ([Order]?) -> Void)
-    func getOrder(by id: String, completion: @escaping (Order?) -> Void)
-    func getOrdersFiltered(orderIds: [String]?, status: OrderStatus, completion: @escaping ([Order]?) -> Void)
-    func postOrder(order: OrderDTO) throws
-    func putOrder(order: OrderDTO?, completion: @escaping (Bool) -> Void)
+    func getAllOrders(for shop: ShopFb, completion: @escaping ([OrderFb]?) -> Void)
+    func getOrder(by id: String, completion: @escaping (OrderFb?) -> Void)
+    func getOrdersFiltered(orderIds: [String]?, status: OrderStatus, completion: @escaping ([OrderFb]?) -> Void)
+    func postOrder(order: OrderDTOFb) throws
+    func putOrder(order: OrderDTOFb?, completion: @escaping (Bool) -> Void)
 }

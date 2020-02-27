@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EconomyDTO: Codable {
+struct EconomyDTOFb: Codable {
 
     var tennisStrung: Int?
     var badmintonStrung: Int?

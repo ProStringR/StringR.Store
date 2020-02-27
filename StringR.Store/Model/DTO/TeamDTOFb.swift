@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TeamDTO: Codable {
+struct TeamDTOFb: Codable {
 
     var teamId: String?
     var stringerIds: [String]?

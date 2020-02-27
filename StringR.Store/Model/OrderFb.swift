@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Order: Codable {
+class OrderFb: Codable {
 
     var orderId: String
     var customerId: String
@@ -23,16 +23,16 @@ class Order: Codable {
     var price: Double
     var paid: Bool
     var orderStatus: OrderStatus
-    var orderHistory: [OrderHistory]?
+    var orderHistory: [OrderHistoryFb]?
     var timePlaced: Int64?
     var timeDone: Int64?
     var timeDelivery: Int64?
     var comment: String?
-    var stringer: Stringer?
-    var customer: Customer?
-    var racketString: RacketString?
-    var shop: Shop?
-    var racket: Racket?
+    var stringer: StringerFb?
+    var customer: CustomerFb?
+    var racketString: RacketStringFb?
+    var shop: ShopFb?
+    var racket: RacketFb?
     var daysToDeliver: Int {
             let diff = Int(self.deliveryDate - Date().millisecondsSince1970)
             let daysToDeliver = diff / (86400000)
@@ -76,6 +76,6 @@ class Order: Codable {
         let timePlaced = Date().millisecondsSince1970
         self.timePlaced = timePlaced
 
-        self.orderHistory = [OrderHistory.init(date: timePlaced, paid: self.paid, orderStatus: self.orderStatus)]
+        self.orderHistory = [OrderHistoryFb.init(date: timePlaced, paid: self.paid, orderStatus: self.orderStatus)]
     }
 }

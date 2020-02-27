@@ -13,17 +13,17 @@ class StorageController {
     let dataControl = ControlReg.getDataController
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
 
-    func putRacketString(racketString: RacketString, storageId: String, completion: @escaping (Bool) -> Void) {
-        let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTO.self)
+    func putRacketString(racketString: RacketStringFb, storageId: String, completion: @escaping (Bool) -> Void) {
+        let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTOFb.self)
         storageDAO.putRacketString(racketString: racketStringDTO, storageId: storageId) { (succes) in
             completion(succes)
         }
     }
 
-    func getStringInStorage(basedOnShopAndString id: String, completion: @escaping (RacketString?) -> Void) {
+    func getStringInStorage(basedOnShopAndString id: String, completion: @escaping (RacketStringFb?) -> Void) {
         storageDAO.getStringsInStorage(basedOnId: id) { (dto) in
             if let racketStringDTO = dto {
-                let racketString = self.dataControl.createObject(fromObject: racketStringDTO, toObject: RacketString.self)
+                let racketString = self.dataControl.createObject(fromObject: racketStringDTO, toObject: RacketStringFb.self)
                 completion(racketString)
             } else {
                 completion(nil)
@@ -31,13 +31,13 @@ class StorageController {
         }
     }
 
-    func getListOfStringsInStorage(fromShopId id: String, completion: @escaping ([RacketString]?) -> Void) {
+    func getListOfStringsInStorage(fromShopId id: String, completion: @escaping ([RacketStringFb]?) -> Void) {
         storageDAO.getStringsInStorage(basedOnId: id) { (resultArray) in
             if let racketStringDtoArray = resultArray {
-                var racketStrings: [RacketString] = []
+                var racketStrings: [RacketStringFb] = []
 
                 for dto in racketStringDtoArray {
-                    let racketString = self.dataControl.createObject(fromObject: dto, toObject: RacketString.self)
+                    let racketString = self.dataControl.createObject(fromObject: dto, toObject: RacketStringFb.self)
 
                     if let racketString = racketString {
                         racketStrings.append(racketString)
@@ -51,7 +51,7 @@ class StorageController {
         }
     }
 
-    func removeSpecificLengthFromRacketString(racketString: RacketString, length: Double, storageId: String, completion: @escaping (Bool) -> Void) {
+    func removeSpecificLengthFromRacketString(racketString: RacketStringFb, length: Double, storageId: String, completion: @escaping (Bool) -> Void) {
         racketString.removeLength(length: length)
 
         putRacketString(racketString: racketString, storageId: storageId) { (succes) in
@@ -59,9 +59,9 @@ class StorageController {
         }
     }
 
-    func filterStrings(racketStrings: [RacketString], by purpose: RacketType) -> [RacketString] {
+    func filterStrings(racketStrings: [RacketStringFb], by purpose: RacketType) -> [RacketStringFb] {
 
-        var stringsToReturn: [RacketString] = []
+        var stringsToReturn: [RacketStringFb] = []
 
         for string in racketStrings where string.stringPurpose == purpose {
             stringsToReturn.append(string)

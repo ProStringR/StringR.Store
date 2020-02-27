@@ -9,6 +9,6 @@
 import Foundation
 
 protocol FindCustomerDelegate: class {
-    func addCustomer(customer: Customer)
+    func addCustomer(customer: CustomerFb)
     func closeAction()
 }

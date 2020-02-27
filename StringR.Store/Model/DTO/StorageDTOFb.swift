@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StorageDTO: Codable {
+struct StorageDTOFb: Codable {
 
     var racketIds: [String]?
     var stringIds: [String]?

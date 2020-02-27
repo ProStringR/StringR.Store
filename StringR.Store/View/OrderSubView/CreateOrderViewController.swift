@@ -47,16 +47,16 @@ class CreateOrderViewController: UIViewController {
 
     weak var placeOrderButton: UIButton!
 
-    var customer: Customer?
+    var customer: CustomerFb?
     var racketType: RacketType?
-    var racketString: RacketString?
-    var stringer: Stringer?
+    var racketString: RacketStringFb?
+    var stringer: StringerFb?
     var deliveryDate: Date?
     var racketBrand: RacketBrand?
 
-    var racketStrings: [RacketString]?
-    var avalibleRacketString: [RacketString]?
-    var stringers: [Stringer]?
+    var racketStrings: [RacketStringFb]?
+    var avalibleRacketString: [RacketStringFb]?
+    var stringers: [StringerFb]?
     var racketBrands = RacketBrand.allValues
     var racketStringsPickerView = UIPickerView()
     var stringersPickerView = UIPickerView()
@@ -302,9 +302,9 @@ class CreateOrderViewController: UIViewController {
             if let shop = shop {
 
                 // TODO: delete, when we have racket on the Customer. Then pass the racketId on to the order.
-                let tempRacket = Racket(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel)
+                let tempRacket = RacketFb(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel)
 
-                let order = Order.init(orderId: Utility.getUUID(), customerId: customer.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension.replacingOccurrences(of: ",", with: ".")), tensionHorizontal: Double(horizontalTension.replacingOccurrences(of: ",", with: ".")), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
+                let order = OrderFb.init(orderId: Utility.getUUID(), customerId: customer.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension.replacingOccurrences(of: ",", with: ".")), tensionHorizontal: Double(horizontalTension.replacingOccurrences(of: ",", with: ".")), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
 
                 order?.comment = comment
 
@@ -394,7 +394,7 @@ class CreateOrderViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    private func setCustomer(customer: Customer) {
+    private func setCustomer(customer: CustomerFb) {
         self.customer = customer
 
         if let customer = self.customer {
@@ -492,7 +492,7 @@ extension CreateOrderViewController: UIPickerViewDelegate {
 }
 
 extension CreateOrderViewController: FindCustomerDelegate {
-    func addCustomer(customer: Customer) {
+    func addCustomer(customer: CustomerFb) {
         self.setCustomer(customer: customer)
     }
 

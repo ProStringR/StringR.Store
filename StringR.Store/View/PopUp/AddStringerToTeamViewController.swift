@@ -135,8 +135,8 @@ class AddStringerToTeamViewController: UIViewController {
         inputField.inputView = picker
     }
 
-    private func createStringer() -> Stringer? {
-        return Stringer.init(firstName: self.firstNameInput.text, lastName: self.lastNameInput.text, email: self.emailInput.text, phoneNumber: self.phoneNumerInput.text, preferredRacketType: self.preferredRacketTypeInput.text)
+    private func createStringer() -> StringerFb? {
+        return StringerFb.init(firstName: self.firstNameInput.text, lastName: self.lastNameInput.text, email: self.emailInput.text, phoneNumber: self.phoneNumerInput.text, preferredRacketType: self.preferredRacketTypeInput.text)
     }
 
     private func presentDefaultAlert() {

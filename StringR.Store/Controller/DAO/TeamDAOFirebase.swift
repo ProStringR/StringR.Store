@@ -12,19 +12,19 @@ class TeamDAOFirebase: TeamDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTO?) -> Void) {
-        dataControl.getData(returnType: StringerDTO.self, url: "\(Firebase.stringer)/\(stringerId)", completion: { (result) in
+    func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTOFb?) -> Void) {
+        dataControl.getData(returnType: StringerDTOFb.self, url: "\(Firebase.stringer)/\(stringerId)", completion: { (result) in
             completion(result)
         })
     }
 
-    func getTeam(basedOn teamId: String, completion: @escaping (TeamDTO?) -> Void) {
-        dataControl.getData(returnType: TeamDTO.self, url: "\(Firebase.team)/\(teamId)", completion: { (result) in
+    func getTeam(basedOn teamId: String, completion: @escaping (TeamDTOFb?) -> Void) {
+        dataControl.getData(returnType: TeamDTOFb.self, url: "\(Firebase.team)/\(teamId)", completion: { (result) in
             completion(result)
         })
     }
 
-    func putStringer(stringer: Stringer?, completion: @escaping (Bool) -> Void) {
+    func putStringer(stringer: StringerFb?, completion: @escaping (Bool) -> Void) {
         guard let stringer = stringer else { completion(false); return }
 
         dataControl.putData(objectToUpdate: stringer, objectId: stringer.userId, url: Firebase.stringer) { (succes) in
@@ -32,13 +32,13 @@ class TeamDAOFirebase: TeamDAOProtocol {
         }
     }
 
-    func putStringerToTeam(stringer: StringerDTO?, completion: @escaping (Bool) -> Void) {
+    func putStringerToTeam(stringer: StringerDTOFb?, completion: @escaping (Bool) -> Void) {
         guard let stringerDTO = stringer, let id = stringerDTO.userId else { completion(false); return }
         dataControl.putData(objectToUpdate: stringerDTO, objectId: id, url: Firebase.stringer) { (outSucces) in
 
             ShopSingleton.shared.getShop(completion: { (shop) in
                 if let shop = shop {
-                    self.dataControl.getData(returnType: Team.self, url: "\(Firebase.team)/\(shop.teamId)", completion: { (team) in
+                    self.dataControl.getData(returnType: TeamFb.self, url: "\(Firebase.team)/\(shop.teamId)", completion: { (team) in
                         if let team = team {
                             if var teamStringers = team.stringerIds {
                                 teamStringers.append(id)
@@ -52,7 +52,7 @@ class TeamDAOFirebase: TeamDAOProtocol {
                                 completion(innerSucces && outSucces)
                             })
                         } else {
-                            let newTeam = Team(teamId: shop.teamId)
+                            let newTeam = TeamFb(teamId: shop.teamId)
                             newTeam.stringerIds = [id]
 
                             self.dataControl.putData(objectToUpdate: newTeam, objectId: newTeam.teamId, url: Firebase.team) { (succes) in
@@ -65,9 +65,9 @@ class TeamDAOFirebase: TeamDAOProtocol {
         }
     }
 
-    func putTeam(team: Team?, completion: @escaping (Bool) -> Void) {
+    func putTeam(team: TeamFb?, completion: @escaping (Bool) -> Void) {
         guard let team = team else { completion(false); return }
-        let teamDto = dataControl.createObject(fromObject: team, toObject: TeamDTO.self)
+        let teamDto = dataControl.createObject(fromObject: team, toObject: TeamDTOFb.self)
         if let id = teamDto?.teamId {
             dataControl.putData(objectToUpdate: teamDto, objectId: id, url: Firebase.team) { (succes) in
                 completion(succes)

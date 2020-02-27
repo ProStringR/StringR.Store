@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct ShopDTO: Codable {
+struct ShopDTOFb: Codable {
 
     var shopId: String?
-    var address: Address?
+    var address: AddressFb?
     var phoneNumber: String?
     var storageId: String?
     var teamId: String?

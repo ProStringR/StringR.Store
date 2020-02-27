@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CustomerDTO: Codable {
+struct CustomerDTOFb: Codable {
 
     var userId: String?
     var name: String?

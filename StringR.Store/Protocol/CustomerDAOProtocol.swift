@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CustomerDAOProtocol {
-    func getCustomer(by id: String, completion: @escaping (CustomerDTO?) -> Void)
-    func getAllCustomers(completion: @escaping ([CustomerDTO]?) -> Void)
-    func putCustomer(customer: CustomerDTO?, completion: @escaping (Bool) -> Void)
+    func getCustomer(by id: String, completion: @escaping (CustomerDTOFb?) -> Void)
+    func getAllCustomers(completion: @escaping ([CustomerDTOFb]?) -> Void)
+    func putCustomer(customer: CustomerDTOFb?, completion: @escaping (Bool) -> Void)
 }

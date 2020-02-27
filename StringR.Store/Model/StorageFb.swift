@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Storage: Codable {
+class StorageFb: Codable {
 
     var racketIds: [String]
     var stringIds: [String]
