@@ -23,22 +23,22 @@ class Utility {
         return NSUUID().uuidString
     }
 
-    static func readPrimitiveFromSharedPref(_ key: String) -> Any {
+    static func readStringFromSharedPref(_ key: String) -> String {
 
         let defaults = UserDefaults.standard
-        if let primitiveToReturn = defaults.string(forKey: key) {
-            return primitiveToReturn
+        if let stringToReturn = defaults.string(forKey: key) {
+            return stringToReturn
         } else {
             return Constant.emptyString
         }
     }
 
-    static func writePrimitiveToSharedPref(withKey key: String, value primitive: Any) {
+    static func writeStringToSharedPref(withKey key: String, value string: String) {
         let defaults = UserDefaults.standard
-        defaults.set(primitive, forKey: key)
+        defaults.set(string, forKey: key)
     }
 
-    static func deletePrimitiveFromSharedPref(withKey key: String) {
+    static func deleteStringFromSharedPref(withKey key: String) {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: key)
     }

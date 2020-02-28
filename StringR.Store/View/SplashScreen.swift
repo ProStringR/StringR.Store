@@ -49,7 +49,7 @@ class SplashScreen: UIViewController {
         var jwt: JWT?
 
         do {
-            jwt = try decode(jwt: Utility.readPrimitiveFromSharedPref(Constant.token) as? String ?? Constant.emptyString)
+            jwt = try decode(jwt: Utility.readStringFromSharedPref(Constant.token))
         } catch {
             print(error)
         }
@@ -59,7 +59,7 @@ class SplashScreen: UIViewController {
         if let jwt = jwt {
             if jwt.expired {
                 viewController = SignInViewController()
-                Utility.deletePrimitiveFromSharedPref(withKey: Constant.shopId)
+                Utility.deleteStringFromSharedPref(withKey: Constant.shopId)
             } else {
                 viewController = RootTabBarController()
             }

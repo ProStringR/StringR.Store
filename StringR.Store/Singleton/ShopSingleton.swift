@@ -24,16 +24,17 @@ class ShopSingleton {
             return
         }
 
-        shopController.getShop(basedOn: Utility.readPrimitiveFromSharedPref(Constant.shopId) as? String ?? Constant.emptyString) { (shop) in
-            if let shop = shop {
-                self.shop = shop
-                completion(shop)
+        shopController.getShop(basedOn: Utility.readStringFromSharedPref(Constant.shopId)) { (shopFb) in
+            if let shopFb = shopFb {
+                self.shop = shopFb
+                completion(shopFb)
             }
         }
+
     }
 
     func refreshAndGetShop(completion: @escaping (ShopFb?) -> Void) {
-        shopController.getShop(basedOn: Utility.readPrimitiveFromSharedPref(Constant.shopId) as? String ?? Constant.emptyString) { (shop) in
+        shopController.getShop(basedOn: Utility.readStringFromSharedPref(Constant.shopId)) { (shop) in
             if let shop = shop {
                 self.shop = shop
                 completion(shop)

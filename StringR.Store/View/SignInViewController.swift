@@ -113,8 +113,7 @@ class SignInViewController: UIViewController {
             authenticationController.authenticateShop(login: login) { (reponse) in
                 self.showSpinner(withSpinner: spinner)
                 if let reponse = reponse {
-                    Utility.writePrimitiveToSharedPref(withKey: Constant.token, value: reponse.token)
-                    Utility.writePrimitiveToSharedPref(withKey: Constant.shopId, value: reponse.id)
+                    Utility.writeStringToSharedPref(withKey: Constant.token, value: reponse.token)
                     self.navigateToMainView()
                 } else {
                     self.presentDefaultAlert()
