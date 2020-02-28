@@ -45,6 +45,19 @@
 		1DE69BE923588F1900AD0864 /* StorageDAOFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE69BE823588F1900AD0864 /* StorageDAOFirebase.swift */; };
 		1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2B232F733F0007E2C3 /* Constant.swift */; };
 		1DF66C2F232F73AC0007E2C3 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66C2E232F73AC0007E2C3 /* CardCell.swift */; };
+		99A0BC3E240913CA00CE2566 /* StringColorREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0BC3D240913CA00CE2566 /* StringColorREST.swift */; };
+		99A0BC402409143A00CE2566 /* StringColorSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0BC3F2409143A00CE2566 /* StringColorSingleton.swift */; };
+		99DEFE0D2409175A003CF256 /* StaticDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE0C2409175A003CF256 /* StaticDateController.swift */; };
+		99DEFE0F24091795003CF256 /* StaticDataDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE0E24091795003CF256 /* StaticDataDaoSql.swift */; };
+		99DEFE11240917E6003CF256 /* StaticDataDaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE10240917E6003CF256 /* StaticDataDaoProtocol.swift */; };
+		99DEFE1324092F59003CF256 /* PurposeREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE1224092F59003CF256 /* PurposeREST.swift */; };
+		99DEFE15240930F8003CF256 /* PurposeSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE14240930F8003CF256 /* PurposeSingleton.swift */; };
+		99DEFE172409328A003CF256 /* RacketBrandREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE162409328A003CF256 /* RacketBrandREST.swift */; };
+		99DEFE19240933C6003CF256 /* RacketBrandSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE18240933C6003CF256 /* RacketBrandSingleton.swift */; };
+		99DEFE1B240935C2003CF256 /* StringBrandREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE1A240935C2003CF256 /* StringBrandREST.swift */; };
+		99DEFE1D24093670003CF256 /* StringBrandSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE1C24093670003CF256 /* StringBrandSingleton.swift */; };
+		99DEFE1F2409387D003CF256 /* StringTypesREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE1E2409387D003CF256 /* StringTypesREST.swift */; };
+		99DEFE2124093943003CF256 /* StringTypeSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE2024093943003CF256 /* StringTypeSingleton.swift */; };
 		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
 		B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319DDCD2361DD42007878F6 /* RacketController.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
@@ -171,6 +184,19 @@
 		2A4D864A13881F526B2ED2D0 /* Pods_StringR_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringR_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D2BEA5B6E1279210353F2E /* Pods-StringR.Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.release.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.release.xcconfig"; sourceTree = "<group>"; };
 		8F3191B6B0C74E540AB71DF0 /* Pods-StringR.Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringR.Store.debug.xcconfig"; path = "Target Support Files/Pods-StringR.Store/Pods-StringR.Store.debug.xcconfig"; sourceTree = "<group>"; };
+		99A0BC3D240913CA00CE2566 /* StringColorREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringColorREST.swift; sourceTree = "<group>"; };
+		99A0BC3F2409143A00CE2566 /* StringColorSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringColorSingleton.swift; sourceTree = "<group>"; };
+		99DEFE0C2409175A003CF256 /* StaticDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticDateController.swift; sourceTree = "<group>"; };
+		99DEFE0E24091795003CF256 /* StaticDataDaoSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticDataDaoSql.swift; sourceTree = "<group>"; };
+		99DEFE10240917E6003CF256 /* StaticDataDaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticDataDaoProtocol.swift; sourceTree = "<group>"; };
+		99DEFE1224092F59003CF256 /* PurposeREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeREST.swift; sourceTree = "<group>"; };
+		99DEFE14240930F8003CF256 /* PurposeSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeSingleton.swift; sourceTree = "<group>"; };
+		99DEFE162409328A003CF256 /* RacketBrandREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketBrandREST.swift; sourceTree = "<group>"; };
+		99DEFE18240933C6003CF256 /* RacketBrandSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketBrandSingleton.swift; sourceTree = "<group>"; };
+		99DEFE1A240935C2003CF256 /* StringBrandREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBrandREST.swift; sourceTree = "<group>"; };
+		99DEFE1C24093670003CF256 /* StringBrandSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBrandSingleton.swift; sourceTree = "<group>"; };
+		99DEFE1E2409387D003CF256 /* StringTypesREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypesREST.swift; sourceTree = "<group>"; };
+		99DEFE2024093943003CF256 /* StringTypeSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypeSingleton.swift; sourceTree = "<group>"; };
 		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		B319DDCD2361DD42007878F6 /* RacketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketController.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
@@ -278,6 +304,11 @@
 			isa = PBXGroup;
 			children = (
 				1D1771812359EBFB00DBC870 /* ShopSingleton.swift */,
+				99A0BC3F2409143A00CE2566 /* StringColorSingleton.swift */,
+				99DEFE14240930F8003CF256 /* PurposeSingleton.swift */,
+				99DEFE18240933C6003CF256 /* RacketBrandSingleton.swift */,
+				99DEFE1C24093670003CF256 /* StringBrandSingleton.swift */,
+				99DEFE2024093943003CF256 /* StringTypeSingleton.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -319,6 +350,7 @@
 				B319DDCD2361DD42007878F6 /* RacketController.swift */,
 				1D32FC20236B24FF00AABEFB /* EconomyController.swift */,
 				1D4728D62391B88B0068919F /* AuthenticationController.swift */,
+				99DEFE0C2409175A003CF256 /* StaticDateController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -364,6 +396,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		99BAC0792409123B00114E92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99BAC07A240912D900114E92 /* DTO */,
+				99DEFE1224092F59003CF256 /* PurposeREST.swift */,
+				99A0BC3D240913CA00CE2566 /* StringColorREST.swift */,
+				99DEFE162409328A003CF256 /* RacketBrandREST.swift */,
+				99DEFE1A240935C2003CF256 /* StringBrandREST.swift */,
+				99DEFE1E2409387D003CF256 /* StringTypesREST.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99BAC07A240912D900114E92 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		B34DF280232B77FF00D9CCA8 = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +440,7 @@
 		B34DF28B232B77FF00D9CCA8 /* StringR.Store */ = {
 			isa = PBXGroup;
 			children = (
+				99BAC0792409123B00114E92 /* Model */,
 				1D1771802359EBD900DBC870 /* Singleton */,
 				B3B92B5723339D0800C39052 /* Error */,
 				B3903C072333653000367E5F /* Protocol */,
@@ -484,6 +537,7 @@
 				B39CCE8923565DA200EA892B /* CustomerDAOFirebase.swift */,
 				B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */,
 				1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */,
+				99DEFE0E24091795003CF256 /* StaticDataDaoSql.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -501,6 +555,7 @@
 				B39CCE8723565CEB00EA892B /* CustomerDAOProtocol.swift */,
 				B382008D2361D54A00C2D666 /* RacketDAOProtocol.swift */,
 				1D4728DA2391CBD00068919F /* AuthenticationDAOProtocol.swift */,
+				99DEFE10240917E6003CF256 /* StaticDataDaoProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -720,6 +775,7 @@
 			files = (
 				1D177184235A086C00DBC870 /* SpecificStringInStorageViewController.swift in Sources */,
 				1D17717D2359CB0600DBC870 /* AddStringToStorageViewController.swift in Sources */,
+				99DEFE19240933C6003CF256 /* RacketBrandSingleton.swift in Sources */,
 				B3B92B5E2333A9A500C39052 /* OrderController.swift in Sources */,
 				B3903C0E2333672900367E5F /* Firebase.swift in Sources */,
 				1D7455C623435D2200C33B0C /* AddressDTOFb.swift in Sources */,
@@ -739,12 +795,14 @@
 				1D6BB09D2362D68000DDAF11 /* OrderHistoryFb.swift in Sources */,
 				1DD8D19C235C681F00074BC2 /* PurchaseHistoryFb.swift in Sources */,
 				B38C5B92232BD1D000116BC1 /* CustomerFb.swift in Sources */,
+				99DEFE1F2409387D003CF256 /* StringTypesREST.swift in Sources */,
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
 				B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */,
 				1D11C1DE236C3D2B00F764A4 /* AddStringerToTeamDelegate.swift in Sources */,
 				B36B428E232BACA000954357 /* AddressFb.swift in Sources */,
 				1DF66C2C232F733F0007E2C3 /* Constant.swift in Sources */,
+				99DEFE0F24091795003CF256 /* StaticDataDaoSql.swift in Sources */,
 				B32B6BBA23360B1700ABD6A8 /* StorageCell.swift in Sources */,
 				B380D0D323630589004144B5 /* OrderModifierDelegate.swift in Sources */,
 				1D29807D23607C0E00225DCE /* SpecificOrderViewController.swift in Sources */,
@@ -755,9 +813,13 @@
 				B38C5B96232BD3FC00116BC1 /* OrderFb.swift in Sources */,
 				B3A1B5F523508B5900B1133E /* CreateOrderViewController.swift in Sources */,
 				B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */,
+				99DEFE1D24093670003CF256 /* StringBrandSingleton.swift in Sources */,
 				B38C5B86232BC97400116BC1 /* RacketFb.swift in Sources */,
+				99DEFE172409328A003CF256 /* RacketBrandREST.swift in Sources */,
+				99A0BC402409143A00CE2566 /* StringColorSingleton.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
+				99DEFE1B240935C2003CF256 /* StringBrandREST.swift in Sources */,
 				1D32FC23236B25E700AABEFB /* EconomyInterval.swift in Sources */,
 				1D32FC21236B24FF00AABEFB /* EconomyController.swift in Sources */,
 				1D29807F2361CEC300225DCE /* StringerDetailViewController.swift in Sources */,
@@ -778,6 +840,7 @@
 				B39CCE8823565CEB00EA892B /* CustomerDAOProtocol.swift in Sources */,
 				B38C5B8A232BCB2C00116BC1 /* StorageFb.swift in Sources */,
 				B38C5BAB232BE5BD00116BC1 /* RacketBrand.swift in Sources */,
+				99DEFE11240917E6003CF256 /* StaticDataDaoProtocol.swift in Sources */,
 				B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */,
 				1D32FC1F236A1E4100AABEFB /* Color.swift in Sources */,
 				1D61CED42330AEC2006FED94 /* CardCellViewController.swift in Sources */,
@@ -787,6 +850,8 @@
 				B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */,
 				1D7455CA23435E2000C33B0C /* RacketDTOFb.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
+				99DEFE15240930F8003CF256 /* PurposeSingleton.swift in Sources */,
+				99DEFE1324092F59003CF256 /* PurposeREST.swift in Sources */,
 				B38C5B84232BC94000116BC1 /* TeamFb.swift in Sources */,
 				1D7455CC23435E9700C33B0C /* CompanyDTOFb.swift in Sources */,
 				B38C5BAD232BE70D00116BC1 /* StringBrand.swift in Sources */,
@@ -795,6 +860,7 @@
 				B3CAF98D2341FD7E005F5B38 /* ControlReg.swift in Sources */,
 				B3FB2C78232D0335003728C4 /* Extention.swift in Sources */,
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
+				99A0BC3E240913CA00CE2566 /* StringColorREST.swift in Sources */,
 				B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */,
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
@@ -802,6 +868,7 @@
 				1D7455D0234372B300C33B0C /* RacketStringDTOFb.swift in Sources */,
 				B37564D1236AC9D500830FFC /* SplashScreen.swift in Sources */,
 				B38C5B9C232BDE8700116BC1 /* TestRacketViewController.swift in Sources */,
+				99DEFE0D2409175A003CF256 /* StaticDateController.swift in Sources */,
 				1D4728DB2391CBD00068919F /* AuthenticationDAOProtocol.swift in Sources */,
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
@@ -812,6 +879,7 @@
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,
 				B3CAF98F2342017E005F5B38 /* StringerDTOFb.swift in Sources */,
 				1D17717F2359CC2700DBC870 /* StorageDAOProtocol.swift in Sources */,
+				99DEFE2124093943003CF256 /* StringTypeSingleton.swift in Sources */,
 				1D3987EA233BE64500CDA0DD /* DeliveredViewController.swift in Sources */,
 				1DE69BE923588F1900AD0864 /* StorageDAOFirebase.swift in Sources */,
 				B3B92B5923339D1500C39052 /* Exception.swift in Sources */,

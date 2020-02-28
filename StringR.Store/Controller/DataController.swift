@@ -30,6 +30,34 @@ class DataController {
         }.resume()
     }
 
+    func getDataREST<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) {
+
+        guard let url = URL(string: url) else { completion(nil); return }
+
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            // TODO: if we want to handle the error or respons
+            let res = response
+            let err = error
+
+            if let err = err {
+                print(err)
+
+                if let res = res {
+                    print(res)
+                }
+            }
+
+            if let data = data {
+                do {
+                    let object = try JSONDecoder().decode(returnType, from: data)
+                    completion(object)
+                } catch {
+                    completion(nil)
+                }
+            }
+        }.resume()
+    }
+
     func getListOfData<T: Codable>(returnType: T.Type, url: String, completion: @escaping ([T]?) -> Void) {
         getData(returnType: [String: T?].self, url: url) { (result) in
             guard let result = result else { completion(nil); return }

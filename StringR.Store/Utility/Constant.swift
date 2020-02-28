@@ -14,6 +14,12 @@ class Constant {
     //REST API
     static let baseUrl = "https://prostringr.com/api/v1"
     static let authenticationUrl = "\(baseUrl)/authentication"
+    static let staticData = "/staticdata"
+    static let allColorsStaticData = "\(baseUrl)\(staticData)/all-colors"
+    static let allPurposes = "\(baseUrl)\(staticData)/all-purposes"
+    static let allRacketBrands = "\(baseUrl)\(staticData)/all-racket-brands"
+    static let allStringBrands = "\(baseUrl)\(staticData)/all-string-brands"
+    static let allStringTypes = "\(baseUrl)\(staticData)/all-string-types"
 
     // Numbers
     static let noOffset = CGFloat(0)

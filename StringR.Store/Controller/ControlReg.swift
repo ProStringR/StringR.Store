@@ -18,6 +18,7 @@ class ControlReg {
     static let getStorageDAO = StorageDAOFirebase()
     static let getRacketDAO = RacketDAOFirebase()
     static let getAuthenticationDAO = AuthenticationDAOSql()
+    static let getStaticDataDao = StaticDataDaoSql()
 
     // Control
     static let getDataController = DataController()
@@ -29,4 +30,5 @@ class ControlReg {
     static let getRacketController = RacketController()
     static let getEconomyController = EconomyController()
     static let getAuthenticationController = AuthenticationController()
+    static let getStaticDataController = StaticDataController()
 }
