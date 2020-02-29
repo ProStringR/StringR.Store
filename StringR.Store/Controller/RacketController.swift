@@ -29,12 +29,4 @@ class RacketController {
             completion(succes)
         }
     }
-
-    func postRacketString(racket: RacketStringDto?, completion: @escaping (Bool) -> Void) {
-        if let racket = racket {
-            racketDAO.postRacketString(racketString: racket) { (success) in
-                completion(success)
-            }
-        }
-    }
 }

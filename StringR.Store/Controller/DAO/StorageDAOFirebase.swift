@@ -9,6 +9,7 @@
 import Foundation
 
 class StorageDAOFirebase: StorageDAOProtocol {
+
     let dataControl = ControlReg.getDataController
 
     func getRacketString(by id: String, storageId: String, completion: @escaping (RacketStringFb?) -> Void) {
@@ -24,6 +25,13 @@ class StorageDAOFirebase: StorageDAOProtocol {
         }
     }
 
+    func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringREST]?) -> Void) {
+//        dataControl.getListOfData(returnType: RacketStringDTOFb.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
+//            completion(resultArray)
+//        }
+        print("wrong implementation")
+    }
+
     func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTOFb]?) -> Void) {
         dataControl.getListOfData(returnType: RacketStringDTOFb.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
             completion(resultArray)
@@ -34,5 +42,9 @@ class StorageDAOFirebase: StorageDAOProtocol {
         dataControl.deleteData(objectIdToDelete: stringId, url: "\(Firebase.storage)/\(shopId)") { (succes) in
             completion(succes)
         }
+    }
+
+    func postRacketString(racketString: RacketStringDto, completion: @escaping (Bool) -> Void) {
+        print("wrong implementation")
     }
 }

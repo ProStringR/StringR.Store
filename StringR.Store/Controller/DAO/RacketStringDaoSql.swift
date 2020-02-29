@@ -8,20 +8,30 @@
 
 import Foundation
 
-class RacketStringDaoSql: RacketDAOProtocol {
+class StorageDaoSql: StorageDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getRacket(racketId: String, completion: @escaping (RacketFb?) -> Void) {
+    func getRacketString(by id: String, storageId: String, completion: @escaping (RacketStringFb?) -> Void) {
         print("do nothing")
     }
 
-    func putRacket(racket: RacketFb, completion: @escaping (Bool) -> Void) {
+    func deleteStringFromStorage(fromShop shopId: String, stringId: String, completion: @escaping (Bool) -> Void) {
         print("do nothing")
     }
 
-    func putTempRacket(racket: RacketFb, completion: @escaping (Bool) -> Void) {
+    func putRacketString(racketString: RacketStringDTOFb?, storageId: String, completion: @escaping (Bool) -> Void) {
         print("do nothing")
+    }
+
+    func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTOFb]?) -> Void) {
+        print("do nothing")
+    }
+
+    func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringREST]?) -> Void) {
+        dataControl.getDataREST(returnType: [RacketStringREST].self, url: "") { (results) in
+            completion(results)
+        }
     }
 
     func postRacketString(racketString: RacketStringDto, completion: @escaping (Bool) -> Void) {
