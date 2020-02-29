@@ -60,7 +60,7 @@
 		99DEFE2124093943003CF256 /* StringTypeSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE2024093943003CF256 /* StringTypeSingleton.swift */; };
 		99DEFE232409A5A1003CF256 /* RacketStringDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE222409A5A1003CF256 /* RacketStringDto.swift */; };
 		99DEFE27240A775B003CF256 /* RacketStringREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE26240A775B003CF256 /* RacketStringREST.swift */; };
-		99DEFE29240A7FF7003CF256 /* RacketStringDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE28240A7FF7003CF256 /* RacketStringDaoSql.swift */; };
+		99DEFE29240A7FF7003CF256 /* StorageDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE28240A7FF7003CF256 /* StorageDaoSql.swift */; };
 		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
 		B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319DDCD2361DD42007878F6 /* RacketController.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
@@ -202,7 +202,7 @@
 		99DEFE2024093943003CF256 /* StringTypeSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypeSingleton.swift; sourceTree = "<group>"; };
 		99DEFE222409A5A1003CF256 /* RacketStringDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDto.swift; sourceTree = "<group>"; };
 		99DEFE26240A775B003CF256 /* RacketStringREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringREST.swift; sourceTree = "<group>"; };
-		99DEFE28240A7FF7003CF256 /* RacketStringDaoSql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RacketStringDaoSql.swift; sourceTree = "<group>"; };
+		99DEFE28240A7FF7003CF256 /* StorageDaoSql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageDaoSql.swift; sourceTree = "<group>"; };
 		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		B319DDCD2361DD42007878F6 /* RacketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketController.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
@@ -538,7 +538,7 @@
 		B3903C042333650600367E5F /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				99DEFE28240A7FF7003CF256 /* RacketStringDaoSql.swift */,
+				99DEFE28240A7FF7003CF256 /* StorageDaoSql.swift */,
 				B3903C052333652700367E5F /* OrderDAOFirebase.swift */,
 				B3CAF9882341FB67005F5B38 /* TeamDAOFirebase.swift */,
 				B326E87323435C690040E9F3 /* ShopDAOFirebase.swift */,
@@ -882,7 +882,7 @@
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
-				99DEFE29240A7FF7003CF256 /* RacketStringDaoSql.swift in Sources */,
+				99DEFE29240A7FF7003CF256 /* StorageDaoSql.swift in Sources */,
 				99DEFE232409A5A1003CF256 /* RacketStringDto.swift in Sources */,
 				B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
