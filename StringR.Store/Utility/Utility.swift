@@ -54,4 +54,12 @@ class Utility {
     static func getLastChars(string: String, amount: Int) -> String {
         return String(string.suffix(amount))
     }
+
+    static func fetchStaticData() {
+        StringColorSingleton.shared.fetchData()
+        PurposeSingleton.shared.fetchData()
+        RacketBrandSingleton.shared.fetchData()
+        StringBrandSingleton.shared.fetchData()
+        StringTypeSingleton.shared.fetchData()
+    }
 }

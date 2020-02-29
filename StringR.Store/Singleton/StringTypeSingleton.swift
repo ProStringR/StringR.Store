@@ -17,6 +17,16 @@ class StringTypeSingleton {
 
     private init() { }
 
+    func fetchData() {
+        if stringTypes == nil {
+            staticDataController.getAllStringTypes { (stringTypes) in
+                if let stringTypes = stringTypes {
+                    self.stringTypes = stringTypes
+                }
+            }
+        }
+    }
+
     func getAllStringTypes(completion: @escaping ([StringTypesREST]?) -> Void) {
         if let stringTypes = self.stringTypes {
             completion(stringTypes)

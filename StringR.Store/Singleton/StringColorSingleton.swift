@@ -17,6 +17,16 @@ class StringColorSingleton {
 
     private init() { }
 
+    func fetchData() {
+        if colors == nil {
+            staticDataController.getAllColors { (colors) in
+                if let colors = colors {
+                    self.colors = colors
+                }
+            }
+        }
+    }
+
     func getAllColors(completion: @escaping ([StringColorREST]?) -> Void) {
         if let colors = self.colors {
             completion(colors)

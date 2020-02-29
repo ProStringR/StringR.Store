@@ -17,6 +17,16 @@ class StringBrandSingleton {
 
     private init() { }
 
+    func fetchData() {
+        if stringBrands == nil {
+            staticDataController.getAllStringBrands { (stringBrands) in
+                if let stringBrands = stringBrands {
+                    self.stringBrands = stringBrands
+                }
+            }
+        }
+    }
+
     func getAllStringBrands(completion: @escaping ([StringBrandREST]?) -> Void) {
         if let stringBrands = self.stringBrands {
             completion(stringBrands)

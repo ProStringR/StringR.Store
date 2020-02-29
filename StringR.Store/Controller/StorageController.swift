@@ -12,6 +12,15 @@ class StorageController {
 
     let dataControl = ControlReg.getDataController
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
+    let racketStringDao: RacketDAOProtocol = ControlReg.getRacketDAO
+
+    func postRacketString(racket: RacketStringDto?, completion: @escaping (Bool) -> Void) {
+        if let racket = racket {
+            racketStringDao.postRacketString(racketString: racket) { (success) in
+                completion(success)
+            }
+        }
+    }
 
     func putRacketString(racketString: RacketStringFb, storageId: String, completion: @escaping (Bool) -> Void) {
         let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTOFb.self)

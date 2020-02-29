@@ -17,6 +17,8 @@ class OrderViewController: CardCellViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(ShopSingleton.shared.shopId)
+
         intializeStringsForCollectionView()
         setLayout()
         setupCollectionView()

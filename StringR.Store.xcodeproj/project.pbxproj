@@ -58,6 +58,8 @@
 		99DEFE1D24093670003CF256 /* StringBrandSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE1C24093670003CF256 /* StringBrandSingleton.swift */; };
 		99DEFE1F2409387D003CF256 /* StringTypesREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE1E2409387D003CF256 /* StringTypesREST.swift */; };
 		99DEFE2124093943003CF256 /* StringTypeSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE2024093943003CF256 /* StringTypeSingleton.swift */; };
+		99DEFE232409A5A1003CF256 /* RacketStringDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE222409A5A1003CF256 /* RacketStringDto.swift */; };
+		99DEFE252409AE12003CF256 /* RacketStringDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE242409AE12003CF256 /* RacketStringDaoSql.swift */; };
 		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
 		B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319DDCD2361DD42007878F6 /* RacketController.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
@@ -197,6 +199,8 @@
 		99DEFE1C24093670003CF256 /* StringBrandSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBrandSingleton.swift; sourceTree = "<group>"; };
 		99DEFE1E2409387D003CF256 /* StringTypesREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypesREST.swift; sourceTree = "<group>"; };
 		99DEFE2024093943003CF256 /* StringTypeSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypeSingleton.swift; sourceTree = "<group>"; };
+		99DEFE222409A5A1003CF256 /* RacketStringDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDto.swift; sourceTree = "<group>"; };
+		99DEFE242409AE12003CF256 /* RacketStringDaoSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketStringDaoSql.swift; sourceTree = "<group>"; };
 		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		B319DDCD2361DD42007878F6 /* RacketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketController.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 		99BAC07A240912D900114E92 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				99DEFE222409A5A1003CF256 /* RacketStringDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				B382008B2361D52F00C2D666 /* RacketDAOFirebase.swift */,
 				1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */,
 				99DEFE0E24091795003CF256 /* StaticDataDaoSql.swift */,
+				99DEFE242409AE12003CF256 /* RacketStringDaoSql.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -851,6 +857,7 @@
 				1D7455CA23435E2000C33B0C /* RacketDTOFb.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
 				99DEFE15240930F8003CF256 /* PurposeSingleton.swift in Sources */,
+				99DEFE252409AE12003CF256 /* RacketStringDaoSql.swift in Sources */,
 				99DEFE1324092F59003CF256 /* PurposeREST.swift in Sources */,
 				B38C5B84232BC94000116BC1 /* TeamFb.swift in Sources */,
 				1D7455CC23435E9700C33B0C /* CompanyDTOFb.swift in Sources */,
@@ -873,6 +880,7 @@
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
+				99DEFE232409A5A1003CF256 /* RacketStringDto.swift in Sources */,
 				B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B327847B235B592C00D67B9B /* OrderCellGenerel.swift in Sources */,

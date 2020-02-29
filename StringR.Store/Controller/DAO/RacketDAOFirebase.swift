@@ -37,4 +37,8 @@ class RacketDAOFirebase: RacketDAOProtocol {
             completion(succes)
         }
     }
+
+    func postRacketString(racketString: RacketStringDto, completion: @escaping (Bool) -> Void) {
+        print("do nothing")
+    }
 }

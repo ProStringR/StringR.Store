@@ -36,10 +36,15 @@ class AddStringToStorageViewController: UIViewController {
     weak var generelStackView: UIStackView!
     weak var addButton: UIButton!
 
-    let brands = StringBrand.allValues
-    let colors = StringColor.allValues
-    let types = StringType.allValues
-    let purpose = RacketType.allValues
+    var brands: [StringBrandREST] = []
+    var colors: [StringColorREST] = []
+    var types: [StringTypesREST] = []
+    var purpose: [PurposeREST] = []
+
+    var chosenBrand: Int?
+    var chosenColor: Int?
+    var chosenType: Int?
+    var chosenPurpose: Int?
 
     var brandPicker = UIPickerView()
     var colorPicker = UIPickerView()
@@ -58,6 +63,7 @@ class AddStringToStorageViewController: UIViewController {
         initializeLabels()
         initializeTextFields()
         initializeStackView()
+        initalizeStaticData()
         setupPickers()
         setupStackView()
         setConstraints()
@@ -108,6 +114,32 @@ class AddStringToStorageViewController: UIViewController {
         stackView.spacing = Constant.standardOffset
         self.view.addSubview(stackView)
         self.generelStackView = stackView
+    }
+
+    private func initalizeStaticData() {
+        StringColorSingleton.shared.getAllColors { (colors) in
+            if let colors = colors {
+                self.colors = colors
+            }
+        }
+
+        StringBrandSingleton.shared.getAllStringBrands { (stringBrands) in
+            if let stringBrands = stringBrands {
+                self.brands = stringBrands
+            }
+        }
+
+        StringTypeSingleton.shared.getAllStringTypes { (stringTypes) in
+            if let stringTypes = stringTypes {
+                self.types = stringTypes
+            }
+        }
+
+        PurposeSingleton.shared.getAllPurposes { (purposes) in
+            if let purposes = purposes {
+                self.purpose = purposes
+            }
+        }
     }
 
     private func setupPickers() {
@@ -177,8 +209,21 @@ class AddStringToStorageViewController: UIViewController {
         return tempLabel
     }
 
-    private func createStringToAdd() -> RacketStringFb? {
-        return RacketStringFb.init(stringId: Utility.getUUID(), brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: datePicker.date.millisecondsSince1970, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
+    private func createStringToAdd() -> RacketStringDto? {
+
+        return RacketStringDto.init(
+            brand: self.chosenBrand,
+            name: modelInput.text,
+            type: self.chosenType,
+            length: lengthInput.text,
+            pricePerRacket: pricePerRacketInput.text,
+            color: self.chosenColor,
+            purpose: self.chosenPurpose,
+            thickness: thicknessInput.text,
+            date: datePicker.date.millisecondsSince1970,
+            price: buyPriceInput.text)
+
+//        return RacketStringFb.init(stringId: Utility.getUUID(), brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: datePicker.date.millisecondsSince1970, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
     }
 
     @objc func cancelAction() {
@@ -195,9 +240,9 @@ class AddStringToStorageViewController: UIViewController {
             ShopSingleton.shared.getShop { (shop) in
                 guard let shop = shop else { return }
                 let storageId = shop.storageId
-                self.storageController.putRacketString(racketString: stringToAdd, storageId: storageId) { (succes) in
+                self.storageController.postRacketString(racket: stringToAdd) { (succes) in
                     if succes {
-                        self.delegate?.addString(string: stringToAdd)
+//                        self.delegate?.addString(string: stringToAdd)
                     } else {
                         print("cant put it in firebase")
                     }
@@ -244,13 +289,13 @@ extension AddStringToStorageViewController: UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
         case self.brandPicker:
-            return self.brands[row].rawValue
+            return self.brands[row].brand
         case self.colorPicker:
-            return self.colors[row].rawValue
+            return self.colors[row].color
         case self.typePicker:
-            return self.types[row].rawValue
+            return self.types[row].stringType
         case self.purposePicker:
-            return self.purpose[row].rawValue
+            return self.purpose[row].purpose
         default:
             return ""
         }
@@ -259,13 +304,17 @@ extension AddStringToStorageViewController: UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
         case self.brandPicker:
-            self.brandInput.text = self.brands[row].rawValue
+            self.brandInput.text = self.brands[row].brand
+            self.chosenBrand = self.brands[row].id
         case self.colorPicker:
-            self.colorInput.text = self.colors[row].rawValue
+            self.colorInput.text = self.colors[row].color
+            self.chosenColor = self.colors[row].id
         case self.typePicker:
-            self.stringTypeInput.text = self.types[row].rawValue
+            self.stringTypeInput.text = self.types[row].stringType
+            self.chosenType = self.types[row].id
         case self.purposePicker:
-            self.stringPurposeInput.text = self.purpose[row].rawValue
+            self.stringPurposeInput.text = self.purpose[row].purpose
+            self.chosenPurpose = self.purpose[row].id
         default:
             print("Default")
         }

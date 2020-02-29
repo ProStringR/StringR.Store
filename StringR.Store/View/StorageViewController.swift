@@ -18,6 +18,7 @@ class StorageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Utility.fetchStaticData()
         setLayout()
         setupTableView()
         getStorageData()

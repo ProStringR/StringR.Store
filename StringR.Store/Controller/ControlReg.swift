@@ -16,7 +16,7 @@ class ControlReg {
     static let getShopDAO = ShopDAOFirebase()
     static let getCustomerDAO = CustomerDAOFirebase()
     static let getStorageDAO = StorageDAOFirebase()
-    static let getRacketDAO = RacketDAOFirebase()
+    static let getRacketDAO = RacketStringDaoSql()
     static let getAuthenticationDAO = AuthenticationDAOSql()
     static let getStaticDataDao = StaticDataDaoSql()
 

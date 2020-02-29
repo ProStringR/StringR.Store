@@ -17,6 +17,16 @@ class PurposeSingleton {
 
     private init() { }
 
+    func fetchData() {
+        if purposes == nil {
+            staticDataController.getAllPurposes { (purposes) in
+                if let purposes = purposes {
+                    self.purposes = purposes
+                }
+            }
+        }
+    }
+
     func getAllPurposes(completion: @escaping ([PurposeREST]?) -> Void) {
         if let purposes = self.purposes {
             completion(purposes)

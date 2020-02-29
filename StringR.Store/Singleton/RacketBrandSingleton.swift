@@ -17,6 +17,16 @@ class RacketBrandSingleton {
 
     private init() { }
 
+    func fetchData() {
+        if racketBrands == nil {
+            staticDataController.getAllRacketBrands { (racketBrands) in
+                if let racketBrands = racketBrands {
+                    self.racketBrands = racketBrands
+                }
+            }
+        }
+    }
+
     func getAllRacketBrands(completion:@escaping ([RacketBrandREST]?) -> Void) {
         if let racketBrands = self.racketBrands {
             completion(racketBrands)

@@ -16,7 +16,11 @@ class ShopSingleton {
 
     var shop: ShopFb?
 
-    private init() { }
+    var shopId: String = "1"
+
+    private init() {
+        //self.shopId = Utility.readStringFromSharedPref(Constant.shopId)
+    }
 
     func getShop(completion: @escaping (ShopFb?) -> Void) {
         if let shop = self.shop {

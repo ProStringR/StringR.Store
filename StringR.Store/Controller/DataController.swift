@@ -91,6 +91,36 @@ class DataController {
         URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 
+    func postDataREST<T: Codable>(object: T, url: String) throws {
+        guard let url = URL(string: url) else { throw Exception.url }
+
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(Utility.readStringFromSharedPref(Constant.token))", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+
+        do {
+            let data = try JSONEncoder().encode(object)
+            request.httpBody = data
+        } catch {
+            print(error)
+            throw Exception.error
+        }
+
+        URLSession.shared.dataTask(with: request as URLRequest) {(_, error, response) in
+            let res = response
+            let err = error
+
+            if let err = err {
+                print(err)
+
+                if let res = res {
+                    print(res)
+                }
+            }
+        }.resume()
+    }
+
     func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String, completion: @escaping (Bool) -> Void) {
         guard let url = URL(string: "\(url)/\(objectId).json") else { completion(false); return }
 
