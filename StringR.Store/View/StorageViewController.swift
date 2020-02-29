@@ -37,17 +37,6 @@ class StorageViewController: UIViewController {
 
             self.removeSpinner(forSpinner: spinner)
         }
-
-//        ShopSingleton.shared.getShop { (shop) in
-//            guard let shop = shop else { return }
-//            self.storageController.getListOfStringsInStorage(fromShopId: shop.shopId) { (arrayOfRacketStrings) in
-//                if let arrayOfRacketStrings = arrayOfRacketStrings {
-//                    self.strings = arrayOfRacketStrings
-//                    self.updateUI()
-//                }
-//                self.removeSpinner(forSpinner: spinner)
-//            }
-//        }
     }
 
     private func updateUI() {
@@ -167,13 +156,7 @@ extension StorageViewController: UpdateStorageDelegate {
     func addString(string: RacketStringREST?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
-                guard let racketString = string else { return }
-
-                if self.strings != nil {
-                    self.strings?.append(racketString)
-                } else {
-                    self.strings = [racketString]
-                }
+                self.updateData()
 
                 self.updateUI()
                 self.closeAction()
