@@ -13,7 +13,7 @@ class StorageViewController: UIViewController {
 
     weak var storageTableView: UITableView!
     let storageController = ControlReg.getStorageController
-    var strings: [RacketStringFb]?
+    var strings: [RacketStringREST]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +28,26 @@ class StorageViewController: UIViewController {
     private func getStorageData() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         showSpinner(withSpinner: spinner)
-        ShopSingleton.shared.getShop { (shop) in
-            guard let shop = shop else { return }
-            self.storageController.getListOfStringsInStorage(fromShopId: shop.shopId) { (arrayOfRacketStrings) in
-                if let arrayOfRacketStrings = arrayOfRacketStrings {
-                    self.strings = arrayOfRacketStrings
-                    self.updateUI()
-                }
-                self.removeSpinner(forSpinner: spinner)
+
+        self.storageController.getStringsForShop(by: ShopSingleton.shared.shopId) { (racketStrings) in
+            if let racketStrings = racketStrings {
+                self.strings = racketStrings
+                self.updateUI()
             }
+
+            self.removeSpinner(forSpinner: spinner)
         }
+
+//        ShopSingleton.shared.getShop { (shop) in
+//            guard let shop = shop else { return }
+//            self.storageController.getListOfStringsInStorage(fromShopId: shop.shopId) { (arrayOfRacketStrings) in
+//                if let arrayOfRacketStrings = arrayOfRacketStrings {
+//                    self.strings = arrayOfRacketStrings
+//                    self.updateUI()
+//                }
+//                self.removeSpinner(forSpinner: spinner)
+//            }
+//        }
     }
 
     private func updateUI() {
@@ -98,23 +108,28 @@ extension StorageViewController: UITableViewDataSource {
 
         let currentString = storage[indexPath.row]
 
+        print(currentString.stringThickness)
+
         cell.descriptionLabel.text = currentString.getDescription()
 
-        switch currentString.stringPurpose {
-        case .TENNIS:
-            cell.typeIndicator.image = #imageLiteral(resourceName: "tennisball")
-        case .BADMINTON:
-            cell.typeIndicator.image = #imageLiteral(resourceName: "shuttlecock")
-        case .SQUASH:
-            cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
+        if let purpose = currentString.stringPurpose {
+            if purpose == RacketType.TENNIS.rawValue {
+                cell.typeIndicator.image = #imageLiteral(resourceName: "tennisball")
+            } else if purpose == RacketType.BADMINTON.rawValue {
+                cell.typeIndicator.image = #imageLiteral(resourceName: "shuttlecock")
+            } else if purpose == RacketType.SQUASH.rawValue {
+                cell.typeIndicator.image = #imageLiteral(resourceName: "squashball")
+            }
         }
 
-        if currentString.lengthRemaining <= 5 {
-            cell.colorIndicator.image = #imageLiteral(resourceName: "red_circle")
-        } else if currentString.lengthRemaining <= 10 {
-            cell.colorIndicator.image = #imageLiteral(resourceName: "yellow_circle")
-        } else if currentString.lengthRemaining > 10 {
-            cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
+        if let lengthRemaining = currentString.lengthInStock {
+            if lengthRemaining <= 5 {
+                cell.colorIndicator.image = #imageLiteral(resourceName: "red_circle")
+            } else if lengthRemaining <= 10 {
+                cell.colorIndicator.image = #imageLiteral(resourceName: "yellow_circle")
+            } else if lengthRemaining > 10 {
+                cell.colorIndicator.image = #imageLiteral(resourceName: "green_circle")
+            }
         }
 
         cell.accessoryType = .disclosureIndicator
@@ -131,7 +146,7 @@ extension StorageViewController: UITableViewDelegate {
 
         let viewControllerToPresent = SpecificStringInStorageViewController()
         viewControllerToPresent.delegate = self
-        viewControllerToPresent.racketString = self.strings?[indexPath.row]
+//        viewControllerToPresent.racketString = self.strings?[indexPath.row]
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
 
@@ -144,7 +159,7 @@ extension StorageViewController: UpdateStorageDelegate {
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
                 guard let racketString = string else { return }
-                self.strings?.removeAll(where: {$0.stringId == racketString.stringId})
+//                self.strings?.removeAll(where: {$0.stringId == racketString.stringId})
                 self.updateUI()
                 self.closeAction()
             }
@@ -156,11 +171,11 @@ extension StorageViewController: UpdateStorageDelegate {
             self.dismiss(animated: true) {
                 guard let racketString = string else { return }
 
-                if self.strings != nil {
-                    self.strings?.append(racketString)
-                } else {
-                    self.strings = [racketString]
-                }
+//                if self.strings != nil {
+//                    self.strings?.append(racketString)
+//                } else {
+//                    self.strings = [racketString]
+//                }
 
                 self.updateUI()
                 self.closeAction()

@@ -15,9 +15,9 @@ class RacketStringREST: Codable {
     var stringModel: String?
     var stringType: String?
     var stringBrand: String?
-    var thickness: Double?
-    var purpose: String?
-    var color: String?
+    var stringThickness: Double?
+    var stringPurpose: String?
+    var stringColor: String?
 
     init(stringId: Int?, price: Double?, lengthInStock: Double?, stringModel: String?, stringType: String?, stringBrand: String?, thickness: Double?, purpose: String?, color: String?) {
          self.stringId = stringId
@@ -26,8 +26,16 @@ class RacketStringREST: Codable {
          self.stringModel = stringModel
          self.stringType = stringType
          self.stringBrand = stringBrand
-         self.thickness = thickness
-         self.purpose = purpose
-         self.color = color
+         self.stringThickness = thickness
+         self.stringPurpose = purpose
+         self.stringColor = color
      }
+
+    func getDescription() -> String {
+        if let brand = self.stringBrand, let model = self.stringModel, let thick = self.stringThickness {
+            return "\(brand) | \(model) | \(thick)"
+        } else {
+            return "Could not fetch data"
+        }
+    }
 }

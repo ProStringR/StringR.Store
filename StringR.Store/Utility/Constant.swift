@@ -22,6 +22,7 @@ class Constant {
     static let allStringBrands = "\(baseUrl)\(staticData)/all-string-brands"
     static let allStringTypes = "\(baseUrl)\(staticData)/all-string-types"
     static let postRacketString = "\(baseUrl)\(racketString)"
+    static let getRacketStringsForShop = "\(baseUrl)\(racketString)/shop"
 
     // Numbers
     static let noOffset = CGFloat(0)

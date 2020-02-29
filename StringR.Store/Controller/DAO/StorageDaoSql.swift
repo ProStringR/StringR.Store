@@ -24,12 +24,9 @@ class StorageDaoSql: StorageDAOProtocol {
         print("do nothing")
     }
 
-    func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTOFb]?) -> Void) {
-        print("do nothing")
-    }
-
     func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringREST]?) -> Void) {
-        dataControl.getDataREST(returnType: [RacketStringREST].self, url: "") { (results) in
+        let url = "\(Constant.getRacketStringsForShop)/\(id)"
+        dataControl.getDataREST(returnType: [RacketStringREST].self, url: url) { (results) in
             completion(results)
         }
     }

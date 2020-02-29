@@ -33,9 +33,10 @@ class StorageDAOFirebase: StorageDAOProtocol {
     }
 
     func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringDTOFb]?) -> Void) {
-        dataControl.getListOfData(returnType: RacketStringDTOFb.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
-            completion(resultArray)
-        }
+//        dataControl.getListOfData(returnType: RacketStringDTOFb.self, url: "\(Firebase.storage)/\(id)") { (resultArray) in
+//            completion(resultArray)
+//        }
+        print("wrong implementation")
     }
 
     func deleteStringFromStorage(fromShop shopId: String, stringId: String, completion: @escaping (Bool) -> Void) {

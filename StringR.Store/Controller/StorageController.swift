@@ -12,13 +12,18 @@ class StorageController {
 
     let dataControl = ControlReg.getDataController
     let storageDAO: StorageDAOProtocol = ControlReg.getStorageDAO
-    let racketStringDao: RacketDAOProtocol = ControlReg.getRacketDAO
 
     func postRacketString(racket: RacketStringDto?, completion: @escaping (Bool) -> Void) {
         if let racket = racket {
-            racketStringDao.postRacketString(racketString: racket) { (success) in
+            storageDAO.postRacketString(racketString: racket) { (success) in
                 completion(success)
             }
+        }
+    }
+
+    func getStringsForShop(by shopId: String, completion: @escaping ([RacketStringREST]?) -> Void) {
+        storageDAO.getStringsInStorage(basedOnId: shopId) { (racketStrings) in
+            completion(racketStrings)
         }
     }
 
