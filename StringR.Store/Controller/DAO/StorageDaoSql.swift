@@ -32,10 +32,8 @@ class StorageDaoSql: StorageDAOProtocol {
     }
 
     func postRacketString(racketString: RacketStringDto, completion: @escaping (Bool) -> Void) {
-        do {
-            try dataControl.postDataREST(object: racketString, url: Constant.postRacketString)
-        } catch {
-            print(error)
-        }
+        dataControl.postDataREST(object: racketString, url: Constant.postRacketString, completion: { (success) in
+            completion(success)
+        })
     }
 }

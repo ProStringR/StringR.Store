@@ -19,16 +19,19 @@ class RacketStringREST: Codable {
     var stringPurpose: String?
     var stringColor: String?
 
-    init(stringId: Int?, price: Double?, lengthInStock: Double?, stringModel: String?, stringType: String?, stringBrand: String?, thickness: Double?, purpose: String?, color: String?) {
-         self.stringId = stringId
-         self.price = price
-         self.lengthInStock = lengthInStock
-         self.stringModel = stringModel
-         self.stringType = stringType
-         self.stringBrand = stringBrand
-         self.stringThickness = thickness
-         self.stringPurpose = purpose
-         self.stringColor = color
+    init?(stringId: Int?, price: String?, lengthInStock: String?, stringModel: String?, stringType: String?, stringBrand: String?, thickness: String?, purpose: String?, color: String?) {
+
+        guard let lengthInStock = lengthInStock, let price = price, let thickness = thickness else { return nil}
+
+        self.stringId = stringId
+        self.price = Double(price)
+        self.lengthInStock = Double(lengthInStock)
+        self.stringModel = stringModel
+        self.stringType = stringType
+        self.stringBrand = stringBrand
+        self.stringThickness = Double(thickness)
+        self.stringPurpose = purpose
+        self.stringColor = color
      }
 
     func getDescription() -> String {

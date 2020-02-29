@@ -210,7 +210,6 @@ class AddStringToStorageViewController: UIViewController {
     }
 
     private func createStringToAdd() -> RacketStringDto? {
-
         return RacketStringDto.init(
             brand: self.chosenBrand,
             name: modelInput.text,
@@ -226,6 +225,19 @@ class AddStringToStorageViewController: UIViewController {
 //        return RacketStringFb.init(stringId: Utility.getUUID(), brand: brandInput.text, modelName: modelInput.text, stringType: stringTypeInput.text, length: lengthInput.text, buyDate: datePicker.date.millisecondsSince1970, buyPrice: buyPriceInput.text, pricePerRacket: pricePerRacketInput.text, thickness: thicknessInput.text, color: colorInput.text, stringPurpose: stringPurposeInput.text)
     }
 
+    private func stringToShow() -> RacketStringREST? {
+        return RacketStringREST.init(
+            stringId: 0,
+            price: pricePerRacketInput.text,
+            lengthInStock: lengthInput.text,
+            stringModel: modelInput.text,
+            stringType: stringTypeInput.text,
+            stringBrand: brandInput.text,
+            thickness: thicknessInput.text,
+            purpose: stringPurposeInput.text,
+            color: colorInput.text)
+    }
+
     @objc func cancelAction() {
         DispatchQueue.main.async {
             self.navigationController?.dismiss(animated: true, completion: nil)
@@ -235,17 +247,12 @@ class AddStringToStorageViewController: UIViewController {
 
     @objc func addAction() {
         let stringToAdd = createStringToAdd()
+        let stringToShow = self.stringToShow()
 
         if let stringToAdd = stringToAdd {
-            ShopSingleton.shared.getShop { (shop) in
-                guard let shop = shop else { return }
-                let storageId = shop.storageId
-                self.storageController.postRacketString(racket: stringToAdd) { (succes) in
-                    if succes {
-//                        self.delegate?.addString(string: stringToAdd)
-                    } else {
-                        print("cant put it in firebase")
-                    }
+            self.storageController.postRacketString(racket: stringToAdd) { (succes) in
+                if succes {
+                    self.delegate?.addString(string: stringToShow)
                 }
             }
         } else {

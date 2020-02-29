@@ -13,7 +13,7 @@ class Constant {
 
     //REST API
     static let baseUrl = "https://prostringr.com/api/v1"
-    static let authenticationUrl = "\(baseUrl)/authentication"
+    static let authenticationUrl = "\(baseUrl)/authentication/shop"
     static let staticData = "/staticdata"
     static let racketString = "/racketstring"
     static let allColorsStaticData = "\(baseUrl)\(staticData)/all-colors"

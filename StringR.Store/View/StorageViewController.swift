@@ -108,8 +108,6 @@ extension StorageViewController: UITableViewDataSource {
 
         let currentString = storage[indexPath.row]
 
-        print(currentString.stringThickness)
-
         cell.descriptionLabel.text = currentString.getDescription()
 
         if let purpose = currentString.stringPurpose {
@@ -166,16 +164,16 @@ extension StorageViewController: UpdateStorageDelegate {
         }
     }
 
-    func addString(string: RacketStringFb?) {
+    func addString(string: RacketStringREST?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
                 guard let racketString = string else { return }
 
-//                if self.strings != nil {
-//                    self.strings?.append(racketString)
-//                } else {
-//                    self.strings = [racketString]
-//                }
+                if self.strings != nil {
+                    self.strings?.append(racketString)
+                } else {
+                    self.strings = [racketString]
+                }
 
                 self.updateUI()
                 self.closeAction()

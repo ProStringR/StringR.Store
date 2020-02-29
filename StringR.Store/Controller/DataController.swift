@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class DataController {
 
@@ -63,69 +64,56 @@ class DataController {
         URLSession.shared.dataTask(with: request as URLRequest).resume()
     }
 
-    func postDataREST<T: Codable>(object: T, url: String) throws {
-        guard let url = URL(string: url) else { throw Exception.url }
+    func postDataREST<T: Codable>(object: T, url: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: url) else { completion(false); return }
 
-        var request = URLRequest(url: url)
-        request.addValue("Bearer \(Utility.readStringFromSharedPref(Constant.token))", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(Utility.readStringFromSharedPref(Constant.token))",
+            "Accept": "application/json"
+        ]
 
-        do {
-            let data = try JSONEncoder().encode(object)
-            request.httpBody = data
-        } catch {
-            print(error)
-            throw Exception.error
-        }
+        AF.request(url, method: .post, parameters: object, encoder: JSONParameterEncoder.default, headers: headers).response { response in
 
-        URLSession.shared.dataTask(with: request as URLRequest) {(_, error, response) in
-            let res = response
-            let err = error
-
-            if let err = err {
-                print(err)
-
-                if let res = res {
-                    print(res)
+            if let res = response.response?.statusCode {
+                if res < 300 && res >= 200 {
+                    completion(true)
+                } else {
+                    completion(false)
                 }
+            } else {
+                completion(false)
             }
-        }.resume()
+        }
     }
 
     func getDataREST<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) {
 
         guard let url = URL(string: url) else { completion(nil); return }
 
-        var request = URLRequest(url: url)
-        request.addValue("Bearer \(Utility.readStringFromSharedPref(Constant.token))", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(Utility.readStringFromSharedPref(Constant.token))",
+            "Accept": "application/json"
+        ]
 
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
-            // TODO: if we want to handle the error or respons
-            let res = response
-            let err = error
-
-            if let err = err {
-                print(err)
-
-                if let res = res {
-                    print(res)
-                }
-            }
-
-            if let data = data {
-                do {
-                    let object = try JSONDecoder().decode(returnType, from: data)
-                    completion(object)
-                } catch {
+        AF.request(url, method: .get, headers: headers).response { response in
+            if let res = response.response?.statusCode {
+                if res < 300 && res >= 200 {
+                    if let data = response.data {
+                        do {
+                            let object = try JSONDecoder().decode(returnType, from: data)
+                            completion(object)
+                        } catch {
+                            completion(nil)
+                        }
+                    }
+                } else {
                     completion(nil)
                 }
+            } else {
+                completion(nil)
             }
-        }.resume()
+        }
     }
-
 
     func putData<T: Codable>(objectToUpdate object: T, objectId: String, url: String, completion: @escaping (Bool) -> Void) {
         guard let url = URL(string: "\(url)/\(objectId).json") else { completion(false); return }

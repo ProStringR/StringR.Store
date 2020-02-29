@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.2)
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
@@ -7,6 +8,7 @@ PODS:
   - SwiftLint (0.39.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0)
   - Charts
   - IQKeyboardManagerSwift
   - JWTDecode (~> 2.4)
@@ -14,17 +16,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Charts
     - IQKeyboardManagerSwift
     - JWTDecode
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
   JWTDecode: 0930fb517c27bac2daef7cabc13577b18fdee0da
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: 2006b225983f54c6d4f21436ae7097cdde586697
+PODFILE CHECKSUM: a7d0545cd91cbb6545d2e1bae80284e190343196
 
 COCOAPODS: 1.8.4

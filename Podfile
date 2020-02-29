@@ -10,4 +10,5 @@ target 'StringR.Store' do
     pod 'IQKeyboardManagerSwift'
     pod 'JWTDecode', '~> 2.4'
     pod 'SwiftLint'
+    pod 'Alamofire', '~> 5.0'
 end
