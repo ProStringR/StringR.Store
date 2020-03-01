@@ -45,8 +45,8 @@ class SpecificStringInStorageViewController: UIViewController {
     weak var additionButton: UIButton!
     weak var historyTableView: UITableView!
 
-    var racketString: RacketStringFb?
-    var purchaseHistoryList: [PurchaseHistoryFb]?
+    var racketString: RacketStringREST?
+    var purchaseHistoryList: [PurchaseHistoryREST]?
     var datePicker = UIDatePicker()
 
     override func viewDidLoad() {
@@ -168,9 +168,9 @@ class SpecificStringInStorageViewController: UIViewController {
         if let racketString = racketString {
             self.purchaseHistoryList = racketString.purchaseHistory
 
-            self.brand.text = racketString.brand.rawValue
-            self.model.text = racketString.modelName
-            self.type.text = racketString.stringType.rawValue
+            self.brand.text = racketString.stringBrand
+            self.model.text = racketString.stringModel
+            self.type.text = racketString.stringType
 
             self.updateUI()
         }
@@ -181,8 +181,8 @@ class SpecificStringInStorageViewController: UIViewController {
             self.historyTableView.reloadData()
 
             if let racketString = self.racketString {
-                self.lengthRemaining.text = "\(Int(racketString.length)) m"
-                self.price.text = "\(Int(racketString.pricePerRacket)) kr"
+                self.lengthRemaining.text = "\(Int(racketString.lengthInStock ?? 0)) m"
+                self.price.text = "\(Int(racketString.price ?? 0)) kr"
             }
         }
     }
@@ -221,11 +221,11 @@ class SpecificStringInStorageViewController: UIViewController {
         }
     }
 
-    private func createHistoryItem() -> PurchaseHistoryFb? {
+    private func createHistoryItem() -> PurchaseHistoryREST? {
         guard let date = dateInput.text, let price = priceInput.text, let length = lengthInput.text else { return nil }
         if date.isEmpty || price.isEmpty || length.isEmpty { return nil }
 
-        return PurchaseHistoryFb.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
+        return PurchaseHistoryREST.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
     }
 
     private func cleanUpInputFields() {
@@ -250,29 +250,29 @@ class SpecificStringInStorageViewController: UIViewController {
     @objc func onAddButtonClicked(_ sender: UIButton) {
         let purchaseHistory = createHistoryItem()
         let spinner = LayoutController.getSpinner(forParent: self.view)
-        self.showSpinner(withSpinner: spinner)
+//        self.showSpinner(withSpinner: spinner)
 
-        ShopSingleton.shared.getShop { (shop) in
-            if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
-                self.purchaseHistoryList?.append(purchaseHistory)
-                self.racketString?.updateLength(length: purchaseHistory.length)
-                self.racketString?.purchaseHistory?.append(purchaseHistory)
-
-                self.storageController.putRacketString(racketString: racketString, storageId: shop.storageId) { (succes) in
-                    if succes {
-                        self.cleanUpInputFields()
-                        self.updateUI()
-                    } else {
-                        print("something went wrong on updating database, async")
-                    }
-
-                    self.removeSpinner(forSpinner: spinner)
-                }
-            } else {
-                self.removeSpinner(forSpinner: spinner)
-                self.presentDefaultAlert()
-            }
-        }
+//        ShopSingleton.shared.getShop { (shop) in
+//            if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
+//                self.purchaseHistoryList?.append(purchaseHistory)
+//                self.racketString?.updateLength(length: purchaseHistory.length)
+//                self.racketString?.purchaseHistory?.append(purchaseHistory)
+//
+//                self.storageController.putRacketString(racketString: racketString, storageId: shop.storageId) { (succes) in
+//                    if succes {
+//                        self.cleanUpInputFields()
+//                        self.updateUI()
+//                    } else {
+//                        print("something went wrong on updating database, async")
+//                    }
+//
+//                    self.removeSpinner(forSpinner: spinner)
+//                }
+//            } else {
+//                self.removeSpinner(forSpinner: spinner)
+//                self.presentDefaultAlert()
+//            }
+//        }
     }
 
     @objc func cancelAction() {
@@ -290,16 +290,16 @@ class SpecificStringInStorageViewController: UIViewController {
                         _ = alert
                         let spinner = LayoutController.getSpinner(forParent: self.view)
                         self.showSpinner(withSpinner: spinner)
-                        // remove string from team
-                        self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
-                            if sucess {
-                                self.delegate?.removeString(string: self.racketString)
-                            } else {
-                                print("something went wrong during deletion of string from storage, async")
-                            }
-
-                            self.removeSpinner(forSpinner: spinner)
-                        })
+                        // remove string from storage
+//                        self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
+//                            if sucess {
+//                                self.delegate?.removeString(string: self.racketString)
+//                            } else {
+//                                print("something went wrong during deletion of string from storage, async")
+//                            }
+//
+//                            self.removeSpinner(forSpinner: spinner)
+//                        })
                     }))
 
                     alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .default, handler: nil))
@@ -335,9 +335,9 @@ extension SpecificStringInStorageViewController: UITableViewDataSource {
 
         let item = purchaseHistory[indexPath.row]
 
-        let date = Utility.dateToString(date: Date.init(milliseconds: item.date), withTime: false)
+        let date = Utility.dateToString(date: Date.init(milliseconds: item.transactionDate), withTime: false)
         cell.leftLabel.text = "\(date) | \(String(Int(item.price))) kr"
-        cell.rightLabel.text = "\(Int(item.length)) m"
+        cell.rightLabel.text = "\(Int(item.lengthAdded)) m"
 
         // not clickable
         cell.selectionStyle = .none

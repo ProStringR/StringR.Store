@@ -18,6 +18,7 @@ class RacketStringREST: Codable {
     var stringThickness: Double?
     var stringPurpose: String?
     var stringColor: String?
+    var purchaseHistory: [PurchaseHistoryREST]?
 
     init?(stringId: Int?, price: String?, lengthInStock: String?, stringModel: String?, stringType: String?, stringBrand: String?, thickness: String?, purpose: String?, color: String?) {
 

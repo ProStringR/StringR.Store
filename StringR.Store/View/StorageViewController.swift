@@ -133,7 +133,7 @@ extension StorageViewController: UITableViewDelegate {
 
         let viewControllerToPresent = SpecificStringInStorageViewController()
         viewControllerToPresent.delegate = self
-//        viewControllerToPresent.racketString = self.strings?[indexPath.row]
+        viewControllerToPresent.racketString = self.strings?[indexPath.row]
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)
         self.navigationController?.present(popUp, animated: true, completion: nil)
 
