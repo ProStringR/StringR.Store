@@ -142,11 +142,11 @@ extension StorageViewController: UITableViewDelegate {
 }
 
 extension StorageViewController: UpdateStorageDelegate {
-    func removeString(string: RacketStringFb?) {
+    func removeString(string: RacketStringREST?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
                 guard let racketString = string else { return }
-//                self.strings?.removeAll(where: {$0.stringId == racketString.stringId})
+                self.strings?.removeAll(where: {$0.stringId == racketString.stringId})
                 self.updateUI()
                 self.closeAction()
             }

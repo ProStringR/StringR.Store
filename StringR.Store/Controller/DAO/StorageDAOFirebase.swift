@@ -48,4 +48,12 @@ class StorageDAOFirebase: StorageDAOProtocol {
     func postRacketString(racketString: RacketStringDto, completion: @escaping (Bool) -> Void) {
         print("wrong implementation")
     }
+
+    func putStringPurchaseHistoryItem(for item: PurchaseHistoryREST, completion: @escaping (Bool) -> Void) {
+        print("wrong implementation")
+    }
+
+    func deleteString(stringId: Int, completion: @escaping (Bool) -> Void) {
+        print("wrong implementation")
+    }
 }

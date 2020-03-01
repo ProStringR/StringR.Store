@@ -42,4 +42,10 @@ class RacketStringREST: Codable {
             return "Could not fetch data"
         }
     }
+
+    func updateLength(length: Double) {
+        if var lengthInStock = self.lengthInStock {
+            lengthInStock += length
+        }
+    }
 }

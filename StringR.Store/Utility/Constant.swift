@@ -15,14 +15,13 @@ class Constant {
     static let baseUrl = "https://prostringr.com/api/v1"
     static let authenticationUrl = "\(baseUrl)/authentication/shop"
     static let staticData = "/staticdata"
-    static let racketString = "/racketstring"
+    static let racketString = "\(baseUrl)/racketstring"
     static let allColorsStaticData = "\(baseUrl)\(staticData)/all-colors"
     static let allPurposes = "\(baseUrl)\(staticData)/all-purposes"
     static let allRacketBrands = "\(baseUrl)\(staticData)/all-racket-brands"
     static let allStringBrands = "\(baseUrl)\(staticData)/all-string-brands"
     static let allStringTypes = "\(baseUrl)\(staticData)/all-string-types"
-    static let postRacketString = "\(baseUrl)\(racketString)"
-    static let getRacketStringsForShop = "\(baseUrl)\(racketString)/shop"
+    static let getRacketStringsForShop = "\(racketString)/shop"
 
     // Numbers
     static let noOffset = CGFloat(0)

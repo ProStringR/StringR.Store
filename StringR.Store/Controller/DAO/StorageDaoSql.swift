@@ -32,8 +32,22 @@ class StorageDaoSql: StorageDAOProtocol {
     }
 
     func postRacketString(racketString: RacketStringDto, completion: @escaping (Bool) -> Void) {
-        dataControl.postDataREST(object: racketString, url: Constant.postRacketString, completion: { (success) in
+        dataControl.postDataREST(object: racketString, url: Constant.racketString, completion: { (success) in
             completion(success)
         })
+    }
+
+    func putStringPurchaseHistoryItem(for item: PurchaseHistoryREST, completion: @escaping (Bool) -> Void) {
+        if let racketStringId = item.racketStringId {
+            dataControl.putDataREST(object: item, url: "\(Constant.racketString)/shop/\(racketStringId)") { (success) in
+                completion(success)
+            }
+        }
+    }
+
+    func deleteString(stringId: Int, completion: @escaping (Bool) -> Void) {
+        dataControl.deleteDataREST(object: stringId, url: "\(Constant.racketString)/delete/\(stringId)") { (success) in
+            completion(success)
+        }
     }
 }

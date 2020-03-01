@@ -27,6 +27,18 @@ class StorageController {
         }
     }
 
+    func putStringPurchaseHistoryItem(for item: PurchaseHistoryREST, completion: @escaping (Bool) -> Void) {
+        storageDAO.putStringPurchaseHistoryItem(for: item) { (success) in
+            completion(success)
+        }
+    }
+
+    func deleteString(stringId: Int, completion: @escaping (Bool) -> Void) {
+        storageDAO.deleteString(stringId: stringId) { (success) in
+            completion(success)
+        }
+    }
+
     func putRacketString(racketString: RacketStringFb, storageId: String, completion: @escaping (Bool) -> Void) {
         let racketStringDTO = dataControl.createObject(fromObject: racketString, toObject: RacketStringDTOFb.self)
         storageDAO.putRacketString(racketString: racketStringDTO, storageId: storageId) { (succes) in

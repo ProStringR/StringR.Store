@@ -21,8 +21,8 @@ class PurchaseHistoryREST: Codable {
         self.price = price
     }
 
-    init?(date: Int64, length: String?, price: String?) {
-        guard let length = length, let price = price else { return nil }
+    init?(date: Int64, length: String?, price: String?, racketStringId: Int?) {
+        guard let length = length, let price = price, let racketStringId = racketStringId else { return nil }
 
         if length.isEmpty || price.isEmpty { return nil }
 
@@ -30,6 +30,7 @@ class PurchaseHistoryREST: Codable {
             self.transactionDate = date
             self.lengthAdded = length
             self.price = price
+            self.racketStringId = racketStringId
         } else {
             return nil
         }

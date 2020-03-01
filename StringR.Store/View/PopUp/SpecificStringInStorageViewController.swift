@@ -225,7 +225,7 @@ class SpecificStringInStorageViewController: UIViewController {
         guard let date = dateInput.text, let price = priceInput.text, let length = lengthInput.text else { return nil }
         if date.isEmpty || price.isEmpty || length.isEmpty { return nil }
 
-        return PurchaseHistoryREST.init(date: datePicker.date.millisecondsSince1970, length: length, price: price)
+        return PurchaseHistoryREST.init(date: datePicker.date.millisecondsSince1970, length: length, price: price, racketStringId: self.racketString?.stringId)
     }
 
     private func cleanUpInputFields() {
@@ -250,29 +250,26 @@ class SpecificStringInStorageViewController: UIViewController {
     @objc func onAddButtonClicked(_ sender: UIButton) {
         let purchaseHistory = createHistoryItem()
         let spinner = LayoutController.getSpinner(forParent: self.view)
-//        self.showSpinner(withSpinner: spinner)
 
-//        ShopSingleton.shared.getShop { (shop) in
-//            if let purchaseHistory = purchaseHistory, let racketString = self.racketString, let shop = shop {
-//                self.purchaseHistoryList?.append(purchaseHistory)
-//                self.racketString?.updateLength(length: purchaseHistory.length)
-//                self.racketString?.purchaseHistory?.append(purchaseHistory)
-//
-//                self.storageController.putRacketString(racketString: racketString, storageId: shop.storageId) { (succes) in
-//                    if succes {
-//                        self.cleanUpInputFields()
-//                        self.updateUI()
-//                    } else {
-//                        print("something went wrong on updating database, async")
-//                    }
-//
-//                    self.removeSpinner(forSpinner: spinner)
-//                }
-//            } else {
-//                self.removeSpinner(forSpinner: spinner)
-//                self.presentDefaultAlert()
-//            }
-//        }
+        if let purchaseHistory = purchaseHistory {
+            self.purchaseHistoryList?.append(purchaseHistory)
+            self.racketString?.updateLength(length: purchaseHistory.lengthAdded)
+            self.racketString?.purchaseHistory?.append(purchaseHistory)
+
+            self.storageController.putStringPurchaseHistoryItem(for: purchaseHistory) { (success) in
+                if success {
+                    self.cleanUpInputFields()
+                    self.updateUI()
+                } else {
+                    print("something went wrong on updating database, async")
+                }
+
+                self.removeSpinner(forSpinner: spinner)
+            }
+        } else {
+            self.removeSpinner(forSpinner: spinner)
+            self.presentDefaultAlert()
+        }
     }
 
     @objc func cancelAction() {
@@ -281,34 +278,31 @@ class SpecificStringInStorageViewController: UIViewController {
     }
 
     @objc func deleteAction() {
-        ShopSingleton.shared.getShop { (shop) in
-            if let shop = shop, let strindId = self.racketString?.stringId {
-                // make an alert
-                DispatchQueue.main.async {
-                    let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "specificString_alertHeder"), withMessage: Utility.getString(forKey: "specificString_alertMessege"))
-                    alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
-                        _ = alert
-                        let spinner = LayoutController.getSpinner(forParent: self.view)
-                        self.showSpinner(withSpinner: spinner)
-                        // remove string from storage
-//                        self.storageController.deleteStringFromStorage(fromShop: shop.shopId, stringId: strindId, completion: { (sucess) in
-//                            if sucess {
-//                                self.delegate?.removeString(string: self.racketString)
-//                            } else {
-//                                print("something went wrong during deletion of string from storage, async")
-//                            }
-//
-//                            self.removeSpinner(forSpinner: spinner)
-//                        })
-                    }))
+        if let racketStringId = racketString?.stringId {
+            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "specificString_alertHeder"), withMessage: Utility.getString(forKey: "specificString_alertMessege"))
 
-                    alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .default, handler: nil))
-                    // present the alert
-                    self.present(alert, animated: true)
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
+                _ = alert
+                let spinner = LayoutController.getSpinner(forParent: self.view)
+                self.showSpinner(withSpinner: spinner)
+
+                self.storageController.deleteString(stringId: racketStringId) { (success) in
+                    if success {
+                        self.delegate?.removeString(string: self.racketString)
+                    } else {
+                        print("something went wrong during deletion of string from storage, async")
+                    }
+
+                    self.removeSpinner(forSpinner: spinner)
                 }
-            } else {
-                self.presentDefaultAlert()
-            }
+            }))
+
+            alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .default, handler: nil))
+            // present the alert
+            self.present(alert, animated: true)
+
+        } else {
+            self.presentDefaultAlert()
         }
     }
 

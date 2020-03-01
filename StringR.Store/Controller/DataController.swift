@@ -86,6 +86,50 @@ class DataController {
         }
     }
 
+    func putDataREST<T: Codable>(object: T, url: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: url) else { completion(false); return }
+
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(Utility.readStringFromSharedPref(Constant.token))",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .put, parameters: object, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+
+            if let res = response.response?.statusCode {
+                if res < 300 && res >= 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            } else {
+                completion(false)
+            }
+        }
+    }
+
+    func deleteDataREST<T: Codable>(object: T, url: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: url) else { completion(false); return }
+
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(Utility.readStringFromSharedPref(Constant.token))",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .delete, parameters: object, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+
+            if let res = response.response?.statusCode {
+                if res < 300 && res >= 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            } else {
+                completion(false)
+            }
+        }
+    }
+
     func getDataREST<T: Codable>(returnType: T.Type, url: String, completion: @escaping (T?) -> Void) {
 
         guard let url = URL(string: url) else { completion(nil); return }
