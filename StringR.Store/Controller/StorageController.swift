@@ -85,11 +85,11 @@ class StorageController {
         }
     }
 
-    func filterStrings(racketStrings: [RacketStringFb], by purpose: RacketType) -> [RacketStringFb] {
+    func filterStrings(racketStrings: [RacketStringREST], by purpose: RacketType) -> [RacketStringREST] {
 
-        var stringsToReturn: [RacketStringFb] = []
+        var stringsToReturn: [RacketStringREST] = []
 
-        for string in racketStrings where string.stringPurpose == purpose {
+        for string in racketStrings where string.stringPurpose! == purpose.rawValue {
             stringsToReturn.append(string)
         }
 

@@ -47,17 +47,17 @@ class CreateOrderViewController: UIViewController {
 
     weak var placeOrderButton: UIButton!
 
-    var customer: CustomerFb?
+    var customer: CustomerREST?
     var racketType: RacketType?
-    var racketString: RacketStringFb?
+    var racketString: RacketStringREST?
     var stringer: StringerFb?
     var deliveryDate: Date?
-    var racketBrand: RacketBrand?
+    var racketBrand: RacketBrandREST?
 
-    var racketStrings: [RacketStringFb]?
-    var avalibleRacketString: [RacketStringFb]?
+    var racketStrings: [RacketStringREST]?
+    var avalibleRacketString: [RacketStringREST]?
     var stringers: [StringerFb]?
-    var racketBrands = RacketBrand.allValues
+    var racketBrands: [RacketBrandREST]?
     var racketStringsPickerView = UIPickerView()
     var stringersPickerView = UIPickerView()
     var datePicker = UIDatePicker()
@@ -87,6 +87,7 @@ class CreateOrderViewController: UIViewController {
         // Get data
         getStringers()
         getRacketStrings()
+        initializeRacketBrandPickerViewData()
 
         // set tapGesture to close keyboard
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
@@ -107,15 +108,20 @@ class CreateOrderViewController: UIViewController {
     }
 
     private func getRacketStrings() {
-        ShopSingleton.shared.getShop { (shop) in
-            guard let shop = shop else { return }
-            self.storageController.getListOfStringsInStorage(fromShopId: shop.storageId) { (result) in
-                if let racketStrings = result {
-                    self.racketStrings = racketStrings
-                    self.reloadPickers()
-                }
+        self.storageController.getStringsForShop(by: ShopSingleton.shared.shopId) { (racketStrings) in
+            if let racketStrings = racketStrings {
+                self.racketStrings = racketStrings
             }
         }
+//        ShopSingleton.shared.getShop { (shop) in
+//            guard let shop = shop else { return }
+//            self.storageController.getListOfStringsInStorage(fromShopId: shop.storageId) { (result) in
+//                if let racketStrings = result {
+//                    self.racketStrings = racketStrings
+//                    self.reloadPickers()
+//                }
+//            }
+//        }
     }
 
     private func setupView() {
@@ -277,6 +283,14 @@ class CreateOrderViewController: UIViewController {
         self.deliveryDateTextField.inputView = self.datePicker
     }
 
+    private func initializeRacketBrandPickerViewData() {
+        RacketBrandSingleton.shared.getAllRacketBrands { (racketBrands) in
+            if let racketBrands = racketBrands {
+                self.racketBrands = racketBrands
+            }
+        }
+    }
+
     @objc func dataChanged(datePicker: UIDatePicker) {
         self.deliveryDateTextField.text = Utility.dateToString(date: datePicker.date)
         self.deliveryDate = datePicker.date
@@ -298,80 +312,92 @@ class CreateOrderViewController: UIViewController {
     @objc func placeOrderClicked(_ sender: UIButton) {
         guard let customer = self.customer, let verticalTension = self.tensionVerticalTextField.text, let horizontalTension = self.tensionHorizontalTextField.text, let price = self.priceTextField.text, let racketBrand = self.racketBrand, let racketModel = self.racketModelTextView.text, let comment = self.commentTextField.text else { submissionFailed(); return }
 
-        ShopSingleton.shared.getShop { (shop) in
-            if let shop = shop {
-
-                // TODO: delete, when we have racket on the Customer. Then pass the racketId on to the order.
-                let tempRacket = RacketFb(racketId: Utility.getUUID(), brand: racketBrand, modelName: racketModel)
-
-                let order = OrderFb.init(orderId: Utility.getUUID(), customerId: customer.userId, stringerId: self.stringer?.userId, shopId: shop.shopId, racketId: tempRacket.racketId, racketType: self.racketType, tensionVertical: Double(verticalTension.replacingOccurrences(of: ",", with: ".")), tensionHorizontal: Double(horizontalTension.replacingOccurrences(of: ",", with: ".")), stringId: self.racketString?.stringId, deliveryDate: self.deliveryDate?.millisecondsSince1970, price: Double(price), paid: false)
-
-                order?.comment = comment
-
-                self.racketController.putRacket(racket: tempRacket) { (succes) in
-                    if succes {
-                        self.orderController.putOrder(order: order) { (succes) in
-                            if succes {
-                                // set orderId to stringer
-                                guard let order = order else { self.submissionFailed(); return }
-
-                                self.stringer?.orderIds = self.appendOrderId(orderIds: self.stringer?.orderIds, orderId: order.orderId)
-
-                                if let stringer = self.stringer {
-                                    self.teamController.putStringer(stringer: stringer) { (succes) in
-                                        if !succes {
-                                            self.submissionFailed()
-                                        }
-                                    }
-                                }
-
-                                // set orderId to customer
-                                self.customer?.orderIds = self.appendOrderId(orderIds: self.customer?.orderIds, orderId: order.orderId)
-
-                                if let customer = self.customer {
-                                    self.customerController.putCustomer(customer: customer) { (succes) in
-                                        if !succes {
-                                            self.submissionFailed()
-                                        }
-                                    }
-                                }
-
-                                // set orderId to shop
-                                ShopSingleton.shared.getShop { (shop) in
-                                    if let shop = shop {
-                                        shop.orderIds = self.appendOrderId(orderIds: shop.orderIds, orderId: order.orderId)
-                                        self.shopController.putShop(shop: shop) { (succes) in
-                                            if !succes {
-                                                self.submissionFailed()
-                                            }
-                                        }
-                                    }
-                                }
-
-                                if let racketString = self.racketString {
-                                    self.storageController.removeSpecificLengthFromRacketString(racketString: racketString, length: Double(Constant.stringLengthPerRacket), storageId: order.shopId) { (succes) in
-                                        if !succes {
-                                            self.submissionFailed()
-                                        }
-                                    }
-                                }
-
-                                // collect the racketBrand and racketModel to the racketDict table in the database
-                                self.racketController.putTempRacket(racket: tempRacket) { (succes) in
-                                    _ = succes
-                                }
-
-                                DispatchQueue.main.async {
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                            } else {
-                                self.submissionFailed()
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        ShopSingleton.shared.getShop { (shop) in
+//            if let shop = shop {
+//
+//                // TODO: delete, when we have racket on the Customer. Then pass the racketId on to the order.
+//                let tempRacket = RacketFb(racketId: Utility.getUUID(), brand: RacketBrand.BABOLAT, modelName: racketModel)
+//
+//                let order = OrderFb.init(
+//                    orderId: Utility.getUUID(),
+//                    customerId: customer.userId,
+//                    stringerId: self.stringer?.userId,
+//                    shopId: shop.shopId,
+//                    racketId: tempRacket.racketId,
+//                    racketType: self.racketType,
+//                    tensionVertical: Double(verticalTension.replacingOccurrences(of: ",", with: ".")),
+//                    tensionHorizontal: Double(horizontalTension.replacingOccurrences(of: ",", with: ".")),
+//                    stringId: self.racketString?.stringId,
+//                    deliveryDate: self.deliveryDate?.millisecondsSince1970,
+//                    price: Double(price),
+//                    paid: false)
+//
+//                order?.comment = comment
+//
+//                self.racketController.putRacket(racket: tempRacket) { (succes) in
+//                    if succes {
+//                        self.orderController.putOrder(order: order) { (succes) in
+//                            if succes {
+//                                // set orderId to stringer
+//                                guard let order = order else { self.submissionFailed(); return }
+//
+//                                self.stringer?.orderIds = self.appendOrderId(orderIds: self.stringer?.orderIds, orderId: order.orderId)
+//
+//                                if let stringer = self.stringer {
+//                                    self.teamController.putStringer(stringer: stringer) { (succes) in
+//                                        if !succes {
+//                                            self.submissionFailed()
+//                                        }
+//                                    }
+//                                }
+//
+//                                // set orderId to customer
+//                                self.customer?.orderIds = self.appendOrderId(orderIds: self.customer?.orderIds, orderId: order.orderId)
+//
+//                                if let customer = self.customer {
+//                                    self.customerController.putCustomer(customer: customer) { (succes) in
+//                                        if !succes {
+//                                            self.submissionFailed()
+//                                        }
+//                                    }
+//                                }
+//
+//                                // set orderId to shop
+//                                ShopSingleton.shared.getShop { (shop) in
+//                                    if let shop = shop {
+//                                        shop.orderIds = self.appendOrderId(orderIds: shop.orderIds, orderId: order.orderId)
+//                                        self.shopController.putShop(shop: shop) { (succes) in
+//                                            if !succes {
+//                                                self.submissionFailed()
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//
+//                                if let racketString = self.racketString {
+//                                    self.storageController.removeSpecificLengthFromRacketString(racketString: racketString, length: Double(Constant.stringLengthPerRacket), storageId: order.shopId) { (succes) in
+//                                        if !succes {
+//                                            self.submissionFailed()
+//                                        }
+//                                    }
+//                                }
+//
+//                                // collect the racketBrand and racketModel to the racketDict table in the database
+//                                self.racketController.putTempRacket(racket: tempRacket) { (succes) in
+//                                    _ = succes
+//                                }
+//
+//                                DispatchQueue.main.async {
+//                                    self.navigationController?.popViewController(animated: true)
+//                                }
+//                            } else {
+//                                self.submissionFailed()
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 
     private func appendOrderId(orderIds: [String]?, orderId: String) -> [String] {
@@ -394,12 +420,12 @@ class CreateOrderViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    private func setCustomer(customer: CustomerFb) {
+    private func setCustomer(customer: CustomerREST) {
         self.customer = customer
 
         if let customer = self.customer {
             DispatchQueue.main.async {
-                self.customerName.text = customer.name
+                self.customerName.text = customer.firstName
                 self.customerPhoneNumber.text = customer.phoneNumber
             }
         }
@@ -443,7 +469,10 @@ extension CreateOrderViewController: UIPickerViewDataSource {
                 return racketStrings.count
             }
         case self.racketBrandPickerView:
-            return self.racketBrands.count
+            if let racketBrands = self.racketBrands {
+                return racketBrands.count
+            }
+            return 0
         default:
             return 0
         }
@@ -462,7 +491,9 @@ extension CreateOrderViewController: UIPickerViewDataSource {
                 return racketStrings[row].getDescription()
             }
         case self.racketBrandPickerView:
-            return self.racketBrands[row].rawValue
+            if let racketBrands = self.racketBrands {
+                return racketBrands[row].racketBrand
+            }
         default:
             return nil
         }
@@ -482,17 +513,22 @@ extension CreateOrderViewController: UIPickerViewDelegate {
             if let racketStrings = self.avalibleRacketString {
                 self.racketString = racketStrings[row]
                 self.stringTextField.text = racketStrings[row].getDescription()
-                self.priceTextField.text = String(racketStrings[row].pricePerRacket)
+
+                if let price = racketStrings[row].price {
+                    self.priceTextField.text = String(price)
+                }
             }
         } else if pickerView == self.racketBrandPickerView {
-            self.racketBrand = self.racketBrands[row]
-            self.racketBrandTextField.text = self.racketBrands[row].rawValue
+            if let racketBrands = self.racketBrands {
+                self.racketBrand = racketBrands[row]
+                self.racketBrandTextField.text = racketBrands[row].racketBrand
+            }
         }
     }
 }
 
 extension CreateOrderViewController: FindCustomerDelegate {
-    func addCustomer(customer: CustomerFb) {
+    func addCustomer(customer: CustomerREST) {
         self.setCustomer(customer: customer)
     }
 

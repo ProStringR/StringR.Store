@@ -15,6 +15,7 @@ class Constant {
     static let baseUrl = "https://prostringr.com/api/v1"
     static let authenticationUrl = "\(baseUrl)/authentication/shop"
     static let staticData = "/staticdata"
+    static let customers = "\(baseUrl)/customer"
     static let racketString = "\(baseUrl)/racketstring"
     static let allColorsStaticData = "\(baseUrl)\(staticData)/all-colors"
     static let allPurposes = "\(baseUrl)\(staticData)/all-purposes"

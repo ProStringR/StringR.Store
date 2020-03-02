@@ -9,7 +9,6 @@
 import Foundation
 
 class CustomerDAOFirebase: CustomerDAOProtocol {
-
     let dataControl = ControlReg.getDataController
 
     func getCustomer(by id: String, completion: @escaping (CustomerDTOFb?) -> Void) {
@@ -29,5 +28,13 @@ class CustomerDAOFirebase: CustomerDAOProtocol {
         dataControl.putData(objectToUpdate: customer, objectId: id, url: Firebase.customer) { (succes) in
             completion(succes)
         }
+    }
+
+    func getAllCustomers(completion: @escaping ([CustomerREST]?) -> Void) {
+        print("wroing implementation")
+    }
+
+    func postCustomer(customer: CustomerDto, completion: @escaping (Bool) -> Void) {
+        print("wrong implementation")
     }
 }

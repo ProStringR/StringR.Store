@@ -14,8 +14,8 @@ class FindCustomerViewController: UIViewController {
     weak var delegate: FindCustomerDelegate?
 
     weak var customerTableView: UITableView!
-    var searchCustomers: [CustomerFb]?
-    var customers: [CustomerFb]?
+    var searchCustomers: [CustomerREST]?
+    var customers: [CustomerREST]?
     var customerController = ControlReg.getCustomerController
     var searchController: UISearchController?
 
@@ -98,13 +98,15 @@ class FindCustomerViewController: UIViewController {
         alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_continue"), style: .default, handler: { [weak alert] (_) in
             let name = alert?.textFields?[0].text ?? Constant.emptyString
             let phoneNumber = alert?.textFields?[1].text ?? Constant.emptyString
-            let mail = alert?.textFields?[2].text ?? Constant.emptyString
+            let mail = alert?.textFields?[2].text ?? Utility.getUUID()
 
-            let guest = CustomerFb(userId: Utility.getUUID(), name: name, birthday: 0, email: mail, phoneNumber: phoneNumber, preferedStringType: .DEAULT, preferedTensionVertical: 0, prederedTensionHorizontal: 0)
+            let customer = CustomerDto.init(firstName: name, lastName: "default", email: mail, phoneNumber: phoneNumber, password: Utility.getUUID(), preferredStringTypeId: 1, preferredTensionVertical: 1, preferredTensionHorizontal: 1)
 
-            self.customerController.putCustomer(customer: guest) { (succes) in
+            let customerToShow = CustomerREST.init(customerId: 0, firstName: name, lastName: "default", email: Constant.emptyString, phoneNumber: phoneNumber, preferredStringType: Constant.emptyString, preferredTensionVertical: 1, preferredTensionHorizontal: 1)
+
+            self.customerController.postCustomer(customer: customer) { (succes) in
                 if succes {
-                    self.delegate?.addCustomer(customer: guest)
+                    self.delegate?.addCustomer(customer: customerToShow)
                     self.closeAction()
                 }
             }
@@ -129,7 +131,7 @@ extension FindCustomerViewController: UISearchResultsUpdating, UISearchBarDelega
         } else {
             if let customers = self.customers {
                 self.searchCustomers = customers.filter {
-                    return $0.name.lowercased().contains(searchText.lowercased()) || $0.phoneNumber.lowercased().contains(searchText.lowercased()) || $0.email.lowercased().contains(searchText.lowercased())
+                    return $0.firstName.lowercased().contains(searchText.lowercased()) || $0.phoneNumber.lowercased().contains(searchText.lowercased()) || $0.email.lowercased().contains(searchText.lowercased())
                 }
             }
         }
@@ -163,7 +165,7 @@ extension FindCustomerViewController: UITableViewDataSource {
 
         let currentCustomer = customers[indexPath.row]
 
-        cell.leftLabel.text = currentCustomer.name
+        cell.leftLabel.text = currentCustomer.firstName
         cell.rightLabel.text = currentCustomer.phoneNumber
 
         return cell

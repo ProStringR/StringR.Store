@@ -12,4 +12,6 @@ protocol CustomerDAOProtocol {
     func getCustomer(by id: String, completion: @escaping (CustomerDTOFb?) -> Void)
     func getAllCustomers(completion: @escaping ([CustomerDTOFb]?) -> Void)
     func putCustomer(customer: CustomerDTOFb?, completion: @escaping (Bool) -> Void)
+    func getAllCustomers(completion: @escaping ([CustomerREST]?) -> Void)
+    func postCustomer(customer: CustomerDto, completion: @escaping (Bool) -> Void)
 }
