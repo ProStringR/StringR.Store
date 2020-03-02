@@ -105,22 +105,13 @@ class CreateOrderViewController: UIViewController {
                 self.stringers = stringers
             }
         }
-//        ShopSingleton.shared.getShop { (shop) in
-//            guard let shop = shop else { return }
-//            self.teamController.getStringers(fromTeamId: shop.teamId) { (result) in
-//                if let stringers = result {
-//                    self.stringers = stringers
-//                } else {
-//                    // TODO: Manange if something went wrong
-//                }
-//            }
-//        }
     }
 
     private func getRacketStrings() {
         self.storageController.getStringsForShop(by: ShopSingleton.shared.shopId) { (racketStrings) in
             if let racketStrings = racketStrings {
                 self.racketStrings = racketStrings
+                self.reloadPickers()
             }
         }
     }
