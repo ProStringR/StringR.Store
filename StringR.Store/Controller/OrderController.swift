@@ -68,4 +68,10 @@ class OrderController {
             completion(nil)
         }
     }
+
+    func postOrder(order: OrderDto, completion: @escaping (Bool) -> Void) {
+        orderDAO.postOrder(order: order) { (success) in
+            completion(success)
+        }
+    }
 }

@@ -74,4 +74,8 @@ class TeamDAOFirebase: TeamDAOProtocol {
             }
         }
     }
+
+    func getTeamForShop(shopId: String, completion: @escaping ([StringerREST]?) -> Void) {
+        print("wrong implementation")
+    }
 }

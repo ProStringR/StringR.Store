@@ -65,6 +65,10 @@
 		99DEFE2D240CF3B1003CF256 /* CustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE2C240CF3B1003CF256 /* CustomerDto.swift */; };
 		99DEFE2F240CF616003CF256 /* CustomerREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE2E240CF616003CF256 /* CustomerREST.swift */; };
 		99DEFE31240CF6F0003CF256 /* CustomerDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE30240CF6F0003CF256 /* CustomerDaoSql.swift */; };
+		99DEFE33240D0188003CF256 /* StringerREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE32240D0188003CF256 /* StringerREST.swift */; };
+		99DEFE35240D02E7003CF256 /* TeamDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE34240D02E7003CF256 /* TeamDaoSql.swift */; };
+		99DEFE37240D0622003CF256 /* OrderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE36240D0622003CF256 /* OrderDto.swift */; };
+		99DEFE39240D0DEA003CF256 /* OrderDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE38240D0DEA003CF256 /* OrderDaoSql.swift */; };
 		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
 		B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319DDCD2361DD42007878F6 /* RacketController.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
@@ -211,6 +215,10 @@
 		99DEFE2C240CF3B1003CF256 /* CustomerDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDto.swift; sourceTree = "<group>"; };
 		99DEFE2E240CF616003CF256 /* CustomerREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerREST.swift; sourceTree = "<group>"; };
 		99DEFE30240CF6F0003CF256 /* CustomerDaoSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDaoSql.swift; sourceTree = "<group>"; };
+		99DEFE32240D0188003CF256 /* StringerREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerREST.swift; sourceTree = "<group>"; };
+		99DEFE34240D02E7003CF256 /* TeamDaoSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDaoSql.swift; sourceTree = "<group>"; };
+		99DEFE36240D0622003CF256 /* OrderDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDto.swift; sourceTree = "<group>"; };
+		99DEFE38240D0DEA003CF256 /* OrderDaoSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDaoSql.swift; sourceTree = "<group>"; };
 		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		B319DDCD2361DD42007878F6 /* RacketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketController.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
@@ -422,6 +430,7 @@
 				99DEFE26240A775B003CF256 /* RacketStringREST.swift */,
 				99DEFE2A240BD742003CF256 /* PurchaseHistoryREST.swift */,
 				99DEFE2E240CF616003CF256 /* CustomerREST.swift */,
+				99DEFE32240D0188003CF256 /* StringerREST.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 			children = (
 				99DEFE222409A5A1003CF256 /* RacketStringDto.swift */,
 				99DEFE2C240CF3B1003CF256 /* CustomerDto.swift */,
+				99DEFE36240D0622003CF256 /* OrderDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -559,6 +569,8 @@
 				1D4728D82391B9340068919F /* AuthenticationDAOSql.swift */,
 				99DEFE0E24091795003CF256 /* StaticDataDaoSql.swift */,
 				99DEFE30240CF6F0003CF256 /* CustomerDaoSql.swift */,
+				99DEFE34240D02E7003CF256 /* TeamDaoSql.swift */,
+				99DEFE38240D0DEA003CF256 /* OrderDaoSql.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -840,6 +852,7 @@
 				99A0BC402409143A00CE2566 /* StringColorSingleton.swift in Sources */,
 				B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */,
 				99DEFE2D240CF3B1003CF256 /* CustomerDto.swift in Sources */,
+				99DEFE35240D02E7003CF256 /* TeamDaoSql.swift in Sources */,
 				1D3987E6233BE06900CDA0DD /* TwoSidedTextCell.swift in Sources */,
 				99DEFE1B240935C2003CF256 /* StringBrandREST.swift in Sources */,
 				1D32FC23236B25E700AABEFB /* EconomyInterval.swift in Sources */,
@@ -887,6 +900,7 @@
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
 				99A0BC3E240913CA00CE2566 /* StringColorREST.swift in Sources */,
 				B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */,
+				99DEFE33240D0188003CF256 /* StringerREST.swift in Sources */,
 				B3903C062333652700367E5F /* OrderDAOFirebase.swift in Sources */,
 				B38C5BA0232BDF1700116BC1 /* StorageViewController.swift in Sources */,
 				1D11C1DC236C16DF00F764A4 /* AddStringerToTeamViewController.swift in Sources */,
@@ -898,9 +912,11 @@
 				B38C5B9E232BDEF200116BC1 /* EconomyViewController.swift in Sources */,
 				B38C5B9A232BDDFF00116BC1 /* OrderViewController.swift in Sources */,
 				1D3987E8233BE1AB00CDA0DD /* DoneViewController.swift in Sources */,
+				99DEFE39240D0DEA003CF256 /* OrderDaoSql.swift in Sources */,
 				99DEFE29240A7FF7003CF256 /* StorageDaoSql.swift in Sources */,
 				99DEFE232409A5A1003CF256 /* RacketStringDto.swift in Sources */,
 				B326E87423435C690040E9F3 /* ShopDAOFirebase.swift in Sources */,
+				99DEFE37240D0622003CF256 /* OrderDto.swift in Sources */,
 				B38C5BA2232BDF4000116BC1 /* TeamViewController.swift in Sources */,
 				B327847B235B592C00D67B9B /* OrderCellGenerel.swift in Sources */,
 				B3B92B5B2333A44600C39052 /* DataController.swift in Sources */,

@@ -89,9 +89,17 @@ class StorageController {
 
         var stringsToReturn: [RacketStringREST] = []
 
-        for string in racketStrings where string.stringPurpose! == purpose.rawValue {
-            stringsToReturn.append(string)
+        racketStrings.forEach { (racketString) in
+            if let stringPurpose = racketString.stringPurpose {
+                if stringPurpose == purpose.rawValue {
+                    stringsToReturn.append(racketString)
+                }
+            }
         }
+//
+//        for string in racketStrings where string.stringPurpose! == purpose.rawValue {
+//            stringsToReturn.append(string)
+//        }
 
         return stringsToReturn
     }

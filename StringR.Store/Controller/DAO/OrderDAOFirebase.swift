@@ -125,4 +125,8 @@ class OrderDAOFirebase: OrderDAOProtocol {
             completion(succes)
         }
     }
+
+    func postOrder(order: OrderDto, completion: @escaping (Bool) -> Void) {
+        print("wrong implementation")
+    }
 }

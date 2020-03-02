@@ -11,8 +11,8 @@ import Foundation
 class ControlReg {
 
     // DAO
-    static let getOrderDAO = OrderDAOFirebase()
-    static let getTeamDAO = TeamDAOFirebase()
+    static let getOrderDAO = OrderDaoSql()
+    static let getTeamDAO = TeamDaoSql()
     static let getShopDAO = ShopDAOFirebase()
     static let getCustomerDAO = CustomerDaoSql()
     static let getStorageDAO = StorageDaoSql()

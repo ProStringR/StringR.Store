@@ -47,7 +47,6 @@ class CustomerController {
     }
 
     func putCustomer(customer: CustomerREST, completion: @escaping (Bool) -> Void) {
-        
 //        let customerDTO = dataControl.createObject(fromObject: customer, toObject: CustomerDTOFb.self)
 //        customerDAO.putCustomer(customer: customerDTO) { (succes) in
 //            completion(succes)

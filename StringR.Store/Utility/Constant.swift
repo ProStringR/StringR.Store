@@ -16,6 +16,8 @@ class Constant {
     static let authenticationUrl = "\(baseUrl)/authentication/shop"
     static let staticData = "/staticdata"
     static let customers = "\(baseUrl)/customer"
+    static let stringers = "\(baseUrl)/stringer"
+    static let orders = "\(baseUrl)/order"
     static let racketString = "\(baseUrl)/racketstring"
     static let allColorsStaticData = "\(baseUrl)\(staticData)/all-colors"
     static let allPurposes = "\(baseUrl)\(staticData)/all-purposes"
