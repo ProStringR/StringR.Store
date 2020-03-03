@@ -12,7 +12,6 @@ class ReceivedViewController: UIViewController {
 
     weak var receivedOrdersTableView: UITableView!
     var orders: [OrderREST]?
-
     var orderController = ControlReg.getOrderController
 
     override func viewDidLoad() {
@@ -38,7 +37,6 @@ class ReceivedViewController: UIViewController {
     }
 
     private func updateUI() {
-
         DispatchQueue.main.async {
             self.orders =  self.orders?.sorted(by: {$0.deliveryDate < $1.deliveryDate})
             self.receivedOrdersTableView.reloadData()
