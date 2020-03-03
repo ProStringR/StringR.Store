@@ -21,34 +21,33 @@ class RootTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .black
         ShopSingleton.shared.fetchData()
-//        Utility.writeStringToSharedPref(withKey: Constant.shopId, value: "1")
 
         setupNavigationControllers()
         setupTabBarItems()
         addNavigationControllersToTabBarController()
 
         // set order tab to be the selected tab.
-        self.selectedIndex = 2
+        self.selectedIndex = 1
     }
 
     private func setupNavigationControllers() {
         self.orderView = UINavigationController(rootViewController: OrderViewController())
-        self.testRacketView = UINavigationController(rootViewController: TestRacketViewController())
-        self.economyView = UINavigationController(rootViewController: EconomyViewController())
+//        self.testRacketView = UINavigationController(rootViewController: TestRacketViewController())
+//        self.economyView = UINavigationController(rootViewController: EconomyViewController())
         self.storageView = UINavigationController(rootViewController: StorageViewController())
         self.teamView = UINavigationController(rootViewController: TeamViewController())
     }
 
     private func setupTabBarItems() {
         self.orderView?.tabBarItem.title = Utility.getString(forKey: "generel_Order")
-        self.testRacketView?.tabBarItem.title = Utility.getString(forKey: "generel_Racket")
-        self.economyView?.tabBarItem.title = Utility.getString(forKey: "generel_Economy")
+//        self.testRacketView?.tabBarItem.title = Utility.getString(forKey: "generel_Racket")
+//        self.economyView?.tabBarItem.title = Utility.getString(forKey: "generel_Economy")
         self.storageView?.tabBarItem.title = Utility.getString(forKey: "generel_Storage")
         self.teamView?.tabBarItem.title = Utility.getString(forKey: "generel_Team")
 
         self.orderView?.tabBarItem.image = UIImage(named: "order_icon")
-        self.testRacketView?.tabBarItem.image = UIImage(named: "racket_icon")
-        self.economyView?.tabBarItem.image = UIImage(named: "economy_icon")
+//        self.testRacketView?.tabBarItem.image = UIImage(named: "racket_icon")
+//        self.economyView?.tabBarItem.image = UIImage(named: "economy_icon")
         self.storageView?.tabBarItem.image = UIImage(named: "storage_icon")
         self.teamView?.tabBarItem.image = UIImage(named: "team_icon")
 
@@ -58,10 +57,20 @@ class RootTabBarController: UITabBarController {
     }
 
     private func addNavigationControllersToTabBarController() {
-        guard let orderView = self.orderView, let testRacketView = self.testRacketView, let economyView = self.economyView, let storageView = self.storageView, let teamView = self.teamView else {
+        guard
+            let orderView = self.orderView,
+//            let testRacketView = self.testRacketView,
+//            let economyView = self.economyView,
+            let storageView = self.storageView,
+            let teamView = self.teamView else {
             return
         }
 
-        self.viewControllers = [testRacketView, storageView, orderView, economyView, teamView]
+        self.viewControllers = [
+//            testRacketView,
+            storageView,
+            orderView,
+//            economyView,
+            teamView]
     }
 }
