@@ -13,5 +13,5 @@ struct LoginResponse: Codable {
     var token: String
     var id: Int
     var reponseMessage: String?
-
+    var teamId: Int
 }

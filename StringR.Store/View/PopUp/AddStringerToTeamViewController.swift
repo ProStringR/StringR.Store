@@ -21,13 +21,15 @@ class AddStringerToTeamViewController: UIViewController {
     weak var preferredRacketTypeInput: UITextField!
 
     var preferredRacketTypePicker = UIPickerView()
-    var racketTypes = RacketType.allValues
+    var racketTypes: [PurposeREST]?
     var teamController = ControlReg.getTeamController
+    var chosenPurpose: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+        initializePickerViewData()
         setupMainStackView()
         setupPickerView()
         setupConstraints()
@@ -44,6 +46,14 @@ class AddStringerToTeamViewController: UIViewController {
         Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "addStringer_title"))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveStringer))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeAction))
+    }
+
+    private func initializePickerViewData() {
+        PurposeSingleton.shared.getAllPurposes { (racketTypes) in
+            if let racketTypes = racketTypes {
+                self.racketTypes = racketTypes
+            }
+        }
     }
 
     private func setupMainStackView() {
@@ -135,8 +145,10 @@ class AddStringerToTeamViewController: UIViewController {
         inputField.inputView = picker
     }
 
-    private func createStringer() -> StringerFb? {
-        return StringerFb.init(firstName: self.firstNameInput.text, lastName: self.lastNameInput.text, email: self.emailInput.text, phoneNumber: self.phoneNumerInput.text, preferredRacketType: self.preferredRacketTypeInput.text)
+    private func createStringer() -> StringerDto? {
+        let stringer = StringerDto.init(firstname: self.firstNameInput.text, lastName: self.lastNameInput.text, phoneNumber: self.phoneNumerInput.text, email: self.emailInput.text, preferredRacketType: self.chosenPurpose)
+
+        return stringer
     }
 
     private func presentDefaultAlert() {
@@ -150,22 +162,29 @@ class AddStringerToTeamViewController: UIViewController {
     @objc func saveStringer() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
+
         guard let stringer = createStringer() else {
             self.removeSpinner(forSpinner: spinner)
             self.presentDefaultAlert()
             return
         }
 
-        teamController.putStringerToTeam(stringer: stringer, completion: { (succes) in
-            if succes {
-                self.dismiss()
-                self.delegate?.addStringerToTeam(stringer: stringer)
-            } else {
-                self.presentDefaultAlert()
-            }
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
+                self.teamController.postStringerToTeam(teamId: shop.teamId, with: stringer) { (success) in
+                    if success {
+                        self.dismiss()
+                        self.delegate?.addStringerToTeam()
+                    } else {
+                        self.presentDefaultAlert()
+                    }
 
-            self.removeSpinner(forSpinner: spinner)
-        })
+                    self.removeSpinner(forSpinner: spinner)
+                }
+            } else {
+                print("cannot find shop")
+            }
+        }
     }
 
     @objc func closeAction() {
@@ -183,16 +202,26 @@ extension AddStringerToTeamViewController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.racketTypes.count
+        if let racketTypes = self.racketTypes {
+            return racketTypes.count
+        }
+        return 0
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.racketTypes[row].rawValue
+        if let racketTypes = self.racketTypes {
+            return racketTypes[row].purpose
+        }
+
+        return Constant.emptyString
     }
 }
 
 extension AddStringerToTeamViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.preferredRacketTypeInput.text = racketTypes[row].rawValue
+        if let racketTypes = self.racketTypes {
+            self.preferredRacketTypeInput.text = racketTypes[row].purpose
+            self.chosenPurpose = racketTypes[row].id
+        }
     }
 }

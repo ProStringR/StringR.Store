@@ -12,7 +12,7 @@ import UIKit
 class TeamViewController: UIViewController {
 
     weak var teamTableView: UITableView!
-    var stringers: [StringerFb]?
+    var stringers: [StringerREST]?
 
     let teamController = ControlReg.getTeamController
     let shopController = ControlReg.getShopController
@@ -29,19 +29,14 @@ class TeamViewController: UIViewController {
     private func getStringers() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
-        // Call controller to get team data
-        ShopSingleton.shared.getShop { (shop) in
-            if let shop = shop {
-                self.teamController.getStringers(fromTeamId: shop.teamId) { (stringers) in
-                    if let stringers = stringers {
-                        // Store the team in the stringers array
-                        self.stringers = stringers
-                    }
 
-                    self.updateUI()
-                    self.removeSpinner(forSpinner: spinner)
-                }
+        self.teamController.getStringersForShop(teamId: ShopSingleton.shared.teamId) { (stringers) in
+            if let stringers = stringers {
+                self.stringers = stringers
             }
+
+            self.updateUI()
+            self.removeSpinner(forSpinner: spinner)
         }
     }
 
@@ -101,7 +96,7 @@ extension TeamViewController: UITableViewDataSource {
 
         let currentStringer = team[indexPath.row]
 
-        cell.nameLabel.text = currentStringer.name
+        cell.nameLabel.text = currentStringer.firstName
         cell.phoneNumberLabel.text = currentStringer.phoneNumber
 
         cell.accessoryType = .detailButton
@@ -128,52 +123,53 @@ extension TeamViewController: UITableViewDelegate {
 }
 
 extension TeamViewController: RemoveStringerDelegate, AddStringerToTeamDelegate {
-    func addStringerToTeam(stringer: StringerFb) {
-        if self.stringers != nil {
-            self.stringers?.append(stringer)
-        } else {
-            let array = [stringer]
-            self.stringers = array
-        }
-
-        DispatchQueue.main.async {
-            self.teamTableView.reloadData()
-        }
+    func addStringerToTeam() {
+//        if self.stringers != nil {
+//            self.stringers?.append(stringer)
+//        } else {
+//            let array = [stringer]
+//            self.stringers = array
+//        }
+//
+//        DispatchQueue.main.async {
+//            self.teamTableView.reloadData()
+//        }
+        self.updateData()
     }
 
-    func removeStringer(stringer: StringerFb) {
-        ShopSingleton.shared.getShop { (shop) in
-            guard let shop = shop else { return }
-            self.dismiss(animated: true) {
-                self.stringers?.removeAll(where: {$0.userId == stringer.userId})
-                let team = self.teamController.createTeam(of: self.stringers, withId: shop.teamId)
-
-                if let team = team {
-                    self.teamController.putTeam(team: team) { (succes) in
-                        if succes {
-                            self.updateUI()
-                        } else {
-                            self.stringers?.append(stringer)
-
-                            // Jump to UI thread and present the alert
-                            DispatchQueue.main.async {
-                                let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
-                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
-                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
-                                    _ = alert
-                                    // try again
-                                    self.removeStringer(stringer: stringer)
-                                }))
-
-                                // present the alert
-                                self.present(alert, animated: true)
-                            }
-                        }
-                    }
-                }
-                self.closeAction()
-            }
-        }
+    func removeStringer(stringer: StringerREST) {
+//        ShopSingleton.shared.getShop { (shop) in
+//            guard let shop = shop else { return }
+//            self.dismiss(animated: true) {
+//                self.stringers?.removeAll(where: {$0.stringerId == stringer.stringerId})
+//                let team = self.teamController.createTeam(of: self.stringers, withId: shop.teamId)
+//
+//                if let team = team {
+//                    self.teamController.putTeam(team: team) { (succes) in
+//                        if succes {
+//                            self.updateUI()
+//                        } else {
+//                            self.stringers?.append(stringer)
+//
+//                            // Jump to UI thread and present the alert
+//                            DispatchQueue.main.async {
+//                                let alert = LayoutController.getAlert(withTitle: "Ups...", withMessage: "Something went wrong removing your stringer")
+//                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_cancel"), style: .cancel, handler: nil))
+//                                alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_tryAgain"), style: .default, handler: { (alert) in
+//                                    _ = alert
+//                                    // try again
+//                                    self.removeStringer(stringer: stringer)
+//                                }))
+//
+//                                // present the alert
+//                                self.present(alert, animated: true)
+//                            }
+//                        }
+//                    }
+//                }
+//                self.closeAction()
+//            }
+//        }
     }
 
     func closeAction() {

@@ -100,7 +100,7 @@ class CreateOrderViewController: UIViewController {
 
     private func getStringers() {
 
-        teamController.getStringersForShop(shopId: ShopSingleton.shared.shopId) { (stringers) in
+        teamController.getStringersForShop(teamId: ShopSingleton.shared.shopId) { (stringers) in
             if let stringers = stringers {
                 self.stringers = stringers
             }
@@ -125,6 +125,13 @@ class CreateOrderViewController: UIViewController {
         DispatchQueue.main.async {
             if let racketStrings = self.racketStrings, let racketType = self.racketType {
                 self.avalibleRacketString = self.storageController.filterStrings(racketStrings: racketStrings, by: racketType)
+
+                // The picker should be disabled if there is no string
+                if let availableRacketString = self.avalibleRacketString {
+                    if availableRacketString.count > 1 {
+                        self.stringTextField.isEnabled = false
+                    }
+                }
             }
             self.stringersPickerView.reloadAllComponents()
             self.stringTextField.text = Constant.emptyString

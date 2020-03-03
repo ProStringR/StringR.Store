@@ -33,9 +33,9 @@ class StringerDetailViewController: UIViewController {
 
     weak var removeButton: UIButton!
 
-    var currentStringer: StringerFb?
-    var activeOrders: [OrderFb]?
-    var strings: [RacketStringFb]?
+    var currentStringer: StringerREST?
+    var activeOrders: [OrderREST]?
+    var strings: [RacketStringREST]?
 
     var orderController = ControlReg.getOrderController
 
@@ -45,7 +45,7 @@ class StringerDetailViewController: UIViewController {
         setGenerelLayout()
 
         if let currentStringer = currentStringer {
-            Layout.setupViewNavigationController(forView: self, withTitle: currentStringer.name)
+            Layout.setupViewNavigationController(forView: self, withTitle: currentStringer.firstName)
         } else {
             Layout.setupViewNavigationController(forView: self, withTitle: Utility.getString(forKey: "stringerDetailViewController_noStringerFound"))
         }
@@ -69,14 +69,14 @@ class StringerDetailViewController: UIViewController {
     }
 
     private func getActiveOrders() {
-        if let stringer = self.currentStringer, let orderIds = stringer.orderIds {
-            orderController.getRecievedOrders(orderIds: orderIds) { (result) in
-                if let result = result {
-                    self.activeOrders = result
-                    self.updateUI()
-                }
-            }
-        }
+//        if let stringer = self.currentStringer, let orderIds = stringer.orderIds {
+//            orderController.getRecievedOrders(orderIds: orderIds) { (result) in
+//                if let result = result {
+//                    self.activeOrders = result
+//                    self.updateUI()
+//                }
+//            }
+//        }
     }
 
     private func updateUI() {
@@ -125,7 +125,7 @@ class StringerDetailViewController: UIViewController {
 
         self.phoneLabel = LayoutController.getLabel(text: stringer.phoneNumber, parentView: self.view)
         self.mailLabel = LayoutController.getLabel(text: stringer.email, parentView: self.view)
-        self.preferredRacketTypeLabel = LayoutController.getLabel(text: stringer.preferedRacketType.rawValue, parentView: self.view)
+        self.preferredRacketTypeLabel = LayoutController.getLabel(text: stringer.preferredRacketType, parentView: self.view)
 
         self.contactLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_contactLabel"), parentView: self.view)
         self.infoLabel = LayoutController.getSmallHeader(text: Utility.getString(forKey: "stringerDetailViewController_informationLabel"), parentView: self.view)
@@ -162,7 +162,7 @@ class StringerDetailViewController: UIViewController {
         guard let stringer = currentStringer else { return }
         if sender === self.removeButton {
             // make an alert
-            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), withMessage: Utility.getString(forKey: "stringerDetailViewController_alertBodyText", withArgs: [stringer.name]))
+            let alert = LayoutController.getAlert(withTitle: Utility.getString(forKey: "stringerDetailViewController_removeStringerButtonText"), withMessage: Utility.getString(forKey: "stringerDetailViewController_alertBodyText", withArgs: [stringer.firstName]))
             alert.addAction(UIAlertAction(title: Utility.getString(forKey: "common_remove"), style: .destructive, handler: { (alert) in
                 _ = alert
                 // remove stringer from team
@@ -193,7 +193,7 @@ extension StringerDetailViewController: UITableViewDataSource {
 
         let currentOrder = orders[indexPath.row]
 
-        cell.customerNameLabel.text = currentOrder.customer?.name
+        cell.customerNameLabel.text = currentOrder.customer.firstName
         cell.rightLabel.text = Utility.dateToString(date: Date(milliseconds: currentOrder.deliveryDate))
 
         if currentOrder.daysToDeliver <= 1 {
@@ -204,7 +204,7 @@ extension StringerDetailViewController: UITableViewDataSource {
             cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
         }
 
-        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
+        cell.typeIndicator.image = currentOrder.racketString.getImageIndication()
 
         // tableView is not clickable
         cell.selectionStyle = .none

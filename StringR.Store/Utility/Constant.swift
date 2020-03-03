@@ -18,6 +18,7 @@ class Constant {
     static let customers = "\(baseUrl)/customer"
     static let stringers = "\(baseUrl)/stringer"
     static let orders = "\(baseUrl)/order"
+    static let shops = "\(baseUrl)/shop"
     static let racketString = "\(baseUrl)/racketstring"
     static let allColorsStaticData = "\(baseUrl)\(staticData)/all-colors"
     static let allPurposes = "\(baseUrl)\(staticData)/all-purposes"
@@ -45,6 +46,7 @@ class Constant {
     static let emptyString = ""
     static let shopId = "shopId"
     static let token = "token"
+    static let teamId = "teamId"
 
     static let stringLengthPerRacket = 10
 }

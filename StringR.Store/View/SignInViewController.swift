@@ -114,6 +114,8 @@ class SignInViewController: UIViewController {
                 self.showSpinner(withSpinner: spinner)
                 if let reponse = reponse {
                     Utility.writeStringToSharedPref(withKey: Constant.token, value: reponse.token)
+                    Utility.writeStringToSharedPref(withKey: Constant.shopId, value: String(reponse.id))
+                    Utility.writeStringToSharedPref(withKey: Constant.teamId, value: String(reponse.teamId))
                     self.navigateToMainView()
                 } else {
                     self.presentDefaultAlert()

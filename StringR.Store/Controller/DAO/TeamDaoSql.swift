@@ -31,9 +31,15 @@ class TeamDaoSql: TeamDAOProtocol {
         print("wrong implenentation")
     }
 
-    func getTeamForShop(shopId: String, completion: @escaping ([StringerREST]?) -> Void) {
-        dataControl.getDataREST(returnType: [StringerREST].self, url: "\(Constant.stringers)/shop/\(shopId)") { (stringers) in
+    func getTeamForShop(teamId: String, completion: @escaping ([StringerREST]?) -> Void) {
+        dataControl.getDataREST(returnType: [StringerREST].self, url: "\(Constant.stringers)/shop/\(teamId)") { (stringers) in
             completion(stringers)
+        }
+    }
+
+    func postStringerToTeam(teamId: Int, with stringer: StringerDto, completion: @escaping (Bool) -> Void) {
+        dataControl.postDataREST(object: stringer, url: "\(Constant.stringers)/\(teamId)") { (success) in
+            completion(success)
         }
     }
 }

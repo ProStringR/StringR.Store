@@ -14,31 +14,43 @@ class ShopSingleton {
 
     static let shared = ShopSingleton()
 
-    var shop: ShopFb?
+    var shop: ShopREST?
 
-    var shopId: String = "1"
+    var shopId: String
+    var teamId: String
 
     private init() {
-        //self.shopId = Utility.readStringFromSharedPref(Constant.shopId)
+        self.shopId = Utility.readStringFromSharedPref(Constant.shopId)
+        self.teamId = Utility.readStringFromSharedPref(Constant.teamId)
+        print("Initializing shop singleton with teamId", self.teamId, "and shop", self.shopId)
     }
 
-    func getShop(completion: @escaping (ShopFb?) -> Void) {
+    func fetchData() {
+        if shop == nil {
+            shopController.getShop(by: self.shopId, completion: { (shop) in
+                if let shop = shop {
+                    self.shop = shop
+                }
+            })
+        }
+    }
+
+    func getShop(completion: @escaping (ShopREST?) -> Void) {
         if let shop = self.shop {
             completion(shop)
             return
         }
 
-        shopController.getShop(basedOn: Utility.readStringFromSharedPref(Constant.shopId)) { (shopFb) in
-            if let shopFb = shopFb {
-                self.shop = shopFb
-                completion(shopFb)
+        shopController.getShop(by: self.shopId, completion: { (shop) in
+            if let shop = shop {
+                self.shop = shop
             }
-        }
+        })
 
     }
 
-    func refreshAndGetShop(completion: @escaping (ShopFb?) -> Void) {
-        shopController.getShop(basedOn: Utility.readStringFromSharedPref(Constant.shopId)) { (shop) in
+    func refreshAndGetShop(completion: @escaping (ShopREST?) -> Void) {
+        shopController.getShop(by: Utility.readStringFromSharedPref(Constant.shopId)) { (shop) in
             if let shop = shop {
                 self.shop = shop
                 completion(shop)

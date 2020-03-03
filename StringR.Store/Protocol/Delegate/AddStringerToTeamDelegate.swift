@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AddStringerToTeamDelegate: class {
-    func addStringerToTeam(stringer: StringerFb)
+    func addStringerToTeam()
 }

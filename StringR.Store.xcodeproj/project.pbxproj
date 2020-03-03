@@ -75,6 +75,10 @@
 		99DEFE42240D1850003CF256 /* OrderRacketStringREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE41240D1850003CF256 /* OrderRacketStringREST.swift */; };
 		99DEFE44240D189E003CF256 /* OrderREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE43240D189E003CF256 /* OrderREST.swift */; };
 		99DEFE46240D4760003CF256 /* OrderHistoryREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE45240D4760003CF256 /* OrderHistoryREST.swift */; };
+		99DEFE48240E54CD003CF256 /* StringerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE47240E54CD003CF256 /* StringerDto.swift */; };
+		99DEFE4A240E64F1003CF256 /* ShopREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE49240E64F1003CF256 /* ShopREST.swift */; };
+		99DEFE4C240E6539003CF256 /* AddressREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE4B240E6539003CF256 /* AddressREST.swift */; };
+		99DEFE4E240E663E003CF256 /* ShopDaoSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEFE4D240E663E003CF256 /* ShopDaoSql.swift */; };
 		B30C12F2235A04FF00CB32A0 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */; };
 		B319DDCE2361DD42007878F6 /* RacketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319DDCD2361DD42007878F6 /* RacketController.swift */; };
 		B326E87223435C4F0040E9F3 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326E87123435C4F0040E9F3 /* ShopController.swift */; };
@@ -231,6 +235,10 @@
 		99DEFE41240D1850003CF256 /* OrderRacketStringREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRacketStringREST.swift; sourceTree = "<group>"; };
 		99DEFE43240D189E003CF256 /* OrderREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderREST.swift; sourceTree = "<group>"; };
 		99DEFE45240D4760003CF256 /* OrderHistoryREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryREST.swift; sourceTree = "<group>"; };
+		99DEFE47240E54CD003CF256 /* StringerDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerDto.swift; sourceTree = "<group>"; };
+		99DEFE49240E64F1003CF256 /* ShopREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopREST.swift; sourceTree = "<group>"; };
+		99DEFE4B240E6539003CF256 /* AddressREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressREST.swift; sourceTree = "<group>"; };
+		99DEFE4D240E663E003CF256 /* ShopDaoSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDaoSql.swift; sourceTree = "<group>"; };
 		B30C12F1235A04FF00CB32A0 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		B319DDCD2361DD42007878F6 /* RacketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacketController.swift; sourceTree = "<group>"; };
 		B326E87123435C4F0040E9F3 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
@@ -447,6 +455,8 @@
 				99DEFE3F240D1776003CF256 /* RacketREST.swift */,
 				99DEFE43240D189E003CF256 /* OrderREST.swift */,
 				99DEFE45240D4760003CF256 /* OrderHistoryREST.swift */,
+				99DEFE49240E64F1003CF256 /* ShopREST.swift */,
+				99DEFE4B240E6539003CF256 /* AddressREST.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -457,6 +467,7 @@
 				99DEFE222409A5A1003CF256 /* RacketStringDto.swift */,
 				99DEFE2C240CF3B1003CF256 /* CustomerDto.swift */,
 				99DEFE36240D0622003CF256 /* OrderDto.swift */,
+				99DEFE47240E54CD003CF256 /* StringerDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -597,6 +608,7 @@
 				99DEFE30240CF6F0003CF256 /* CustomerDaoSql.swift */,
 				99DEFE34240D02E7003CF256 /* TeamDaoSql.swift */,
 				99DEFE38240D0DEA003CF256 /* OrderDaoSql.swift */,
+				99DEFE4D240E663E003CF256 /* ShopDaoSql.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -857,6 +869,7 @@
 				99DEFE40240D1776003CF256 /* RacketREST.swift in Sources */,
 				B38C5B92232BD1D000116BC1 /* CustomerFb.swift in Sources */,
 				99DEFE1F2409387D003CF256 /* StringTypesREST.swift in Sources */,
+				99DEFE4E240E663E003CF256 /* ShopDaoSql.swift in Sources */,
 				1D61CECC232FE36A006FED94 /* LayoutController.swift in Sources */,
 				B38C5BA7232BE4B500116BC1 /* StringType.swift in Sources */,
 				B3606A47234DCAED003199FB /* RemoveStringerDelegate.swift in Sources */,
@@ -915,6 +928,7 @@
 				99DEFE31240CF6F0003CF256 /* CustomerDaoSql.swift in Sources */,
 				1D4728D72391B88B0068919F /* AuthenticationController.swift in Sources */,
 				B3B3DBDC233BAA0E001498D4 /* PopupViewController.swift in Sources */,
+				99DEFE4A240E64F1003CF256 /* ShopREST.swift in Sources */,
 				1D7455CA23435E2000C33B0C /* RacketDTOFb.swift in Sources */,
 				B3FB2CAD232D4119003728C4 /* Layout.swift in Sources */,
 				99DEFE15240930F8003CF256 /* PurposeSingleton.swift in Sources */,
@@ -923,11 +937,13 @@
 				B38C5B84232BC94000116BC1 /* TeamFb.swift in Sources */,
 				1D7455CC23435E9700C33B0C /* CompanyDTOFb.swift in Sources */,
 				B38C5BAD232BE70D00116BC1 /* StringBrand.swift in Sources */,
+				99DEFE48240E54CD003CF256 /* StringerDto.swift in Sources */,
 				B38C5B94232BD36900116BC1 /* StringerFb.swift in Sources */,
 				B38C5B98232BDD3200116BC1 /* RootTabBarController.swift in Sources */,
 				B3CAF98D2341FD7E005F5B38 /* ControlReg.swift in Sources */,
 				B3FB2C78232D0335003728C4 /* Extention.swift in Sources */,
 				B3FB2C8D232D2BF4003728C4 /* Utility.swift in Sources */,
+				99DEFE4C240E6539003CF256 /* AddressREST.swift in Sources */,
 				99A0BC3E240913CA00CE2566 /* StringColorREST.swift in Sources */,
 				B39CCE8A23565DA200EA892B /* CustomerDAOFirebase.swift in Sources */,
 				99DEFE33240D0188003CF256 /* StringerREST.swift in Sources */,

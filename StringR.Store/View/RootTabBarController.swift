@@ -20,7 +20,8 @@ class RootTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        Utility.writeStringToSharedPref(withKey: Constant.shopId, value: "ShopMJ")
+        ShopSingleton.shared.fetchData()
+//        Utility.writeStringToSharedPref(withKey: Constant.shopId, value: "1")
 
         setupNavigationControllers()
         setupTabBarItems()

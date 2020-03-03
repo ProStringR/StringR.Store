@@ -71,13 +71,13 @@ class OrderDAOFirebase: OrderDAOProtocol {
                     }
                 }
                 // find shop
-                self.shopDAO.getShop(by: order.shopId) { (shopDTO) in
-                    attemps += 1
-                    order.shop = self.dataControl.createObject(fromObject: shopDTO, toObject: ShopFb.self)
-                    if attemps == 5 {
-                        completion(order)
-                    }
-                }
+//                self.shopDAO.getShop(by: order.shopId) { (shopDTO) in
+//                    attemps += 1
+//                    order.shop = self.dataControl.createObject(fromObject: shopDTO, toObject: ShopFb.self)
+//                    if attemps == 5 {
+//                        completion(order)
+//                    }
+//                }
 
                 // find racket
                 self.racketDAO.getRacket(racketId: order.racketId) { (racket) in

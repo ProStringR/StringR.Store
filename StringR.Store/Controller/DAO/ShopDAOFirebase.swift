@@ -9,7 +9,6 @@
 import Foundation
 
 class ShopDAOFirebase: ShopDAOProtocol {
-
     let dataControl = ControlReg.getDataController
 
     func getShop(by id: String, completion: @escaping (ShopDTOFb?) -> Void) {
@@ -30,4 +29,7 @@ class ShopDAOFirebase: ShopDAOProtocol {
         }
     }
 
+    func getShop(by id: String, completion: @escaping (ShopREST?) -> Void) {
+        print("wrong implementation")
+    }
 }

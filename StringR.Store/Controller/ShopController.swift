@@ -13,15 +13,9 @@ class ShopController {
     let dataControl = ControlReg.getDataController
     let shopDAO: ShopDAOProtocol = ControlReg.getShopDAO
 
-    func getShop(basedOn id: String, completion: @escaping (ShopFb?) -> Void) {
-
-        shopDAO.getShop(by: id) { (dto) in
-            if let shopDTO = dto {
-                let shop = self.dataControl.createObject(fromObject: shopDTO, toObject: ShopFb.self)
-                completion(shop)
-            } else {
-                completion(nil)
-            }
+    func getShop(by shopId: String, completion: @escaping (ShopREST?) -> Void) {
+        shopDAO.getShop(by: shopId) { (shop) in
+            completion(shop)
         }
     }
 

@@ -13,9 +13,15 @@ class TeamController {
     let teamDAO: TeamDAOProtocol = ControlReg.getTeamDAO
     let dataControl = ControlReg.getDataController
 
-    func getStringersForShop(shopId: String, completion: @escaping ([StringerREST]?) -> Void) {
-        teamDAO.getTeamForShop(shopId: shopId) { (stringers) in
+    func getStringersForShop(teamId: String, completion: @escaping ([StringerREST]?) -> Void) {
+        teamDAO.getTeamForShop(teamId: teamId) { (stringers) in
             completion(stringers)
+        }
+    }
+
+    func postStringerToTeam(teamId: Int, with stringer: StringerDto, completion: @escaping (Bool) -> Void) {
+        teamDAO.postStringerToTeam(teamId: teamId, with: stringer) { (success) in
+            completion(success)
         }
     }
 

@@ -41,21 +41,21 @@ class EconomyViewController: UIViewController {
     }
 
     private func getData() {
-        let spinner = LayoutController.getSpinner(forParent: self.view)
-        self.showSpinner(withSpinner: spinner)
-        ShopSingleton.shared.refreshAndGetShop { (shop) in
-            if let shop = shop {
-                self.orderController.getAllOrders(for: shop, completion: { (orders) in
-                    if let orders = orders {
-                        DispatchQueue.main.async {
-                            self.orders = orders
-                            self.updateUI(with: self.dateSegmentControl.selectedSegmentIndex)
-                        }
-                    }
-                    self.removeSpinner(forSpinner: spinner)
-                })
-            }
-        }
+//        let spinner = LayoutController.getSpinner(forParent: self.view)
+//        self.showSpinner(withSpinner: spinner)
+//        ShopSingleton.shared.refreshAndGetShop { (shop) in
+//            if let shop = shop {
+//                self.orderController.getAllOrders(for: shop, completion: { (orders) in
+//                    if let orders = orders {
+//                        DispatchQueue.main.async {
+//                            self.orders = orders
+//                            self.updateUI(with: self.dateSegmentControl.selectedSegmentIndex)
+//                        }
+//                    }
+//                    self.removeSpinner(forSpinner: spinner)
+//                })
+//            }
+//        }
     }
 
     private func updateUI(with interval: Int) {

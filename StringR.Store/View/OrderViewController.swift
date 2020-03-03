@@ -17,7 +17,13 @@ class OrderViewController: CardCellViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(ShopSingleton.shared.shopId)
+        ShopSingleton.shared.getShop { (shop) in
+            if let shop = shop {
+                print(shop.teamId, shop.id)
+            } else {
+                print("cannot find shop")
+            }
+        }
 
         intializeStringsForCollectionView()
         setLayout()
