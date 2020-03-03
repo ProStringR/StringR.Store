@@ -14,8 +14,8 @@ class CompletedViewController: UIViewController {
     weak var completedOrdersTableView: UITableView!
 
     var searchController: UISearchController?
-    var searchOrders: [OrderFb]?
-    var orders: [OrderFb]?
+    var searchOrders: [OrderREST]?
+    var orders: [OrderREST]?
     var orderController = ControlReg.getOrderController
 
     override func viewDidLoad() {
@@ -57,17 +57,14 @@ class CompletedViewController: UIViewController {
     private func getData() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
-        ShopSingleton.shared.getShop { (shop) in
-            if let shop = shop {
-                self.orderController.getCompletedOrders(orderIds: shop.orderIds) { (result) in
-                    if let orders = result {
-                        self.orders = orders
-                        self.searchOrders = orders
-                        self.updateUI()
-                    }
-                    self.removeSpinner(forSpinner: spinner)
-                }
+        self.orderController.getAllOrdersWithStatus(shopId: ShopSingleton.shared.shopId, withStatus: 3) { (orders) in
+            if let orders = orders {
+                self.orders = orders
+                self.searchOrders = orders
             }
+
+            self.updateUI()
+            self.removeSpinner(forSpinner: spinner)
         }
     }
 
@@ -91,14 +88,14 @@ extension CompletedViewController: UISearchResultsUpdating, UISearchBarDelegate,
         if searchText == Constant.emptyString {
             self.searchOrders = orders
         } else {
+
             self.searchOrders = self.orders?.filter {
-                if let customer = $0.customer {
-                    return customer.name.lowercased().contains(searchText.lowercased()) || customer.phoneNumber.lowercased().contains(searchText.lowercased()) || customer.email.lowercased().contains(searchText.lowercased())
-                } else {
-                    return $0.orderId.lowercased().contains(searchText.lowercased())
-                }
+                let customer = $0.customer
+
+                return customer.firstName.lowercased().contains(searchText.lowercased()) || customer.lastName.lowercased().contains(searchText.lowercased()) || customer.phoneNumber.lowercased().contains(searchText.lowercased()) || customer.email.lowercased().contains(searchText.lowercased())
             }
         }
+
         self.completedOrdersTableView.reloadData()
     }
 }
@@ -120,16 +117,12 @@ extension CompletedViewController: UITableViewDataSource {
 
         let currentOrder = orders[indexPath.row]
 
-        if let customer = currentOrder.customer {
-            cell.customerNameLabel.text = "\(customer.name) | \(Utility.getLastChars(string: currentOrder.orderId, amount: 4))"
-        } else {
-            cell.customerNameLabel.text = Utility.getLastChars(string: currentOrder.orderId, amount: 4)
-        }
+        cell.customerNameLabel.text = currentOrder.customer.firstName
 
-        cell.rightLabel.text = currentOrder.orderStatus.rawValue
+        cell.rightLabel.text = "\(OrderStatus.allValues[currentOrder.orderStatus])"
         cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
 
-        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
+        cell.typeIndicator.image = currentOrder.racketString.getImageIndication()
 
         cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
@@ -146,7 +139,7 @@ extension CompletedViewController: UITableViewDelegate {
         viewControllerToPresent.delegate = self
 
         if let orders = self.orders {
-//            viewControllerToPresent.order = orders[indexPath.row]
+            viewControllerToPresent.order = orders[indexPath.row]
         }
 
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)

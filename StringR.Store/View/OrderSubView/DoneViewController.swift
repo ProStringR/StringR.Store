@@ -11,7 +11,7 @@ import UIKit
 class DoneViewController: UIViewController {
 
     weak var doneOrdersTableView: UITableView!
-    var orders: [OrderFb]?
+    var orders: [OrderREST]?
     var orderController = ControlReg.getOrderController
 
     override func viewDidLoad() {
@@ -39,16 +39,13 @@ class DoneViewController: UIViewController {
     private func getData() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
-        ShopSingleton.shared.getShop { (shop) in
-            if let shop = shop {
-                self.orderController.getDoneOrders(orderIds: shop.orderIds) { (result) in
-                    if let orders = result {
-                        self.orders = orders
-                        self.updateUI()
-                    }
-                    self.removeSpinner(forSpinner: spinner)
-                }
+        self.orderController.getAllOrdersWithStatus(shopId: ShopSingleton.shared.shopId, withStatus: 1) { (orders) in
+            if let orders = orders {
+                self.orders = orders
             }
+
+            self.updateUI()
+            self.removeSpinner(forSpinner: spinner)
         }
     }
 
@@ -82,18 +79,14 @@ extension DoneViewController: UITableViewDataSource {
 
         let currentOrder = orders[indexPath.row]
 
-        if let customer = currentOrder.customer {
-            cell.customerNameLabel.text = "\(customer.name) | \(Utility.getLastChars(string: currentOrder.orderId, amount: 4))"
-        } else {
-            cell.customerNameLabel.text = Utility.getLastChars(string: currentOrder.orderId, amount: 4)
-        }
+        cell.customerNameLabel.text = currentOrder.customer.firstName
 
         let paidText = currentOrder.paid ? "Paid" : "Not Paid"
-        cell.rightLabel.text = "\(currentOrder.orderStatus.rawValue) | \(paidText)"
+        cell.rightLabel.text = "\(OrderStatus.allValues[currentOrder.orderStatus]) | \(paidText)"
 
-        cell.statusIndicatorImageView.image = currentOrder.paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "yellow_circle")
+        cell.statusIndicatorImageView.image = currentOrder.paid ? #imageLiteral(resourceName: "green_circle") : #imageLiteral(resourceName: "red_circle")
 
-        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
+        cell.typeIndicator.image = currentOrder.racketString.getImageIndication()
 
         cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black
@@ -110,7 +103,7 @@ extension DoneViewController: UITableViewDelegate {
         viewControllerToPresent.delegate = self
 
         if let orders = self.orders {
-//            viewControllerToPresent.order = orders[indexPath.row]
+            viewControllerToPresent.order = orders[indexPath.row]
         }
 
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)

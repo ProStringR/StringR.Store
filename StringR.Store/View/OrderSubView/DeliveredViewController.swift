@@ -39,7 +39,7 @@ class DeliveredViewController: UIViewController {
     private func getData() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
-        self.orderController.getAllOrdersWithStatus(shopId: ShopSingleton.shared.shopId, withStatus: 1) { (orders) in
+        self.orderController.getAllOrdersWithStatus(shopId: ShopSingleton.shared.shopId, withStatus: 2) { (orders) in
             if let orders = orders {
                 self.orders = orders
             }
