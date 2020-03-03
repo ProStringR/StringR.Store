@@ -11,7 +11,7 @@ import UIKit
 class SpecificOrderHistoryViewController: UIViewController {
 
     weak var orderHistoryTabelView: UITableView!
-    var orderHistory: [OrderHistoryFb]?
+    var orderHistory: [OrderHistoryREST]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +52,9 @@ extension SpecificOrderHistoryViewController: UITableViewDataSource {
 
         let item = orderHistory[indexPath.row]
 
-        let date = Utility.dateToString(date: Date.init(milliseconds: item.date))
+        let date = Utility.dateToString(date: Date.init(milliseconds: item.transactionDate))
         cell.leftLabel.text = "\(date)"
-        cell.rightLabel.text = "\(item.orderStatus.rawValue) | \(item.paid ? Utility.getString(forKey: "common_paid") : Utility.getString(forKey: "common_notPaid"))"
+        cell.rightLabel.text = "\(OrderStatus.allValues[item.orderStatus]) | \(item.paid ? Utility.getString(forKey: "common_paid") : Utility.getString(forKey: "common_notPaid"))"
 
         // not clickable
         cell.selectionStyle = .none

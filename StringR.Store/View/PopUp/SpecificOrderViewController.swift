@@ -35,7 +35,7 @@ class SpecificOrderViewController: UIViewController {
     weak var mail: UILabel!
 
     let orderController = ControlReg.getOrderController
-    var order: OrderFb?
+    var order: OrderREST?
     var orderStatus: Int?
     var paidStatus: Bool?
 
@@ -199,10 +199,10 @@ class SpecificOrderViewController: UIViewController {
     }
 
     private func updateUI() {
-        if let order = self.order, let racketString = self.order?.racketString, let customer = self.order?.customer, let stringer = order.stringer, let racket = order.racket {
-            self.orderStatus = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
+        if let order = self.order {
+            self.orderStatus = order.orderStatus
 
-            if OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus) == 3 {
+            if order.orderStatus == 3 {
                 self.statusSegmentedControl.isEnabled = false
                 self.navigationItem.rightBarButtonItem = nil
             }
@@ -213,27 +213,28 @@ class SpecificOrderViewController: UIViewController {
                 self.paidSegmentedControl.isEnabled = false
             }
 
-            self.title = "\(customer.name) | \(Utility.getLastChars(string: order.orderId, amount: 4))"
-            self.brand.text = racketString.brand.rawValue
-            self.model.text = racketString.modelName
-            self.type.text = racketString.stringType.rawValue
+            self.title = "\(order.customer.firstName)"
+            self.brand.text = order.racketString.brand
+            self.model.text = order.racketString.model
+            self.type.text = order.racketString.type
             self.tension.text = "M:\(order.tensionVertical) | C:\(order.tensionHorizontal)"
             self.price.text = String(Int(order.price))
             self.deliveryDate.text = Utility.dateToString(date: Date.init(milliseconds: order.deliveryDate), withTime: false)
-            self.stringer.text = stringer.name
+            self.stringer.text = order.stringer.firstName
             self.paidSegmentedControl.selectedSegmentIndex = order.paid ? 1 : 0
-            self.statusSegmentedControl.selectedSegmentIndex = OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)
-            self.racketBrand.text = racket.brand.rawValue
-            self.racketModel.text = racket.modelName
-            self.name.text = customer.name
-            self.phoneNumber.text = customer.phoneNumber
-            self.mail.text = customer.email
+            self.statusSegmentedControl.selectedSegmentIndex = order.orderStatus
+            self.racketBrand.text = order.racket.racketBrand
+            self.racketModel.text = order.racket.racketModel
+            self.name.text = order.customer.firstName
+            self.phoneNumber.text = order.customer.phoneNumber
+            self.mail.text = order.customer.email
 
             if let comment = order.comment {
                 self.comment.text = comment.isEmpty ? Utility.getString(forKey: "specificOrder_order_comment_noComment") : comment
             } else {
                 self.comment.text = Utility.getString(forKey: "specificOrder_order_comment_noComment")
             }
+
         }
     }
 
@@ -300,22 +301,22 @@ class SpecificOrderViewController: UIViewController {
         self.showSpinner(withSpinner: spinner)
 
         if let order = self.order, let orderStatus = self.orderStatus, let paidStatus = self.paidStatus {
-            if OrderStatus.allValues[orderStatus] != order.orderStatus || paidStatus != order.paid {
-                let history = OrderHistoryFb.init(date: Date().millisecondsSince1970, paid: paidStatus, orderStatus: OrderStatus.allValues[orderStatus])
-                order.orderHistory?.append(history)
-            }
+            if orderStatus != order.orderStatus || paidStatus != order.paid {
+                let history = OrderHistoryREST.init(orderId: order.id, transactionDate: Date().millisecondsSince1970, paid: paidStatus, orderStatus: orderStatus)
+                order.orderHistory.append(history)
 
-            order.orderStatus = OrderStatus.allValues[orderStatus]
-            order.paid = paidStatus
+                order.orderStatus = orderStatus
+                order.paid = paidStatus
 
-            self.orderController.putOrder(order: order) { (success) in
-                if success {
-                    self.saveAndDismiss()
-                } else {
-                    self.presentDefaultAlert()
+                self.orderController.putOrderHistoryItem(for: history) { (success) in
+                    if success {
+                        self.saveAndDismiss()
+                    } else {
+                        self.presentDefaultAlert()
+                    }
+
+                    self.removeSpinner(forSpinner: spinner)
                 }
-
-                self.removeSpinner(forSpinner: spinner)
             }
         }
     }
@@ -328,8 +329,7 @@ class SpecificOrderViewController: UIViewController {
 
     @objc func statusIndexChanged(_ sender: UISegmentedControl) {
         if let orderStatus = self.orderStatus, let order = self.order {
-            if !(sender.selectedSegmentIndex == OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus) + 1 ||
-                sender.selectedSegmentIndex == OrderStatus.indexOfOrderStatus(orderStatus: order.orderStatus)) {
+            if !(sender.selectedSegmentIndex == order.orderStatus + 1 || sender.selectedSegmentIndex == order.orderStatus) {
                 self.statusSegmentedControl.selectedSegmentIndex = orderStatus
                 self.presentDefaultAlert()
             } else {

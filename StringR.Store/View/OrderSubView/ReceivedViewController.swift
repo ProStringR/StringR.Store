@@ -11,7 +11,7 @@ import UIKit
 class ReceivedViewController: UIViewController {
 
     weak var receivedOrdersTableView: UITableView!
-    var orders: [OrderFb]?
+    var orders: [OrderREST]?
 
     var orderController = ControlReg.getOrderController
 
@@ -48,16 +48,13 @@ class ReceivedViewController: UIViewController {
     private func getData() {
         let spinner = LayoutController.getSpinner(forParent: self.view)
         self.showSpinner(withSpinner: spinner)
-        ShopSingleton.shared.getShop { (shop) in
-            if let shop = shop {
-                self.orderController.getRecievedOrders(orderIds: shop.orderIds) { (result) in
-                    if let orders = result {
-                        self.orders = orders
-                    }
-                    self.updateUI()
-                    self.removeSpinner(forSpinner: spinner)
-                }
+        self.orderController.getAllOrdersWithStatus(shopId: ShopSingleton.shared.shopId, withStatus: 0) { (orders) in
+            if let orders = orders {
+                self.orders = orders
             }
+
+            self.updateUI()
+            self.removeSpinner(forSpinner: spinner)
         }
     }
 
@@ -83,11 +80,7 @@ extension ReceivedViewController: UITableViewDataSource {
 
         let currentOrder = orders[indexPath.row]
 
-        if let customer = currentOrder.customer {
-            cell.customerNameLabel.text = "\(customer.name) | \(Utility.getLastChars(string: currentOrder.orderId, amount: 4))"
-        } else {
-            cell.customerNameLabel.text = Utility.getLastChars(string: currentOrder.orderId, amount: 4)
-        }
+        cell.customerNameLabel.text = currentOrder.customer.firstName
 
         cell.rightLabel.text = Utility.dateToString(date: Date(milliseconds: currentOrder.deliveryDate))
 
@@ -99,7 +92,7 @@ extension ReceivedViewController: UITableViewDataSource {
             cell.statusIndicatorImageView.image = #imageLiteral(resourceName: "green_circle")
         }
 
-        cell.typeIndicator.image = currentOrder.racketString?.getImageIndication()
+        cell.typeIndicator.image = currentOrder.racketString.getImageIndication()
 
         cell.accessoryType = .disclosureIndicator
         cell.tintColor = .black

@@ -74,4 +74,16 @@ class OrderController {
             completion(success)
         }
     }
+
+    func getAllOrdersWithStatus(shopId: String, withStatus orderStatus: Int, completion: @escaping ([OrderREST]?) -> Void) {
+        orderDAO.getAllOrders(shopId: shopId, withStatus: orderStatus) { (orders) in
+            completion(orders)
+        }
+    }
+
+    func putOrderHistoryItem(for orderHistoryItem: OrderHistoryREST, completion: @escaping (Bool) -> Void) {
+        orderDAO.putOrderHistoryItem(for: orderHistoryItem) { (success) in
+            completion(success)
+        }
+    }
 }

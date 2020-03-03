@@ -36,4 +36,16 @@ class OrderDaoSql: OrderDAOProtocol {
             completion(success)
         }
     }
+
+    func getAllOrders(shopId: String, withStatus orderStatus: Int, completion: @escaping ([OrderREST]?) -> Void) {
+        dataControl.getDataREST(returnType: [OrderREST].self, url: "\(Constant.orders)/shop/\(shopId)/\(orderStatus)") { (orders) in
+            completion(orders)
+        }
+    }
+
+    func putOrderHistoryItem(for historyItem: OrderHistoryREST, completion: @escaping (Bool) -> Void) {
+        dataControl.putDataREST(object: historyItem, url: Constant.orders) { (success) in
+            completion(success)
+        }
+    }
 }

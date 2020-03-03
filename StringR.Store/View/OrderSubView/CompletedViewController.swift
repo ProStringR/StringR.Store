@@ -146,7 +146,7 @@ extension CompletedViewController: UITableViewDelegate {
         viewControllerToPresent.delegate = self
 
         if let orders = self.orders {
-            viewControllerToPresent.order = orders[indexPath.row]
+//            viewControllerToPresent.order = orders[indexPath.row]
         }
 
         let popUp = LayoutController.getPopupView(viewControllerToPresent: viewControllerToPresent)

@@ -129,4 +129,12 @@ class OrderDAOFirebase: OrderDAOProtocol {
     func postOrder(order: OrderDto, completion: @escaping (Bool) -> Void) {
         print("wrong implementation")
     }
+
+    func getAllOrders(shopId: String, withStatus orderStatus: Int, completion: @escaping ([OrderREST]?) -> Void) {
+        print("wroing implementation")
+    }
+
+    func putOrderHistoryItem(for historyItem: OrderHistoryREST, completion: @escaping (Bool) -> Void) {
+        print("wrong implementation")
+    }
 }

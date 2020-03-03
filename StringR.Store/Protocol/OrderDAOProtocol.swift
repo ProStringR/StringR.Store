@@ -15,4 +15,6 @@ protocol OrderDAOProtocol {
     func postOrder(order: OrderDTOFb) throws
     func putOrder(order: OrderDTOFb?, completion: @escaping (Bool) -> Void)
     func postOrder(order: OrderDto, completion: @escaping (Bool) -> Void)
+    func getAllOrders(shopId: String, withStatus orderStatus: Int, completion: @escaping ([OrderREST]?) -> Void)
+    func putOrderHistoryItem(for historyItem: OrderHistoryREST, completion: @escaping (Bool) -> Void)
 }
