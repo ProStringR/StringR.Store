@@ -17,18 +17,6 @@ class CustomerDaoSql: CustomerDAOProtocol {
         }
     }
 
-    func getCustomer(by id: String, completion: @escaping (CustomerDTOFb?) -> Void) {
-        print("wrong implementation")
-    }
-
-    func getAllCustomers(completion: @escaping ([CustomerDTOFb]?) -> Void) {
-        print("wrong implementation")
-    }
-
-    func putCustomer(customer: CustomerDTOFb?, completion: @escaping (Bool) -> Void) {
-        print("wrong implementation")
-    }
-
     func postCustomer(customer: CustomerDto, completion: @escaping (Bool) -> Void) {
         dataControl.postDataREST(object: customer, url: Constant.customers) { (success) in
             completion(success)

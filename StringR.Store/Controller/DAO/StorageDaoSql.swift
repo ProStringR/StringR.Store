@@ -12,18 +12,6 @@ class StorageDaoSql: StorageDAOProtocol {
 
     let dataControl = ControlReg.getDataController
 
-    func getRacketString(by id: String, storageId: String, completion: @escaping (RacketStringFb?) -> Void) {
-        print("do nothing")
-    }
-
-    func deleteStringFromStorage(fromShop shopId: String, stringId: String, completion: @escaping (Bool) -> Void) {
-        print("do nothing")
-    }
-
-    func putRacketString(racketString: RacketStringDTOFb?, storageId: String, completion: @escaping (Bool) -> Void) {
-        print("do nothing")
-    }
-
     func getStringsInStorage(basedOnId id: String, completion: @escaping ([RacketStringREST]?) -> Void) {
         let url = "\(Constant.getRacketStringsForShop)/\(id)"
         dataControl.getDataREST(returnType: [RacketStringREST].self, url: url) { (results) in

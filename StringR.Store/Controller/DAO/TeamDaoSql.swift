@@ -11,26 +11,6 @@ import Foundation
 class TeamDaoSql: TeamDAOProtocol {
     let dataControl = ControlReg.getDataController
 
-    func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTOFb?) -> Void) {
-        print("wrong implenentation")
-    }
-
-    func getTeam(basedOn teamId: String, completion: @escaping (TeamDTOFb?) -> Void) {
-        print("wrong implenentation")
-    }
-
-    func putStringer(stringer: StringerFb?, completion: @escaping (Bool) -> Void) {
-        print("wrong implenentation")
-    }
-
-    func putStringerToTeam(stringer: StringerDTOFb?, completion: @escaping (Bool) -> Void) {
-        print("wrong implenentation")
-    }
-
-    func putTeam(team: TeamFb?, completion: @escaping (Bool) -> Void) {
-        print("wrong implenentation")
-    }
-
     func getTeamForShop(teamId: String, completion: @escaping ([StringerREST]?) -> Void) {
         dataControl.getDataREST(returnType: [StringerREST].self, url: "\(Constant.stringers)/shop/\(teamId)") { (stringers) in
             completion(stringers)

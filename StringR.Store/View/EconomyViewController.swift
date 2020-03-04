@@ -17,8 +17,6 @@ class EconomyViewController: UIViewController {
     weak var dateSegmentControl: UISegmentedControl!
     weak var pieChart: PieChartView!
     weak var dataStackView: UIStackView!
-    var economy: EconomyFb?
-    var orders: [OrderFb]?
     var pendingAmount = 0
     var doneAmount = 0
 
@@ -59,24 +57,24 @@ class EconomyViewController: UIViewController {
     }
 
     private func updateUI(with interval: Int) {
-        DispatchQueue.main.async {
-            let econInterval = EconomyInterval.init(rawValue: interval)
-            if let econInterval = econInterval {
-                let listOfOrders = self.economyController.getListOfOrders(basedOn: econInterval, with: self.orders)
-                let economy = self.economyController.calculateEconomy(basedOn: listOfOrders)
-
-                self.revenue.text = String(Int(economy.revenue))
-                self.expenses.text = String(Int(economy.stringExpense))
-                self.labour.text = String(Int(economy.expenses))
-                self.profit.text = String(Int(economy.profit))
-
-                self.doneAmount = economy.totalStrung - economy.numberOfPendingOrders
-                self.pendingAmount = economy.numberOfPendingOrders
-
-                self.pieChart.data = self.getUpdatedChartData()
-                self.pieChart.notifyDataSetChanged()
-            }
-        }
+//        DispatchQueue.main.async {
+//            let econInterval = EconomyInterval.init(rawValue: interval)
+//            if let econInterval = econInterval {
+//                let listOfOrders = self.economyController.getListOfOrders(basedOn: econInterval, with: self.orders)
+//                let economy = self.economyController.calculateEconomy(basedOn: listOfOrders)
+//
+//                self.revenue.text = String(Int(economy.revenue))
+//                self.expenses.text = String(Int(economy.stringExpense))
+//                self.labour.text = String(Int(economy.expenses))
+//                self.profit.text = String(Int(economy.profit))
+//
+//                self.doneAmount = economy.totalStrung - economy.numberOfPendingOrders
+//                self.pendingAmount = economy.numberOfPendingOrders
+//
+//                self.pieChart.data = self.getUpdatedChartData()
+//                self.pieChart.notifyDataSetChanged()
+//            }
+//        }
     }
 
     private func setupLayout() {
