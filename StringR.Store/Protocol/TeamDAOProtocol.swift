@@ -9,11 +9,6 @@
 import Foundation
 
 protocol TeamDAOProtocol {
-    func getStringer(basedOn stringerId: String, completion: @escaping (StringerDTOFb?) -> Void)
-    func getTeam(basedOn teamId: String, completion: @escaping (TeamDTOFb?) -> Void)
-    func putStringer(stringer: StringerFb?, completion: @escaping (Bool) -> Void)
-    func putStringerToTeam(stringer: StringerDTOFb?, completion: @escaping (Bool) -> Void)
-    func putTeam(team: TeamFb?, completion: @escaping (Bool) -> Void)
     func getTeamForShop(teamId: String, completion: @escaping ([StringerREST]?) -> Void)
     func postStringerToTeam(teamId: Int, with stringer: StringerDto, completion: @escaping (Bool) -> Void)
 }
